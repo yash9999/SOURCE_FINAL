@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,7 +40,10 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.txtProductName.setText(products.get(position).getProductName());
+        PriceSurveyProductModel.Result product=products.get(position);
+
+       Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImage()).into(holder.imgProduct);
+        holder.txtProductName.setText(product.getProductName());
     }
 
     @Override
@@ -47,6 +52,9 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.imgProduct)
+        ImageView imgProduct;
+
 @BindView(R.id.txtProductName)
 TextView txtProductName;
 
