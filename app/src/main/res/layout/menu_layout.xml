@@ -44,7 +44,7 @@
                     android:layout_toRightOf="@+id/imgViewProfileDp"
                     android:text="Jane Smith"
                     android:textColor="@color/color_white"
-                    android:textSize="@dimen/txt_small_dp" />
+                    android:textSize="@dimen/txt_12_sp" />
 
                 <TextView
                     android:id="@+id/txtViewLocation"
@@ -56,7 +56,7 @@
                     android:layout_toRightOf="@+id/imgViewProfileDp"
                     android:text="Hi-Lo Pavillion"
                     android:textColor="@color/color_white"
-                    android:textSize="@dimen/txt_small_dp" />
+                    android:textSize="@dimen/txt_12_sp" />
 
                 <TextView
                     android:id="@+id/txtViewDesignation"
@@ -68,7 +68,7 @@
                     android:layout_toRightOf="@+id/imgViewProfileDp"
                     android:text="Merchendiser"
                     android:textColor="@color/color_white"
-                    android:textSize="@dimen/txt_small_dp" />
+                    android:textSize="@dimen/txt_12_sp" />
 
             </RelativeLayout>
 
@@ -105,7 +105,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/home"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
 
                 </LinearLayout>
 
@@ -133,7 +133,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/profile"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,7 +160,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/inbox"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
 
@@ -188,7 +188,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/notifications"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -209,7 +209,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/product_update"
                     android:textColor="@color/color_black"
-                    android:textSize="@dimen/txt_medium_dp" />
+                    android:textSize="@dimen/txt_13_sp" />
 
                 <LinearLayout
                     android:id="@+id/linLayPriceSurvey"
@@ -235,7 +235,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/price_servey"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -262,7 +262,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/new_product"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
 
@@ -291,7 +291,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/banded_product"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -318,7 +318,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/expiring_product"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -345,7 +345,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/in_store_sampling"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -367,7 +367,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/general"
                     android:textColor="@color/color_black"
-                    android:textSize="@dimen/txt_medium_dp" />
+                    android:textSize="@dimen/txt_13_sp" />
 
                 <LinearLayout
                     android:id="@+id/linLaySetting"
@@ -393,7 +393,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/settings"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -420,7 +420,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/vacation"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
 
@@ -449,7 +449,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/change_store"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
 
@@ -477,7 +477,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/sync"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_normal_dp" />
+                        android:textSize="@dimen/txt_16_sp" />
                 </LinearLayout>
 
 
