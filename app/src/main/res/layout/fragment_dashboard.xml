@@ -14,12 +14,13 @@
         android:layout_margin="@dimen/margin_10sp">
 
         <LinearLayout
-
+            android:id="@+id/llayRecentPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:orientation="vertical"
-            android:visibility="visible">
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/txtTitleRecentPriceChange"
@@ -72,10 +73,10 @@
             android:id="@+id/llayTitleNewProductUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDescription"
-            android:layout_toLeftOf="@+id/llayViewAll"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/txtTitleNewPopularUpdate"
@@ -106,6 +107,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/txtDescription"
             android:orientation="horizontal"
+
             android:visibility="gone">
 
             <TextView
@@ -127,10 +129,10 @@
             android:id="@+id/llayTitleExpiringProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDescription"
-            android:layout_toLeftOf="@+id/llayViewAll"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/txtTitleExpiringProduct"
@@ -183,10 +185,10 @@
             android:id="@+id/llayTitlePopularProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDescription"
-            android:layout_toLeftOf="@+id/llayViewAll"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/txtTitlePopularProduct"
