@@ -44,10 +44,15 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
 
        Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImage()).into(holder.imgProduct);
         holder.txtProductName.setText(product.getProductName());
-        holder.txtProductBrand.setText(product.getBrandName());
+        holder.txtProductCategoryName.setText(product.getCategoryName());
 
         holder.txtProductMRP.setText(product.getRangestart());
         holder.txtProductSellingPrice.setText(product.getRangeend());
+
+        holder.txtProductQuantity.setText(product.getWeight());
+        holder.txtProductDate.setText(product.getDateadded());
+
+        holder.txtProductBrand.setText(product.getBrandName());
     }
 
     @Override
@@ -70,6 +75,15 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
 
         @BindView(R.id.txtProductSellingPrice)
         TextView txtProductSellingPrice;
+
+        @BindView(R.id.txtProductCategoryName)
+        TextView txtProductCategoryName;
+
+        @BindView(R.id.txtProductQuantity)
+        TextView txtProductQuantity;
+
+        @BindView(R.id.txtProductDate)
+        TextView txtProductDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
