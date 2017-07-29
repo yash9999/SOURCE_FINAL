@@ -45,5 +45,30 @@ public interface APIService {
          @Header("Cache-Control") String cache,
          @Body RequestBody params);
 
+
+
+ @POST("location/scans")
+ Call<PriceSurveyProductModel> gettingResultOfNewProductUpdate(
+         @Header("Content-Type") String contentType,
+         @Header("Cache-Control") String cache,
+         @Body RequestBody params);
+
+ @POST("location/products")
+ Call<PriceSurveyProductModel> gettingResultOfResentPriceUpdateProduct(
+         @Header("Content-Type") String contentType,
+         @Header("Cache-Control") String cache,
+         @Body RequestBody params);
+
+ @POST("location/sampling/products")
+ Call<PriceSurveyProductModel> gettingResultOfSamplingProduct(
+         @Header("Content-Type") String contentType,
+         @Header("Cache-Control") String cache,
+         @Body RequestBody params);
+
+ @POST("location/expiry/products")
+ Call<PriceSurveyProductModel> gettingResultOfExpiryProduct(
+         @Header("Content-Type") String contentType,
+         @Header("Cache-Control") String cache,
+         @Body RequestBody params);
 }
 

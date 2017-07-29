@@ -25,6 +25,7 @@ import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.mvp.banded.BandedProductFragment;
 import com.example.yogeshgarg.source.mvp.change_store.ChangeStoreFragment;
+import com.example.yogeshgarg.source.mvp.dashboard.DashboardFragment;
 import com.example.yogeshgarg.source.mvp.expiring_product.ExpiringProductFragment;
 import com.example.yogeshgarg.source.mvp.home.HomeFragment;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.InStoreSamplingFragment;
@@ -176,7 +177,7 @@ public class NavigationActivity extends AppCompatActivity
 
         fragmentManager = getSupportFragmentManager();
 
-        HomeFragment homeFragment=new HomeFragment();
+        DashboardFragment homeFragment=new DashboardFragment();
         addFragment(homeFragment,getString(R.string.label_home));
 
         Picasso.with(this).load(R.mipmap.ic_profile_dp).transform(new CircleTransform()).into(imgViewProfileDp);
@@ -269,7 +270,7 @@ public class NavigationActivity extends AppCompatActivity
 
     @OnClick(R.id.linLayHome)
     public void linLayHomeClick() {
-        HomeFragment homeFragment = new HomeFragment();
+        DashboardFragment homeFragment = new DashboardFragment();
         replaceFragment(homeFragment, getString(R.string.label_home));
     }
 
