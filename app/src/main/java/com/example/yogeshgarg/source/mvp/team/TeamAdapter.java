@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.CircleTransform;
+import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.mvp.dashboard.NewProductModel;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +44,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyTeamModel.Result product=products.get(position);
 
-       Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImagelink()).into(holder.imgUser);
+        Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImagelink()).transform(new CircleTransform()).into(holder.imgUser);
         holder.txtUserName.setText(product.getFirstname()+" "+product.getLastname());
 
         holder.txtPhone.setText(product.getPhone());
@@ -54,6 +56,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
         holder.txtStatus.setText(product.getStatus());
 
+        //Font
+        FontHelper.applyFont(context,holder.txtUserName, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtPhone, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtUserMessage, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtLocation, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtStatus, FontHelper.FontType.FONT_Normal);
 
     }
 

@@ -8,6 +8,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewMyTeam"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
 
 </FrameLayout>
