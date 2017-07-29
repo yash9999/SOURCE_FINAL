@@ -2,12 +2,15 @@ package com.example.yogeshgarg.source.common.requestResponse;
 
 
 
+import com.example.yogeshgarg.source.mvp.dashboard.NewProductModel;
 import com.example.yogeshgarg.source.mvp.login.LoginModel;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
 import com.example.yogeshgarg.source.mvp.stores.StoresModel;
+import com.example.yogeshgarg.source.mvp.team.MyTeamModel;
 
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -48,7 +51,7 @@ public interface APIService {
 
 
  @POST("scans")
- Call<PriceSurveyProductModel> gettingResultOfNewProductUpdate(
+ Call<NewProductModel> gettingResultOfNewProductUpdate(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
          @Body RequestBody params);
@@ -67,6 +70,13 @@ public interface APIService {
 
  @POST("location/expiry/products")
  Call<PriceSurveyProductModel> gettingResultOfExpiryProduct(
+         @Header("Content-Type") String contentType,
+         @Header("Cache-Control") String cache,
+         @Body RequestBody params);
+
+
+ @POST("users")
+ Call<MyTeamModel> gettingUsers(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
          @Body RequestBody params);

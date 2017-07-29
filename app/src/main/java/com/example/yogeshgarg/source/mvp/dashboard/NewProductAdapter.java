@@ -22,13 +22,13 @@ import butterknife.ButterKnife;
  * Created by himanshu on 29/07/17.
  */
 
-public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProductAdapter.ViewHolder> {
+public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<PriceSurveyProductModel.Result> products;
+    ArrayList<NewProductModel.Result> products;
 
 
-    public DashoardProductAdapter(Context context, ArrayList<PriceSurveyProductModel.Result> products) {
+    public NewProductAdapter(Context context, ArrayList<NewProductModel.Result> products) {
         this.context = context;
         this.products = products;
     }
@@ -41,20 +41,31 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        PriceSurveyProductModel.Result product=products.get(position);
+        NewProductModel.Result product=products.get(position);
 
-       Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImage()).into(holder.imgProduct);
+       Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getLink()).into(holder.imgProduct);
         holder.txtProductName.setText(product.getProductName());
-        holder.txtProductCategoryName.setText(product.getCategoryName());
+        holder.txtProductCategoryName.setText(product.getStoreName());
 
-        holder.txtProductMRP.setText(product.getRangestart());
+        holder.txtProductMRP.setText(product.getCost());
         holder.txtProductMRP.setPaintFlags(holder.txtProductMRP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.txtProductSellingPrice.setText(product.getRangeend());
+        try {
+            Double cost = 0.00;
+            cost = Double.valueOf(product.getCost());
+
+            String discountedPrice = String.valueOf(Double.valueOf(product.getCost()) -
+                    ((Double.valueOf(product.getCost()) * Double.valueOf(product.getCost())) / 100));
+
+            holder.txtProductSellingPrice.setText(discountedPrice);
+        }catch (NumberFormatException exp){
+            exp.printStackTrace();
+            holder.txtProductSellingPrice.setText("0.00");
+        }
 
         holder.txtProductQuantity.setText(product.getWeight());
         holder.txtProductDate.setText(product.getDateadded());
 
-        holder.txtProductBrand.setText(product.getBrandName());
+        holder.txtProductBrand.setText(product.getAddress());
     }
 
     @Override

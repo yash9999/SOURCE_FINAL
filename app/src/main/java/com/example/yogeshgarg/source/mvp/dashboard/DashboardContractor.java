@@ -20,7 +20,7 @@ public interface DashboardContractor {
     }
 
     public interface View extends BaseView{
-        public void getNewProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct);
+        public void getNewProductResponse(ArrayList<NewProductModel.Result> listProduct);
         public void getRecentPriceChangedProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct);
         public void getExpiryProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct);
         public void getSamplingProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct);

@@ -89,9 +89,9 @@ public class DashboardFragment extends Fragment implements DashboardContractor.V
     }
 
     @Override
-    public void getNewProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct) {
-        DashoardProductAdapter adapter=new DashoardProductAdapter(getActivity(),listProduct);
-        recyclerViewNewProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+    public void getNewProductResponse(ArrayList<NewProductModel.Result> listProduct) {
+        NewProductAdapter adapter=new NewProductAdapter(getActivity(),listProduct);
+        recyclerViewNewProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
         recyclerViewNewProduct.setAdapter(adapter);
     }
@@ -99,7 +99,7 @@ public class DashboardFragment extends Fragment implements DashboardContractor.V
     @Override
     public void getRecentPriceChangedProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct) {
         DashoardProductAdapter adapter=new DashoardProductAdapter(getActivity(),listProduct);
-        recyclerViewRecentProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+        recyclerViewRecentProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
         recyclerViewRecentProduct.setAdapter(adapter);
     }
@@ -107,7 +107,7 @@ public class DashboardFragment extends Fragment implements DashboardContractor.V
     @Override
     public void getExpiryProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct) {
         DashoardProductAdapter adapter=new DashoardProductAdapter(getActivity(),listProduct);
-        recyclerViewExpiryProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+        recyclerViewExpiryProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
         recyclerViewExpiryProduct.setAdapter(adapter);
     }
@@ -115,7 +115,7 @@ public class DashboardFragment extends Fragment implements DashboardContractor.V
     @Override
     public void getSamplingProductResponse(ArrayList<PriceSurveyProductModel.Result> listProduct) {
         DashoardProductAdapter adapter=new DashoardProductAdapter(getActivity(),listProduct);
-        recyclerViewSampleProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
+        recyclerViewSampleProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
         recyclerViewSampleProduct.setAdapter(adapter);
     }

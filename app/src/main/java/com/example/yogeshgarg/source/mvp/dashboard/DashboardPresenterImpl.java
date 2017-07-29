@@ -37,15 +37,15 @@ public class DashboardPresenterImpl implements DashboardContractor.Presenter {
             mView.showProgress();
             final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject().toString()));
 
-            Call<PriceSurveyProductModel> getRegisterMessage = ApiAdapter.getApiService().gettingResultOfNewProductUpdate("application/json", "no-cache", body);
+            Call<NewProductModel> getRegisterMessage = ApiAdapter.getApiService().gettingResultOfNewProductUpdate("application/json", "no-cache", body);
 
-            getRegisterMessage.enqueue(new Callback<PriceSurveyProductModel>() {
+            getRegisterMessage.enqueue(new Callback<NewProductModel>() {
                 @Override
-                public void onResponse(Call<PriceSurveyProductModel> call, Response<PriceSurveyProductModel> response) {
+                public void onResponse(Call<NewProductModel> call, Response<NewProductModel> response) {
 
                     mView.hideProgress();
                     try {
-                        PriceSurveyProductModel loginModel = response.body();
+                        NewProductModel loginModel = response.body();
 
                         if (loginModel.getSuccessful()) {
                             mView.getNewProductResponse(loginModel.getResult());
@@ -59,7 +59,7 @@ public class DashboardPresenterImpl implements DashboardContractor.Presenter {
                 }
 
                 @Override
-                public void onFailure(Call<PriceSurveyProductModel> call, Throwable t) {
+                public void onFailure(Call<NewProductModel> call, Throwable t) {
                     mView.hideProgress();
                     t.printStackTrace();
                     mView.showAlert(SourceApp.getInstance().getString(R.string.server_error));

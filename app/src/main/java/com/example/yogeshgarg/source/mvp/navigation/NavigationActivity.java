@@ -36,6 +36,7 @@ import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyFragment;
 import com.example.yogeshgarg.source.mvp.profile.ProfileFragment;
 import com.example.yogeshgarg.source.mvp.setting.SettingFragment;
 import com.example.yogeshgarg.source.mvp.sync.SyncFragment;
+import com.example.yogeshgarg.source.mvp.team.MyTeamFragment;
 import com.example.yogeshgarg.source.mvp.vacation.VacationFragment;
 import com.squareup.picasso.Picasso;
 
@@ -288,8 +289,10 @@ public class NavigationActivity extends AppCompatActivity
 
     @OnClick(R.id.linLayNotifications)
     public void linLayNotificationsClick() {
-        NotificationFragment notificationFragment = new NotificationFragment();
-        replaceFragment(notificationFragment, getString(R.string.label_notification));
+        MyTeamFragment fragment=new MyTeamFragment();
+        replaceFragment(fragment, getString(R.string.lable_my_team));
+       /* NotificationFragment notificationFragment = new NotificationFragment();
+        replaceFragment(notificationFragment, getString(R.string.label_notification));*/
     }
 
     @OnClick(R.id.linLayPriceSurvey)
