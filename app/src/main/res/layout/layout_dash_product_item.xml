@@ -1,19 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="150dp"
-    android:layout_height="wrap_content">
+    android:layout_height="250dp">
 
 
     <ImageView
         android:id="@+id/imgProduct"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"/>
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/txtProductName"
+        android:layout_below="@+id/imgProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         />
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/txtProductBrand"
+
+        android:layout_below="@+id/txtProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+    <LinearLayout
+        android:layout_below="@+id/txtProductBrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtProductMRP"
+            android:layout_below="@+id/imgProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+        <TextView
+            android:id="@+id/txtProductSellingPrice"
+            android:layout_below="@+id/imgProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

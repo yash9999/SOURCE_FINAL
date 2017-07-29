@@ -47,7 +47,7 @@ public interface APIService {
 
 
 
- @POST("location/scans")
+ @POST("scans")
  Call<PriceSurveyProductModel> gettingResultOfNewProductUpdate(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
