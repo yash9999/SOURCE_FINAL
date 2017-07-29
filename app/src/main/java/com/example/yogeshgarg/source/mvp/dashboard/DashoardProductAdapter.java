@@ -47,9 +47,21 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
         holder.txtProductName.setText(product.getProductName());
         holder.txtProductCategoryName.setText(product.getCategoryName());
 
-        holder.txtProductMRP.setText(product.getRangestart());
+        if(product.getDiscount()!=null){
+            holder.txtDiscount.setVisibility(View.GONE);
+        }else {
+            if (holder.txtDiscount.getText().equals("null")) {
+                holder.txtDiscount.setVisibility(View.GONE);
+            } else {
+                holder.txtDiscount.setVisibility(View.VISIBLE);
+                holder.txtDiscount.setText(product.getDiscount() + "%");
+            }
+        }
+
+
+        holder.txtProductMRP.setText("$ "+product.getRangestart());
         holder.txtProductMRP.setPaintFlags(holder.txtProductMRP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.txtProductSellingPrice.setText(product.getRangeend());
+        holder.txtProductSellingPrice.setText("$ "+product.getRangeend());
 
         holder.txtProductQuantity.setText(product.getWeight());
         holder.txtProductDate.setText(product.getDateadded());
@@ -86,6 +98,9 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
 
         @BindView(R.id.txtProductDate)
         TextView txtProductDate;
+
+        @BindView(R.id.txtDiscount)
+        TextView txtDiscount;
 
         public ViewHolder(View itemView) {
             super(itemView);

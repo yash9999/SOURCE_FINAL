@@ -47,7 +47,9 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
         holder.txtProductName.setText(product.getProductName());
         holder.txtProductCategoryName.setText(product.getStoreName());
 
-        holder.txtProductMRP.setText(product.getCost());
+        holder.txtDiscount.setText(product.getDiscount()+" %");
+
+        holder.txtProductMRP.setText("$ "+product.getCost());
         holder.txtProductMRP.setPaintFlags(holder.txtProductMRP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         try {
             Double cost = 0.00;
@@ -56,10 +58,10 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
             String discountedPrice = String.valueOf(Double.valueOf(product.getCost()) -
                     ((Double.valueOf(product.getCost()) * Double.valueOf(product.getCost())) / 100));
 
-            holder.txtProductSellingPrice.setText(discountedPrice);
+            holder.txtProductSellingPrice.setText("$ "+discountedPrice);
         }catch (NumberFormatException exp){
             exp.printStackTrace();
-            holder.txtProductSellingPrice.setText("0.00");
+            holder.txtProductSellingPrice.setText("$ 0.00");
         }
 
         holder.txtProductQuantity.setText(product.getWeight());
@@ -97,6 +99,9 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
 
         @BindView(R.id.txtProductDate)
         TextView txtProductDate;
+
+        @BindView(R.id.txtDiscount)
+        TextView txtDiscount;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -6,6 +6,17 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="txt_10_sp">10sp</dimen>
+    <dimen name="txt_12_sp">12sp</dimen>
+    <dimen name="txt_13_sp">13sp</dimen>
+    <dimen name="txt_14_sp">14sp</dimen>
+    <dimen name="txt_15_sp">15sp</dimen>
+    <dimen name="txt_16_sp">16sp</dimen>
+    <dimen name="txt_17_sp">17sp</dimen>
+    <dimen name="txt_18_sp">18sp</dimen>
+    <dimen name="txt_19_sp">19sp</dimen>
+    <dimen name="txt_20_sp">20sp</dimen>
+
     <dimen name="txt_10_dp">10dp</dimen>
     <dimen name="txt_12_dp">12dp</dimen>
     <dimen name="txt_13_dp">13dp</dimen>
