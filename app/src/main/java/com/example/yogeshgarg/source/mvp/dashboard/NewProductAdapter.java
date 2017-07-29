@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
 import com.squareup.picasso.Picasso;
 
@@ -64,10 +65,19 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
             holder.txtProductSellingPrice.setText("$ 0.00");
         }
 
-        holder.txtProductQuantity.setText(product.getWeight());
+        holder.txtProductQuantity.setText("Qty: "+product.getWeight());
         holder.txtProductDate.setText(product.getDateadded());
 
         holder.txtProductBrand.setText(product.getAddress());
+
+        FontHelper.applyFont(context,holder.txtProductName, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtProductCategoryName, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtDiscount, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtProductMRP, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtProductSellingPrice, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtProductQuantity, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtProductDate, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtProductBrand, FontHelper.FontType.FONT_Normal);
     }
 
     @Override
