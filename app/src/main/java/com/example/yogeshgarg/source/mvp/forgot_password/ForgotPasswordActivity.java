@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -22,8 +23,8 @@ import butterknife.OnEditorAction;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements ForgotPasswordView {
 
-    @BindView(R.id.coordinateLayout)
-    CoordinatorLayout coordinateLayout;
+    @BindView(R.id.relLay)
+    RelativeLayout relLay;
 
     @BindView(R.id.txtViewForgotPasswordMsg)
     TextView txtViewForgotPasswordMsg;
@@ -35,13 +36,14 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ForgotP
     Button btnSubmit;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
         ButterKnife.bind(this);
+
         setFont();
+
     }
 
     @Override
@@ -51,12 +53,12 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ForgotP
 
     @Override
     public void onUnsuccessForgotPassword(String message) {
-        SnackNotify.showMessage(message, coordinateLayout);
+        SnackNotify.showMessage(message, relLay);
     }
 
     @Override
     public void onInternetErrorForgotPassword() {
-        SnackNotify.checkConnection(onRetryForgotPassword, coordinateLayout);
+        SnackNotify.checkConnection(onRetryForgotPassword, relLay);
     }
 
     OnClickInterface onRetryForgotPassword = new OnClickInterface() {
@@ -101,6 +103,5 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ForgotP
         }
         return false;
     }
-
 
 }
