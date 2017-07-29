@@ -37,7 +37,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textColor="@color/color_white"
-                        android:textSize="@dimen/txt_medium_dp" />
+                        android:textSize="@dimen/txt_12_dp" />
 
                     <TextView
                         android:id="@+id/txtViewDaysAgo"
@@ -47,7 +47,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="5dp"
                         android:textColor="@color/color_white"
-                        android:textSize="@dimen/txt_medium_dp" />
+                        android:textSize="@dimen/txt_10_dp" />
 
 
 
@@ -79,7 +79,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/imgViewPrice"
                 android:textColor="@color/color_gray"
-                android:textSize="@dimen/txt_medium_dp" />
+                android:textSize="@dimen/txt_14_dp" />
         </RelativeLayout>
     </LinearLayout>
 

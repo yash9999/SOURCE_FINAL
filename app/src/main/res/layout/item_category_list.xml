@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_white"
                         android:layout_centerHorizontal="true"
-                        android:textSize="@dimen/txt_medium_dp" />
+                        android:textSize="@dimen/txt_12_dp" />
 
                     <TextView
                         android:id="@+id/txtViewProductQuantity"
@@ -53,7 +53,7 @@
                         android:layout_below="@+id/txtViewCategoryName"
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/color_white"
-                        android:textSize="@dimen/txt_medium_dp" />
+                        android:textSize="@dimen/txt_12_dp" />
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -83,9 +83,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:layout_toRightOf="@+id/imgViewNotificiations"
-                android:text="30% Done"
-                android:textColor="@color/color_gray"
-                android:textSize="@dimen/txt_medium_dp" />
+                android:textColor="@color/color_bg"
+                android:textSize="@dimen/txt_12_dp" />
         </RelativeLayout>
     </LinearLayout>
 
