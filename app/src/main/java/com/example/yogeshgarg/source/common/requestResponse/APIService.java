@@ -2,6 +2,7 @@ package com.example.yogeshgarg.source.common.requestResponse;
 
 
 
+import com.example.yogeshgarg.source.mvp.dashboard.DashboardCommonModel;
 import com.example.yogeshgarg.source.mvp.dashboard.NewProductModel;
 import com.example.yogeshgarg.source.mvp.login.LoginModel;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
@@ -21,12 +22,15 @@ import retrofit2.http.POST;
  */
 public interface APIService {
 
+
+ //Api for login
    @POST("user/login ")
     Call<LoginModel> userLogin(
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
 
+ //Api for fetching the stote name
     @POST("locations")
     Call<StoresModel> storesList(
             @Header("Content-Type") String contentType,
@@ -35,6 +39,7 @@ public interface APIService {
 
 
 
+ //Api for category name at product update
     @POST("location/categories")
     Call<PriceSurveyModel> priceSurveyCategoryList(
             @Header("Content-Type") String contentType,
@@ -42,6 +47,7 @@ public interface APIService {
             @Body RequestBody params);
 
 
+ //Api for product name after selecting the category
  @POST("location/products")
  Call<PriceSurveyProductModel> gettingResultOfProduct(
          @Header("Content-Type") String contentType,
@@ -49,31 +55,36 @@ public interface APIService {
          @Body RequestBody params);
 
 
+ //Dasboard APis
 
- @POST("scans")
+ @POST("dashboard/scans")
  Call<NewProductModel> gettingResultOfNewProductUpdate(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
          @Body RequestBody params);
 
- @POST("location/products")
- Call<PriceSurveyProductModel> gettingResultOfResentPriceUpdateProduct(
+
+
+ @POST("dashboard/location/products")
+ Call<DashboardCommonModel> gettingResultOfResentPriceUpdateProduct(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
          @Body RequestBody params);
 
- @POST("location/sampling/products")
- Call<PriceSurveyProductModel> gettingResultOfSamplingProduct(
+ @POST("dashboard/location/sampling/products")
+ Call<DashboardCommonModel> gettingResultOfSamplingProduct(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
          @Body RequestBody params);
 
- @POST("location/expiry/products")
- Call<PriceSurveyProductModel> gettingResultOfExpiryProduct(
+ @POST("dashboard/location/expiry/products")
+ Call<DashboardCommonModel> gettingResultOfExpiryProduct(
          @Header("Content-Type") String contentType,
          @Header("Cache-Control") String cache,
          @Body RequestBody params);
 
+
+ //Api for My Team.
 
  @POST("users")
  Call<MyTeamModel> gettingUsers(

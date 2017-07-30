@@ -26,10 +26,10 @@ import butterknife.ButterKnife;
 public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProductAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<PriceSurveyProductModel.Result> products;
+    ArrayList<DashboardCommonModel.Result> products;
     int type; //type 1=Recent, Type 2=Expiring, Type 3= Instore
 
-    public DashoardProductAdapter(Context context, ArrayList<PriceSurveyProductModel.Result> products,int type) {
+    public DashoardProductAdapter(Context context, ArrayList<DashboardCommonModel.Result> products,int type) {
         this.context = context;
         this.products = products;
         this.type=type;
@@ -43,7 +43,7 @@ public class DashoardProductAdapter extends RecyclerView.Adapter<DashoardProduct
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        PriceSurveyProductModel.Result product=products.get(position);
+        DashboardCommonModel.Result product=products.get(position);
 
        Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImage()).into(holder.imgProduct);
 
