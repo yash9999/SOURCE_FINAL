@@ -1,17 +1,15 @@
-package com.example.yogeshgarg.source.mvp.dashboard;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.example.yogeshgarg.source.mvp.dashboard.model;
 
 /**
  * Created by yogeshgarg on 30/07/17.
  */
 
-public class DashboardCommonModel {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
+public class DashboardInStoreModel {
 
     @SerializedName("message")
     @Expose
@@ -54,155 +52,99 @@ public class DashboardCommonModel {
         @SerializedName("store_name")
         @Expose
         private String storeName;
-
         @SerializedName("store_id")
         @Expose
         private String storeId;
-
         @SerializedName("address")
         @Expose
         private String address;
-
         @SerializedName("location_id")
         @Expose
         private String locationId;
-
         @SerializedName("country")
         @Expose
         private String country;
-
         @SerializedName("city")
         @Expose
         private String city;
-
         @SerializedName("longitude")
         @Expose
         private String longitude;
-
         @SerializedName("latitude")
         @Expose
         private String latitude;
-
         @SerializedName("category_name")
         @Expose
         private String categoryName;
-
         @SerializedName("category_id")
         @Expose
         private String categoryId;
-
         @SerializedName("brand_name")
         @Expose
         private String brandName;
-
         @SerializedName("brand_id")
         @Expose
         private String brandId;
-
         @SerializedName("product_name")
         @Expose
         private String productName;
-
         @SerializedName("product_id")
         @Expose
         private String productId;
-
         @SerializedName("rangetype")
         @Expose
         private String rangetype;
-
         @SerializedName("rangestart")
         @Expose
         private String rangestart;
-
         @SerializedName("rangeend")
         @Expose
         private String rangeend;
-
         @SerializedName("image")
         @Expose
         private String image;
-
         @SerializedName("upc")
         @Expose
         private String upc;
-
         @SerializedName("weight")
         @Expose
         private String weight;
-
-        @SerializedName("cost")
+        @SerializedName("sampling_date")
         @Expose
-        private String cost;
-
-        @SerializedName("tax")
-        @Expose
-        private String tax;
-
-        @SerializedName("discount")
-        @Expose
-        private String discount;
-
-        @SerializedName("instore")
-        @Expose
-        private String instore;
-
+        private String samplingDate;
         @SerializedName("tax_value")
         @Expose
         private String taxValue;
-
         @SerializedName("currency_name")
         @Expose
         private String currencyName;
-
         @SerializedName("currency_id")
         @Expose
         private String currencyId;
-
         @SerializedName("dateadded")
         @Expose
         private String dateadded;
-
         @SerializedName("user_id")
         @Expose
         private String userId;
-
         @SerializedName("first_name")
         @Expose
         private String firstName;
-
         @SerializedName("last_name")
         @Expose
         private String lastName;
-
         @SerializedName("profile_pic")
         @Expose
         private String profilePic;
-
-        @SerializedName("lastupdated")
+        @SerializedName("comment")
         @Expose
-        private String lastupdated;
-
-        @SerializedName("stocklastupdated")
-        @Expose
-        private String stocklastupdated;
-
-        @SerializedName("stock")
-        @Expose
-        private String stock;
-
+        private String comment;
         @SerializedName("stock_unit_measure")
         @Expose
         private String stockUnitMeasure;
-
         @SerializedName("item_unit_measure")
         @Expose
         private String itemUnitMeasure;
-
-        @SerializedName("type")
-        @Expose
-        private String type;
-
 
         public String getStoreName() {
             return storeName;
@@ -364,36 +306,12 @@ public class DashboardCommonModel {
             this.weight = weight;
         }
 
-        public String getCost() {
-            return cost;
+        public String getSamplingDate() {
+            return samplingDate;
         }
 
-        public void setCost(String cost) {
-            this.cost = cost;
-        }
-
-        public String getTax() {
-            return tax;
-        }
-
-        public void setTax(String tax) {
-            this.tax = tax;
-        }
-
-        public String getDiscount() {
-            return discount;
-        }
-
-        public void setDiscount(String discount) {
-            this.discount = discount;
-        }
-
-        public String getInstore() {
-            return instore;
-        }
-
-        public void setInstore(String instore) {
-            this.instore = instore;
+        public void setSamplingDate(String samplingDate) {
+            this.samplingDate = samplingDate;
         }
 
         public String getTaxValue() {
@@ -460,28 +378,12 @@ public class DashboardCommonModel {
             this.profilePic = profilePic;
         }
 
-        public String getLastupdated() {
-            return lastupdated;
+        public String getComment() {
+            return comment;
         }
 
-        public void setLastupdated(String lastupdated) {
-            this.lastupdated = lastupdated;
-        }
-
-        public String getStocklastupdated() {
-            return stocklastupdated;
-        }
-
-        public void setStocklastupdated(String stocklastupdated) {
-            this.stocklastupdated = stocklastupdated;
-        }
-
-        public String getStock() {
-            return stock;
-        }
-
-        public void setStock(String stock) {
-            this.stock = stock;
+        public void setComment(String comment) {
+            this.comment = comment;
         }
 
         public String getStockUnitMeasure() {
@@ -500,15 +402,9 @@ public class DashboardCommonModel {
             this.itemUnitMeasure = itemUnitMeasure;
         }
 
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
     }
+
+
 
 
 

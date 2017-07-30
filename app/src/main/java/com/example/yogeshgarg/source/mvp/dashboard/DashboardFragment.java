@@ -15,7 +15,14 @@ import android.widget.RelativeLayout;
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
-import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
+import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardExpiryProductUpdateAdapter;
+import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardInStoreUpdateAdapter;
+import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashoardRecentProductUpdateAdapter;
+import com.example.yogeshgarg.source.mvp.dashboard.adapter.NewProductAdapter;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -95,13 +102,13 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     //first section recent price
     @Override
-    public void onSuccessOfRecentPriceUpdate(ArrayList<DashboardCommonModel.Result> resultArrayList) {
+    public void onSuccessOfRecentPriceUpdate(ArrayList<DashboardRecentUpdateModel.Result> resultArrayList) {
 
         callingNewProductUpdate();//calling New Product Api
 
         llayRecentPrice.setVisibility(View.VISIBLE);
 
-        DashoardProductAdapter adapter = new DashoardProductAdapter(getActivity(), resultArrayList, 1);
+        DashoardRecentProductUpdateAdapter adapter = new DashoardRecentProductUpdateAdapter(getActivity(), resultArrayList);
         recyclerViewRecentProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
         recyclerViewRecentProduct.setAdapter(adapter);
@@ -169,15 +176,15 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     //third section
     @Override
-    public void onSuccessOfExpiryProduct(ArrayList<DashboardCommonModel.Result> resultArrayList) {
+    public void onSuccessOfExpiryProduct(ArrayList<DashboardExpiryProductModel.Result> resultArrayList) {
 
         callingInstoreSamplingApi();//calling instore sampling api
 
         llayTitleExpiringProduct.setVisibility(View.VISIBLE);
-        DashoardProductAdapter adapter = new DashoardProductAdapter(getActivity(), resultArrayList, 2);
+        DashboardExpiryProductUpdateAdapter dashboardExpiryProductUpdateAdapter=new DashboardExpiryProductUpdateAdapter(getActivity(),resultArrayList);
         recyclerViewExpiryProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
-        recyclerViewExpiryProduct.setAdapter(adapter);
+        recyclerViewExpiryProduct.setAdapter(dashboardExpiryProductUpdateAdapter);
     }
 
     @Override
@@ -207,13 +214,13 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     //fourth section
     @Override
-    public void onSuccessOfInstoreSampling(ArrayList<DashboardCommonModel.Result> resultArrayList) {
+    public void onSuccessOfInstoreSampling(ArrayList<DashboardInStoreModel.Result> resultArrayList) {
 
         llayTitlePopularProduct.setVisibility(View.VISIBLE);
-        DashoardProductAdapter adapter = new DashoardProductAdapter(getActivity(), resultArrayList, 3);
+        DashboardInStoreUpdateAdapter dashboardInStoreUpdateAdapter = new DashboardInStoreUpdateAdapter(getActivity(), resultArrayList);
         recyclerViewSampleProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewNewProduct.setNestedScrollingEnabled(false);
-        recyclerViewSampleProduct.setAdapter(adapter);
+        recyclerViewSampleProduct.setAdapter(dashboardInStoreUpdateAdapter);
     }
 
     @Override

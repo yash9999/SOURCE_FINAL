@@ -4,12 +4,10 @@ import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.SourceApp;
 import com.example.yogeshgarg.source.common.helper.NetworkUtil;
 import com.example.yogeshgarg.source.common.requestResponse.ApiAdapter;
-import com.example.yogeshgarg.source.mvp.dashboard.NewProductModel;
 
 import org.json.JSONObject;
 
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

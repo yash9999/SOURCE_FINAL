@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
-import com.example.yogeshgarg.source.mvp.dashboard.NewProductModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

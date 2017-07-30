@@ -3,18 +3,14 @@ package com.example.yogeshgarg.source.mvp.dashboard;
 import android.app.Activity;
 
 import com.example.yogeshgarg.source.R;
-import com.example.yogeshgarg.source.SourceApp;
-import com.example.yogeshgarg.source.common.helper.NetworkUtil;
 import com.example.yogeshgarg.source.common.helper.Progress;
 import com.example.yogeshgarg.source.common.requestResponse.ApiAdapter;
-import com.example.yogeshgarg.source.common.requestResponse.Const;
-import com.example.yogeshgarg.source.mvp.login.LoginModel;
-import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -114,20 +110,20 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject().toString()));
 
-        Call<DashboardCommonModel> getRecentPriceUpdate = ApiAdapter.getApiService().gettingResultOfResentPriceUpdateProduct("application/json", "no-cache", body);
+        Call<DashboardRecentUpdateModel> getRecentPriceUpdate = ApiAdapter.getApiService().gettingResultOfResentPriceUpdateProduct("application/json", "no-cache", body);
 
-        getRecentPriceUpdate.enqueue(new Callback<DashboardCommonModel>() {
+        getRecentPriceUpdate.enqueue(new Callback<DashboardRecentUpdateModel>() {
             @Override
-            public void onResponse(Call<DashboardCommonModel> call, Response<DashboardCommonModel> response) {
+            public void onResponse(Call<DashboardRecentUpdateModel> call, Response<DashboardRecentUpdateModel> response) {
 
                 Progress.stop();
                 try {
-                    DashboardCommonModel dashboardCommonModel = response.body();
+                    DashboardRecentUpdateModel dashboardRecentUpdateModel = response.body();
 
-                    if (dashboardCommonModel.getSuccessful()) {
-                        dashboardView.onSuccessOfRecentPriceUpdate(dashboardCommonModel.getResult());
+                    if (dashboardRecentUpdateModel.getSuccessful()) {
+                        dashboardView.onSuccessOfRecentPriceUpdate(dashboardRecentUpdateModel.getResult());
                     } else {
-                        dashboardView.onUnsccessOfRecentPriceUpdate(dashboardCommonModel.getMessage());
+                        dashboardView.onUnsccessOfRecentPriceUpdate(dashboardRecentUpdateModel.getMessage());
                     }
                 } catch (NullPointerException exp) {
                     dashboardView.onUnsccessOfRecentPriceUpdate(activity.getString(R.string.server_error));
@@ -135,7 +131,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
 
             @Override
-            public void onFailure(Call<DashboardCommonModel> call, Throwable t) {
+            public void onFailure(Call<DashboardRecentUpdateModel> call, Throwable t) {
                 Progress.stop();
                 t.printStackTrace();
                 dashboardView.onUnsccessOfRecentPriceUpdate(activity.getString(R.string.server_error));
@@ -167,20 +163,20 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject().toString()));
 
-        Call<DashboardCommonModel> gotResultOfExpiryProduct = ApiAdapter.getApiService().gettingResultOfExpiryProduct("application/json", "no-cache", body);
+        Call<DashboardExpiryProductModel> gotResultOfExpiryProduct = ApiAdapter.getApiService().gettingResultOfExpiryProduct("application/json", "no-cache", body);
 
-        gotResultOfExpiryProduct.enqueue(new Callback<DashboardCommonModel>() {
+        gotResultOfExpiryProduct.enqueue(new Callback<DashboardExpiryProductModel>() {
             @Override
-            public void onResponse(Call<DashboardCommonModel> call, Response<DashboardCommonModel> response) {
+            public void onResponse(Call<DashboardExpiryProductModel> call, Response<DashboardExpiryProductModel> response) {
 
                 Progress.stop();
                 try {
-                    DashboardCommonModel dashboardCommonModel = response.body();
+                    DashboardExpiryProductModel dashboardExpiryProductModel = response.body();
 
-                    if (dashboardCommonModel.getSuccessful()) {
-                        dashboardView.onSuccessOfExpiryProduct(dashboardCommonModel.getResult());
+                    if (dashboardExpiryProductModel.getSuccessful()) {
+                        dashboardView.onSuccessOfExpiryProduct(dashboardExpiryProductModel.getResult());
                     } else {
-                        dashboardView.onUnsccessOfExpiryProduct(dashboardCommonModel.getMessage());
+                        dashboardView.onUnsccessOfExpiryProduct(dashboardExpiryProductModel.getMessage());
                     }
                 } catch (NullPointerException exp) {
                     dashboardView.onUnsccessOfExpiryProduct(activity.getString(R.string.server_error));
@@ -188,7 +184,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
 
             @Override
-            public void onFailure(Call<DashboardCommonModel> call, Throwable t) {
+            public void onFailure(Call<DashboardExpiryProductModel> call, Throwable t) {
                 Progress.stop();
                 t.printStackTrace();
                 dashboardView.onUnsccessOfExpiryProduct(activity.getString(R.string.server_error));
@@ -222,20 +218,20 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject().toString()));
 
-        Call<DashboardCommonModel> gotResultOfSamplingProduct = ApiAdapter.getApiService().gettingResultOfSamplingProduct("application/json", "no-cache", body);
+        Call<DashboardInStoreModel> gotResultOfSamplingProduct = ApiAdapter.getApiService().gettingResultOfSamplingProduct("application/json", "no-cache", body);
 
-        gotResultOfSamplingProduct.enqueue(new Callback<DashboardCommonModel>() {
+        gotResultOfSamplingProduct.enqueue(new Callback<DashboardInStoreModel>() {
             @Override
-            public void onResponse(Call<DashboardCommonModel> call, Response<DashboardCommonModel> response) {
+            public void onResponse(Call<DashboardInStoreModel> call, Response<DashboardInStoreModel> response) {
 
                 Progress.stop();
                 try {
-                    DashboardCommonModel dashboardCommonModel = response.body();
+                    DashboardInStoreModel dashboardInStoreModel = response.body();
 
-                    if (dashboardCommonModel.getSuccessful()) {
-                        dashboardView.onSuccessOfInstoreSampling(dashboardCommonModel.getResult());
+                    if (dashboardInStoreModel.getSuccessful()) {
+                        dashboardView.onSuccessOfInstoreSampling(dashboardInStoreModel.getResult());
                     } else {
-                        dashboardView.onUnsccessOfInstoreSampling(dashboardCommonModel.getMessage());
+                        dashboardView.onUnsccessOfInstoreSampling(dashboardInStoreModel.getMessage());
                     }
                 } catch (NullPointerException exp) {
                     dashboardView.onUnsccessOfInstoreSampling(activity.getString(R.string.server_error));
@@ -243,7 +239,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
 
             @Override
-            public void onFailure(Call<DashboardCommonModel> call, Throwable t) {
+            public void onFailure(Call<DashboardInStoreModel> call, Throwable t) {
                 Progress.stop();
                 t.printStackTrace();
                 dashboardView.onUnsccessOfInstoreSampling(activity.getString(R.string.server_error));

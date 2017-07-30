@@ -1,4 +1,4 @@
-package com.example.yogeshgarg.source.mvp.dashboard;
+package com.example.yogeshgarg.source.mvp.dashboard.model;
 
 /**
  * Created by himanshu on 29/07/17.
@@ -10,6 +10,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class NewProductModel {
+
 
     @SerializedName("message")
     @Expose
@@ -74,6 +75,9 @@ public class NewProductModel {
         @SerializedName("product_name")
         @Expose
         private String productName;
+        @SerializedName("brand_name")
+        @Expose
+        private String brandName;
         @SerializedName("scan_id")
         @Expose
         private String scanId;
@@ -175,6 +179,14 @@ public class NewProductModel {
 
         public void setProductName(String productName) {
             this.productName = productName;
+        }
+
+        public String getBrandName() {
+            return brandName;
+        }
+
+        public void setBrandName(String brandName) {
+            this.brandName = brandName;
         }
 
         public String getScanId() {
