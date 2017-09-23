@@ -53,8 +53,7 @@ public class AdapterSpinner extends ArrayAdapter<String> {
     }
 
     public View getCustomView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         /*View mySpinner = inflater.inflate(R.layout.layout_spinner_dropdown, parent, false);*/
          TextView textView = (TextView) View.inflate(context, R.layout.layout_spinner_dropdown, null);
 

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
@@ -53,15 +54,17 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
         final PriceSurveyProductModel.Result result = resultArrayList.get(position);
 
         String productName = result.getProductName();
+        String brandName = result.getBrandName();
         String price = result.getCost();
 
         String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage();
-        Picasso.with(activity).load(link).into(holder.imgViewProduct);
+        Picasso.with(activity).load(link).transform(new CircleTransform()).into(holder.imgViewProduct);
 
         //inserting data into fields
 
         holder.txtViewProductName.setText(Utils.camelCasing(productName));
-        holder.txtViewPrice.setText(Utils.convertIntoDouble(price));
+        holder.txtViewBrandName.setText(Utils.camelCasing(brandName));
+        holder.txtViewPrice.setText(Utils.currencyFormat(price));
 
         String strLastUpdated = result.getLastupdated();
 
@@ -111,6 +114,9 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
         @BindView(R.id.txtViewProductName)
         TextView txtViewProductName;
 
+        @BindView(R.id.txtViewBrandName)
+        TextView txtViewBrandName;
+
         @BindView(R.id.txtViewDaysAgo)
         TextView txtViewDaysAgo;
 
@@ -127,6 +133,7 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
         private void setFont() {
 
             FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Semi_Bold, activity);
+            FontHelper.setFontFace(txtViewBrandName, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewPrice, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewDaysAgo, FontHelper.FontType.FONT_Normal, activity);
 

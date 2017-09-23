@@ -7,10 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
+
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
@@ -61,6 +65,7 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
 
         holder.txtViewCategoryName.setText(Utils.camelCasing(categoryName));
 
+        holder.progressBar.setProgress(Integer.parseInt(completed));
 
         holder.txtViewCompleted.setText(completed + "% Done");
 
@@ -81,7 +86,7 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
         }
 
 
-        Picasso.with(activity).load(String.valueOf(myURL)).into(holder.imgViewCategory);
+        Picasso.with(activity).load(String.valueOf(myURL)).transform(new CircleTransform()).into(holder.imgViewCategory);
 
         holder.relLayImages.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +110,9 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
 
         @BindView(R.id.relLayImages)
         RelativeLayout relLayImages;
+
+        @BindView(R.id.progressBar)
+        ProgressBar progressBar;
 
         @BindView(R.id.imgViewCategory)
         ImageView imgViewCategory;

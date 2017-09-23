@@ -8,64 +8,18 @@
     android:paddingTop="15dp"
     tools:context="com.example.yogeshgarg.source.mvp.setting.SettingFragment">
 
-    <EditText
-        android:id="@+id/edtTextName"
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_green_rect"
-        android:hint="@string/name"
-        android:paddingBottom="12dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="12dp"
-        android:maxLines="1"
-        android:inputType="text"
-        android:textColorHint="@color/color_white"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/txt_small_dp" />
-
-
-    <EditText
-        android:id="@+id/edtTextEmailId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtTextName"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_green_rect"
-        android:hint="@string/email"
-        android:paddingBottom="12dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="12dp"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:textColor="@color/color_white"
-        android:textColorHint="@color/color_white"
-        android:textSize="@dimen/txt_small_dp" />
-
-    <EditText
-        android:id="@+id/edtTextPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtTextEmailId"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_green_rect"
-        android:hint="@string/phone_number"
-        android:paddingBottom="12dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="12dp"
-        android:maxLines="1"
-        android:inputType="number"
-        android:textColor="@color/color_white"
-        android:textColorHint="@color/color_white"
-        android:textSize="@dimen/txt_small_dp" />
+        android:src="@mipmap/ic_source_logo"
+        android:scaleType="centerInside"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -83,7 +37,7 @@
                 android:id="@+id/txtViewNotifications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_normal_dp"
+                android:textSize="@dimen/txt_16_sp"
                 android:text="@string/notifications"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
@@ -97,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="6dp">
+            android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/imgViewAbout"
                 android:layout_width="24dp"
@@ -107,7 +61,7 @@
                 android:id="@+id/txtViewAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_normal_dp"
+                android:textSize="@dimen/txt_16_sp"
                 android:text="@string/lable_about"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
@@ -121,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="6dp">
+            android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/imgViewFAQ"
                 android:layout_width="24dp"
@@ -131,7 +85,7 @@
                 android:id="@+id/txtViewFAQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_normal_dp"
+                android:textSize="@dimen/txt_16_sp"
                 android:text="@string/faq"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
@@ -145,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="6dp">
+            android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/imgViewLogout"
                 android:layout_width="24dp"
@@ -155,7 +109,7 @@
                 android:id="@+id/txtViewLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_normal_dp"
+                android:textSize="@dimen/txt_16_sp"
                 android:text="@string/logout"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
@@ -165,4 +119,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+
+
 </RelativeLayout>

@@ -29,6 +29,7 @@ public class UserSession {
 
 
     private static String LOCATION_ID = "LocationId";
+    private static String STORE_ADDRESS = "store_address";
 
 
     public UserSession(Context _context) {
@@ -79,6 +80,15 @@ public class UserSession {
     public void setLocationId(String locationId) {
         editor.putString(LOCATION_ID, locationId);
         editor.commit();
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        editor.putString(STORE_ADDRESS, storeAddress);
+        editor.commit();
+    }
+
+    public String getStoreAddress() {
+        return pref.getString(STORE_ADDRESS, "");
     }
 
     public String getLocationId() {

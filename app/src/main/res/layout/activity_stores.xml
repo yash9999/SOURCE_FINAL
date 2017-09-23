@@ -31,20 +31,31 @@
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/txt_16_dp" />
 
-            <ImageView
-                android:id="@+id/imgViewCenterLines"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <View
+                android:id="@+id/view1"
                 android:layout_below="@+id/txtViewPickYourLocation"
+                android:layout_width="45dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/margin_15sp"
+                android:background="@color/color_bg"
+                android:layout_centerHorizontal="true"/>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_below="@+id/view1"
+                android:layout_width="25dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_20sp" />
+                android:background="@color/color_bg" />
+
 
 
             <android.support.v7.widget.CardView
                 android:id="@+id/card_view_location"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@+id/imgViewCenterLines"
+                android:layout_below="@+id/view2"
                 android:layout_marginLeft="@dimen/margin_30sp"
                 android:layout_marginRight="@dimen/margin_30sp"
                 android:layout_marginTop="@dimen/margin_20sp"
@@ -63,7 +74,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:padding="5dp"
+                        android:paddingTop="@dimen/txt_10_dp"
+                        android:paddingBottom="@dimen/txt_10_dp"
+                        android:paddingRight="5dp"
                         android:src="@mipmap/ic_location" />
 
                     <android.support.v7.widget.AppCompatSpinner

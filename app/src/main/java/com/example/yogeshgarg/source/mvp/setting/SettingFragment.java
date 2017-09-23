@@ -1,6 +1,7 @@
 package com.example.yogeshgarg.source.mvp.setting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import com.example.yogeshgarg.source.mvp.about.AboutFragment;
 import com.example.yogeshgarg.source.mvp.faq.FAQFragment;
 import com.example.yogeshgarg.source.mvp.navigation.NavigationActivity;
 import com.example.yogeshgarg.source.mvp.notification.NotificationFragment;
+import com.example.yogeshgarg.source.mvp.notification_act.NotificationActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,14 +29,6 @@ import butterknife.OnClick;
 
 public class SettingFragment extends Fragment implements SettingView {
 
-    @BindView(R.id.edtTextName)
-    EditText edtTextName;
-
-    @BindView(R.id.edtTextEmailId)
-    EditText edtTextEmailId;
-
-    @BindView(R.id.edtTextPhoneNumber)
-    EditText edtTextPhoneNumber;
 
     @BindView(R.id.linLayNotifications)
     LinearLayout linLayNotifications;
@@ -99,10 +93,6 @@ public class SettingFragment extends Fragment implements SettingView {
     };
 
     private void setFont() {
-        FontHelper.applyFont(getActivity(), edtTextName, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(getActivity(), edtTextEmailId, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(getActivity(), edtTextPhoneNumber, FontHelper.FontType.FONT_Normal);
-
         FontHelper.setFontFace(txtViewNotifications, FontHelper.FontType.FONT_Normal, getActivity());
         FontHelper.setFontFace(txtViewAbout, FontHelper.FontType.FONT_Normal, getActivity());
         FontHelper.setFontFace(txtViewFAQ, FontHelper.FontType.FONT_Normal, getActivity());
@@ -111,19 +101,19 @@ public class SettingFragment extends Fragment implements SettingView {
 
     @OnClick(R.id.linLayNotifications)
     public void linLayNotificationsClick() {
-        NotificationFragment notificationFragment = new NotificationFragment();
-        ((NavigationActivity) getActivity()).replaceFragment(notificationFragment, getActivity().getString(R.string.label_notification));
+        Intent intent = new Intent(getActivity(), NotificationActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.linLayAbout)
     public void linLayAboutClick() {
-        AboutFragment aboutFragment=new AboutFragment();
+        AboutFragment aboutFragment = new AboutFragment();
         ((NavigationActivity) getActivity()).replaceFragment(aboutFragment, getActivity().getString(R.string.lable_about));
     }
 
     @OnClick(R.id.linLayFAQ)
     public void linLayFAQClick() {
-        FAQFragment faqFragment=new FAQFragment();
+        FAQFragment faqFragment = new FAQFragment();
         ((NavigationActivity) getActivity()).replaceFragment(faqFragment, getActivity().getString(R.string.label_faq));
     }
 

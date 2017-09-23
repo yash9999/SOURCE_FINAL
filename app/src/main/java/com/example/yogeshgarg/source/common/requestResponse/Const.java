@@ -22,6 +22,7 @@ public class Const {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
 
+
     public static final String KEY_DATE = "date";
     public static final String KEY_ENTERPRISES = "enterprises";
 
@@ -31,5 +32,56 @@ public class Const {
     public static final String KEY_ID = "id";
     public static final String KEY_NAME = "name";
 
+
+    public static final String KEY_OTP = "token";
+    public static final String KEY_CURRENT_PASSWORD = "oldpassword";
+
+
+    public static final String KEY_EMAIL_ID = "email";
+
+    public static final String KEY_IMAGE = "file";
+
+
+    public static final String KEY_UPC = "upc";
+
+    public static final String KEY_UOM = "uom";
+    public static final String KEY_STOCK = "stock";
+    public static final String KEY_LOCATIONID_REAL = "location_id";
+    public static final String KEY_COMMENT = "comment";
+    public static final String KEY_DISCOUNT_TYPE = "type";
+
+    public static final String KEY_DISCOUNT = "discount";
+    public static final String KEY_COST = "cost";
+    public static final String KEY_TAX_TYPE = "tax";
+    public static final String KEY_BRAND = "brand";
+
+
+    public static final String KEY_FIRSTNAME = "firstname";
+    public static final String KEY_LASTNAME = "lastname";
+    public static final String KEY_PHONE = "phone";
+    public static final String KEY_INSTORE = "instore";
+    public static final String KEY_PRODUCT_ID = "product_id";
+
+    public static final String KEY_START = "start";
+    public static final String KEY_END = "end";
+    public static final String KEY_SAMPLINGDATE = "samplingdate";
+    public static final String KEY_TYPE = "type";
+
+    public static final String KEY_VACATION_ID = "vacation_id";
+
+
+    public static final String KEY_BRANDS = "brands";
+    public static final String KEY_PRODUCTS = "products";
+    public static final String KEY_STORES = "stores";
+    public static final String KEY_DEVICE_ID = "device_id";
+    public static final String KEY_FIREBASE_TOKEN = "token";
+    public static final String KEY_SECTION = "section";
+
+    public static final String KEY_NOTIFICATION_SAMPLING = "sampling";
+    public static final String KEY_NOTIFICATION_EXPIRY = "expiry";
+    public static final String KEY_NOTIFICATION_NEWPRODUCT = "new_product";
+    public static final String KEY_NOTIFICATION_Notification = "notification";
+
+    public static final String KEY_MESSAGE_ID="message_id";
 
 }

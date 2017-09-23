@@ -1,17 +1,41 @@
 package com.example.yogeshgarg.source.common.requestResponse;
 
 
+import com.example.yogeshgarg.source.mvp.ProductUpdate.ProductUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
+import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_calendar.ExpiryProductCalendarModel;
+import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_category.ExpiryProductCategoryModel;
+import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_home.ExpiryProductHomeModel;
+import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product.ExpiryProduct_ProductModel;
+import com.example.yogeshgarg.source.mvp.forgot_password.ForgotPasswordModel;
+import com.example.yogeshgarg.source.mvp.forgot_password.ForgotPasswordOtpModel;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_calendar.InStoreCalendarModel;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_category.StoreCategoryModel;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InStoreHomeModel;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_product.StoreProductModel;
 import com.example.yogeshgarg.source.mvp.login.LoginModel;
+import com.example.yogeshgarg.source.mvp.new_product.new_product_home.NewProductHomeModel;
+import com.example.yogeshgarg.source.mvp.notification.MarkReadModel;
+import com.example.yogeshgarg.source.mvp.notification.NotificationPushModel;
+import com.example.yogeshgarg.source.mvp.notification_act.NotificationSettingModel;
+import com.example.yogeshgarg.source.mvp.notification_act.NotificationSettingUpdateModel;
+import com.example.yogeshgarg.source.mvp.price_analysis.PriceAnalysisModel;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
+import com.example.yogeshgarg.source.mvp.profile.ProfileInfoUpdateModel;
+import com.example.yogeshgarg.source.mvp.profile.ProfileModel;
+import com.example.yogeshgarg.source.mvp.reset_password.ResetPasswordModel;
 import com.example.yogeshgarg.source.mvp.stores.StoresModel;
 import com.example.yogeshgarg.source.mvp.team.MyTeamModel;
+import com.example.yogeshgarg.source.mvp.vacation.vacation_calendar.VacationCalendarModel;
+import com.example.yogeshgarg.source.mvp.vacation.vacation_home.VacationHomeModel;
+
 
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -83,7 +107,6 @@ public interface APIService {
             @Body RequestBody params);
 
 
-
     //Api for My Team.
 
     @POST("users")
@@ -91,5 +114,190 @@ public interface APIService {
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
+
+
+    //forgot password Api
+    @POST("user/password/reset")
+    Call<ForgotPasswordModel> forgotPassword(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    //forgotPasswordOtp Api
+    @POST("user/password/verify")
+    Call<ForgotPasswordOtpModel> forgotPasswordOtp(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //getting the result for profile
+    @POST("user/profile")
+    Call<ProfileModel> resultOfProfile(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //getting expiry product category
+    @POST("location/categories")
+    Call<ExpiryProductCategoryModel> resultOf_EP_Category(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //Api for product name after selecting the category
+    @POST("location/products")
+    Call<ExpiryProduct_ProductModel> expiryProduct_Product(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("location/expiry/products")
+    Call<ExpiryProductHomeModel> expiryProductHome(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //api for inStoreSampling home
+    @POST("location/sampling/products")
+    Call<InStoreHomeModel> instoreProductHome(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    //getting expiry product category
+    @POST("location/categories")
+    Call<StoreCategoryModel> resultOfStoreCategory(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //Api for product name after selecting the category
+    @POST("location/products")
+    Call<StoreProductModel> inStoreProduct(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("vacations")
+    Call<VacationHomeModel> getVacationResult(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("scans")
+    Call<NewProductHomeModel> getNewProductResult(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //for reset password api
+    @POST("user/password/update")
+    Call<ResetPasswordModel> getResetResult(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //for reset password api
+    @POST("user/update")
+    Call<ProfileInfoUpdateModel> getResultOfUpdateUserInfo(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("location/product/minimal/update")
+    Call<ProductUpdateModel> getResultOfUpdateProductInfo(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("location/expiry/product/add")
+    Call<ExpiryProductCalendarModel> getResultOfAddExpiryProduct(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    @POST("location/sampling/product/add")
+    Call<InStoreCalendarModel> getResultOfAddInStoreSampling(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("vacation/add")
+    Call<VacationCalendarModel> getResultOfAddVacation(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("vacation/delete")
+    Call<ResponseBody> getResultOfDeleteVacation(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("location/products/costs")
+    Call<PriceAnalysisModel> getResultOfPriceAnalysis(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //Token notification
+    @POST("firebase/android/token/add")
+    Call<ResponseBody> generateToken(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //push notification
+    @POST("messages")
+    Call<NotificationPushModel> pushNotification(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+
+    @POST("message/mark")
+    Call<MarkReadModel> markRead(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //notification setting update
+
+    @POST("user/settings/update")
+    Call<NotificationSettingUpdateModel> pushNotificSetting(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //
+
+
+//notification setting
+    @POST("user/settings")
+    Call<NotificationSettingModel> pushNotificationUpdate(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
 }
 

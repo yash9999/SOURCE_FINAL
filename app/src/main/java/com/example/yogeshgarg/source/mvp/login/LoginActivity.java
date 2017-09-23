@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -40,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @BindView(R.id.txtViewForgotPassword)
     TextView txtViewForgotPassword;
-
+    LoginPresenterImpl loginPresenterImpl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         setFont();
+        loginPresenterImpl = new LoginPresenterImpl(this, this);
 
     }
 
@@ -59,9 +62,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         UserSession userSession = new UserSession(this);
         userSession.createUserSession(id, token);
 
-        Intent intent=new Intent(LoginActivity.this, StoresActivity.class);
-        startActivity(intent);
-        finish();
+       callingNotificationApi();
+
+
     }
 
     @Override
@@ -72,6 +75,23 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void internetError() {
         SnackNotify.checkConnection(onRetryLoginApi, coordinateLayout);
+    }
+
+    @Override
+    public void onPushSuccess() {
+        Intent intent = new Intent(LoginActivity.this, StoresActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onPushUnsuccess(String message) {
+
+    }
+
+    @Override
+    public void internetErrorPush() {
+
     }
 
     OnClickInterface onRetryLoginApi = new OnClickInterface() {
@@ -91,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         String username = edtTextUsername.getText().toString();
         String password = edtTextpassword.getText().toString();
 
-        LoginPresenterImpl loginPresenterImpl = new LoginPresenterImpl(this, this);
+
         loginPresenterImpl.fetchingLoginApiData(username, password);
     }
 
@@ -121,5 +141,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         FontHelper.setFontFace(btnLogin, FontHelper.FontType.FONT_Semi_Bold, this);
         FontHelper.setFontFace(txtViewForgotPassword, FontHelper.FontType.FONT_Normal, this);
 
+    }
+
+    private void callingNotificationApi() {
+        loginPresenterImpl.callingPushNotificationApi();
     }
 }

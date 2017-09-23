@@ -1,6 +1,7 @@
 package com.example.yogeshgarg.source.mvp.dashboard;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
+import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardExpiryProductUpdateAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardInStoreUpdateAdapter;
@@ -23,6 +25,10 @@ import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductM
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
+import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardExpiryProductActivity;
+import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardInStoreSamplingActivity;
+import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardNewProductActivity;
+import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardRecentPriceUpdateActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +38,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,19 +62,31 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @BindView(R.id.recyclerViewExpiryProduct)
     RecyclerView recyclerViewExpiryProduct;
 
-
+    //----------------------------------------------------------
     @BindView(R.id.llayRecentPrice)
     LinearLayout llayRecentPrice;
 
+    @BindView(R.id.llayViewAllRecent)
+    LinearLayout llayViewAllRecent;
+    //----------------------------------------------------
     @BindView(R.id.llayTitleNewProductUpdate)
     LinearLayout llayTitleNewProductUpdate;
 
+    @BindView(R.id.llayViewAllNewProduct)
+    LinearLayout llayViewAllNewProduct;
+    //------------------------------------------
     @BindView(R.id.llayTitleExpiringProduct)
     LinearLayout llayTitleExpiringProduct;
 
+    @BindView(R.id.llayViewAllExpiringProduct)
+    LinearLayout llayViewAllExpiringProduct;
+    //--------------------------------------------------
     @BindView(R.id.llayTitlePopularProduct)
     LinearLayout llayTitlePopularProduct;
 
+    @BindView(R.id.llayViewAll)
+    LinearLayout llayViewAll;
+    //--------------------------------------------
     String timeOneMonthAgo = null;
 
     public DashboardFragment() {
@@ -75,6 +94,12 @@ public class DashboardFragment extends Fragment implements DashboardView {
     }
 
     DashboardPresenterImpl dashboardPresenterImpl;
+
+    //model result
+    ArrayList<DashboardRecentUpdateModel.Result> resultRecentArrayList;
+    ArrayList<NewProductModel.Result> resultNewArrayList;
+    ArrayList<DashboardExpiryProductModel.Result> resultExpiryArrayList;
+    ArrayList<DashboardInStoreModel.Result> resultInStoreArrayList;
 
 
     @Override
@@ -104,14 +129,30 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onSuccessOfRecentPriceUpdate(ArrayList<DashboardRecentUpdateModel.Result> resultArrayList) {
 
+        this.resultRecentArrayList = resultArrayList;
         callingNewProductUpdate();//calling New Product Api
 
-        llayRecentPrice.setVisibility(View.VISIBLE);
+        if(this.resultRecentArrayList.size()>0){
+            llayRecentPrice.setVisibility(View.VISIBLE);
+            llayViewAllRecent.setVisibility(View.VISIBLE);
 
-        DashoardRecentProductUpdateAdapter adapter = new DashoardRecentProductUpdateAdapter(getActivity(), resultArrayList);
-        recyclerViewRecentProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewNewProduct.setNestedScrollingEnabled(false);
-        recyclerViewRecentProduct.setAdapter(adapter);
+            DashoardRecentProductUpdateAdapter adapter = new DashoardRecentProductUpdateAdapter(getActivity(), resultArrayList);
+            recyclerViewRecentProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerViewNewProduct.setNestedScrollingEnabled(false);
+            recyclerViewRecentProduct.setAdapter(adapter);
+        }else{
+            llayRecentPrice.setVisibility(View.GONE);
+            llayViewAllRecent.setVisibility(View.GONE);
+        }
+
+    }
+
+    @OnClick(R.id.llayViewAllRecent)
+    public void llayViewAllRecentClick() {
+        Intent intent = new Intent(getActivity(), DashboardRecentPriceUpdateActivity.class);
+        if (resultRecentArrayList != null)
+            intent.putExtra(ConstIntent.KEY_DB_RECENT_PRICE, resultRecentArrayList);
+        startActivity(intent);
     }
 
     @Override
@@ -141,13 +182,29 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onSuccessOfNewProductUpdate(ArrayList<NewProductModel.Result> resultArrayList) {
 
+        this.resultNewArrayList = resultArrayList;
         callingExpiryProductApi();//calling expiry product api
+        if (this.resultNewArrayList.size() > 0) {
+            llayTitleNewProductUpdate.setVisibility(View.VISIBLE);
+            llayViewAllNewProduct.setVisibility(View.VISIBLE);
 
-        llayTitleNewProductUpdate.setVisibility(View.VISIBLE);
-        NewProductAdapter adapter = new NewProductAdapter(getActivity(), resultArrayList);
-        recyclerViewNewProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewNewProduct.setNestedScrollingEnabled(false);
-        recyclerViewNewProduct.setAdapter(adapter);
+            NewProductAdapter adapter = new NewProductAdapter(getActivity(), resultArrayList);
+            recyclerViewNewProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerViewNewProduct.setNestedScrollingEnabled(false);
+            recyclerViewNewProduct.setAdapter(adapter);
+        }else{
+            llayTitleNewProductUpdate.setVisibility(View.GONE);
+            llayViewAllNewProduct.setVisibility(View.GONE);
+        }
+
+    }
+
+    @OnClick(R.id.llayViewAllNewProduct)
+    public void llayViewAllNewProduct() {
+        Intent intent = new Intent(getActivity(), DashboardNewProductActivity.class);
+        if (resultNewArrayList != null)
+            intent.putExtra(ConstIntent.KEY_DB_NEW_PRODUCT, resultNewArrayList);
+        startActivity(intent);
     }
 
     @Override
@@ -178,14 +235,34 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onSuccessOfExpiryProduct(ArrayList<DashboardExpiryProductModel.Result> resultArrayList) {
 
+        this.resultExpiryArrayList = resultArrayList;
         callingInstoreSamplingApi();//calling instore sampling api
 
-        llayTitleExpiringProduct.setVisibility(View.VISIBLE);
-        DashboardExpiryProductUpdateAdapter dashboardExpiryProductUpdateAdapter=new DashboardExpiryProductUpdateAdapter(getActivity(),resultArrayList);
-        recyclerViewExpiryProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewNewProduct.setNestedScrollingEnabled(false);
-        recyclerViewExpiryProduct.setAdapter(dashboardExpiryProductUpdateAdapter);
+        if (this.resultExpiryArrayList.size() > 0) {
+            llayTitleExpiringProduct.setVisibility(View.VISIBLE);
+            llayViewAllExpiringProduct.setVisibility(View.VISIBLE);
+
+            DashboardExpiryProductUpdateAdapter dashboardExpiryProductUpdateAdapter = new DashboardExpiryProductUpdateAdapter(getActivity(), resultArrayList);
+            recyclerViewExpiryProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerViewNewProduct.setNestedScrollingEnabled(false);
+            recyclerViewExpiryProduct.setAdapter(dashboardExpiryProductUpdateAdapter);
+        } else {
+            llayTitleExpiringProduct.setVisibility(View.GONE);
+            llayViewAllExpiringProduct.setVisibility(View.GONE);
+
+
+        }
+
     }
+
+    @OnClick(R.id.llayViewAllExpiringProduct)
+    public void llayViewAllExpiringProductClick() {
+        Intent intent = new Intent(getActivity(), DashboardExpiryProductActivity.class);
+        if (resultExpiryArrayList != null)
+            intent.putExtra(ConstIntent.KEY_DB_EXPIRY_PRODUCT, resultExpiryArrayList);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onUnsccessOfExpiryProduct(String message) {
@@ -216,11 +293,27 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onSuccessOfInstoreSampling(ArrayList<DashboardInStoreModel.Result> resultArrayList) {
 
-        llayTitlePopularProduct.setVisibility(View.VISIBLE);
-        DashboardInStoreUpdateAdapter dashboardInStoreUpdateAdapter = new DashboardInStoreUpdateAdapter(getActivity(), resultArrayList);
-        recyclerViewSampleProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewNewProduct.setNestedScrollingEnabled(false);
-        recyclerViewSampleProduct.setAdapter(dashboardInStoreUpdateAdapter);
+        this.resultInStoreArrayList = resultArrayList;
+        if (this.resultInStoreArrayList.size() > 0) {
+            llayTitlePopularProduct.setVisibility(View.VISIBLE);
+            llayViewAll.setVisibility(View.VISIBLE);
+            DashboardInStoreUpdateAdapter dashboardInStoreUpdateAdapter = new DashboardInStoreUpdateAdapter(getActivity(), resultArrayList);
+            recyclerViewSampleProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerViewNewProduct.setNestedScrollingEnabled(false);
+            recyclerViewSampleProduct.setAdapter(dashboardInStoreUpdateAdapter);
+        } else {
+            llayTitlePopularProduct.setVisibility(View.GONE);
+            llayViewAll.setVisibility(View.GONE);
+        }
+
+    }
+
+    @OnClick(R.id.llayViewAll)
+    public void llayViewAllClick() {
+        Intent intent = new Intent(getActivity(), DashboardInStoreSamplingActivity.class);
+        if (resultInStoreArrayList != null)
+            intent.putExtra(ConstIntent.KEY_DB_INSTORE_SAMPLING, resultInStoreArrayList);
+        startActivity(intent);
     }
 
     @Override

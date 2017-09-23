@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context="com.example.yogeshgarg.source.mvp.login.LoginActivity"
     tools:showIn="@layout/activity_login">
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@color/bg_grey" />
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@color/bg_grey" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -76,15 +79,16 @@
                 android:layout_below="@+id/btnLogin"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:text="@string/forgot_password"
                 android:padding="5dp"
+                android:text="@string/forgot_password"
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/txt_12_dp" />
 
         </RelativeLayout>
-
-
     </RelativeLayout>
 
 
-</ScrollView>
+</RelativeLayout>
+
+
+

@@ -84,7 +84,7 @@
                 android:paddingTop="20dp">
 
                 <LinearLayout
-                    android:id="@+id/linLayHome"
+                    android:id="@+id/linLayDashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -95,17 +95,17 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_home" />
+                        android:src="@mipmap/ic_dashboard" />
 
                     <TextView
-                        android:id="@+id/txtViewHome"
+                        android:id="@+id/txtViewDashboard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="40dp"
-                        android:text="@string/home"
+                        android:text="@string/dashboard"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
 
                 </LinearLayout>
 
@@ -113,7 +113,7 @@
                     android:id="@+id/linLayProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linLayHome"
+                    android:layout_below="@+id/linLayDashboard"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:padding="5dp">
@@ -133,14 +133,41 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/profile"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linLayMyTeam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linLayProfile"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewMyTeam"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_team"/>
+
+                    <TextView
+                        android:id="@+id/txtViewMyTeam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="40dp"
+                        android:text="@string/my_team"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linLayInbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linLayProfile"
+                    android:layout_below="@+id/linLayMyTeam"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:padding="5dp">
@@ -160,7 +187,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/inbox"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
 
@@ -188,7 +215,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/notifications"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -212,10 +239,37 @@
                     android:textSize="@dimen/txt_13_sp" />
 
                 <LinearLayout
-                    android:id="@+id/linLayPriceSurvey"
+                    android:id="@+id/linLayPriceAnalysis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtViewProductUpdate"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewPriceAnalysis"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_analysis"/>
+
+                    <TextView
+                        android:id="@+id/txtViewPriceAnalysis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="40dp"
+                        android:text="@string/price_analysis"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/txt_14_sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linLayPriceSurvey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linLayPriceAnalysis"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:padding="5dp">
@@ -233,9 +287,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="40dp"
-                        android:text="@string/price_servey"
+                        android:text="@string/price_survey"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -262,43 +316,18 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/new_product"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
 
 
-                <LinearLayout
-                    android:id="@+id/linLayBandedProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linLayNewProduct"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
 
-                    <ImageView
-                        android:id="@+id/imgViewBandedProduct"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_banded_product"/>
-
-                    <TextView
-                        android:id="@+id/txtViewBandedProduct"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="40dp"
-                        android:text="@string/banded_product"
-                        android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linLayExpiryProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linLayBandedProduct"
+                    android:layout_below="@+id/linLayNewProduct"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:padding="5dp">
@@ -318,7 +347,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/expiring_product"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -335,7 +364,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_in_store_sampling"/>
+                        android:src="@mipmap/ic_sampling"/>
 
                     <TextView
                         android:id="@+id/txtViewInStoreProduct"
@@ -345,7 +374,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/in_store_sampling"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -393,7 +422,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/settings"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -420,7 +449,7 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/vacation"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
 
@@ -449,36 +478,9 @@
                         android:layout_marginLeft="40dp"
                         android:text="@string/change_store"
                         android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
+                        android:textSize="@dimen/txt_14_sp" />
                 </LinearLayout>
 
-
-                <LinearLayout
-                    android:id="@+id/linLaySync"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linLayChangeStore"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:id="@+id/imgViewSync"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@mipmap/ic_sync"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        android:id="@+id/txtViewSync"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="40dp"
-                        android:text="@string/sync"
-                        android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_16_sp" />
-                </LinearLayout>
 
 
             </RelativeLayout>

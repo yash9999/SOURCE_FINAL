@@ -5,14 +5,8 @@ import android.app.Activity;
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.Progress;
 import com.example.yogeshgarg.source.common.requestResponse.ApiAdapter;
-import com.example.yogeshgarg.source.common.requestResponse.Const;
-import com.example.yogeshgarg.source.mvp.expiring_product.ExpiringProductFragment;
-import com.example.yogeshgarg.source.mvp.login.LoginModel;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;

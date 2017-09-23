@@ -6,4 +6,6 @@ package com.example.yogeshgarg.source.mvp.forgot_password;
 
 public interface ForgorPasswordPresenter {
     public void callingForgotPasswordApi(String emailId);
+
 }
+

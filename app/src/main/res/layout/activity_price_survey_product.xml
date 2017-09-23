@@ -1,45 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/relLayoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/dummu_toolbar">
+
+    </include>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightest_grey"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/bg_grey"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/txtViewPriceUpdateBy"
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/txt_14_dp"
-            android:padding="3dp"/>
+            android:background="@color/color_white">
 
-        <TextView
-            android:id="@+id/txtViewPriceUpdateBetween"
-            android:layout_below="@+id/txtViewPriceUpdateBy"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/imgViewNotifications"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_notifications" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/txt_10_dp"
+                    android:layout_toRightOf="@+id/imgViewNotifications">
+
+                    <TextView
+                        android:id="@+id/txtViewPriceUpdateBy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/txt_14_dp" />
+
+                    <TextView
+                        android:id="@+id/txtViewPriceUpdateBetween"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtViewPriceUpdateBy"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/color_gray"
+                        android:textSize="@dimen/txt_10_dp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_gray"
-            android:textSize="@dimen/txt_10_dp"
-            android:padding="3dp"/>
+            android:layout_below="@+id/cardView"
+            android:layout_marginTop="@dimen/txt_10_dp"
+            android:background="@color/color_white">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_below="@+id/txtViewPriceUpdateBetween"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:padding="5dp">
 
-        </android.support.v7.widget.RecyclerView>
+            </android.support.v7.widget.RecyclerView>
+
+        </android.support.v7.widget.CardView>
+
 
     </RelativeLayout>
 
-</FrameLayout>
+</RelativeLayout>

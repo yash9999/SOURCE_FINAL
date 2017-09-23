@@ -9,4 +9,8 @@ public interface LoginView {
     public void onLoginUnsuccess(String message);
     public void internetError();
 
+    public void onPushSuccess();
+    public void onPushUnsuccess(String message);
+    public void internetErrorPush();
+
 }

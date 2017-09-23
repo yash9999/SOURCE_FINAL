@@ -7,9 +7,10 @@ package com.example.yogeshgarg.source.mvp.dashboard.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DashboardExpiryProductModel {
+public class DashboardExpiryProductModel implements Serializable{
 
     @SerializedName("message")
     @Expose
@@ -47,7 +48,7 @@ public class DashboardExpiryProductModel {
 
 
 
-    public class Result {
+    public class Result implements Serializable {
 
         @SerializedName("store_name")
         @Expose

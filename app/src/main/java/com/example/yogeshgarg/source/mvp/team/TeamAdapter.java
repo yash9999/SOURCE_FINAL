@@ -1,6 +1,7 @@
 package com.example.yogeshgarg.source.mvp.team;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,15 +46,17 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
         Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImagelink()).transform(new CircleTransform()).into(holder.imgUser);
         holder.txtUserName.setText(product.getFirstname()+" "+product.getLastname());
-
-        holder.txtPhone.setText(product.getPhone());
-        holder.txtUserMessage.setText(product.getCompanyName());
         holder.txtPhone.setText(product.getPhone());
 
-        if(product.getLocationName()!=null)
-        holder.txtLocation.setText(product.getLocationName());
+        holder.txtLocation.setText(product.getStore());
 
-        holder.txtStatus.setText(product.getStatus());
+        if(product.getLogged().equals("Yes")){
+            holder.txtStatus.setTextColor(ContextCompat.getColor(context,R.color.color_bg));
+            holder.txtStatus.setText("Online");
+        }else{
+            holder.txtStatus.setTextColor(ContextCompat.getColor(context,R.color.color_black));
+            holder.txtStatus.setText("Offline");
+        }
 
         //Font
         FontHelper.applyFont(context,holder.txtUserName, FontHelper.FontType.FONT_Normal);
@@ -88,14 +91,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         @BindView(R.id.txtStatus)
         TextView txtStatus;
 
-     /*    @BindView(R.id.txtProductCategoryName)
-        TextView txtProductCategoryName;
 
-        @BindView(R.id.txtProductQuantity)
-        TextView txtProductQuantity;
-
-        @BindView(R.id.txtProductDate)
-        TextView txtProductDate;*/
 
         public ViewHolder(View itemView) {
             super(itemView);

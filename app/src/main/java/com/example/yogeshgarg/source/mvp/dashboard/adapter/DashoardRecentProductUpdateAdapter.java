@@ -1,14 +1,21 @@
 package com.example.yogeshgarg.source.mvp.dashboard.adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
@@ -17,6 +24,8 @@ import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,15 +59,16 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
+
+        final DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
 
         Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
 
-        String productName = Utils.camelCasing(result.getProductName());
+        final String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
 
-        String categoryName = Utils.camelCasing(result.getCategoryName());
-        holder.txtViewProductCategoryName.setText(categoryName);
+        final String brandName = Utils.camelCasing(result.getBrandName());
+        holder.txtViewProductCategoryName.setText(brandName);// category Name is changed int brandName
 
 
         if (result.getDiscount() == null) {
@@ -69,11 +79,11 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
         }
 
 
-        String price = Utils.currencyFormat(result.getCost());
+        final String price = Utils.currencyFormat(result.getCost());
         holder.txtViewProductMRP.setText(price);
         holder.txtViewProductMRP.setPaintFlags(holder.txtViewProductMRP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-
+        String strSellingPrice = null;
         try {
             double douPrice = Double.parseDouble(result.getCost());
             double douDiscount = Double.parseDouble(result.getDiscount());
@@ -81,7 +91,7 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
 
             double sellingPrice = douPrice - discountPrice;
 
-            String strSellingPrice = String.valueOf(sellingPrice);
+            strSellingPrice = String.valueOf(sellingPrice);
 
             holder.txtViewProductSellingPrice.setText(Utils.currencyFormat(strSellingPrice));
 
@@ -89,9 +99,84 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
             ex.printStackTrace();
         }
 
-        holder.txtViewProductQuantity.setText("UOM: " + result.getWeight()+result.getItemUnitMeasure());
+        holder.txtViewProductQuantity.setText("UOM: " + result.getWeight() + result.getItemUnitMeasure());
         holder.txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
         holder.txtViewProductDate.setText(setDate(result.getDateadded()));
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(activity);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_recent);
+                dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.alpha(Color.BLACK)));
+
+
+                ImageView imgViewProduct = (ImageView) dialog.findViewById(R.id.imgViewProduct);
+                TextView txtViewDiscount = (TextView) dialog.findViewById(R.id.txtViewDiscount);
+                TextView txtViewProductCategoryName = (TextView) dialog.findViewById(R.id.txtViewProductCategoryName);
+                TextView txtViewProductName = (TextView) dialog.findViewById(R.id.txtViewProductName);
+                TextView txtViewProductMRP = (TextView) dialog.findViewById(R.id.txtViewProductMRP);
+                TextView txtViewProductSellingPrice = (TextView) dialog.findViewById(R.id.txtViewProductSellingPrice);
+                TextView txtViewProductQuantity = (TextView) dialog.findViewById(R.id.txtViewProductQuantity);
+                TextView txtViewStoreNameAndCity = (TextView) dialog.findViewById(R.id.txtViewStoreNameAndCity);
+                TextView txtViewProductDate = (TextView) dialog.findViewById(R.id.txtViewProductDate);
+                ImageView imgViewClose = (ImageView) dialog.findViewById(R.id.imgViewClose);
+
+                FontHelper.applyFont(activity, txtViewDiscount, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewProductCategoryName, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewProductName, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewProductMRP, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewProductSellingPrice, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewProductQuantity, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewStoreNameAndCity, FontHelper.FontType.FONT_Normal);
+                FontHelper.applyFont(activity, txtViewProductDate, FontHelper.FontType.FONT_Normal);
+
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct);
+                txtViewProductCategoryName.setText(brandName);
+                txtViewProductName.setText(productName);
+
+
+                if (result.getDiscount() == null) {
+                    txtViewDiscount.setVisibility(View.GONE);
+                } else {
+                    String discount = result.getDiscount();
+                    txtViewDiscount.setText(discount + "%");
+                }
+
+                txtViewProductMRP.setText(price);
+                txtViewProductMRP.setPaintFlags(txtViewProductMRP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+
+                try {
+                    double douPrice = Double.parseDouble(result.getCost());
+                    double douDiscount = Double.parseDouble(result.getDiscount());
+                    double discountPrice = (douPrice * douDiscount) / 100;
+
+                    double sellingPrice = douPrice - discountPrice;
+
+                    String strSellingPrice = String.valueOf(sellingPrice);
+
+                    txtViewProductSellingPrice.setText(Utils.currencyFormat(strSellingPrice));
+
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                }
+
+                txtViewProductQuantity.setText("UOM: " + result.getWeight() + result.getItemUnitMeasure());
+                txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
+                txtViewProductDate.setText(setDate(result.getDateadded()));
+                dialog.show();
+
+                imgViewClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
 
     }
 
@@ -125,6 +210,9 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imgViewProduct)
         ImageView imgViewProduct;
+
+        @BindView(R.id.cardView)
+        CardView cardView;
 
         @BindView(R.id.txtViewDiscount)
         TextView txtViewDiscount;

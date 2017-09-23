@@ -1,0 +1,156 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yogeshgarg.source.mvp.price_analysis.PriceAnalysisFragment">
+
+    <TextView
+        android:id="@+id/txtViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Select options to populate graph"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/txt_12_dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txtViewTitle"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".35"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            >
+
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+             />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".65"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/linLayNames"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@color/bg_grey">
+
+                    <TextView
+                        android:id="@+id/txtViewTitleCategory"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/color_white"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/category"
+                        android:textColor="@color/color_black"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtViewTitleBrand"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/color_white"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/brand"
+                        android:textColor="@color/color_black"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtViewTitleProduct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/color_white"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/product"
+                        android:textColor="@color/color_black"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txtViewTitleStore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/color_white"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/store"
+                        android:textColor="@color/color_black"
+                        android:textSize="14dp" />
+
+
+                </LinearLayout>
+
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/linLayNames"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/rect_edittext">
+
+                </android.support.v7.widget.SearchView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/searchView">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/btn"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_white"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

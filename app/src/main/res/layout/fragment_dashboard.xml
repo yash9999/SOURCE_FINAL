@@ -6,10 +6,10 @@
     tools:context="com.example.yogeshgarg.source.mvp.dashboard.DashboardFragment">
 
     <RelativeLayout
+        android:id="@+id/relLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/relLayout">
+        android:layout_marginBottom="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,225 +17,254 @@
             android:layout_margin="@dimen/margin_10sp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/llayRecentPrice"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_marginRight="5dp">
 
-                <TextView
-                    android:id="@+id/txtTitleRecentPriceChange"
+                <LinearLayout
+                    android:id="@+id/llayRecentPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recent Price Updates"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
 
-                <View
-                    android:layout_width="30dp"
-                    android:layout_height="2dp"
-                    android:background="@android:color/black" />
+                    <TextView
+                        android:id="@+id/txtTitleRecentPriceChange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recent Price Updates"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
 
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@android:color/black" />
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:background="@android:color/black" />
 
-            </LinearLayout>
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/llayViewAllRecent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtDescription"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/txtViewAllRecent"
+                <LinearLayout
+                    android:id="@+id/llayViewAllRecent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:textColor="@color/txt_color_green"
-                    android:textSize="10sp" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtViewAllRecent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/txt_color_green"
+                        android:textSize="12sp" />
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewRecentProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:id="@+id/llayTitleNewProductUpdate"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_marginRight="5dp">
 
-                <TextView
-                    android:id="@+id/txtTitleNewPopularUpdate"
+                <LinearLayout
+                    android:id="@+id/llayTitleNewProductUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Product Update"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
 
-                <View
-                    android:layout_width="30dp"
-                    android:layout_height="2dp"
-                    android:background="@android:color/black" />
+                    <TextView
+                        android:id="@+id/txtTitleNewPopularUpdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Product Update"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
 
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@android:color/black" />
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:background="@android:color/black" />
 
-            </LinearLayout>
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/llayViewAllNewProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtDescription"
-                android:orientation="horizontal"
-
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/txtViewAllNewProducts"
+                <LinearLayout
+                    android:id="@+id/llayViewAllNewProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:textColor="@color/txt_color_green"
-                    android:textSize="10sp" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtViewAllNewProducts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/txt_color_green"
+                        android:textSize="12sp" />
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewNewProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:id="@+id/llayTitleExpiringProduct"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_marginRight="5dp">
 
-                <TextView
-                    android:id="@+id/txtTitleExpiringProduct"
+                <LinearLayout
+                    android:id="@+id/llayTitleExpiringProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Expiring Products"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
 
-                <View
-                    android:layout_width="30dp"
-                    android:layout_height="2dp"
-                    android:background="@android:color/black" />
+                    <TextView
+                        android:id="@+id/txtTitleExpiringProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expiring Products"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
 
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@android:color/black" />
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:background="@android:color/black" />
 
-            </LinearLayout>
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/llayViewAllExpiringProduct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtDescription"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/txtViewAllExpiringProduct"
+                <LinearLayout
+                    android:id="@+id/llayViewAllExpiringProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:textColor="@color/txt_color_green"
-                    android:textSize="10sp" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtViewAllExpiringProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/txt_color_green"
+                        android:textSize="10sp" />
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewExpiryProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:id="@+id/llayTitlePopularProduct"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_marginRight="5dp">
 
-                <TextView
-                    android:id="@+id/txtTitlePopularProduct"
+                <LinearLayout
+                    android:id="@+id/llayTitlePopularProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Instore Sampling"
-                    android:textColor="@android:color/black"
-                    android:textSize="12sp" />
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
 
-                <View
-                    android:layout_width="30dp"
-                    android:layout_height="2dp"
-                    android:background="@android:color/black" />
+                    <TextView
+                        android:id="@+id/txtTitlePopularProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Instore Sampling"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
 
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@android:color/black" />
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:background="@android:color/black" />
 
-            </LinearLayout>
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/llayViewAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/txtDescription"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/txtViewAll"
+                <LinearLayout
+                    android:id="@+id/llayViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View All"
-                    android:textColor="@color/txt_color_green"
-                    android:textSize="10sp" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtViewAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/txt_color_green"
+                        android:textSize="10sp" />
 
 
-            </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewSampleProduct"

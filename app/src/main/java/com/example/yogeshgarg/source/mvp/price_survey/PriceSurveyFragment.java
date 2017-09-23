@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,7 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     public void onSuccessCategory(ArrayList<PriceSurveyModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
         setDate();
+        recyclerView.setVisibility(View.VISIBLE);
         setLayoutManager();
     }
 
@@ -97,8 +99,8 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
 
     private void setLayoutManager() {
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
 
@@ -106,7 +108,7 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     }
 
     private void setAdapter() {
-        PriceSurveyAdapter priceSurveyAdapter = new PriceSurveyAdapter(getActivity(), resultArrayList,initialDateSend,finalDateSend);
+        PriceSurveyAdapter priceSurveyAdapter = new PriceSurveyAdapter(getActivity(), resultArrayList, initialDateSend, finalDateSend);
         recyclerView.setAdapter(priceSurveyAdapter);
     }
 
@@ -114,7 +116,7 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
         String initialDateToShow = null;
         String finalDateToShow = null;
 
-        String initialDate = resultArrayList.get(0).getDateadded();
+        String initialDate = resultArrayList.get(0).getUpdatefrom();
         String finalDate = resultArrayList.get(0).getUpdateby();
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

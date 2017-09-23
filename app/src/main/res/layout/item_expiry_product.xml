@@ -4,6 +4,7 @@
     android:layout_width="125dp"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
+    android:id="@+id/cardView"
     android:background="@color/cardview_light_background"
     android:elevation="2dp">
 
@@ -31,35 +32,35 @@
 
 
         <TextView
-            android:id="@+id/txtViewProductName"
+            android:id="@+id/txtViewProductCategoryName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/frmImgLayout"
             android:layout_marginTop="5dp"
             android:gravity="left"
             android:maxLines="1"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/txt_10_sp" />
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/txt_10_sp"
+            />
 
         <TextView
-            android:id="@+id/txtViewProductCategoryName"
+            android:id="@+id/txtViewProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtViewProductName"
+            android:layout_below="@+id/txtViewProductCategoryName"
             android:layout_marginTop="5dp"
             android:gravity="left"
             android:maxLines="1"
-            android:textColor="@color/color_gray"
-            android:textSize="@dimen/txt_10_sp"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/txt_10_sp" />
 
-            />
 
 
             <TextView
                 android:id="@+id/txtViewStock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtViewProductCategoryName"
+                android:layout_below="@+id/txtViewProductName"
                 android:layout_marginTop="5dp"
                 android:gravity="left"
                 android:maxLines="1"

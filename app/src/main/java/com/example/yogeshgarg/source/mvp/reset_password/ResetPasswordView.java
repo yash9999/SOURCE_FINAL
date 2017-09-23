@@ -6,7 +6,7 @@ package com.example.yogeshgarg.source.mvp.reset_password;
 
 public interface ResetPasswordView {
 
-    public void onSuccessResetPassword();
+    public void onSuccessResetPassword(String message);
     public void onUnsuccessResetPassword(String message);
     public void onInternetError();
 }

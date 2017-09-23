@@ -14,9 +14,11 @@ public class MyTeamModel {
     @SerializedName("message")
     @Expose
     private String message;
+
     @SerializedName("successful")
     @Expose
     private Boolean successful;
+
     @SerializedName("Result")
     @Expose
     private ArrayList<Result> result = null;
@@ -45,7 +47,6 @@ public class MyTeamModel {
         this.result = result;
     }
 
-
     public class Result {
 
         @SerializedName("firstname")
@@ -54,42 +55,9 @@ public class MyTeamModel {
         @SerializedName("lastname")
         @Expose
         private String lastname;
-        @SerializedName("dateadded")
+        @SerializedName("store")
         @Expose
-        private String dateadded;
-        @SerializedName("role_id")
-        @Expose
-        private String roleId;
-        @SerializedName("role_name")
-        @Expose
-        private String roleName;
-        @SerializedName("store_id")
-        @Expose
-        private Object storeId;
-        @SerializedName("store_name")
-        @Expose
-        private Object storeName;
-        @SerializedName("location_id")
-        @Expose
-        private Object locationId;
-        @SerializedName("location_name")
-        @Expose
-        private String locationName;
-        @SerializedName("company_id")
-        @Expose
-        private String companyId;
-        @SerializedName("company_name")
-        @Expose
-        private String companyName;
-        @SerializedName("enterprise_id")
-        @Expose
-        private String enterpriseId;
-        @SerializedName("supervisor_id")
-        @Expose
-        private Object supervisorId;
-        @SerializedName("enterprise_name")
-        @Expose
-        private String enterpriseName;
+        private String store;
         @SerializedName("user_id")
         @Expose
         private String userId;
@@ -99,12 +67,12 @@ public class MyTeamModel {
         @SerializedName("logged")
         @Expose
         private String logged;
-        @SerializedName("status")
-        @Expose
-        private String status;
         @SerializedName("phone")
         @Expose
         private String phone;
+        @SerializedName("email")
+        @Expose
+        private String email;
 
         public String getFirstname() {
             return firstname;
@@ -122,100 +90,12 @@ public class MyTeamModel {
             this.lastname = lastname;
         }
 
-        public String getDateadded() {
-            return dateadded;
+        public String getStore() {
+            return store;
         }
 
-        public void setDateadded(String dateadded) {
-            this.dateadded = dateadded;
-        }
-
-        public String getRoleId() {
-            return roleId;
-        }
-
-        public void setRoleId(String roleId) {
-            this.roleId = roleId;
-        }
-
-        public String getRoleName() {
-            return roleName;
-        }
-
-        public void setRoleName(String roleName) {
-            this.roleName = roleName;
-        }
-
-        public Object getStoreId() {
-            return storeId;
-        }
-
-        public void setStoreId(Object storeId) {
-            this.storeId = storeId;
-        }
-
-        public Object getStoreName() {
-            return storeName;
-        }
-
-        public void setStoreName(Object storeName) {
-            this.storeName = storeName;
-        }
-
-        public Object getLocationId() {
-            return locationId;
-        }
-
-        public void setLocationId(Object locationId) {
-            this.locationId = locationId;
-        }
-
-        public String getLocationName() {
-            return locationName;
-        }
-
-        public void setLocationName(String locationName) {
-            this.locationName = locationName;
-        }
-
-        public String getCompanyId() {
-            return companyId;
-        }
-
-        public void setCompanyId(String companyId) {
-            this.companyId = companyId;
-        }
-
-        public String getCompanyName() {
-            return companyName;
-        }
-
-        public void setCompanyName(String companyName) {
-            this.companyName = companyName;
-        }
-
-        public String getEnterpriseId() {
-            return enterpriseId;
-        }
-
-        public void setEnterpriseId(String enterpriseId) {
-            this.enterpriseId = enterpriseId;
-        }
-
-        public Object getSupervisorId() {
-            return supervisorId;
-        }
-
-        public void setSupervisorId(Object supervisorId) {
-            this.supervisorId = supervisorId;
-        }
-
-        public String getEnterpriseName() {
-            return enterpriseName;
-        }
-
-        public void setEnterpriseName(String enterpriseName) {
-            this.enterpriseName = enterpriseName;
+        public void setStore(String store) {
+            this.store = store;
         }
 
         public String getUserId() {
@@ -242,14 +122,6 @@ public class MyTeamModel {
             this.logged = logged;
         }
 
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
         public String getPhone() {
             return phone;
         }
@@ -258,5 +130,16 @@ public class MyTeamModel {
             this.phone = phone;
         }
 
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
     }
+
+
+
 }

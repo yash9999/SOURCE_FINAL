@@ -128,8 +128,11 @@ public class StoresActivity extends AppCompatActivity implements StoresView {
             return;
         } else {
             String locationId = hashMapArrayList.get(spinnerLocation.getSelectedItemPosition()).get(Const.KEY_ID);
+            String storeAddress = hashMapArrayList.get(spinnerLocation.getSelectedItemPosition()).get(Const.KEY_NAME);
+
             UserSession userSession = new UserSession(this);
             userSession.setLocationId(locationId);
+            userSession.setStoreAddress(storeAddress);
             userSession.setLocationStatus();
 
             Intent intent = new Intent(StoresActivity.this, NavigationActivity.class);

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_grey"
+    tools:context="com.example.yogeshgarg.source.mvp.in_store_sampling.store_calendar.InStoreCalendarActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/dummu_toolbar">
+
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/txtViewTitleFromDate"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/date"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/txt_14_dp" />
+
+        <TextView
+            android:id="@+id/txtViewFromDate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/txtViewTitleFromDate"
+            android:background="@drawable/edit_white"
+            android:drawableEnd="@mipmap/ic_calendar"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:hint="@string/date_pattern"
+            android:padding="@dimen/txt_10_dp"
+            android:textColor="@color/color_bg"
+            android:textSize="@dimen/txt_14_dp" />
+
+
+        <TextView
+            android:id="@+id/txtViewTitleToday"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/txtViewFromDate"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_white"
+            android:gravity="center"
+            android:text="@string/today"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/txt_14_dp" />
+
+        <TextView
+            android:id="@+id/txtViewTitleClear"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/txtViewFromDate"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/txtViewTitleToday"
+            android:background="@drawable/edit_white"
+            android:gravity="center"
+            android:text="@string/clear"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/txt_14_dp" />
+
+        <RelativeLayout
+            android:id="@+id/relLay"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/txtViewTitleClear"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:id="@+id/relLayNames"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/color_white">
+
+                <ImageView
+                    android:id="@+id/imgViewProduct"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/circle_grey"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_profile_dp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/txt_10_dp"
+                    android:layout_toRightOf="@id/imgViewProduct">
+
+                    <TextView
+                        android:id="@+id/txtViewProductName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Name"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/txt_12_dp" />
+
+                    <TextView
+                        android:id="@+id/txtViewBrandName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtViewProductName"
+                        android:layout_marginTop="3dp"
+                        android:text="Brand Name"
+                        android:textColor="@color/color_gray"
+                        android:textSize="@dimen/txt_12_dp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linLayComment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/relLayNames"
+                android:layout_marginTop="1dp"
+                android:background="@color/color_white">
+
+
+                <EditText
+                    android:id="@+id/edtTextComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edt_blank"
+                    android:gravity="start"
+                    android:hint="Write a comment"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="5dp"
+                    android:textColor="@color/color_black"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:textColor="@color/color_white"
+        android:textSize="16dp" />
+</RelativeLayout>

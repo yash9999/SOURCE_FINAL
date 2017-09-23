@@ -6,4 +6,5 @@ package com.example.yogeshgarg.source.mvp.login;
 
 public interface LoginPresenter {
     public void fetchingLoginApiData(String username, String password);
+    public void callingPushNotificationApi();
 }

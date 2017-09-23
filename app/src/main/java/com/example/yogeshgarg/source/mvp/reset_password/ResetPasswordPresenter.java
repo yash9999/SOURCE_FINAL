@@ -6,5 +6,5 @@ package com.example.yogeshgarg.source.mvp.reset_password;
 
 public interface ResetPasswordPresenter {
 
-    public void callingResetPasswordApi(String password,String rePassword);
+    public void callingResetPasswordApi(String currentPassword,String password,String confirmPassword);
 }

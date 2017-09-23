@@ -4,12 +4,13 @@ package com.example.yogeshgarg.source.mvp.dashboard.model;
  * Created by himanshu on 29/07/17.
  */
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class NewProductModel {
+public class NewProductModel implements Serializable{
 
 
     @SerializedName("message")
@@ -46,7 +47,7 @@ public class NewProductModel {
         this.result = result;
     }
 
-    public class Result {
+    public class Result implements Serializable{
 
         @SerializedName("store_name")
         @Expose

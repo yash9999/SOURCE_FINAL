@@ -3,6 +3,7 @@ package com.example.yogeshgarg.source.mvp.dashboard.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by yogeshgarg on 30/07/17.
  */
 
-public class DashboardRecentUpdateModel {
+public class DashboardRecentUpdateModel implements Serializable{
 
 
     @SerializedName("message")
@@ -49,7 +50,7 @@ public class DashboardRecentUpdateModel {
         this.result = result;
     }
 
-    public class Result {
+    public class Result implements Serializable{
 
         @SerializedName("store_name")
         @Expose

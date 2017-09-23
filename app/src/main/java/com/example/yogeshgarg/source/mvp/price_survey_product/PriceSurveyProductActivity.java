@@ -8,7 +8,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -25,14 +28,21 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PriceSurveyProductActivity extends AppCompatActivity implements PriceSurveyProductView {
 
-    @BindView(R.id.frameLayout)
-    FrameLayout frameLayout;
+    @BindView(R.id.relLayoutRoot)
+    RelativeLayout relLayoutRoot;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @BindView(R.id.imgViewBack)
+    ImageView imgViewBack;
+
+    @BindView(R.id.txtViewTitle)
+    TextView txtViewTitle;
 
     @BindView(R.id.txtViewPriceUpdateBy)
     TextView txtViewPriceUpdateBy;
@@ -50,6 +60,7 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price_survey_product);
         ButterKnife.bind(this);
+        txtViewTitle.setText(getString(R.string.product_name));
         Intent intent = getIntent();
         if (intent != null) {
 
@@ -57,6 +68,7 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
             strPriceUpdateBy = intent.getStringExtra(ConstIntent.KEY_INITIAL_DATE_TO_SEND);
             strPriceUpdateBetween = intent.getStringExtra(ConstIntent.KEY_FINAL_DATE_TO_SEND);
 
+            setFont();
             callingPriceSurveyProductApi(categoryId);
         }
 
@@ -66,18 +78,18 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     @Override
     public void onSuccessPriceSurveyProduct(ArrayList<PriceSurveyProductModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
-        setFont();
+        recyclerView.setVisibility(View.VISIBLE);
         setLayoutManager();
     }
 
     @Override
     public void onUnsuccessPriceSurveyProduct(String message) {
-        SnackNotify.showMessage(message, frameLayout);
+        SnackNotify.showMessage(message, relLayoutRoot);
     }
 
     @Override
     public void onInternetErrorPriceSurveyProduct() {
-        SnackNotify.checkConnection(onRetryPriceSurvey, frameLayout);
+        SnackNotify.checkConnection(onRetryPriceSurvey, relLayoutRoot);
     }
 
     OnClickInterface onRetryPriceSurvey = new OnClickInterface() {
@@ -94,8 +106,8 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
 
     private void setLayoutManager() {
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         setAdapter();
@@ -107,6 +119,8 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     }
 
     private void setFont() {
+
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewPriceUpdateBy, FontHelper.FontType.FONT_Semi_Bold, this);
         FontHelper.setFontFace(txtViewPriceUpdateBetween, FontHelper.FontType.FONT_Normal, this);
 
@@ -114,4 +128,13 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
         txtViewPriceUpdateBetween.setText(strPriceUpdateBetween);
     }
 
+    @OnClick(R.id.imgViewBack)
+    public void imgViewBackClick() {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

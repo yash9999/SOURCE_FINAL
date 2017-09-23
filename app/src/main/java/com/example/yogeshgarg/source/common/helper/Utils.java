@@ -2,16 +2,27 @@ package com.example.yogeshgarg.source.common.helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Braintech on 9/12/2016.
@@ -40,6 +51,7 @@ public class Utils {
         else
             return false;
     }
+
 
     public static String isEmptyOrNullSetData(String value) {
 
@@ -120,16 +132,120 @@ public class Utils {
 
     public static String camelCasing(String categoryName) {
 
-        String[] words = categoryName.split(" ");
-        StringBuilder sb = new StringBuilder();
-        if (words[0].length() > 0) {
-            sb.append(Character.toUpperCase(words[0].charAt(0)) + words[0].subSequence(1, words[0].length()).toString().toLowerCase());
-            for (int i = 1; i < words.length; i++) {
-                sb.append(" ");
-                sb.append(Character.toUpperCase(words[i].charAt(0)) + words[i].subSequence(1, words[i].length()).toString().toLowerCase());
+        try {
+            String[] words = categoryName.split(" ");
+            StringBuilder sb = new StringBuilder();
+            if (words[0].length() > 0) {
+                sb.append(Character.toUpperCase(words[0].charAt(0)) + words[0].subSequence(1, words[0].length()).toString().toLowerCase());
+                for (int i = 1; i < words.length; i++) {
+                    sb.append(" ");
+                    sb.append(Character.toUpperCase(words[i].charAt(0)) + words[i].subSequence(1, words[i].length()).toString().toLowerCase());
+                }
             }
+            return sb.toString();
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+        } finally {
+            return categoryName;
         }
-        return sb.toString();
+
+    }
+
+    public static boolean matchString(String password) {
+
+        if (password.matches("^[A-Za-z\\d$#@$!%*?&]{8,}")) {
+            Log.e("Match", "match");
+            return true;
+        } else {
+            Log.e("not Match", "not match");
+            return false;
+        }
+    }
+
+    public static String getRealPathFromURI(String contentURI, Context context) {
+        Uri contentUri = Uri.parse(contentURI);
+        Cursor cursor = context.getContentResolver().query(contentUri, null, null, null, null);
+        if (cursor == null) {
+            return contentUri.getPath();
+        } else {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(index);
+        }
+    }
+
+    public static byte[] convertToByte(Bitmap bmp) {
+        byte[] byteArray = null;
+        try {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byteArray = stream.toByteArray();
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+        return byteArray;
+    }
+
+    public static String convertToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+        String image = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+        return image;
+    }
+
+    public static byte[] convertBaseToByte(String base64) {
+        byte[] data = Base64.decode(base64, Base64.DEFAULT);
+        return data;
+    }
+
+    public static Bitmap resizeImageForImageView(Bitmap bitmap, float rotation) {
+
+        Bitmap resizedBitmap = null;
+        int scaleSize = 1024;
+        int originalWidth = bitmap.getWidth();
+        int originalHeight = bitmap.getHeight();
+        int newWidth = -1;
+        int newHeight = -1;
+        float multFactor = -1.0F;
+        if (originalHeight > originalWidth) {
+            newHeight = scaleSize;
+            multFactor = (float) originalWidth / (float) originalHeight;
+            newWidth = (int) (newHeight * multFactor);
+        } else if (originalWidth > originalHeight) {
+            newWidth = scaleSize;
+            multFactor = (float) originalHeight / (float) originalWidth;
+            newHeight = (int) (newWidth * multFactor);
+        } else if (originalHeight == originalWidth) {
+            newHeight = scaleSize;
+            newWidth = scaleSize;
+        }
+
+        Log.e("rotation", "" + rotation);
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(rotation);
+
+        //return Bitmap.createBitmap(bitmap, 0, 0, newWidth, newHeight, matrix, true);
+
+        resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false);
+        return resizedBitmap;
+    }
+
+    public static Bitmap rotateImage(Bitmap bitmap, float rotation) {
+
+        Bitmap resizedBitmap = null;
+        int scaleSize = 1024;
+        int originalWidth = bitmap.getWidth();
+        int originalHeight = bitmap.getHeight();
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(rotation);
+
+        return Bitmap.createBitmap(bitmap, 0, 0, originalWidth, originalHeight, matrix, true);
+
     }
 
 }
