@@ -137,7 +137,7 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
             ex.printStackTrace();
         }
 
-        initialDateSend = "Please update prices by " + initialDateToShow;
+        initialDateSend = "Please update prices by " + finalDateToShow;
         finalDateSend = "Update period " + initialDateToShow + " to " + finalDateToShow;
 
         txtViewPriceUpdateBy.setText(initialDateSend);

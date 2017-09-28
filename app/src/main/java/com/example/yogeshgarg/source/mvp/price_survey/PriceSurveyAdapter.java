@@ -58,6 +58,7 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
 
         String completed = String.valueOf(result.getCompleted());
         String productQuantity = result.getProducts();
+        String brandQuantity = result.getBrands();
         String categoryName = result.getName();
 
         final String categoryId = result.getCategoryId();
@@ -69,12 +70,20 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
 
         holder.txtViewCompleted.setText(completed + "% Done");
 
-        if (Integer.parseInt(productQuantity) == 1 || Integer.parseInt(productQuantity) == 0) {
-            holder.txtViewProductQuantity.setText(productQuantity + " Product");
+        String brands, products;
+        if (Integer.parseInt(brandQuantity) == 1 || Integer.parseInt(brandQuantity) == 0) {
+            brands = brandQuantity + " Brand";
         } else {
-            holder.txtViewProductQuantity.setText(productQuantity + " Products");
+            brands = brandQuantity + " Brands";
         }
 
+        if (Integer.parseInt(productQuantity) == 1 || Integer.parseInt(productQuantity) == 0) {
+            products = productQuantity + " Product";
+        } else {
+            products = productQuantity + " Products";
+        }
+
+        holder.txtViewProductQuantity.setText(brands + ", " +products);
 
         String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
         URL myURL = null;
