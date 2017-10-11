@@ -114,10 +114,10 @@ public class ApiAdapter {
 
 
         }
-        return builder.readTimeout(45000, TimeUnit.SECONDS)
+        return builder.readTimeout(65000, TimeUnit.SECONDS)
                 .
 
-                        connectTimeout(45000, TimeUnit.SECONDS)
+                        connectTimeout(65000, TimeUnit.SECONDS)
                 .
 
                         build();

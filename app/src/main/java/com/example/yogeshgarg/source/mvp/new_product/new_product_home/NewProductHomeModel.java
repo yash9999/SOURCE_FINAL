@@ -15,9 +15,11 @@ public class NewProductHomeModel {
     @SerializedName("message")
     @Expose
     private String message;
+
     @SerializedName("successful")
     @Expose
     private Boolean successful;
+
     @SerializedName("Result")
     @Expose
     private ArrayList<Result> result = null;
@@ -89,7 +91,7 @@ public class NewProductHomeModel {
         private String comment;
         @SerializedName("weight")
         @Expose
-        private Object weight;
+        private String weight;
         @SerializedName("dateadded")
         @Expose
         private String dateadded;
@@ -219,11 +221,11 @@ public class NewProductHomeModel {
             this.comment = comment;
         }
 
-        public Object getWeight() {
+        public String getWeight() {
             return weight;
         }
 
-        public void setWeight(Object weight) {
+        public void setWeight(String weight) {
             this.weight = weight;
         }
 

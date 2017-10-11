@@ -13,6 +13,7 @@
         android:required="false" />
 
     <application
+        android:largeHeap="true"
         android:name=".SourceApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -152,7 +153,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
-        <activity android:name=".mvp.notification_act.NotificationActivity"></activity>
+        <activity android:name=".mvp.notification_act.NotificationActivity" />
+        <activity android:name=".mvp.dashboard_activities.PlanogramActivity" />
+        <activity android:name=".mvp.product_list.product_list_brand.ProductListBrandActivity" />
+        <activity android:name=".mvp.product_list.product_list_product.ProductListProductActivity" />
+        <activity android:name=".mvp.expiring_product.expiry_product_brand.ExpiryProductBrandActivity" />
+        <activity android:name=".mvp.price_survey_brand.PriceSurveyBrandActivity" />
+        <activity android:name=".mvp.in_store_sampling.store_brand.InStoreBrandActivity" />
+        <activity android:name=".mvp.about.AboutActivity" />
+        <activity android:name=".mvp.faq.FaqActivity"></activity>
     </application>
 
 </manifest>

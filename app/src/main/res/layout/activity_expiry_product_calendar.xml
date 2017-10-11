@@ -18,17 +18,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:padding="12dp">
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/relLayTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardview_background"
+            android:elevation="3dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imgView">
+
+                <TextView
+                    android:id="@+id/txtViewProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/txt_13_dp" />
+
+                <TextView
+                    android:id="@+id/txtViewBrandName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtViewProductName"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/txt_13_dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/txtViewTitleFromDate"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_below="@+id/relLayTop"
+            android:layout_marginTop="5dp"
             android:gravity="center_vertical"
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:text="@string/from_date"
+            android:text="@string/date"
             android:textColor="@color/color_black"
             android:textSize="@dimen/txt_14_dp" />
 
@@ -37,38 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/txtViewTitleFromDate"
-            android:background="@drawable/edit_white"
-            android:drawableEnd="@mipmap/ic_calendar"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:hint="@string/date_pattern"
-            android:padding="@dimen/txt_10_dp"
-            android:textColor="@color/color_bg"
-            android:textSize="@dimen/txt_14_dp" />
-
-
-        <TextView
-            android:id="@+id/txtViewTitleToDate"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/txtViewTitleFromDate"
-            android:layout_marginTop="5dp"
-            android:gravity="center_vertical"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/to_date"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/txt_14_dp" />
-
-        <TextView
-            android:id="@+id/txtViewToDate"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtViewTitleFromDate"
+            android:layout_below="@+id/relLayTop"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/txtViewTitleFromDate"
@@ -79,12 +89,13 @@
             android:padding="@dimen/txt_10_dp"
             android:textColor="@color/color_bg"
             android:textSize="@dimen/txt_14_dp" />
+
 
         <TextView
             android:id="@+id/txtViewTitleToday"
             android:layout_width="80dp"
             android:layout_height="35dp"
-            android:layout_below="@+id/txtViewToDate"
+            android:layout_below="@+id/txtViewFromDate"
             android:layout_marginTop="5dp"
             android:background="@drawable/edit_white"
             android:gravity="center"
@@ -96,7 +107,7 @@
             android:id="@+id/txtViewTitleClear"
             android:layout_width="80dp"
             android:layout_height="35dp"
-            android:layout_below="@+id/txtViewToDate"
+            android:layout_below="@+id/txtViewFromDate"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/txtViewTitleToday"
             android:background="@drawable/edit_white"

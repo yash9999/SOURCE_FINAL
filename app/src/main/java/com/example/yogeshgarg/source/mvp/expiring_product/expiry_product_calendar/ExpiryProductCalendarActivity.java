@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.calender.GridCellAdapter;
+import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.DateMethods;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
@@ -35,6 +36,7 @@ import com.example.yogeshgarg.source.mvp.login.LoginActivity;
 import com.example.yogeshgarg.source.mvp.navigation.NavigationActivity;
 import com.example.yogeshgarg.source.mvp.splash.SplashActivity;
 import com.example.yogeshgarg.source.mvp.stores.StoresActivity;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -60,17 +62,21 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
+    @BindView(R.id.txtViewProductName)
+    TextView txtViewProductName;
+
+    @BindView(R.id.txtViewBrandName)
+    TextView txtViewBrandName;
+
     @BindView(R.id.txtViewTitleFromDate)
     TextView txtViewTitleFromDate;
 
     @BindView(R.id.txtViewFromDate)
     TextView txtViewFromDate;
 
-    @BindView(R.id.txtViewTitleToDate)
-    TextView txtViewTitleToDate;
+    @BindView(R.id.imgView)
+    ImageView imgView;
 
-    @BindView(R.id.txtViewToDate)
-    TextView txtViewToDate;
 
     @BindView(R.id.txtViewTitleToday)
     TextView txtViewTitleToday;
@@ -110,6 +116,9 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
     String productId;
     String stock;
     String stockUnit;
+    String productName, brandName;
+
+    String image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +130,9 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
             productId = (String) getIntent().getExtras().get(ConstIntent.KEY_PRODUCT_ID);
             stock = (String) getIntent().getExtras().get(ConstIntent.KEY_STOCK);
             stockUnit = (String) getIntent().getExtras().get(ConstIntent.KEY_STOCK_UNIT);
+            productName = getIntent().getStringExtra(ConstIntent.PRODUCT_NAME);
+            brandName = getIntent().getStringExtra(ConstIntent.BRAND_NAME);
+            image = getIntent().getStringExtra(ConstIntent.EXPIRY_PRODUCT_IMAGE);
 
             edtTextStock.setText(stock);
             edtTextStockUnit.setText(stockUnit);
@@ -166,12 +178,13 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
 
     private void setFont() {
 
-        FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Semi_Bold);
         txtViewTitle.setText("Expiry Product");
-        FontHelper.applyFont(this, txtViewTitleFromDate, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(this, txtViewFromDate, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(this, txtViewTitleToDate, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(this, txtViewToDate, FontHelper.FontType.FONT_Normal);
+        txtViewProductName.setText(productName);
+        txtViewBrandName.setText(brandName);
+        Picasso.with(this).load(ConstIntent.PREFIX_URL_OF_IMAGE + image).transform(new CircleTransform()).into(imgView);
+        FontHelper.applyFont(this, txtViewProductName, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(this, txtViewBrandName, FontHelper.FontType.FONT_Normal);
         FontHelper.applyFont(this, txtViewTitleToday, FontHelper.FontType.FONT_Normal);
         FontHelper.applyFont(this, txtViewTitleClear, FontHelper.FontType.FONT_Normal);
         FontHelper.applyFont(this, txtViewTitleStock, FontHelper.FontType.FONT_Normal);
@@ -201,26 +214,6 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         fromDatePickerDialog.show();
     }
 
-    @OnClick(R.id.txtViewToDate)
-    public void txtViewToDateClick() {
-        initializeToDate();
-        String strDate = txtViewFromDate.getText().toString();
-        if (!Utils.isEmptyOrNull(strDate)) {
-
-            try {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = sdf.parse(strDate);
-                long timeInMillis = date.getTime();
-                fromDatePickerDialog.getDatePicker().setMinDate(timeInMillis);
-            } catch (Exception ex) {
-            }
-        } else {
-            fromDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-        }
-
-        fromDatePickerDialog.show();
-    }
-
 
     private void initializeFromDate() {
         calendar = Calendar.getInstance();
@@ -238,21 +231,6 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
     }
 
-    private void initializeToDate() {
-        calendar = Calendar.getInstance();
-
-        fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                calendar = Calendar.getInstance();
-                calendar.set(year, monthOfYear, dayOfMonth);
-                dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
-                dateFromCalender = (dateFormatter.format(calendar.getTime()));
-                txtViewToDate.setText(dateFromCalender);
-            }
-
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-    }
 
     private void getCurrentDate() {
         calendar = Calendar.getInstance();
@@ -261,24 +239,15 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         txtViewFromDate.setText(dateFromCalender);
     }
 
-    private void getCurrentDateForToDate() {
-        calendar = Calendar.getInstance();
-        dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
-        dateFromCalender = (dateFormatter.format(calendar.getTime()));
-        txtViewToDate.setText(dateFromCalender);
-    }
-
 
     @OnClick(R.id.txtViewTitleToday)
     public void txtViewTitleTodayClick() {
         getCurrentDate();
-        getCurrentDateForToDate();
     }
 
     @OnClick(R.id.txtViewTitleClear)
     public void txtViewTitleClearClick() {
         txtViewFromDate.setText("");
-        txtViewToDate.setText("");
     }
 
     @OnClick(R.id.txtView30Days)
@@ -286,7 +255,7 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         getCurrentDate();
         calendar.add(Calendar.DATE, 30);
         dateFromCalender = (dateFormatter.format(calendar.getTime()));
-        txtViewToDate.setText(dateFromCalender);
+        txtViewFromDate.setText(dateFromCalender);
     }
 
     @OnClick(R.id.txtView60Days)
@@ -294,7 +263,7 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         getCurrentDate();
         calendar.add(Calendar.DATE, 60);
         dateFromCalender = (dateFormatter.format(calendar.getTime()));
-        txtViewToDate.setText(dateFromCalender);
+        txtViewFromDate.setText(dateFromCalender);
     }
 
     @OnClick(R.id.txtView90Days)
@@ -302,7 +271,7 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         getCurrentDate();
         calendar.add(Calendar.DATE, 90);
         dateFromCalender = (dateFormatter.format(calendar.getTime()));
-        txtViewToDate.setText(dateFromCalender);
+        txtViewFromDate.setText(dateFromCalender);
     }
 
     @OnEditorAction(R.id.edtTextComment)
@@ -321,24 +290,6 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
 
     private void getData() {
         String startDate = txtViewFromDate.getText().toString();
-        String endDate = txtViewToDate.getText().toString();
-
-        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String inputString1 = startDate;
-        String inputString2 = endDate;
-
-        int days = -1;
-        try {
-            Date date1 = myFormat.parse(inputString1);
-            Date date2 = myFormat.parse(inputString2);
-            long diff = date2.getTime() - date1.getTime();
-            days = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        startDate = DateMethods.dateConvertion(startDate);
-        endDate = DateMethods.dateConvertion(endDate);
 
         String stock = edtTextStock.getText().toString();
         if (Utils.isEmptyOrNull(stock)) {
@@ -348,7 +299,7 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
         String comment = edtTextComment.getText().toString();
 
         ExpiryProductCalendarPresenterImpl expiryProductCalendarPresenterImpl = new ExpiryProductCalendarPresenterImpl(this, this);
-        expiryProductCalendarPresenterImpl.callingExpirtProductCalendarApi(productId, startDate, endDate, stock, stockUnit, comment, days);
+        expiryProductCalendarPresenterImpl.callingExpirtProductCalendarApi(productId, startDate, stock, stockUnit, comment);
 
 
     }

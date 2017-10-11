@@ -10,17 +10,20 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
-import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.notification.NotificationFragment;
 import com.example.yogeshgarg.source.mvp.price_analysis.PriceAnalysisFragment;
@@ -30,10 +33,10 @@ import com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InStoreSam
 import com.example.yogeshgarg.source.mvp.inbox.InboxFragment;
 import com.example.yogeshgarg.source.mvp.new_product.new_product_home.NewProductFragment;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyFragment;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_category.ProductListCategoryFragment;
 import com.example.yogeshgarg.source.mvp.profile.ProfileFragment;
 import com.example.yogeshgarg.source.mvp.setting.SettingFragment;
 import com.example.yogeshgarg.source.mvp.stores.StoresActivity;
-import com.example.yogeshgarg.source.mvp.sync.SyncFragment;
 import com.example.yogeshgarg.source.mvp.team.MyTeamFragment;
 import com.example.yogeshgarg.source.mvp.vacation.vacation_home.VacationHomeFragment;
 import com.squareup.picasso.Picasso;
@@ -67,6 +70,20 @@ public class NavigationActivity extends AppCompatActivity
     @BindView(R.id.txtViewPageName)
     TextView txtViewPageName;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
+
+    @BindView(R.id.relLaySearch)
+    RelativeLayout relLaySearch;
+
+    @BindView(R.id.imgViewCloseSV)
+    ImageView imgViewCloseSV;
+
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
+
 //------------------------------------------------
 
 
@@ -95,6 +112,9 @@ public class NavigationActivity extends AppCompatActivity
 
     @BindView(R.id.txtViewPriceAnalysis)
     TextView txtViewPriceAnalysis;
+
+    @BindView(R.id.txtViewProductList)
+    TextView txtViewProductList;
 
     @BindView(R.id.txtViewNewProduct)
     TextView txtViewNewProduct;
@@ -145,6 +165,10 @@ public class NavigationActivity extends AppCompatActivity
     @BindView(R.id.linLayPriceSurvey)
     LinearLayout linLayPriceSurvey;
 
+    @BindView(R.id.linLayProductList)
+    LinearLayout linLayProductList;
+
+
     @BindView(R.id.linLayNewProduct)
     LinearLayout linLayNewProduct;
 
@@ -179,9 +203,6 @@ public class NavigationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ButterKnife.bind(this);
 
@@ -199,8 +220,8 @@ public class NavigationActivity extends AppCompatActivity
             boolean openNotification = getIntent().getBooleanExtra("OpenNotification", false);
 
             if (openNotification) {
-                NotificationFragment notificationFragment=new NotificationFragment();
-                replaceFragment(notificationFragment,getString(R.string.label_notification));
+                NotificationFragment notificationFragment = new NotificationFragment();
+                replaceFragment(notificationFragment, getString(R.string.label_notification));
             }
 
             String fragmentType = getIntent().getStringExtra(ConstIntent.FRAGMENT_TYPE);
@@ -242,7 +263,7 @@ public class NavigationActivity extends AppCompatActivity
 
     private void setFont() {
 
-        FontHelper.setFontFace(txtViewPageName, FontHelper.FontType.FONT_LIGHT, this);
+        FontHelper.setFontFace(txtViewPageName, FontHelper.FontType.FONT_Semi_Bold, this);
 
         FontHelper.setFontFace(txtViewName, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewLocation, FontHelper.FontType.FONT_Normal, this);
@@ -259,6 +280,7 @@ public class NavigationActivity extends AppCompatActivity
 
         FontHelper.setFontFace(txtViewPriceAnalysis, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewPriceSurvey, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewProductList, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewNewProduct, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewExpiryProduct, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewInStoreProduct, FontHelper.FontType.FONT_Normal, this);
@@ -357,6 +379,13 @@ public class NavigationActivity extends AppCompatActivity
         replaceFragment(priceSurveyFragment, getString(R.string.label_price_survey));
     }
 
+    @OnClick(R.id.linLayProductList)
+    public void linLayProductListClick() {
+        ProductListCategoryFragment productListCategoryFragment = new ProductListCategoryFragment();
+        txtViewPageName.setText(R.string.product_list);
+        replaceFragment(productListCategoryFragment, getString(R.string.label_product_list));
+    }
+
     @OnClick(R.id.linLayNewProduct)
     public void linLayNewProductClick() {
         NewProductFragment newProductFragment = new NewProductFragment();
@@ -405,6 +434,30 @@ public class NavigationActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
+    }
+
+
+    @OnClick(R.id.imgViewSearch)
+    public void imgViewSearchClick(){
+        relLaySearch.setVisibility(View.VISIBLE);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
+    @OnClick(R.id.imgViewCloseSV)
+    public void imgViewCloseSVClick(){
+        relLaySearch.setVisibility(View.GONE);
     }
 
 

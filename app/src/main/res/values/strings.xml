@@ -13,6 +13,8 @@
     <string name="product_update">Product Update</string>
     <string name="price_analysis">Price Analysis</string>
     <string name="price_survey">Price Survey</string>
+
+    <string name="product_list">Product List</string>
     <string name="new_product">New Product</string>
     <string name="discounted_product">Discounted Product</string>
     <string name="banded_product">Banded Product</string>
@@ -102,6 +104,7 @@
 
     <string name="label_price_analysis">Price Analysis</string>
     <string name="label_price_survey">Price Survey</string>
+    <string name="label_product_list">Product List</string>
     <string name="label_new_product">New Product</string>
     <string name="label_banded_product">Banded Product</string>
     <string name="label_expiring_product">Exipring Product</string>
@@ -120,6 +123,7 @@
     <string name="name">Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="faq">FAQ</string>
+    <string name="about_us">About Us</string>
 
 
     <!-- product update-->
@@ -171,11 +175,11 @@
     <string name="title_activity_store">StoreActivity</string>
     <string name="string_camera">Camera</string>
     <string name="string_gallery">Gallery</string>
-
-    <string name="from_date">From Date</string>
     <string name="date">Date</string>
+    <string name="from_date">Start Date</string>
+
     <string name="date_pattern">DD/MM/YYYY</string>
-    <string name="to_date">To Date</string>
+    <string name="to_date">End Date</string>
     <string name="today">Today</string>
     <string name="clear">Clear</string>
     <string name="thirty_days">30 Days</string>
@@ -190,5 +194,8 @@
     <string name="end_date_empty">To date is empty.</string>
     <string name="stock_is_empty">Stock is empty.</string>
     <string name="stock_unit_empty">Stock Unit is empty.</string>
+    <string name="product_list_category_msg">Please select the categories that are in the store</string>
+    <string name="product_list_brand_msg">Please select the brands that are in the store</string>
+    <string name="product_list_product_msg">Please select the products that are in the store</string>
 
 </resources>

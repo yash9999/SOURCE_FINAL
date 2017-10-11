@@ -107,8 +107,8 @@ public class InStoreCalendarActivity extends AppCompatActivity implements InStor
 
     private void setFont() {
 
-        FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Normal);
-        txtViewTitle.setText("InStore Sampling");
+        FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Semi_Bold);
+        txtViewTitle.setText("In Store Sampling");
 
         FontHelper.applyFont(this, txtViewProductName, FontHelper.FontType.FONT_Normal);
 

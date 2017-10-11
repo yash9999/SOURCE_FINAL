@@ -36,6 +36,9 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
     @BindView(R.id.imgViewPlus)
     ImageView imgViewPlus;
 
+    @BindView(R.id.relLay)
+    RelativeLayout relLay;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -82,10 +85,10 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
 
         if (resultArrayList.size() == 0) {
             relLayNoProductAdded.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
+            relLay.setVisibility(View.GONE);
         } else {
             relLayNoProductAdded.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
+            relLay.setVisibility(View.VISIBLE);
             setLayoutManager();
         }
 
@@ -135,7 +138,7 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
     }
 
     private void setFont() {
-        FontHelper.setFontFace(txtViewNoProductAdded, FontHelper.FontType.FONT_Normal, getActivity());
+        FontHelper.setFontFace(txtViewNoProductAdded, FontHelper.FontType.FONT_Semi_Bold, getActivity());
     }
 }
 

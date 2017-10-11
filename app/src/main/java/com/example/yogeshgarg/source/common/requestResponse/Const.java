@@ -28,6 +28,9 @@ public class Const {
 
     public static final String KEY_LOCATION_ID = "locations";
     public static final String KAY_CATEGORY_ID = "categories";
+    public static final String KEY_CATEGORY_ID_PUBLISH = "category_id";
+    public static final String KEY_PUBLISH = "publish";
+    public static final String KEY_BRAND_ID = "brand_id";
 
     public static final String KEY_ID = "id";
     public static final String KEY_NAME = "name";
@@ -82,6 +85,8 @@ public class Const {
     public static final String KEY_NOTIFICATION_NEWPRODUCT = "new_product";
     public static final String KEY_NOTIFICATION_Notification = "notification";
 
-    public static final String KEY_MESSAGE_ID="message_id";
+    public static final String KEY_MESSAGE_ID = "message_id";
+
+
 
 }

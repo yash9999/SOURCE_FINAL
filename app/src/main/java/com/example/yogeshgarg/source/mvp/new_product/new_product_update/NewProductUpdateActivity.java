@@ -667,6 +667,7 @@ public class NewProductUpdateActivity extends AppCompatActivity implements NewPr
 
     @OnClick(R.id.btnSubmit)
     public void btnSubmit() {
+        Log.e("Button Pressed","Button pressed");
         getData();
 
     }

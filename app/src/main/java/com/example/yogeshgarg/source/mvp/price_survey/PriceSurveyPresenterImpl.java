@@ -50,6 +50,7 @@ public class PriceSurveyPresenterImpl implements PriceSurveyPresenter {
         try {
             jsonObject = new JSONObject();
             jsonObject.put(Const.KEY_LOCATION_ID, locationId);
+            jsonObject.put(Const.KEY_PUBLISH,1);
         } catch (JSONException ex) {
             ex.printStackTrace();
         }

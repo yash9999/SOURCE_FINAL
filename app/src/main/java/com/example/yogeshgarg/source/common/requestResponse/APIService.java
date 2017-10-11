@@ -2,16 +2,21 @@ package com.example.yogeshgarg.source.common.requestResponse;
 
 
 import com.example.yogeshgarg.source.mvp.ProductUpdate.ProductUpdateModel;
+import com.example.yogeshgarg.source.mvp.about.AboutModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
+import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_brand.ExpiryProductBrandModel;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_calendar.ExpiryProductCalendarModel;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_category.ExpiryProductCategoryModel;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_home.ExpiryProductHomeModel;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product.ExpiryProduct_ProductModel;
+import com.example.yogeshgarg.source.mvp.faq.FAQModel;
 import com.example.yogeshgarg.source.mvp.forgot_password.ForgotPasswordModel;
 import com.example.yogeshgarg.source.mvp.forgot_password.ForgotPasswordOtpModel;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_brand.InStoreBrandModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_calendar.InStoreCalendarModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_category.StoreCategoryModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InStoreHomeModel;
@@ -24,7 +29,14 @@ import com.example.yogeshgarg.source.mvp.notification_act.NotificationSettingMod
 import com.example.yogeshgarg.source.mvp.notification_act.NotificationSettingUpdateModel;
 import com.example.yogeshgarg.source.mvp.price_analysis.PriceAnalysisModel;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
+import com.example.yogeshgarg.source.mvp.price_survey_brand.PriceSurveyBrandModel;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductModel;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.BrandPublishModel;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.ProductListBrandModel;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_category.CategoryPublishModel;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_category.ProductListCategoryModel;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_product.ProductListProductModel;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_product.ProductPublishModel;
 import com.example.yogeshgarg.source.mvp.profile.ProfileInfoUpdateModel;
 import com.example.yogeshgarg.source.mvp.profile.ProfileModel;
 import com.example.yogeshgarg.source.mvp.reset_password.ResetPasswordModel;
@@ -69,6 +81,13 @@ public interface APIService {
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
 
+    @POST("category/brands")
+    Call<PriceSurveyBrandModel> priceSurveyBrandList(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
 
     //Api for product name after selecting the category
     @POST("location/products")
@@ -92,6 +111,14 @@ public interface APIService {
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
+
+
+    @POST("planograms")
+    Call<DashboardPlanogramModel> gettingResultOfPlanogram(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
 
     @POST("dashboard/location/expiry/products")
     Call<DashboardExpiryProductModel> gettingResultOfExpiryProduct(
@@ -146,6 +173,13 @@ public interface APIService {
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
 
+    //getting Result of expiry Brand
+    @POST("category/brands")
+    Call<ExpiryProductBrandModel> resultOf_EP_Brand(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
 
     //Api for product name after selecting the category
     @POST("location/products")
@@ -168,6 +202,14 @@ public interface APIService {
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
+
+    @POST("category/brands")
+    Call<InStoreBrandModel> resultOfSSBrand(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
 
     //getting expiry product category
     @POST("location/categories")
@@ -272,7 +314,6 @@ public interface APIService {
             @Body RequestBody params);
 
 
-
     @POST("message/mark")
     Call<MarkReadModel> markRead(
             @Header("Content-Type") String contentType,
@@ -292,9 +333,64 @@ public interface APIService {
     //
 
 
-//notification setting
+    //notification setting
     @POST("user/settings")
     Call<NotificationSettingModel> pushNotificationUpdate(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //productlist's Api
+    @POST("location/categories")
+    Call<ProductListCategoryModel> resultOfPLCategory(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    @POST("category/publish")
+    Call<CategoryPublishModel> resultOfPLCategoryPublish(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("category/brands")
+    Call<ProductListBrandModel> resultOfPLBrand(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    @POST("brand/publish")
+    Call<BrandPublishModel> resultOfPLBrandPublish(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("location/products")
+    Call<ProductListProductModel> resultOfPLProduct(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+
+    @POST("location/product/publish/update")
+    Call<ProductPublishModel> resultOfPLProductPublish(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("media/aboutus")
+    Call<AboutModel> resultAboutUS(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    @POST("media/faq")
+    Call<FAQModel> resultFAQ(
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);

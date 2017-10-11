@@ -45,7 +45,7 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.item_price_survey_product, parent, false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_newproduct_home, parent, false);
         return new Holder(view);
     }
 
@@ -132,7 +132,7 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
 
         private void setFont() {
 
-            FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Semi_Bold, activity);
+            FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewBrandName, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewPrice, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewDaysAgo, FontHelper.FontType.FONT_Normal, activity);

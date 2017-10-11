@@ -36,6 +36,9 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
     @BindView(R.id.imgViewPlus)
     ImageView imgViewPlus;
 
+    @BindView(R.id.relLay)
+    RelativeLayout relLay;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -83,10 +86,10 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
         this.resultArrayList = resultArrayList;
 
         if (resultArrayList.size() == 0) {
-            recyclerView.setVisibility(View.GONE);
+            relLay.setVisibility(View.GONE);
             relLayNoProductAdded.setVisibility(View.VISIBLE);
         } else {
-            recyclerView.setVisibility(View.VISIBLE);
+            relLay.setVisibility(View.VISIBLE);
             relLayNoProductAdded.setVisibility(View.GONE);
             setLayoutManager();
         }
@@ -120,6 +123,8 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
     }
 
     private void setAdapter() {
+
+
         NewProductHomeAdapter newProductHomeAdapter = new NewProductHomeAdapter(getActivity(), resultArrayList);
         recyclerView.setAdapter(newProductHomeAdapter);
     }

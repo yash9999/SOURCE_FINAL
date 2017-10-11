@@ -36,7 +36,7 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
     CoordinatorLayout coordinatorLayout;
 
 
-    String categoryId = null;
+    String brandId = null;
 
     ArrayList<ExpiryProduct_ProductModel.Result> resultArrayList;
 
@@ -46,7 +46,9 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_expiry_product);
         ButterKnife.bind(this);
         setFont();
-        categoryId = getIntent().getStringExtra(ConstIntent.KEY_CATEGORY_ID);
+        if (getIntent() != null) {
+            brandId = getIntent().getStringExtra(ConstIntent.KEy_BRAND_ID);
+        }
         callingProductApi();
     }
 
@@ -76,7 +78,7 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
 
     private void callingProductApi() {
         ExpiryProduct_ProductPresenterImpl expiryProduct_productPresenterImpl = new ExpiryProduct_ProductPresenterImpl(this, this);
-        expiryProduct_productPresenterImpl.callingExpiryProduct_ProductApi(categoryId);
+        expiryProduct_productPresenterImpl.callingExpiryProduct_ProductApi(brandId);
     }
 
 
@@ -91,7 +93,14 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
     }
 
     private void setAdapter() {
-        ExpiryProduct_ProductAdapter expiryProduct_productAdapter = new ExpiryProduct_ProductAdapter(this, resultArrayList);
+        ArrayList<ExpiryProduct_ProductModel.Result> publishResultArrayList = new ArrayList<>();
+
+        for (int i = 0; i < resultArrayList.size(); i++) {
+            if (Integer.parseInt(resultArrayList.get(i).getPublish()) == 1) {
+                publishResultArrayList.add(resultArrayList.get(i));
+            }
+        }
+        ExpiryProduct_ProductAdapter expiryProduct_productAdapter = new ExpiryProduct_ProductAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(expiryProduct_productAdapter);
     }
 
@@ -107,7 +116,7 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
 
     private void setFont() {
         txtViewTitle.setText(getString(R.string.product_name));
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 
 

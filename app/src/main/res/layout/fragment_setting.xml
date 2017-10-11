@@ -2,24 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="15dp"
-    android:paddingLeft="40dp"
-    android:paddingRight="40dp"
-    android:paddingTop="15dp"
+    android:padding="10dp"
     tools:context="com.example.yogeshgarg.source.mvp.setting.SettingFragment">
 
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_source_logo"
-        android:scaleType="centerInside"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -30,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/imgViewNotifications"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_notifications"/>
             <TextView
                 android:id="@+id/txtViewNotifications"
@@ -41,7 +30,7 @@
                 android:text="@string/notifications"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
                 />
         </LinearLayout>
@@ -54,8 +43,8 @@
             android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/imgViewAbout"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_about"/>
             <TextView
                 android:id="@+id/txtViewAbout"
@@ -65,7 +54,7 @@
                 android:text="@string/lable_about"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
                 />
         </LinearLayout>
@@ -78,8 +67,8 @@
             android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/imgViewFAQ"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_faq"/>
             <TextView
                 android:id="@+id/txtViewFAQ"
@@ -89,7 +78,7 @@
                 android:text="@string/faq"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
                 />
         </LinearLayout>
@@ -102,8 +91,8 @@
             android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/imgViewLogout"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_logout"/>
             <TextView
                 android:id="@+id/txtViewLogout"
@@ -113,7 +102,7 @@
                 android:text="@string/logout"
                 android:textColor="@color/color_dark_grey"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="28dp"
                 android:layout_gravity="center_vertical"
                 />
         </LinearLayout>
@@ -121,6 +110,11 @@
     </LinearLayout>
 
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_source_logo"
+        android:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

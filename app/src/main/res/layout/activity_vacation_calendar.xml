@@ -85,7 +85,7 @@
         <TextView
             android:id="@+id/txtViewTitleToday"
             android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/txtViewToDate"
             android:layout_marginTop="5dp"
             android:background="@drawable/edit_white"
@@ -97,7 +97,7 @@
         <TextView
             android:id="@+id/txtViewTitleClear"
             android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_below="@+id/txtViewToDate"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/txtViewTitleToday"
@@ -118,7 +118,7 @@
             <LinearLayout
                 android:id="@+id/linLayType"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <TextView

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class ExpiryProduct_ProductModel {
 
+
     @SerializedName("message")
     @Expose
     private String message;
@@ -153,9 +154,10 @@ public class ExpiryProduct_ProductModel {
         @SerializedName("stocklastupdated")
         @Expose
         private String stocklastupdated;
+
         @SerializedName("stock")
         @Expose
-        private String stock;
+        private Integer stock;
         @SerializedName("stock_unit_measure")
         @Expose
         private String stockUnitMeasure;
@@ -165,6 +167,9 @@ public class ExpiryProduct_ProductModel {
         @SerializedName("type")
         @Expose
         private String type;
+        @SerializedName("publish")
+        @Expose
+        private String publish;
 
         public String getStoreName() {
             return storeName;
@@ -438,11 +443,11 @@ public class ExpiryProduct_ProductModel {
             this.stocklastupdated = stocklastupdated;
         }
 
-        public String getStock() {
+        public Integer getStock() {
             return stock;
         }
 
-        public void setStock(String stock) {
+        public void setStock(Integer stock) {
             this.stock = stock;
         }
 
@@ -470,7 +475,14 @@ public class ExpiryProduct_ProductModel {
             this.type = type;
         }
 
-    }
+        public String getPublish() {
+            return publish;
+        }
 
+        public void setPublish(String publish) {
+            this.publish = publish;
+        }
+
+    }
 
 }

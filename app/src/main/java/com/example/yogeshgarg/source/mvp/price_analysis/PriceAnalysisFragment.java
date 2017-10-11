@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.XaxisValueFormatter;
+import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.price_analysis.adapter.PABrandAdapter;
@@ -48,7 +49,7 @@ import butterknife.OnClick;
 import static com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM;
 
 
-public class PriceAnalysisFragment extends Fragment implements PriceAnalysisView {
+public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisView {
 
 
     LineChart chart;
@@ -118,6 +119,7 @@ public class PriceAnalysisFragment extends Fragment implements PriceAnalysisView
         chart.setClickable(false);
 
         ButterKnife.bind(this, view);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold,getActivity());
         return view;
     }
 

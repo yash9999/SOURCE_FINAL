@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -33,6 +34,9 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @BindView(R.id.relLayout)
+    RelativeLayout relLayout;
 
     @BindView(R.id.txtViewPriceUpdateBy)
     TextView txtViewPriceUpdateBy;
@@ -71,8 +75,11 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     public void onSuccessCategory(ArrayList<PriceSurveyModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
         setDate();
-        recyclerView.setVisibility(View.VISIBLE);
-        setLayoutManager();
+        if(resultArrayList.size()>0){
+            relLayout.setVisibility(View.VISIBLE);
+            setLayoutManager();
+        }
+
     }
 
     @Override
@@ -108,7 +115,15 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     }
 
     private void setAdapter() {
-        PriceSurveyAdapter priceSurveyAdapter = new PriceSurveyAdapter(getActivity(), resultArrayList, initialDateSend, finalDateSend);
+        ArrayList<PriceSurveyModel.Result> publishResultArrayList=new ArrayList<>();
+
+        for(int i=0;i<resultArrayList.size();i++){
+            if(resultArrayList.get(i).getPublish()==1){
+                publishResultArrayList.add(resultArrayList.get(i));
+            }
+        }
+
+        PriceSurveyAdapter priceSurveyAdapter = new PriceSurveyAdapter(getActivity(), publishResultArrayList, initialDateSend, finalDateSend);
         recyclerView.setAdapter(priceSurveyAdapter);
     }
 

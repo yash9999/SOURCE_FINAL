@@ -5,5 +5,5 @@ package com.example.yogeshgarg.source.mvp.in_store_sampling.store_product;
  */
 
 public interface StoreProductPresenter {
-    public void callingStoreProductApi(String categoryId);
+    public void callingStoreProductApi(String brandId);
 }

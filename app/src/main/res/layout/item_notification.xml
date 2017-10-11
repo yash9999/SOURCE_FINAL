@@ -10,23 +10,23 @@
         android:id="@+id/relLayoutInner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp">
+        android:padding="4dp"
+        >
 
         <ImageView
             android:id="@+id/imgViewItem"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
             android:layout_centerVertical="true"
-            android:padding="10dp" />
+             />
 
         <RelativeLayout
             android:id="@+id/relLayTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="11dp"
+            android:layout_marginLeft="18dp"
             android:layout_toRightOf="@+id/imgViewItem">
 
             <TextView

@@ -1,43 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_bg"
-    android:orientation="vertical"
-    android:paddingBottom="3dp"
-    android:paddingTop="3dp">
+    android:layout_height="50dp"
+    android:background="@color/color_bg">
+
+    <RelativeLayout
+        android:id="@+id/relLayTool"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgViewBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:padding="8dp"
+            android:src="@mipmap/ic_back" />
+
+        <TextView
+            android:id="@+id/txtViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/txt_25_dp"
+            android:layout_toRightOf="@+id/imgViewBack"
+            android:text="Title"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/txt_18_sp" />
 
 
-    <ImageView
-        android:id="@+id/imgViewBack"
-        android:layout_width="32dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:padding="8dp"
-        android:layout_marginLeft="5dp"
-        android:src="@mipmap/ic_back" />
+        <ImageView
+            android:id="@+id/imgViewSearch"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@mipmap/ic_search" />
 
-    <TextView
-        android:id="@+id/txtViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imgViewBack"
-        android:layout_marginLeft="@dimen/txt_25_dp"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/txt_18_sp" />
+        <ImageView
+            android:id="@+id/imgViewDots"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/txt_10_dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_dot_menu"
+            android:visibility="gone" />
 
 
-    <ImageView
-        android:id="@+id/imgViewDots"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_dot_menu"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:padding="5dp"
-        android:visibility="gone"
-        android:layout_marginRight="@dimen/txt_10_dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relLaySearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@color/lightest_grey"
+        android:elevation="3dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgViewCloseSV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:src="@mipmap/ic_back_black" />
+
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imgViewCloseSV" />
+    </RelativeLayout>
 
 </RelativeLayout>
+
+

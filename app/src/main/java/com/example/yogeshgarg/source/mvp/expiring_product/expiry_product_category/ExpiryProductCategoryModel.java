@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ExpiryProductCategoryModel {
 
+
     @SerializedName("message")
     @Expose
     private String message;
@@ -45,6 +46,7 @@ public class ExpiryProductCategoryModel {
         this.result = result;
     }
 
+
     public class Result {
 
         @SerializedName("name")
@@ -53,6 +55,9 @@ public class ExpiryProductCategoryModel {
         @SerializedName("category_id")
         @Expose
         private String categoryId;
+        @SerializedName("brands")
+        @Expose
+        private String brands;
         @SerializedName("products")
         @Expose
         private String products;
@@ -62,6 +67,18 @@ public class ExpiryProductCategoryModel {
         @SerializedName("dateadded")
         @Expose
         private String dateadded;
+        @SerializedName("completed")
+        @Expose
+        private Integer completed;
+        @SerializedName("updateby")
+        @Expose
+        private String updateby;
+        @SerializedName("updatefrom")
+        @Expose
+        private String updatefrom;
+        @SerializedName("publish")
+        @Expose
+        private Integer publish;
 
         public String getName() {
             return name;
@@ -77,6 +94,14 @@ public class ExpiryProductCategoryModel {
 
         public void setCategoryId(String categoryId) {
             this.categoryId = categoryId;
+        }
+
+        public String getBrands() {
+            return brands;
+        }
+
+        public void setBrands(String brands) {
+            this.brands = brands;
         }
 
         public String getProducts() {
@@ -103,7 +128,37 @@ public class ExpiryProductCategoryModel {
             this.dateadded = dateadded;
         }
 
+        public Integer getCompleted() {
+            return completed;
+        }
+
+        public void setCompleted(Integer completed) {
+            this.completed = completed;
+        }
+
+        public String getUpdateby() {
+            return updateby;
+        }
+
+        public void setUpdateby(String updateby) {
+            this.updateby = updateby;
+        }
+
+        public String getUpdatefrom() {
+            return updatefrom;
+        }
+
+        public void setUpdatefrom(String updatefrom) {
+            this.updatefrom = updatefrom;
+        }
+
+        public Integer getPublish() {
+            return publish;
+        }
+
+        public void setPublish(Integer publish) {
+            this.publish = publish;
+        }
+
     }
-
-
 }

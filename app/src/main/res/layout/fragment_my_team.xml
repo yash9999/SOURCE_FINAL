@@ -2,14 +2,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_grey"
+    android:background="@color/color_white"
+    android:padding="10dp"
     tools:context="com.example.yogeshgarg.source.mvp.team.MyTeamFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewMyTeam"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+        android:layout_below="@+id/relLayTop"
+        android:background="@color/grey">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@color/color_white">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewMyTeam"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

@@ -10,40 +10,47 @@ import java.util.ArrayList;
  * Created by yogeshgarg on 15/08/17.
  */
 
+import java.util.List;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class StoreCategoryModel {
-    @SerializedName("message")
-    @Expose
-    private String message;
-    @SerializedName("successful")
-    @Expose
-    private Boolean successful;
-    @SerializedName("Result")
-    @Expose
-    private ArrayList<StoreCategoryModel.Result> result = null;
 
-    public String getMessage() {
-        return message;
-    }
+        @SerializedName("message")
+        @Expose
+        private String message;
+        @SerializedName("successful")
+        @Expose
+        private Boolean successful;
+        @SerializedName("Result")
+        @Expose
+        private ArrayList<Result> result = null;
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+        public String getMessage() {
+            return message;
+        }
 
-    public Boolean getSuccessful() {
-        return successful;
-    }
+        public void setMessage(String message) {
+            this.message = message;
+        }
 
-    public void setSuccessful(Boolean successful) {
-        this.successful = successful;
-    }
+        public Boolean getSuccessful() {
+            return successful;
+        }
 
-    public ArrayList<StoreCategoryModel.Result> getResult() {
-        return result;
-    }
+        public void setSuccessful(Boolean successful) {
+            this.successful = successful;
+        }
 
-    public void setResult(ArrayList<StoreCategoryModel.Result> result) {
-        this.result = result;
-    }
+        public ArrayList<Result> getResult() {
+            return result;
+        }
+
+        public void setResult(ArrayList<Result> result) {
+            this.result = result;
+        }
+
 
     public class Result {
 
@@ -53,6 +60,9 @@ public class StoreCategoryModel {
         @SerializedName("category_id")
         @Expose
         private String categoryId;
+        @SerializedName("brands")
+        @Expose
+        private String brands;
         @SerializedName("products")
         @Expose
         private String products;
@@ -62,6 +72,18 @@ public class StoreCategoryModel {
         @SerializedName("dateadded")
         @Expose
         private String dateadded;
+        @SerializedName("completed")
+        @Expose
+        private Integer completed;
+        @SerializedName("updateby")
+        @Expose
+        private String updateby;
+        @SerializedName("updatefrom")
+        @Expose
+        private String updatefrom;
+        @SerializedName("publish")
+        @Expose
+        private Integer publish;
 
         public String getName() {
             return name;
@@ -77,6 +99,14 @@ public class StoreCategoryModel {
 
         public void setCategoryId(String categoryId) {
             this.categoryId = categoryId;
+        }
+
+        public String getBrands() {
+            return brands;
+        }
+
+        public void setBrands(String brands) {
+            this.brands = brands;
         }
 
         public String getProducts() {
@@ -103,6 +133,37 @@ public class StoreCategoryModel {
             this.dateadded = dateadded;
         }
 
-    }
+        public Integer getCompleted() {
+            return completed;
+        }
 
+        public void setCompleted(Integer completed) {
+            this.completed = completed;
+        }
+
+        public String getUpdateby() {
+            return updateby;
+        }
+
+        public void setUpdateby(String updateby) {
+            this.updateby = updateby;
+        }
+
+        public String getUpdatefrom() {
+            return updatefrom;
+        }
+
+        public void setUpdatefrom(String updatefrom) {
+            this.updatefrom = updatefrom;
+        }
+
+        public Integer getPublish() {
+            return publish;
+        }
+
+        public void setPublish(Integer publish) {
+            this.publish = publish;
+        }
+
+    }
 }

@@ -1,42 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relLayImages"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="2dp"
-    android:id="@+id/relLayImages">
-
-    <ImageView
-        android:id="@+id/imgViewCategory"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerVertical="true"
-        android:scaleType="centerCrop" />
-
+    android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/relLay"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/txt_10_dp"
-        android:layout_toRightOf="@id/imgViewCategory">
+        android:padding="3dp">
 
-        <TextView
-            android:id="@+id/txtViewCategoryName"
+        <ImageView
+            android:id="@+id/imgViewCategory"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:layout_centerVertical="true" />
+
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/txt_12_dp" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/txt_16_dp"
+            android:layout_toRightOf="@id/imgViewCategory"
+            >
 
-        <TextView
-            android:id="@+id/txtViewProductQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtViewCategoryName"
-            android:layout_marginTop="3dp"
-            android:textColor="@color/color_gray"
-            android:textSize="@dimen/txt_12_dp" />
+            <TextView
+                android:id="@+id/txtViewCategoryName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/txt_13_dp" />
+
+            <TextView
+                android:id="@+id/txtViewProductQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtViewCategoryName"
+                android:textColor="@color/color_alpha_black"
+                android:textSize="@dimen/txt_12_dp" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/relLay"
+        android:background="@color/grey"></View>
 
 </RelativeLayout>

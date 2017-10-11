@@ -51,6 +51,7 @@
                             android:id="@+id/imgViewToDisplay"
                             android:layout_width="match_parent"
                             android:layout_height="160dp"
+                            android:padding="10dp"
                             android:src="@mipmap/ic_profile_dp" />
 
                         <TextView
@@ -594,7 +595,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@color/color_white"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -632,6 +634,7 @@
                         android:id="@+id/relLayShowStockLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_below="@+id/relLayLastPrice"
                         android:orientation="horizontal">
 

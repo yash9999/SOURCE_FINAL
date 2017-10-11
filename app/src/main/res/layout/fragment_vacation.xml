@@ -5,86 +5,73 @@
     android:layout_height="match_parent"
     tools:context="com.example.yogeshgarg.source.mvp.vacation.vacation_home.VacationHomeFragment">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_white">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bg_grey" />
+            android:layout_margin="4dp"
+            android:background="@color/grey">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
-            android:elevation="3dp">
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@color/color_white">
 
-                <LinearLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    >
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="5dp"
-                        android:visibility="gone">
-
-                    </android.support.v7.widget.RecyclerView>
-
-                </LinearLayout>
-
-
-                <RelativeLayout
-                    android:id="@+id/relLayNoVacationTaken"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/color_white"
                     android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/txtViewVacation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="50dp"
-                        android:gravity="center"
-                        android:text="@string/vacation_msg"
-                        android:textColor="@color/color_black"
-                        android:textSize="@dimen/txt_18_sp" />
+                </android.support.v7.widget.RecyclerView>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="40dp"
-                        android:src="@mipmap/ic_vacation" />
-                </RelativeLayout>
+            </LinearLayout>
 
+
+            <RelativeLayout
+                android:id="@+id/relLayNoVacationTaken"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_white"
+                android:layout_margin="1dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtViewVacation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:text="@string/vacation_msg"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/txt_18_sp" />
 
                 <ImageView
-                    android:id="@+id/imgViewPlus"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@mipmap/ic_plus" />
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="40dp"
+                    android:src="@mipmap/ic_vacation" />
             </RelativeLayout>
 
 
-        </android.support.v7.widget.CardView>
+            <ImageView
+                android:id="@+id/imgViewPlus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/ic_plus" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </FrameLayout>

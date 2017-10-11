@@ -35,25 +35,27 @@ public class StoreProductPresenterImpl implements StoreProductPresenter {
         this.storeProductView = storeProductView;
     }
 
-    private void gettingResultOfProductApi(String categoryId) {
+    @Override
+    public void callingStoreProductApi(String brandId) {
         try {
             ApiAdapter.getInstance(activity);
-            gettingResultOfProductApi(categoryId);
+            gettingResultOfProductApi(brandId);
         } catch (ApiAdapter.NoInternetException ex) {
             storeProductView.onInternetError();
         }
     }
 
-    @Override
-    public void callingStoreProductApi(String categoryId) {
+
+    public void gettingResultOfProductApi(String brandId) {
 
         UserSession userSession = new UserSession(activity);
         String locationId = userSession.getLocationId();
 
         try {
             jsonObject = new JSONObject();
-            jsonObject.put(Const.KAY_CATEGORY_ID, categoryId);
+            jsonObject.put(Const.KEY_BRANDS, brandId);
             jsonObject.put(Const.KEY_LOCATION_ID, locationId);
+            jsonObject.put(Const.KEY_PUBLISH,1);
         } catch (JSONException ex) {
             ex.printStackTrace();
         }
@@ -67,8 +69,8 @@ public class StoreProductPresenterImpl implements StoreProductPresenter {
             public void onResponse(Call<StoreProductModel> call, Response<StoreProductModel> response) {
 
                 Progress.stop();
-               try {
-                   StoreProductModel storeProductModel = response.body();
+                try {
+                    StoreProductModel storeProductModel = response.body();
 
 
                     if (storeProductModel.getSuccessful()) {

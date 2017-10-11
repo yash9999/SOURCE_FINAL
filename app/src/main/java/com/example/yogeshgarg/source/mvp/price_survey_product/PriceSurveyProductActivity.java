@@ -35,6 +35,9 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     @BindView(R.id.relLayoutRoot)
     RelativeLayout relLayoutRoot;
 
+    @BindView(R.id.relLayout)
+    RelativeLayout relLayout;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -50,7 +53,7 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     @BindView(R.id.txtViewPriceUpdateBetween)
     TextView txtViewPriceUpdateBetween;
 
-    String categoryId = null;
+    String brandId = null;
     ArrayList<PriceSurveyProductModel.Result> resultArrayList;
     String strPriceUpdateBy;
     String strPriceUpdateBetween;
@@ -64,12 +67,12 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
         Intent intent = getIntent();
         if (intent != null) {
 
-            categoryId = intent.getStringExtra(ConstIntent.KEY_CATEGORY_ID);
+            brandId = intent.getStringExtra(ConstIntent.KEy_BRAND_ID);
             strPriceUpdateBy = intent.getStringExtra(ConstIntent.KEY_INITIAL_DATE_TO_SEND);
             strPriceUpdateBetween = intent.getStringExtra(ConstIntent.KEY_FINAL_DATE_TO_SEND);
 
             setFont();
-            callingPriceSurveyProductApi(categoryId);
+            callingPriceSurveyProductApi(brandId);
         }
 
     }
@@ -78,8 +81,12 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     @Override
     public void onSuccessPriceSurveyProduct(ArrayList<PriceSurveyProductModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
-        recyclerView.setVisibility(View.VISIBLE);
-        setLayoutManager();
+
+        if(resultArrayList.size()>0){
+            relLayout.setVisibility(View.VISIBLE);
+            setLayoutManager();
+        }
+
     }
 
     @Override
@@ -95,13 +102,13 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     OnClickInterface onRetryPriceSurvey = new OnClickInterface() {
         @Override
         public void onClick() {
-            callingPriceSurveyProductApi(categoryId);
+            callingPriceSurveyProductApi(brandId);
         }
     };
 
-    private void callingPriceSurveyProductApi(String categoryId) {
+    private void callingPriceSurveyProductApi(String brandId) {
         PriceSurveyProductPresenterImpl priceSurveyProductPresenterImpl = new PriceSurveyProductPresenterImpl(this, this);
-        priceSurveyProductPresenterImpl.callingPriceSurveyProductApi(categoryId);
+        priceSurveyProductPresenterImpl.callingPriceSurveyProductApi(brandId);
     }
 
     private void setLayoutManager() {
@@ -114,13 +121,21 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     }
 
     private void setAdapter() {
-        PriceSurveyProductAdapter priceSurveyProductAdapter = new PriceSurveyProductAdapter(this, resultArrayList);
+        ArrayList<PriceSurveyProductModel.Result> publishResultArrayList = new ArrayList<>();
+        for (int i = 0; i < resultArrayList.size(); i++) {
+
+            if (Integer.parseInt(resultArrayList.get(i).getPublish()) == 1) {
+                publishResultArrayList.add(resultArrayList.get(i));
+            }
+        }
+        PriceSurveyProductAdapter priceSurveyProductAdapter = new PriceSurveyProductAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(priceSurveyProductAdapter);
     }
 
     private void setFont() {
+        txtViewTitle.setText("Product Name");
 
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
         FontHelper.setFontFace(txtViewPriceUpdateBy, FontHelper.FontType.FONT_Semi_Bold, this);
         FontHelper.setFontFace(txtViewPriceUpdateBetween, FontHelper.FontType.FONT_Normal, this);
 

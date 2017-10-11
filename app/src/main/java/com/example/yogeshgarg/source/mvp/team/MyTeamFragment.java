@@ -4,7 +4,9 @@ package com.example.yogeshgarg.source.mvp.team;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +27,7 @@ public class MyTeamFragment extends Fragment implements MyTeamContractor.View{
     @BindView(R.id.recyclerViewMyTeam)
     RecyclerView recyclerViewMyTeam;
 
-
+    ArrayList<MyTeamModel.Result> items;
     MyTeamContractor.Presenter presenter;
 
     public MyTeamFragment() {
@@ -75,9 +77,11 @@ public class MyTeamFragment extends Fragment implements MyTeamContractor.View{
 
     @Override
     public void getTeam(ArrayList<MyTeamModel.Result> items) {
-        TeamAdapter adapter=new TeamAdapter(getActivity(),items);
-        recyclerViewMyTeam.setLayoutManager(new GridLayoutManager(getActivity(),3));
-        recyclerViewMyTeam.setAdapter(adapter);
+       this.items=items;
+        if(items.size()>0){
+            setLayoutManager();
+        }
+
     }
 
     @Override
@@ -88,5 +92,19 @@ public class MyTeamFragment extends Fragment implements MyTeamContractor.View{
     @Override
     public void getTeamInternetError() {
 
+    }
+
+    private void setLayoutManager() {
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerViewMyTeam.setLayoutManager(linearLayoutManager);
+        recyclerViewMyTeam.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewMyTeam.setHasFixedSize(true);
+
+        setAdapter();
+    }
+    private void setAdapter(){
+        TeamAdapter adapter=new TeamAdapter(getActivity(),items);
+        recyclerViewMyTeam.setAdapter(adapter);
     }
 }

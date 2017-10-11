@@ -2,6 +2,7 @@ package com.example.yogeshgarg.source.mvp.dashboard;
 
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
 
@@ -23,6 +24,11 @@ public interface DashboardView {
     public void onSuccessOfNewProductUpdate(ArrayList<NewProductModel.Result> resultArrayList);
     public void onUnsccessOfNewProductUpdate(String message);
     public void onInternetErrorOfNewProductUpdate();
+
+    //planogram update
+    public void onSuccessPlanogram(ArrayList<DashboardPlanogramModel.Result> results);
+    public void onUnsuccessPlanogram(String message);
+    public void onInternetErrorPlanogram();
 
     //expiry product
     public void onSuccessOfExpiryProduct(ArrayList<DashboardExpiryProductModel.Result> resultArrayList);

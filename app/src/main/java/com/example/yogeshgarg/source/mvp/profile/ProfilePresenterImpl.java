@@ -144,7 +144,7 @@ public class ProfilePresenterImpl implements ProfilePresenter {
 
         // client.addHeader("Content-Type", "multipart/form-data");
 
-        final int DEFAULT_TIMEOUT = 60 * 1000;
+        final int DEFAULT_TIMEOUT = 90 * 1000;
         client.setTimeout(DEFAULT_TIMEOUT);
 
         client.post(requestURL, params, new AsyncHttpResponseHandler() {

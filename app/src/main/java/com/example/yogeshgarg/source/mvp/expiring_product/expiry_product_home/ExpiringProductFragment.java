@@ -39,8 +39,12 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    @BindView(R.id.frameLayout)
-    FrameLayout frameLayout;
+    @BindView(R.id.relLayout)
+    RelativeLayout relLayout;
+
+    @BindView(R.id.relLayUpper)
+    RelativeLayout relLayUpper;
+
 
     @BindView(R.id.relLayNoProductAdded)
     RelativeLayout relLayNoProductAdded;
@@ -101,10 +105,10 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
 
         if (resultArrayList.size() == 0) {
             relLayNoProductAdded.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
+            relLayUpper.setVisibility(View.GONE);
         } else {
             relLayNoProductAdded.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
+            relLayUpper.setVisibility(View.VISIBLE);
             setLayoutManager();
         }
 
@@ -113,12 +117,12 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
 
     @Override
     public void onUnsuccess(String message) {
-        SnackNotify.showMessage(message, frameLayout);
+        SnackNotify.showMessage(message, relLayout);
     }
 
     @Override
     public void onInternetError() {
-        SnackNotify.checkConnection(onRetryEPHomeApi, frameLayout);
+        SnackNotify.checkConnection(onRetryEPHomeApi, relLayout);
     }
 
     OnClickInterface onRetryEPHomeApi = new OnClickInterface() {
@@ -136,6 +140,6 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
     }
 
     private void setFont() {
-        FontHelper.setFontFace(txtViewNoProductAdded, FontHelper.FontType.FONT_Normal, getActivity());
+        FontHelper.setFontFace(txtViewNoProductAdded, FontHelper.FontType.FONT_Semi_Bold, getActivity());
     }
 }

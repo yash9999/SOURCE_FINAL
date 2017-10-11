@@ -48,6 +48,7 @@ public class ExpiryProductPresenterImpl implements ExpiryProductPresenter {
         try {
             jsonObject = new JSONObject();
             jsonObject.put(Const.KEY_LOCATION_ID, locationId);
+            jsonObject.put(Const.KEY_PUBLISH,1);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

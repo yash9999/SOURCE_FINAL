@@ -1,25 +1,19 @@
 package com.example.yogeshgarg.source.mvp.setting;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.AlertDialogManager;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
-import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
-import com.example.yogeshgarg.source.mvp.about.AboutFragment;
-import com.example.yogeshgarg.source.mvp.faq.FAQFragment;
-import com.example.yogeshgarg.source.mvp.navigation.NavigationActivity;
-import com.example.yogeshgarg.source.mvp.notification.NotificationFragment;
+import com.example.yogeshgarg.source.mvp.about.AboutActivity;
+import com.example.yogeshgarg.source.mvp.faq.FaqActivity;
 import com.example.yogeshgarg.source.mvp.notification_act.NotificationActivity;
 
 import butterknife.BindView;
@@ -27,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class SettingFragment extends Fragment implements SettingView {
+public class SettingFragment extends Fragment {
 
 
     @BindView(R.id.linLayNotifications)
@@ -70,28 +64,6 @@ public class SettingFragment extends Fragment implements SettingView {
     }
 
 
-    @Override
-    public void onSuccessSettingApi() {
-
-    }
-
-    @Override
-    public void onUnsuccessSettingApi(String message) {
-
-    }
-
-    @Override
-    public void OnInternetErrorSettingApi() {
-
-    }
-
-    OnClickInterface onRetrySettingApi = new OnClickInterface() {
-        @Override
-        public void onClick() {
-
-        }
-    };
-
     private void setFont() {
         FontHelper.setFontFace(txtViewNotifications, FontHelper.FontType.FONT_Normal, getActivity());
         FontHelper.setFontFace(txtViewAbout, FontHelper.FontType.FONT_Normal, getActivity());
@@ -107,14 +79,14 @@ public class SettingFragment extends Fragment implements SettingView {
 
     @OnClick(R.id.linLayAbout)
     public void linLayAboutClick() {
-        AboutFragment aboutFragment = new AboutFragment();
-        ((NavigationActivity) getActivity()).replaceFragment(aboutFragment, getActivity().getString(R.string.lable_about));
+        Intent intent = new Intent(getActivity(), AboutActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.linLayFAQ)
     public void linLayFAQClick() {
-        FAQFragment faqFragment = new FAQFragment();
-        ((NavigationActivity) getActivity()).replaceFragment(faqFragment, getActivity().getString(R.string.label_faq));
+        Intent intent = new Intent(getActivity(), FaqActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.linLayLogout)

@@ -15,4 +15,6 @@ public interface DashboardPresenter {
     public void storeSamplingProductApi(String timeOneMonthAgo);
 
     public void expiryProductApi(String timeOneMonthAgo);
+
+    public void planogramApi();
 }

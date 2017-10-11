@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/txt_10_dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/relLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_round_white"
+            android:padding="10dp">
+
+
+            <FrameLayout
+                android:id="@+id/frmImgLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgViewProduct"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop" />
+
+
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/txtViewPlanogramTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frmImgLayout"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/color_gray"
+                android:textSize="@dimen/txt_14_sp" />
+
+            <TextView
+                android:id="@+id/txtViewPlanogramMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtViewPlanogramTitle"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/txt_13_sp" />
+
+
+            <LinearLayout
+                android:id="@+id/llayPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtViewPlanogramMessage"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtViewProductMRP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:textSize="@dimen/txt_13_sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/txtViewProductSellingPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10sp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/txt_13_sp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txtViewProductQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llayPrice"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:maxLines="1"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/txt_13_sp"
+
+                />
+
+            <TextView
+                android:id="@+id/txtViewStoreNameAndCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtViewProductQuantity"
+                android:layout_marginTop="5dp"
+                android:gravity="right"
+                android:maxLines="1"
+                android:textColor="@color/txt_color_green"
+                android:textSize="@dimen/txt_13_sp"
+
+                />
+
+            <TextView
+                android:id="@+id/txtViewProductDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtViewStoreNameAndCity"
+                android:layout_marginTop="5dp"
+                android:gravity="right"
+                android:maxLines="1"
+                android:textColor="@color/txt_color_green"
+                android:textSize="@dimen/txt_13_sp"
+
+                />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imgViewClose"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/relLay"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:padding="3dp"
+            android:src="@mipmap/ic_close" />
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

@@ -107,7 +107,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     private void setFont() {
         txtViewTitle.setVisibility(View.VISIBLE);
         txtViewTitle.setText("Notification's Settings");
-        FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_LIGHT);
+        FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Semi_Bold);
         FontHelper.setFontFace(txtViewInbox, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewPriceSurvey, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewNewProduct, FontHelper.FontType.FONT_Normal, this);

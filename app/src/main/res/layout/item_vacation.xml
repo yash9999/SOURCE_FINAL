@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_margin="5dp"
-    android:elevation="3dp">
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:id="@+id/relLayTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
 
 
     <com.daimajia.swipe.SwipeLayout xmlns:swipe="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         swipe:leftEdgeSwipeOffset="0dp"
         swipe:rightEdgeSwipeOffset="0dp">
 
         <RelativeLayout
             android:id="@+id/relLayDelete"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/color_red"
             >
 
             <ImageView
                 android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
+                android:layout_height="40dp"
                 android:src="@mipmap/ic_delete_white"
                 android:visibility="visible" />
         </RelativeLayout>
@@ -32,29 +37,24 @@
         <RelativeLayout
             android:id="@+id/relLaVacation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/color_bg">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:background="@color/color_white">
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            >
 
                 <ImageView
                     android:id="@+id/imgViewVacation"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="3dp"
                     android:layout_centerVertical="true"
                     android:scaleType="centerInside"
                     android:src="@mipmap/ic_vacation" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="6dp"
                     android:layout_toRightOf="@+id/imgViewVacation"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -65,7 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/vacation"
-                        android:textColor="@color/color_red"
+                        android:textColor="@color/color_black"
                         android:textSize="@dimen/txt_14_sp" />
 
                     <TextView
@@ -89,16 +89,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Added"
-                        android:textColor="@color/color_alpha_black"
+                        android:textColor="@color/color_red"
                         android:textSize="@dimen/txt_12_sp" />
 
 
                 </LinearLayout>
 
-            </RelativeLayout>
+
         </RelativeLayout>
+
 
     </com.daimajia.swipe.SwipeLayout>
 
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_below="@+id/relLayTop">
 
-</android.support.v7.widget.CardView>
+    </View>
+
+</RelativeLayout>

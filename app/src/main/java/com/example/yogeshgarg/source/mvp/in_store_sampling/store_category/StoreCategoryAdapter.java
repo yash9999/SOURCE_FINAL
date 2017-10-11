@@ -17,6 +17,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_category.ExpiryProductCategoryAdapter;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product.ExpiryProduct_ProductActivity;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_brand.InStoreBrandActivity;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_product.StoreProductActivity;
 import com.squareup.picasso.Picasso;
 
@@ -52,17 +53,30 @@ public class StoreCategoryAdapter extends RecyclerView.Adapter<StoreCategoryAdap
         StoreCategoryModel.Result result = resultArrayList.get(position);
 
         String productQuantity = result.getProducts();
+
         String categoryName = result.getName();
+        String brandQuantity = result.getBrands();
 
         final String categoryId = result.getCategoryId();
 
         holder.txtViewCategoryName.setText(Utils.camelCasing(categoryName));
 
+        String productToShow = null;
+        String brandToShow = null;
+
         if (Integer.parseInt(productQuantity) == 1 || Integer.parseInt(productQuantity) == 0) {
-            holder.txtViewProductQuantity.setText(productQuantity + " Product");
+            productToShow = productQuantity + " Product";
         } else {
-            holder.txtViewProductQuantity.setText(productQuantity + " Products");
+            productToShow = productQuantity + " Products";
         }
+
+        if (Integer.parseInt(brandQuantity) <= 1) {
+            brandToShow = brandQuantity + " brand";
+        } else {
+            brandToShow = brandQuantity + " brands";
+        }
+
+        holder.txtViewProductQuantity.setText(brandToShow + ", " + productToShow);
 
         String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
         URL myURL = null;
@@ -79,7 +93,7 @@ public class StoreCategoryAdapter extends RecyclerView.Adapter<StoreCategoryAdap
         holder.relLayImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, StoreProductActivity.class);
+                Intent intent = new Intent(activity, InStoreBrandActivity.class);
                 intent.putExtra(ConstIntent.KEY_CATEGORY_ID, categoryId);
                 activity.startActivity(intent);
             }

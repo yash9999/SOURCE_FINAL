@@ -15,9 +15,11 @@ public class PriceSurveyModel {
     @SerializedName("message")
     @Expose
     private String message;
+
     @SerializedName("successful")
     @Expose
     private Boolean successful;
+
     @SerializedName("Result")
     @Expose
     private ArrayList<Result> result = null;
@@ -54,6 +56,9 @@ public class PriceSurveyModel {
         @SerializedName("category_id")
         @Expose
         private String categoryId;
+        @SerializedName("brands")
+        @Expose
+        private String brands;
         @SerializedName("products")
         @Expose
         private String products;
@@ -72,9 +77,9 @@ public class PriceSurveyModel {
         @SerializedName("updatefrom")
         @Expose
         private String updatefrom;
-        @SerializedName("brands")
+        @SerializedName("publish")
         @Expose
-        private String brands;
+        private Integer publish;
 
         public String getName() {
             return name;
@@ -90,6 +95,14 @@ public class PriceSurveyModel {
 
         public void setCategoryId(String categoryId) {
             this.categoryId = categoryId;
+        }
+
+        public String getBrands() {
+            return brands;
+        }
+
+        public void setBrands(String brands) {
+            this.brands = brands;
         }
 
         public String getProducts() {
@@ -140,15 +153,19 @@ public class PriceSurveyModel {
             this.updatefrom = updatefrom;
         }
 
-        public String getBrands() {
-            return brands;
+        public Integer getPublish() {
+            return publish;
         }
 
-        public void setBrands(String brands) {
-            this.brands = brands;
+        public void setPublish(Integer publish) {
+            this.publish = publish;
         }
+
 
     }
 }
+
+
+
 
 

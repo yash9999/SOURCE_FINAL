@@ -5,4 +5,6 @@ package com.example.yogeshgarg.source.mvp.faq;
  */
 
 public interface FAQPresenter {
+    public void callingFaq();
+
 }

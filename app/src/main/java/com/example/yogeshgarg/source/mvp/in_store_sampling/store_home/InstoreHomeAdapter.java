@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.CircleTransform;
+import com.example.yogeshgarg.source.common.helper.DateMethods;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
@@ -51,39 +53,14 @@ public class InstoreHomeAdapter extends RecyclerView.Adapter<InstoreHomeAdapter.
 
         InStoreHomeModel.Result result = resultArrayList.get(position);
         String productName = result.getProductName();
-        String brandName = result.getBrandName();
-        String price = result.getCost();
-
         String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage();
-        Picasso.with(activity).load(link).into(holder.imgViewProduct);
+        Picasso.with(activity).load(link).transform(new CircleTransform()).into(holder.imgViewProduct);
 
         //inserting data into fields
 
         holder.txtViewProductName.setText(Utils.camelCasing(productName));
-        holder.txtViewBrandName.setText(Utils.camelCasing(brandName));
-        holder.txtViewPrice.setText(Utils.currencyFormat(price));
+        holder.txtViewDate.setText(DateMethods.setDate(result.getDateadded()));
 
-        String strLastUpdated = result.getDateadded();
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date currentDate = new Date();
-        String daysToShow = null;
-        try {
-            String strCurrentDate = simpleDateFormat.format(currentDate);
-            Date lastUpdatedDay = simpleDateFormat.parse(strLastUpdated);
-            Date currentUpdateDay = simpleDateFormat.parse(strCurrentDate);
-            long diff = currentUpdateDay.getTime() - lastUpdatedDay.getTime();
-            daysToShow = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        if ((Integer.parseInt(daysToShow) == 1) || (Integer.parseInt(daysToShow) == 0)) {
-            holder.txtViewDaysAgo.setText(daysToShow + " Day ago");
-        } else {
-            holder.txtViewDaysAgo.setText(daysToShow + " Days ago");
-        }
 
     }
 
@@ -103,14 +80,10 @@ public class InstoreHomeAdapter extends RecyclerView.Adapter<InstoreHomeAdapter.
         @BindView(R.id.txtViewProductName)
         TextView txtViewProductName;
 
-        @BindView(R.id.txtViewBrandName)
-        TextView txtViewBrandName;
+        @BindView(R.id.txtViewDate)
+        TextView txtViewDate;
 
-        @BindView(R.id.txtViewDaysAgo)
-        TextView txtViewDaysAgo;
 
-        @BindView(R.id.txtViewPrice)
-        TextView txtViewPrice;
 
         public Holder(View itemView) {
             super(itemView);
@@ -121,10 +94,7 @@ public class InstoreHomeAdapter extends RecyclerView.Adapter<InstoreHomeAdapter.
         private void setFont() {
 
             FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Semi_Bold, activity);
-            FontHelper.setFontFace(txtViewBrandName, FontHelper.FontType.FONT_Normal, activity);
-            FontHelper.setFontFace(txtViewPrice, FontHelper.FontType.FONT_Normal, activity);
-            FontHelper.setFontFace(txtViewDaysAgo, FontHelper.FontType.FONT_Normal, activity);
-
+            FontHelper.setFontFace(txtViewDate, FontHelper.FontType.FONT_Normal, activity);
         }
     }
 }

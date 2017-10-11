@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -26,6 +28,9 @@ public class StoreProductActivity extends AppCompatActivity implements StoreProd
     @BindView(R.id.imgViewBack)
     ImageView imgViewBack;
 
+    @BindView(R.id.relLayout)
+    RelativeLayout relLayout;
+
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
@@ -36,7 +41,7 @@ public class StoreProductActivity extends AppCompatActivity implements StoreProd
     CoordinatorLayout coordinatorLayout;
 
 
-    String categoryId = null;
+    String brandId = null;
 
     ArrayList<StoreProductModel.Result> resultArrayList = null;
 
@@ -46,7 +51,10 @@ public class StoreProductActivity extends AppCompatActivity implements StoreProd
         setContentView(R.layout.activity_store_product);
         ButterKnife.bind(this);
         setFont();
-        categoryId = getIntent().getStringExtra(ConstIntent.KEY_CATEGORY_ID);
+        if (getIntent() != null) {
+            brandId = getIntent().getStringExtra(ConstIntent.KEy_BRAND_ID);
+        }
+
         callingProductApi();
 
     }
@@ -62,7 +70,13 @@ public class StoreProductActivity extends AppCompatActivity implements StoreProd
     }
 
     private void setAdapter() {
-        StoreProductAdapter storeProductAdapter = new StoreProductAdapter(this, resultArrayList);
+        ArrayList<StoreProductModel.Result> publishResultArrayList = new ArrayList<>();
+        for (int i = 0; i < resultArrayList.size(); i++) {
+            if (Integer.parseInt(resultArrayList.get(i).getPublish()) == 1) {
+                publishResultArrayList.add(resultArrayList.get(i));
+            }
+        }
+        StoreProductAdapter storeProductAdapter = new StoreProductAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(storeProductAdapter);
 
     }
@@ -79,18 +93,24 @@ public class StoreProductActivity extends AppCompatActivity implements StoreProd
 
     private void setFont() {
         txtViewTitle.setText(getString(R.string.product_name));
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 
     private void callingProductApi() {
         StoreProductPresenterImpl storeProductPresenterImpl = new StoreProductPresenterImpl(this, this);
-        storeProductPresenterImpl.callingStoreProductApi(categoryId);
+        storeProductPresenterImpl.callingStoreProductApi(brandId);
     }
 
     @Override
     public void onSuccess(ArrayList<StoreProductModel.Result> results) {
         this.resultArrayList = results;
-        setLayoutManager();
+        if (results.size() > 0) {
+            relLayout.setVisibility(View.VISIBLE);
+            setLayoutManager();
+        } else {
+            relLayout.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

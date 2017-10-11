@@ -34,23 +34,25 @@ public class ExpiryProduct_ProductPresenterImpl implements ExpiryProduct_Product
     }
 
     @Override
-    public void callingExpiryProduct_ProductApi(String categoryId) {
+    public void callingExpiryProduct_ProductApi(String brandId) {
         try {
             ApiAdapter.getInstance(activity);
-            gettingResultOfProductApi(categoryId);
+            gettingResultOfProductApi(brandId);
         } catch (ApiAdapter.NoInternetException ex) {
             expiryProductProductView.onInternetError();
         }
     }
 
-    private void gettingResultOfProductApi(String categoryId) {
+    private void gettingResultOfProductApi(String brandId) {
+        Progress.start(activity);
         UserSession userSession = new UserSession(activity);
         String locationId = userSession.getLocationId();
 
         try {
             jsonObject = new JSONObject();
-            jsonObject.put(Const.KAY_CATEGORY_ID, categoryId);
+            jsonObject.put(Const.KEY_BRANDS, brandId);
             jsonObject.put(Const.KEY_LOCATION_ID, locationId);
+            jsonObject.put(Const.KEY_PUBLISH,1);
         } catch (JSONException ex) {
             ex.printStackTrace();
         }

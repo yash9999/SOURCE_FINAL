@@ -19,16 +19,19 @@ import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardExpiryProductUpdateAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardInStoreUpdateAdapter;
+import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardPlanogramAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashoardRecentProductUpdateAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.NewProductAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardExpiryProductActivity;
 import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardInStoreSamplingActivity;
 import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardNewProductActivity;
 import com.example.yogeshgarg.source.mvp.dashboard_activities.DashboardRecentPriceUpdateActivity;
+import com.example.yogeshgarg.source.mvp.dashboard_activities.PlanogramActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +58,8 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @BindView(R.id.recyclerViewNewProduct)
     RecyclerView recyclerViewNewProduct;
 
+    @BindView(R.id.recyclerViewPlanogram)
+    RecyclerView recyclerViewPlanogram;
 
     @BindView(R.id.recyclerViewSampleProduct)
     RecyclerView recyclerViewSampleProduct;
@@ -74,6 +79,13 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     @BindView(R.id.llayViewAllNewProduct)
     LinearLayout llayViewAllNewProduct;
+    //------------------------------------------
+    @BindView(R.id.llayPlanogram)
+    LinearLayout llayPlanogram;
+
+    @BindView(R.id.llayViewAllPlanogram)
+    LinearLayout llayViewAllPlanogram;
+
     //------------------------------------------
     @BindView(R.id.llayTitleExpiringProduct)
     LinearLayout llayTitleExpiringProduct;
@@ -100,6 +112,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     ArrayList<NewProductModel.Result> resultNewArrayList;
     ArrayList<DashboardExpiryProductModel.Result> resultExpiryArrayList;
     ArrayList<DashboardInStoreModel.Result> resultInStoreArrayList;
+    ArrayList<DashboardPlanogramModel.Result> resultArrayListPlanogram;
 
 
     @Override
@@ -132,7 +145,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
         this.resultRecentArrayList = resultArrayList;
         callingNewProductUpdate();//calling New Product Api
 
-        if(this.resultRecentArrayList.size()>0){
+        if (this.resultRecentArrayList.size() > 0) {
             llayRecentPrice.setVisibility(View.VISIBLE);
             llayViewAllRecent.setVisibility(View.VISIBLE);
 
@@ -140,7 +153,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
             recyclerViewRecentProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
             recyclerViewNewProduct.setNestedScrollingEnabled(false);
             recyclerViewRecentProduct.setAdapter(adapter);
-        }else{
+        } else {
             llayRecentPrice.setVisibility(View.GONE);
             llayViewAllRecent.setVisibility(View.GONE);
         }
@@ -183,7 +196,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     public void onSuccessOfNewProductUpdate(ArrayList<NewProductModel.Result> resultArrayList) {
 
         this.resultNewArrayList = resultArrayList;
-        callingExpiryProductApi();//calling expiry product api
+        callingPlanogramApi();//calling planogram  api
         if (this.resultNewArrayList.size() > 0) {
             llayTitleNewProductUpdate.setVisibility(View.VISIBLE);
             llayViewAllNewProduct.setVisibility(View.VISIBLE);
@@ -192,7 +205,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
             recyclerViewNewProduct.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
             recyclerViewNewProduct.setNestedScrollingEnabled(false);
             recyclerViewNewProduct.setAdapter(adapter);
-        }else{
+        } else {
             llayTitleNewProductUpdate.setVisibility(View.GONE);
             llayViewAllNewProduct.setVisibility(View.GONE);
         }
@@ -210,7 +223,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onUnsccessOfNewProductUpdate(String message) {
 
-        callingExpiryProductApi();//calling expiry product api
+        callingPlanogramApi();//calling planogram  api
 
         SnackNotify.showMessage(message, relLayout);
     }
@@ -231,7 +244,58 @@ public class DashboardFragment extends Fragment implements DashboardView {
         dashboardPresenterImpl.newProductApi(timeOneMonthAgo);
     }
 
-    //third section
+//third section
+
+    @Override
+    public void onSuccessPlanogram(ArrayList<DashboardPlanogramModel.Result> resultArrayListPlanogram) {
+        this.resultArrayListPlanogram = resultArrayListPlanogram;
+        callingExpiryProductApi();//calling expiry product api
+
+        if (this.resultArrayListPlanogram.size() > 0) {
+            llayViewAllPlanogram.setVisibility(View.VISIBLE);
+            llayPlanogram.setVisibility(View.VISIBLE);
+
+            DashboardPlanogramAdapter adapter = new DashboardPlanogramAdapter(getActivity(), resultArrayListPlanogram);
+            recyclerViewPlanogram.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            recyclerViewPlanogram.setNestedScrollingEnabled(false);
+            recyclerViewPlanogram.setAdapter(adapter);
+        } else {
+            llayTitleNewProductUpdate.setVisibility(View.GONE);
+            llayViewAllNewProduct.setVisibility(View.GONE);
+        }
+    }
+
+    @OnClick(R.id.llayViewAllPlanogram)
+    public void llayViewAllPlanogramClikc() {
+        Intent intent = new Intent(getActivity(), PlanogramActivity.class);
+        if (resultArrayListPlanogram != null) {
+            intent.putExtra(ConstIntent.KEY_DB_PLANOGRAM, resultArrayListPlanogram);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onUnsuccessPlanogram(String message) {
+        callingExpiryProductApi();//calling expiry product api
+    }
+
+    @Override
+    public void onInternetErrorPlanogram() {
+        SnackNotify.checkConnection(onRetryPlanogram, relLayout);
+    }
+
+    OnClickInterface onRetryPlanogram = new OnClickInterface() {
+        @Override
+        public void onClick() {
+            callingPlanogramApi();
+        }
+    };
+
+    private void callingPlanogramApi() {
+        dashboardPresenterImpl.planogramApi();
+    }
+
+    //fourth section
     @Override
     public void onSuccessOfExpiryProduct(ArrayList<DashboardExpiryProductModel.Result> resultArrayList) {
 
@@ -289,7 +353,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     }
 
 
-    //fourth section
+    //fivth section
     @Override
     public void onSuccessOfInstoreSampling(ArrayList<DashboardInStoreModel.Result> resultArrayList) {
 

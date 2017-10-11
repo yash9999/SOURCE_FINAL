@@ -5,7 +5,8 @@ package com.example.yogeshgarg.source.mvp.faq;
  */
 
 public interface FAQView {
-    public void onSuccessFaqApi();
-    public void onUnsuccessFaqApi(String message);
-    public void onInternetErrorFaqApi();
+
+    public void onSuccessFaqApi(FAQModel.Result result);
+    public void onUnsuccess(String message);
+    public void onInternetError();
 }

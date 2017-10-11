@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -24,6 +26,9 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
 
     @BindView(R.id.imgViewBack)
     ImageView imgViewBack;
+
+    @BindView(R.id.relLay)
+    RelativeLayout relLay;
 
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
@@ -49,7 +54,13 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
     @Override
     public void onSuccess(ArrayList<StoreCategoryModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
-        setLayoutManager();
+        if (resultArrayList.size() > 0) {
+            relLay.setVisibility(View.VISIBLE);
+            setLayoutManager();
+        } else {
+            relLay.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -82,7 +93,7 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
 
     private void setFont() {
         txtViewTitle.setText(getString(R.string.categories));
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 
     private void setLayoutManager() {
@@ -96,13 +107,19 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
     }
 
     private void setAdapter() {
-        StoreCategoryAdapter storeCategoryAdapter = new StoreCategoryAdapter(this, resultArrayList);
+        ArrayList<StoreCategoryModel.Result> publishResultArrayList = new ArrayList<>();
+        for (int i = 0; i < resultArrayList.size(); i++) {
+            if (resultArrayList.get(i).getPublish() == 1) {
+                publishResultArrayList.add(resultArrayList.get(i));
+            }
+        }
+        StoreCategoryAdapter storeCategoryAdapter = new StoreCategoryAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(storeCategoryAdapter);
     }
 
 
-    private void callingInStoreCategoryApi(){
-        StoreCategoryPresenterImpl storeCategoryPresenterImpl=new StoreCategoryPresenterImpl(this,this);
+    private void callingInStoreCategoryApi() {
+        StoreCategoryPresenterImpl storeCategoryPresenterImpl = new StoreCategoryPresenterImpl(this, this);
         storeCategoryPresenterImpl.callingStoreCategoryApi();
     }
 }

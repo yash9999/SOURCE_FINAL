@@ -44,26 +44,27 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyTeamModel.Result product=products.get(position);
 
-        Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImagelink()).transform(new CircleTransform()).into(holder.imgUser);
-        holder.txtUserName.setText(product.getFirstname()+" "+product.getLastname());
-        holder.txtPhone.setText(product.getPhone());
+        Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImagelink()).transform(new CircleTransform()).into(holder.imgViewProfile);
+        holder.txtViewName.setText(product.getFirstname()+" "+product.getLastname());
+        holder.txtViewNumber.setText(product.getPhone());
 
-        holder.txtLocation.setText(product.getStore());
+        holder.txtViewStore.setText(product.getStore());
 
         if(product.getLogged().equals("Yes")){
-            holder.txtStatus.setTextColor(ContextCompat.getColor(context,R.color.color_bg));
-            holder.txtStatus.setText("Online");
+            holder.txtViewStatus.setTextColor(ContextCompat.getColor(context,R.color.color_bg));
+            holder.txtViewStatus.setText("Online");
+            holder.imgViewMessage.setImageResource(R.mipmap.ic_chat_online);
         }else{
-            holder.txtStatus.setTextColor(ContextCompat.getColor(context,R.color.color_black));
-            holder.txtStatus.setText("Offline");
+            holder.txtViewStatus.setTextColor(ContextCompat.getColor(context,R.color.color_black));
+            holder.txtViewStatus.setText("Offline");
+            holder.imgViewMessage.setImageResource(R.mipmap.ic_chat_offline);
         }
 
         //Font
-        FontHelper.applyFont(context,holder.txtUserName, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(context,holder.txtPhone, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(context,holder.txtUserMessage, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(context,holder.txtLocation, FontHelper.FontType.FONT_Normal);
-        FontHelper.applyFont(context,holder.txtStatus, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtViewName, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtViewNumber, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtViewStatus, FontHelper.FontType.FONT_Normal);
+        FontHelper.applyFont(context,holder.txtViewStore, FontHelper.FontType.FONT_Normal);
 
     }
 
@@ -73,23 +74,25 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.imgUser)
-        ImageView imgUser;
 
-        @BindView(R.id.txtUserName)
-        TextView txtUserName;
 
-       @BindView(R.id.txtPhone)
-        TextView txtPhone;
+        @BindView(R.id.imgViewProfile)
+        ImageView imgViewProfile;
 
-        @BindView(R.id.txtUserMessage)
-        TextView txtUserMessage;
+        @BindView(R.id.txtViewName)
+        TextView txtViewName;
 
-        @BindView(R.id.txtLocation)
-        TextView txtLocation;
+       @BindView(R.id.txtViewStore)
+        TextView txtViewStore;
 
-        @BindView(R.id.txtStatus)
-        TextView txtStatus;
+        @BindView(R.id.txtViewNumber)
+        TextView txtViewNumber;
+
+        @BindView(R.id.txtViewStatus)
+        TextView txtViewStatus;
+
+        @BindView(R.id.imgViewMessage)
+        ImageView imgViewMessage;
 
 
 

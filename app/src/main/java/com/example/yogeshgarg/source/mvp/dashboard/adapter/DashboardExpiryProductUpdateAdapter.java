@@ -69,27 +69,8 @@ public class DashboardExpiryProductUpdateAdapter extends RecyclerView.Adapter<Da
         holder.txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
 
 
-        String dateadded = result.getDateadded();
+        holder.txtViewProductDate.setText(setDate(result.getDateadded()));
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date currentDate = new Date();
-        String daysToShow = null;
-        try {
-            String strCurrentDate = simpleDateFormat.format(currentDate);
-            Date onDateAdded = simpleDateFormat.parse(dateadded);
-            Date currentUpdateDay = simpleDateFormat.parse(strCurrentDate);
-            long diff = currentUpdateDay.getTime() - onDateAdded.getTime();
-            daysToShow = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        if ((Integer.parseInt(daysToShow) == 1) || (Integer.parseInt(daysToShow) == 0)) {
-            holder.txtViewProductDate.setText(daysToShow + " Day ago");
-        } else {
-            holder.txtViewProductDate.setText(daysToShow + " Days ago");
-        }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,31 +107,7 @@ public class DashboardExpiryProductUpdateAdapter extends RecyclerView.Adapter<Da
                 txtViewProductQuantity.setText("UOM: " + result.getWeight() + result.getItemUnitMeasure());
                 txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
 
-
-                String dateadded = result.getDateadded();
-
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date currentDate = new Date();
-                String daysToShow = null;
-                try {
-                    String strCurrentDate = simpleDateFormat.format(currentDate);
-                    Date onDateAdded = simpleDateFormat.parse(dateadded);
-                    Date currentUpdateDay = simpleDateFormat.parse(strCurrentDate);
-                    long diff = currentUpdateDay.getTime() - onDateAdded.getTime();
-                    daysToShow = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                if ((Integer.parseInt(daysToShow) == 1) || (Integer.parseInt(daysToShow) == 0)) {
-                    txtViewProductDate.setText(daysToShow + " Day ago");
-                } else {
-                    txtViewProductDate.setText(daysToShow + " Days ago");
-                }
-
-
-
+                txtViewProductDate.setText(setDate(result.getDateadded()));
 
                 imgViewClose.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -170,6 +127,28 @@ public class DashboardExpiryProductUpdateAdapter extends RecyclerView.Adapter<Da
     public int getItemCount() {
         return resultArrayList.size();
     }
+
+    private String setDate(String rawDate) {
+        String dateToShow = null;
+
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date dateInitial = null;
+            try {
+                dateInitial = simpleDateFormat.parse(rawDate);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            SimpleDateFormat newFormatDate = new SimpleDateFormat("MMM dd, yyyy");
+            dateToShow = newFormatDate.format(dateInitial);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return dateToShow;
+    }
+
 
     public class Holder extends RecyclerView.ViewHolder {
 

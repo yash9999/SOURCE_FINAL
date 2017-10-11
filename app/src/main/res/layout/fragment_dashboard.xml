@@ -152,6 +152,71 @@
                 android:layout_marginRight="5dp">
 
                 <LinearLayout
+                    android:id="@+id/llayPlanogram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtTitlePlanogram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Planogram Updates"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:background="@android:color/black" />
+
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@android:color/black" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llayViewAllPlanogram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtViewAllPlanogram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/txt_color_green"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewPlanogram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp">
+
+                <LinearLayout
                     android:id="@+id/llayTitleExpiringProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -195,7 +260,7 @@
                         android:layout_height="wrap_content"
                         android:text="View All"
                         android:textColor="@color/txt_color_green"
-                        android:textSize="10sp" />
+                        android:textSize="12sp" />
 
 
                 </LinearLayout>
@@ -259,7 +324,7 @@
                         android:layout_height="wrap_content"
                         android:text="View All"
                         android:textColor="@color/txt_color_green"
-                        android:textSize="10sp" />
+                        android:textSize="12sp" />
 
 
                 </LinearLayout>

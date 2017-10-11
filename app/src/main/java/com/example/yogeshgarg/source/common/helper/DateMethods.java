@@ -26,4 +26,25 @@ public class DateMethods {
         return formattedDate;
     }
 
+    public  static  String setDate(String rawDate) {
+        String dateToShow = null;
+
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date dateInitial = null;
+            try {
+                dateInitial = simpleDateFormat.parse(rawDate);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            SimpleDateFormat newFormatDate = new SimpleDateFormat("MMM dd, yyyy");
+            dateToShow = newFormatDate.format(dateInitial);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return dateToShow;
+    }
+
 }

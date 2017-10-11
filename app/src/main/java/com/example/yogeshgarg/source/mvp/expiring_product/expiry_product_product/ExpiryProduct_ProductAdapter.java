@@ -41,34 +41,40 @@ public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryPro
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.item_ep_product, parent, false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_expiry_category, parent, false);
         return new Holder(view);
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        ExpiryProduct_ProductModel.Result result = resultArrayList.get(position);
+        final ExpiryProduct_ProductModel.Result result = resultArrayList.get(position);
         String link = result.getImage();
 
-        String productName = result.getProductName();
-        String categoryName = result.getCategoryName();
-        final String stock = result.getStock();
+
+        final String productName = result.getProductName();
+        final String brandName = result.getBrandName();
+
+        final int stock = result.getStock();
         final String stockUnit = result.getStockUnitMeasure();
         final String productId = result.getProductId();
 
-        holder.txtViewCategoryName.setText(Utils.camelCasing(categoryName));
-        holder.txtViewProductName.setText(Utils.camelCasing(productName));
+        holder.txtViewCategoryName.setText(Utils.camelCasing(productName));
+        holder.txtViewProductQuantity.setText(Utils.camelCasing(brandName));
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + link).transform(new CircleTransform()).into(holder.imgViewProduct);
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + link).transform(new CircleTransform()).into(holder.imgViewCategory);
 
         holder.relLayImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, ExpiryProductCalendarActivity.class);
                 intent.putExtra(ConstIntent.KEY_PRODUCT_ID, productId);
-                intent.putExtra(ConstIntent.KEY_STOCK, stock);
+                intent.putExtra(ConstIntent.KEY_STOCK, String.valueOf(stock));
                 intent.putExtra(ConstIntent.KEY_STOCK_UNIT, stockUnit);
-                ((ExpiryProduct_ProductActivity) activity).startActivity(intent);
+                intent.putExtra(ConstIntent.PRODUCT_NAME, productName);
+                intent.putExtra(ConstIntent.BRAND_NAME, brandName);
+                intent.putExtra(ConstIntent.EXPIRY_PRODUCT_IMAGE, result.getImage());
+
+                activity.startActivity(intent);
             }
         });
 
@@ -85,14 +91,14 @@ public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryPro
         @BindView(R.id.relLayImages)
         RelativeLayout relLayImages;
 
-        @BindView(R.id.imgViewProduct)
-        ImageView imgViewProduct;
+        @BindView(R.id.imgViewCategory)
+        ImageView imgViewCategory;
 
         @BindView(R.id.txtViewCategoryName)
         TextView txtViewCategoryName;
 
-        @BindView(R.id.txtViewProductName)
-        TextView txtViewProductName;
+        @BindView(R.id.txtViewProductQuantity)
+        TextView txtViewProductQuantity;
 
         public Holder(View itemView) {
             super(itemView);
@@ -102,7 +108,7 @@ public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryPro
 
         private void setFont() {
             FontHelper.setFontFace(txtViewCategoryName, FontHelper.FontType.FONT_Normal, activity);
-            FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Normal, activity);
+            FontHelper.setFontFace(txtViewProductQuantity, FontHelper.FontType.FONT_Normal, activity);
         }
 
     }

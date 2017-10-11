@@ -7,12 +7,14 @@ import com.example.yogeshgarg.source.common.helper.Progress;
 import com.example.yogeshgarg.source.common.requestResponse.ApiAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
 
 import org.json.JSONObject;
 
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -140,7 +142,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
     }
 
-
+    //expiry product
     @Override
     public void expiryProductApi(String timeOneMonthAgo) {
         try {
@@ -150,6 +152,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             dashboardView.onInternetErrorOfExpiryProduct();
         }
     }
+
 
     private void callingExpiryProductApi(String timeOneMonthAgo) {
         Progress.start(activity);
@@ -211,7 +214,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
         try {
             jsonObject = new JSONObject();
-           // jsonObject.put(Const.KEY_DATE, timeOneMonthAgo);
+            // jsonObject.put(Const.KEY_DATE, timeOneMonthAgo);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -248,5 +251,54 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
     }
 
+    @Override
+    public void planogramApi() {
+        try {
+            ApiAdapter.getInstance(activity);
+            callingPlanogramApi();
+        } catch (ApiAdapter.NoInternetException ex) {
+            dashboardView.onInternetErrorPlanogram();
+        }
+    }
 
+    private void callingPlanogramApi() {
+        Progress.start(activity);
+
+        try {
+            jsonObject = new JSONObject();
+            //jsonObject.put(Const.KEY_DATE, timeOneMonthAgo);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject().toString()));
+
+        Call<DashboardPlanogramModel> getPlanogramResult = ApiAdapter.getApiService().gettingResultOfPlanogram("application/json", "no-cache", body);
+
+        getPlanogramResult.enqueue(new Callback<DashboardPlanogramModel>() {
+            @Override
+            public void onResponse(Call<DashboardPlanogramModel> call, Response<DashboardPlanogramModel> response) {
+
+               Progress.stop();
+                try {
+                    DashboardPlanogramModel dashboardPlanogramModel = response.body();
+
+                    if (dashboardPlanogramModel.getSuccessful()) {
+                        dashboardView.onSuccessPlanogram(dashboardPlanogramModel.getResult());
+                    } else {
+                        dashboardView.onUnsuccessPlanogram(dashboardPlanogramModel.getMessage());
+                    }
+                } catch (NullPointerException exp) {
+                    dashboardView.onUnsuccessPlanogram(activity.getString(R.string.server_error));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DashboardPlanogramModel> call, Throwable t) {
+                Progress.stop();
+                t.printStackTrace();
+                dashboardView.onUnsuccessPlanogram(activity.getString(R.string.server_error));
+            }
+        });
+    }
 }

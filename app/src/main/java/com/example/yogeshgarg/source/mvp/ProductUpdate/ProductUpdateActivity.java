@@ -255,7 +255,7 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
 
     private void setFont() {
         imgViewDots.setVisibility(View.VISIBLE);
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
 
         FontHelper.setFontFace(txtViewTitleProductName, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Normal, this);
@@ -313,7 +313,7 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
         String upcNumber = priceSurveyProductModelResult.getUpc().toString();
         String lastUpdate = priceSurveyProductModelResult.getLastupdated();
 
-        String stock = priceSurveyProductModelResult.getStock();
+        int stock = priceSurveyProductModelResult.getStock();
 
 
         String stockUnit = priceSurveyProductModelResult.getStockUnitMeasure();
@@ -329,12 +329,14 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
         txtViewUOM.setText(uom);
         txtViewUPC.setText(upcNumber);
 
-        if (Utils.isEmptyOrNull(stock)) {
+        edtTextStock.setText(String.valueOf(stock));
+
+        /*if (stock==0) {
             edtTextStock.setText("");
             edtTextStock.setHint("-------");
         } else {
-            edtTextStock.setText(stock);
-        }
+
+        }*/
 
         if (Utils.isEmptyOrNull(stockUnit)) {
             edtTextStockUnit.setText("");
@@ -463,7 +465,8 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
     public void relLayLastPriceClick() {
         inStore = 1;
         imgViewLastPrice.setImageDrawable(ContextCompat.getDrawable(this, R.mipmap.ic_circle_dot_green));
-
+        edtTextPrice.setText(priceSurveyProductModelResult.getCost());
+        txtViewFinalPrice.setText("");
 
         imgViewNotInStore.setImageDrawable(ContextCompat.getDrawable(this, R.mipmap.ic_circle_clear_green));
         imgViewReset.setImageDrawable(ContextCompat.getDrawable(this, R.mipmap.ic_circle_clear_green));
@@ -527,7 +530,7 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
     public void relLayResetClick() {
         inStore = 1;
         imgViewReset.setImageDrawable(ContextCompat.getDrawable(this, R.mipmap.ic_circle_dot_green));
-
+        setData();
 
         imgViewLastPrice.setImageDrawable(ContextCompat.getDrawable(this, R.mipmap.ic_circle_clear_green));
         imgViewNotInStore.setImageDrawable(ContextCompat.getDrawable(this, R.mipmap.ic_circle_clear_green));

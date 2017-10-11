@@ -18,6 +18,7 @@ import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.mvp.price_survey_brand.PriceSurveyBrandActivity;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductActivity;
 import com.squareup.picasso.Picasso;
 
@@ -55,60 +56,64 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         PriceSurveyModel.Result result = resultArrayList.get(position);
-
-        String completed = String.valueOf(result.getCompleted());
-        String productQuantity = result.getProducts();
-        String brandQuantity = result.getBrands();
-        String categoryName = result.getName();
-
-        final String categoryId = result.getCategoryId();
+        int publish = result.getPublish();
 
 
-        holder.txtViewCategoryName.setText(Utils.camelCasing(categoryName));
-
-        holder.progressBar.setProgress(Integer.parseInt(completed));
-
-        holder.txtViewCompleted.setText(completed + "% Done");
-
-        String brands, products;
-        if (Integer.parseInt(brandQuantity) == 1 || Integer.parseInt(brandQuantity) == 0) {
-            brands = brandQuantity + " Brand";
-        } else {
-            brands = brandQuantity + " Brands";
-        }
-
-        if (Integer.parseInt(productQuantity) == 1 || Integer.parseInt(productQuantity) == 0) {
-            products = productQuantity + " Product";
-        } else {
-            products = productQuantity + " Products";
-        }
-
-        holder.txtViewProductQuantity.setText(brands + ", " +products);
-
-        String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
-        URL myURL = null;
-
-        try {
-            myURL = new URL(link);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+            String completed = String.valueOf(result.getCompleted());
+            String productQuantity = result.getProducts();
+            String brandQuantity = result.getBrands();
+            String categoryName = result.getName();
 
 
-        Picasso.with(activity).load(String.valueOf(myURL)).transform(new CircleTransform()).into(holder.imgViewCategory);
+            final String categoryId = result.getCategoryId();
 
-        holder.relLayImages.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, PriceSurveyProductActivity.class);
-                intent.putExtra(ConstIntent.KEY_CATEGORY_ID, categoryId);
-                intent.putExtra(ConstIntent.KEY_INITIAL_DATE_TO_SEND, initialDateSend);
-                intent.putExtra(ConstIntent.KEY_FINAL_DATE_TO_SEND, finalDateSend);
-                activity.startActivity(intent);
+
+            holder.txtViewCategoryName.setText(Utils.camelCasing(categoryName));
+
+            holder.progressBar.setProgress(Integer.parseInt(completed));
+
+            holder.txtViewCompleted.setText(completed + "% Done");
+
+            String brands, products;
+            if (Integer.parseInt(brandQuantity) == 1 || Integer.parseInt(brandQuantity) == 0) {
+                brands = brandQuantity + " Brand";
+            } else {
+                brands = brandQuantity + " Brands";
             }
-        });
 
-    }
+            if (Integer.parseInt(productQuantity) == 1 || Integer.parseInt(productQuantity) == 0) {
+                products = productQuantity + " Product";
+            } else {
+                products = productQuantity + " Products";
+            }
+
+            holder.txtViewProductQuantity.setText(brands + ", " + products);
+
+            String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
+            URL myURL = null;
+
+            try {
+                myURL = new URL(link);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+
+            Picasso.with(activity).load(String.valueOf(myURL)).transform(new CircleTransform()).into(holder.imgViewCategory);
+
+            holder.relLayImages.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(activity, PriceSurveyBrandActivity.class);
+                    intent.putExtra(ConstIntent.KEY_CATEGORY_ID, categoryId);
+                    intent.putExtra(ConstIntent.KEY_INITIAL_DATE_TO_SEND, initialDateSend);
+                    intent.putExtra(ConstIntent.KEY_FINAL_DATE_TO_SEND, finalDateSend);
+                    activity.startActivity(intent);
+                }
+            });
+
+        }
+
 
     @Override
     public int getItemCount() {
@@ -145,7 +150,6 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
         private void setFont() {
             FontHelper.setFontFace(txtViewCategoryName, FontHelper.FontType.FONT_Semi_Bold, activity);
             FontHelper.setFontFace(txtViewProductQuantity, FontHelper.FontType.FONT_Normal, activity);
-
             FontHelper.setFontFace(txtViewCompleted, FontHelper.FontType.FONT_Normal, activity);
         }
     }

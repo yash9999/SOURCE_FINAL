@@ -86,7 +86,13 @@ public class ExpiryProductCategoryActivity extends AppCompatActivity implements 
     }
 
     private void setAdapter() {
-        ExpiryProductCategoryAdapter expiryProductCategoryAdapter = new ExpiryProductCategoryAdapter(this, resultArrayList);
+        ArrayList<ExpiryProductCategoryModel.Result> publishResultArrayList = new ArrayList<>();
+        for (int i = 0; i < resultArrayList.size(); i++) {
+            if (resultArrayList.get(i).getPublish() == 1) {
+                publishResultArrayList.add(resultArrayList.get(i));
+            }
+        }
+        ExpiryProductCategoryAdapter expiryProductCategoryAdapter = new ExpiryProductCategoryAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(expiryProductCategoryAdapter);
     }
 
@@ -102,6 +108,6 @@ public class ExpiryProductCategoryActivity extends AppCompatActivity implements 
 
     private void setFont() {
         txtViewTitle.setText(getString(R.string.categories));
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 }

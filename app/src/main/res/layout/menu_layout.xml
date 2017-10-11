@@ -293,10 +293,37 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linLayNewProduct"
+                    android:id="@+id/linLayProductList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linLayPriceSurvey"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewProductList"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_product_list"/>
+
+                    <TextView
+                        android:id="@+id/txtViewProductList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="40dp"
+                        android:text="@string/product_list"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/txt_14_sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linLayNewProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/linLayProductList"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:padding="5dp">
@@ -439,7 +466,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        android:src="@mipmap/ic_vacation"/>
+                        android:src="@mipmap/ic_vacation_black"/>
 
                     <TextView
                         android:id="@+id/txtViewVacation"

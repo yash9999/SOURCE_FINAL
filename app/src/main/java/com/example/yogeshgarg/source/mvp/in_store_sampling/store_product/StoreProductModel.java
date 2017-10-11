@@ -12,17 +12,16 @@ import java.util.ArrayList;
 
 public class StoreProductModel {
 
+
     @SerializedName("message")
     @Expose
     private String message;
-
     @SerializedName("successful")
     @Expose
     private Boolean successful;
-
     @SerializedName("Result")
     @Expose
-    private ArrayList<StoreProductModel.Result> result = null;
+    private ArrayList<Result> result = null;
 
     public String getMessage() {
         return message;
@@ -40,13 +39,14 @@ public class StoreProductModel {
         this.successful = successful;
     }
 
-    public ArrayList<StoreProductModel.Result> getResult() {
+    public ArrayList<Result> getResult() {
         return result;
     }
 
-    public void setResult(ArrayList<StoreProductModel.Result> result) {
+    public void setResult(ArrayList<Result> result) {
         this.result = result;
     }
+
 
     public class Result {
 
@@ -154,7 +154,7 @@ public class StoreProductModel {
         private String stocklastupdated;
         @SerializedName("stock")
         @Expose
-        private String stock;
+        private Integer stock;
         @SerializedName("stock_unit_measure")
         @Expose
         private String stockUnitMeasure;
@@ -164,6 +164,9 @@ public class StoreProductModel {
         @SerializedName("type")
         @Expose
         private String type;
+        @SerializedName("publish")
+        @Expose
+        private String publish;
 
         public String getStoreName() {
             return storeName;
@@ -437,11 +440,11 @@ public class StoreProductModel {
             this.stocklastupdated = stocklastupdated;
         }
 
-        public String getStock() {
+        public Integer getStock() {
             return stock;
         }
 
-        public void setStock(String stock) {
+        public void setStock(Integer stock) {
             this.stock = stock;
         }
 
@@ -469,7 +472,14 @@ public class StoreProductModel {
             this.type = type;
         }
 
-    }
+        public String getPublish() {
+            return publish;
+        }
 
+        public void setPublish(String publish) {
+            this.publish = publish;
+        }
+
+    }
 
 }

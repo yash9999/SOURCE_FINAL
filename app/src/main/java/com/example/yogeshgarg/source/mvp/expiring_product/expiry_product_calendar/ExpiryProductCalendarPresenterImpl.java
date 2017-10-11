@@ -35,18 +35,18 @@ public class ExpiryProductCalendarPresenterImpl implements ExpiryProductCalendar
     }
 
     @Override
-    public void callingExpirtProductCalendarApi(String productId, String start, String end, String stock, String stockUnit, String comment, int days) {
+    public void callingExpirtProductCalendarApi(String productId, String start,  String stock, String stockUnit, String comment) {
         try {
             ApiAdapter.getInstance(activity);
-            if (validation(productId, start, end, stock, stockUnit, comment, days)) {
-                getResultOfExpiryProductAdd(productId, start, end, stock, stockUnit, comment);
+            if (validation(productId, start, stock, stockUnit, comment)) {
+                getResultOfExpiryProductAdd(productId, start,  stock, stockUnit, comment);
             }
         } catch (ApiAdapter.NoInternetException ex) {
             expiryProductCalendarView.onInternetError();
         }
     }
 
-    private void getResultOfExpiryProductAdd(String productId, String start, String end, String stock, String stockUnit, String comment) {
+    private void getResultOfExpiryProductAdd(String productId, String start,  String stock, String stockUnit, String comment) {
         Progress.start(activity);
 
         UserSession userSession = new UserSession(activity);
@@ -57,7 +57,6 @@ public class ExpiryProductCalendarPresenterImpl implements ExpiryProductCalendar
             jsonObject.put(Const.KEY_PRODUCT_ID, productId);
             jsonObject.put(Const.KEY_LOCATIONID_REAL, locationId);
             jsonObject.put(Const.KEY_START, start);
-            jsonObject.put(Const.KEY_END, end);
             jsonObject.put(Const.KEY_COMMENT, comment);
             jsonObject.put(Const.KEY_STOCK, stock + stockUnit);
         } catch (JSONException ex) {
@@ -96,16 +95,10 @@ public class ExpiryProductCalendarPresenterImpl implements ExpiryProductCalendar
         });
     }
 
-    private boolean validation(String productId, String start, String end, String stock, String stockUnit, String comment, int days) {
+    private boolean validation(String productId, String start,  String stock, String stockUnit, String comment) {
 
         if (Utils.isEmptyOrNull(start)) {
             expiryProductCalendarView.onUnsuccess(activity.getString(R.string.start__date_empty));
-            return false;
-        } else if (Utils.isEmptyOrNull(end)) {
-            expiryProductCalendarView.onUnsuccess(activity.getString(R.string.end_date_empty));
-            return false;
-        } else if (days < 0) {
-            expiryProductCalendarView.onUnsuccess("From date cannot be greater than To date.");
             return false;
         }
 

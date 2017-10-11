@@ -19,20 +19,28 @@ public class ConstIntent {
     public static final String KEY_DB_NEW_PRODUCT = "dbNewProduct";
     public static final String KEY_DB_EXPIRY_PRODUCT = "dbExpiryProduct";
     public static final String KEY_DB_INSTORE_SAMPLING = "dbInstoreSampling";
+    public static final String KEY_DB_PLANOGRAM = "dbPlanogram";
 
+    public static final String KEy_BRAND_ID = "brandId";
 
     public static final String KEY_STOCK = "stockMeasure";
-    public static final String KEY_STOCK_UNIT="stockUnit";
+    public static final String KEY_STOCK_UNIT = "stockUnit";
     public static final String KEY_PRODUCT_ID = "productId";
 
-    public static final String KEY_OPEN_NEW_PRODUCT_FRAG="open";
+    public static final String KEY_OPEN_NEW_PRODUCT_FRAG = "open";
 
-    public static final String KEY_INSTORE_BRAND_NAME="categoryName";
-    public static final String KEY_INSTORE_PRODUCT_NAME="productName";
-    public static final String KEY_INSTORE_LINK="link";
+    public static final String KEY_INSTORE_BRAND_NAME = "categoryName";
+    public static final String KEY_INSTORE_PRODUCT_NAME = "productName";
+    public static final String KEY_INSTORE_LINK = "link";
 
 
-    public static final String FRAGMENT_TYPE="fragment_type";
+    public static final String FRAGMENT_TYPE = "fragment_type";
+
+    public static final String PRODUCT_NAME = "productName";
+    public static final String BRAND_NAME = "brandName";
+
+    public static final String EXPIRY_PRODUCT_IMAGE="expiry_product_images";
+    public static final String INSTORE_SAMPLING_IMAGE="instore_sampling_images";
 
 }
 
