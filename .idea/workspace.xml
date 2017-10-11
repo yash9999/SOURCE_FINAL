@@ -18,222 +18,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e108096e-387b-463f-ad35-f0964b6098a1" name="Default" comment="product list">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_back_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_chat_offline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_chat_online.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_product_list.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_toggle_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_toggle_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_vacation_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_back_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_chat_offline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_chat_online.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_product_list.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_toggle_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_toggle_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_vacation_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_back_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_chat_offline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_chat_online.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_product_list.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_toggle_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_toggle_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_vacation_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_back_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_chat_offline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_chat_online.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_product_list.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_toggle_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_toggle_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_vacation_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_back_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_chat_offline.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_chat_online.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_product_list.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_toggle_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_toggle_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_vacation_black.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/adapter/DashboardPlanogramAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/model/DashboardPlanogramModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard_activities/PlanogramActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard_activities/adapter/DashboardActivityPlanogramAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FaqActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/BrandPublishModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/CategoryPublishModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductPresenter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductPresenterImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductPublishModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cardview_background.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product_brand.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_faq.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_in_store_brand.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_planogram.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_price_survey_brand.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_list_brand.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_list_product.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_planogram.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_product_list_category.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_db_activity_planogram.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_expiry_product_home.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_planogram_updates.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_product_list.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/graphview_4_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/setting/SettingModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/setting/SettingPresenter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/setting/SettingPresenterImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/setting/SettingView.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_calendar.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_calendar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_cart.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_cart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_vacation.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_vacation.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_calendar.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_calendar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_cart.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_cart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_vacation.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_vacation.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_calendar.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_calendar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_cart.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_cart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_vacation.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_vacation.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_calendar.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_calendar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_cart.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_cart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_vacation.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_vacation.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_calendar.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_calendar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_cart.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_cart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_vacation.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_vacation.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-26.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-26.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_library_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_library_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/helper/DateMethods.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/helper/DateMethods.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/APIService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/APIService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ApiAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ApiAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/Const.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/Const.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ConstIntent.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ConstIntent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/ProductUpdate/ProductUpdateActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/ProductUpdate/ProductUpdateActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/DashboardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/adapter/DashboardExpiryProductUpdateAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/dashboard/adapter/DashboardExpiryProductUpdateAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiringProductFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiringProductFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiryProductHomeScreenAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiryProductHomeScreenAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_calendar/InStoreCalendarActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_calendar/InStoreCalendarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InstoreHomeAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InstoreHomeAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductHomeModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductHomeModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/notification_act/NotificationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/notification_act/NotificationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_analysis/PriceAnalysisFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_analysis/PriceAnalysisFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/setting/SettingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/setting/SettingFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/TeamAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/TeamAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product_calendar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product_calendar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_expiry_product_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_in_store_calendar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_in_store_calendar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_notification.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_price_survey_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_price_survey_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_update.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_update.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_store_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_store_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_store_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_store_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_vacation_calendar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_vacation_calendar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/dummu_toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dummu_toolbar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_expiring_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_expiring_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_in_store_sampling.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_in_store_sampling.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_price_survey.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_price_survey.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_setting.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_setting.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vacation.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vacation.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_category_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_category_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_expiry_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_expiry_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_expiry_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_expiry_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_instore_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_instore_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_instore_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_instore_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_newproduct_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_newproduct_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_notification.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_notification.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_price_survey_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_price_survey_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_vacation.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_vacation.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_team_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_team_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/menu_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/menu_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="Source.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -271,7 +57,31 @@
     <favorites_list name="Source" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="MyTeamFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_my_team.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -2803,7 +2613,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryPresenterImpl.java" />
@@ -2854,6 +2663,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml" />
       </list>
     </option>
   </component>
@@ -3024,6 +2834,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOURCE_FINAL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SOURCE_FINAL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mvp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="team" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -3039,7 +2887,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="device.picker.selection" value="ZY2235DGGR" />
+    <property name="device.picker.selection" value="S8_API_25" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="ExportApk.ApkPath" value="$USER_HOME$/Downloads" />
     <property name="ExportApk.Flavors" value="" />
@@ -3452,26 +3300,35 @@
       <option name="presentableId" value="Default" />
       <updated>1501331648493</updated>
     </task>
+    <task id="LOCAL-00001" summary="product list">
+      <created>1507750187512</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1507750187512</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="725" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.72085387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31527093" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3323263" sideWeight="0.5059347" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.863711" sideWeight="0.5323102" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9441708" sideWeight="0.4676898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23505655" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80131364" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3029079" sideWeight="0.49406528" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0549273" sideWeight="0.49406528" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21283785" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3484,7 +3341,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29402262" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833335" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -3518,6 +3374,24 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
@@ -3540,20 +3414,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/about/AboutPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/faq/FAQModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -3836,23 +3696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="91" column="18" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_product.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -3946,6 +3789,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
           <caret line="50" column="59" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="91" column="18" selection-start-line="91" selection-start-column="18" selection-end-line="91" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_product.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding />
         </state>
       </provider>
