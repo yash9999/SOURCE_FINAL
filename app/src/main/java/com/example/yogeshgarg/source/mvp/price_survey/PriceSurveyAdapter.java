@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -20,6 +22,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.price_survey_brand.PriceSurveyBrandActivity;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductActivity;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_category.ProductListCategoryModel;
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
@@ -33,16 +36,18 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 21/07/17.
  */
 
-public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.Holder> {
+public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<PriceSurveyModel.Result> resultArrayList;
+    ArrayList<PriceSurveyModel.Result> originalArrayList;
+    ArrayList<PriceSurveyModel.Result> filterResultArrayList;
     String initialDateSend = null;
     String finalDateSend = null;
 
     public PriceSurveyAdapter(Activity activity, ArrayList<PriceSurveyModel.Result> resultArrayList, String initialDateSend, String finalDateSend) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        filterResultArrayList=resultArrayList;
         this.initialDateSend = initialDateSend;
         this.finalDateSend = finalDateSend;
     }
@@ -55,7 +60,7 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        PriceSurveyModel.Result result = resultArrayList.get(position);
+        PriceSurveyModel.Result result = filterResultArrayList.get(position);
         int publish = result.getPublish();
 
 
@@ -117,7 +122,40 @@ public class PriceSurveyAdapter extends RecyclerView.Adapter<PriceSurveyAdapter.
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<PriceSurveyModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (PriceSurveyModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<PriceSurveyModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

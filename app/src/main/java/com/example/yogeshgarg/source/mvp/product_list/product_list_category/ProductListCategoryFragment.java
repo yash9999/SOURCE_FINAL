@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,8 +25,10 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ProductListCategoryFragment extends Fragment implements ProductListCategoryView {
+
 
     @BindView(R.id.txtViewMessage)
     TextView txtViewMessage;
@@ -34,6 +38,8 @@ public class ProductListCategoryFragment extends Fragment implements ProductList
 
     @BindView(R.id.relLay)
     RelativeLayout relLay;
+
+    SearchView searchView;
 
     @BindView(R.id.relLayout)
     RelativeLayout relLayout;
@@ -56,12 +62,15 @@ public class ProductListCategoryFragment extends Fragment implements ProductList
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product_list_category, container, false);
         ButterKnife.bind(this, view);
+        searchView = getActivity().findViewById(R.id.searchView);
+
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         productListCategoryPresenterImpl = new ProductListCategoryPresenterImpl(getActivity(), this);
         callingProductListCAtegoryApi();
     }
@@ -72,6 +81,19 @@ public class ProductListCategoryFragment extends Fragment implements ProductList
         if (resultArrayList.size() > 0) {
             relLayout.setVisibility(View.VISIBLE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    productListCategoryAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         }
     }
 
@@ -141,4 +163,6 @@ public class ProductListCategoryFragment extends Fragment implements ProductList
         this.categoryId = categoryId;
         productListCategoryPresenterImpl.callingPublishApi(publish, position, categoryId);
     }
+
+
 }

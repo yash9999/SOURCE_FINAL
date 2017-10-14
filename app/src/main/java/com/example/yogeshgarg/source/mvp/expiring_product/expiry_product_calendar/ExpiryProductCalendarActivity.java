@@ -62,6 +62,10 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
+
     @BindView(R.id.txtViewProductName)
     TextView txtViewProductName;
 
@@ -180,6 +184,8 @@ public class ExpiryProductCalendarActivity extends AppCompatActivity implements 
 
         FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Semi_Bold);
         txtViewTitle.setText("Expiry Product");
+        imgViewSearch.setVisibility(View.GONE);
+
         txtViewProductName.setText(productName);
         txtViewBrandName.setText(brandName);
         Picasso.with(this).load(ConstIntent.PREFIX_URL_OF_IMAGE + image).transform(new CircleTransform()).into(imgView);

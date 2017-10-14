@@ -77,6 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
+            style="@style/SearchViewMy"
+            android:theme="@style/SearchViewMy"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/imgViewCloseSV" />
     </RelativeLayout>

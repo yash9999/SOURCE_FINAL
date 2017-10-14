@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -46,6 +47,10 @@ public class InStoreCalendarActivity extends AppCompatActivity implements InStor
 
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
 
     @BindView(R.id.txtViewTitleFromDate)
     TextView txtViewTitleFromDate;
@@ -109,6 +114,7 @@ public class InStoreCalendarActivity extends AppCompatActivity implements InStor
 
         FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Semi_Bold);
         txtViewTitle.setText("In Store Sampling");
+        imgViewSearch.setVisibility(View.GONE);
 
         FontHelper.applyFont(this, txtViewProductName, FontHelper.FontType.FONT_Normal);
 

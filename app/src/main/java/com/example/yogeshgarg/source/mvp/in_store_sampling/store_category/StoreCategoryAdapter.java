@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_category.ExpiryProductCategoryAdapter;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product.ExpiryProduct_ProductActivity;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_brand.InStoreBrandActivity;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InStoreHomeModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_product.StoreProductActivity;
 import com.squareup.picasso.Picasso;
 
@@ -32,14 +35,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 15/08/17.
  */
 
-public class StoreCategoryAdapter extends RecyclerView.Adapter<StoreCategoryAdapter.Holder> {
+public class StoreCategoryAdapter extends RecyclerView.Adapter<StoreCategoryAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<StoreCategoryModel.Result> resultArrayList;
+    ArrayList<StoreCategoryModel.Result> originalArrayList;
+    ArrayList<StoreCategoryModel.Result> filterResultArrayList;
 
     public StoreCategoryAdapter(Activity activity, ArrayList<StoreCategoryModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        this.filterResultArrayList = resultArrayList;
     }
 
     @Override
@@ -50,7 +55,7 @@ public class StoreCategoryAdapter extends RecyclerView.Adapter<StoreCategoryAdap
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        StoreCategoryModel.Result result = resultArrayList.get(position);
+        StoreCategoryModel.Result result = filterResultArrayList.get(position);
 
         String productQuantity = result.getProducts();
 
@@ -103,7 +108,40 @@ public class StoreCategoryAdapter extends RecyclerView.Adapter<StoreCategoryAdap
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<StoreCategoryModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (StoreCategoryModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<StoreCategoryModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

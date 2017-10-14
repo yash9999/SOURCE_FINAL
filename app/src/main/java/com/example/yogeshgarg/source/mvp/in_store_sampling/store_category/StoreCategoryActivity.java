@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,6 +41,21 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
     @BindView(R.id.coordinateLayout)
     CoordinatorLayout coordinatorLayout;
 
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
+    @BindView(R.id.relLaySearch)
+    RelativeLayout relLaySearch;
+
+    @BindView(R.id.imgViewCloseSV)
+    ImageView imgViewCloseSV;
+
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
+    StoreCategoryAdapter storeCategoryAdapter;
+
     ArrayList<StoreCategoryModel.Result> resultArrayList = null;
 
 
@@ -47,6 +64,17 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_category);
         ButterKnife.bind(this);
+
+        imgViewSearch.setVisibility(View.VISIBLE);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+
+        ImageView searchViewIcon =(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        searchViewIcon.setVisibility(View.GONE);
+        ViewGroup linearLayoutSearchView=(ViewGroup)searchViewIcon.getParent();
+        linearLayoutSearchView.removeView(searchViewIcon);
+
+
         setFont();
         callingInStoreCategoryApi();
     }
@@ -57,7 +85,20 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
         if (resultArrayList.size() > 0) {
             relLay.setVisibility(View.VISIBLE);
             setLayoutManager();
-        } else {
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    storeCategoryAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
+        }
+        else {
             relLay.setVisibility(View.GONE);
         }
 
@@ -92,7 +133,7 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
     }
 
     private void setFont() {
-        txtViewTitle.setText(getString(R.string.categories));
+        txtViewTitle.setText(getString(R.string.in_store_sampling));
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 
@@ -113,7 +154,7 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
                 publishResultArrayList.add(resultArrayList.get(i));
             }
         }
-        StoreCategoryAdapter storeCategoryAdapter = new StoreCategoryAdapter(this, publishResultArrayList);
+          storeCategoryAdapter = new StoreCategoryAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(storeCategoryAdapter);
     }
 
@@ -122,4 +163,18 @@ public class StoreCategoryActivity extends AppCompatActivity implements StoreCat
         StoreCategoryPresenterImpl storeCategoryPresenterImpl = new StoreCategoryPresenterImpl(this, this);
         storeCategoryPresenterImpl.callingStoreCategoryApi();
     }
+
+
+    @OnClick(R.id.imgViewSearch)
+    public void searchViewClick() {
+        relLaySearch.setVisibility(View.VISIBLE);
+        searchView.setQueryHint("Search Category Name");
+    }
+
+    @OnClick(R.id.imgViewCloseSV)
+    public void imgViewCloseSVClick() {
+        searchView.setQuery("", true);
+        relLaySearch.setVisibility(View.GONE);
+    }
+
 }

@@ -344,7 +344,6 @@ public class ProfileFragment extends Fragment implements ProfileView {
     //-------------------------------------------------------------------------------------------------
     private void setFont() {
 
-
         FontHelper.setFontFace(txtViewTitleName, FontHelper.FontType.FONT_Normal, getActivity());
         FontHelper.setFontFace(txtViewTitleEmail, FontHelper.FontType.FONT_Normal, getActivity());
         FontHelper.setFontFace(txtViewTitlePhoneNumber, FontHelper.FontType.FONT_Normal, getActivity());

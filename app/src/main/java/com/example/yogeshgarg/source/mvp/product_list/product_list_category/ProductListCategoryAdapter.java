@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductAdapter;
 import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.ProductListBrandActivity;
+import com.example.yogeshgarg.source.mvp.product_list.product_list_product.ProductListProductModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,16 +31,18 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 29/09/17.
  */
 
-public class ProductListCategoryAdapter extends RecyclerView.Adapter<ProductListCategoryAdapter.Holder> {
+public class ProductListCategoryAdapter extends RecyclerView.Adapter<ProductListCategoryAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<ProductListCategoryModel.Result> resultArrayList;
+    ArrayList<ProductListCategoryModel.Result> originalArrayList;
+    ArrayList<ProductListCategoryModel.Result> filterResultArrayList;
 
     ProductListCategoryFragment productListCategoryFragment;
     public ProductListCategoryAdapter(Activity activity, ArrayList<ProductListCategoryModel.Result> resultArrayList,
                                       ProductListCategoryFragment productListCategoryFragment) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        filterResultArrayList=resultArrayList;
         this.productListCategoryFragment=productListCategoryFragment;
     }
 
@@ -49,7 +54,7 @@ public class ProductListCategoryAdapter extends RecyclerView.Adapter<ProductList
 
     @Override
     public void onBindViewHolder(Holder holder, final int position) {
-        final ProductListCategoryModel.Result result=resultArrayList.get(position);
+        final ProductListCategoryModel.Result result=filterResultArrayList.get(position);
         String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
         String brand=result.getBrands();
         String product=result.getProducts();
@@ -103,14 +108,46 @@ public class ProductListCategoryAdapter extends RecyclerView.Adapter<ProductList
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
     }
 
     public void changeToggled(int publish,int position){
-        resultArrayList.get(position).setPublish(publish);
+        filterResultArrayList.get(position).setPublish(publish);
         notifyDataSetChanged();
     }
 
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<ProductListCategoryModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (ProductListCategoryModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<ProductListCategoryModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
 
 
     public class Holder extends RecyclerView.ViewHolder {

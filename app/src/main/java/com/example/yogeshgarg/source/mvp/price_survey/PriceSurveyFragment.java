@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,9 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     String initialDateSend = null;
     String finalDateSend = null;
 
+    SearchView searchView;
+    PriceSurveyAdapter priceSurveyAdapter;
+
 
     ArrayList<PriceSurveyModel.Result> resultArrayList;
 
@@ -61,6 +65,7 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_price_survey, container, false);
         ButterKnife.bind(this, view);
+        searchView = getActivity().findViewById(R.id.searchView);
         setFont();
         return view;
     }
@@ -75,9 +80,22 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     public void onSuccessCategory(ArrayList<PriceSurveyModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
         setDate();
-        if(resultArrayList.size()>0){
+        if (resultArrayList.size() > 0) {
             relLayout.setVisibility(View.VISIBLE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    priceSurveyAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         }
 
     }
@@ -115,15 +133,15 @@ public class PriceSurveyFragment extends Fragment implements PriceSurveyView {
     }
 
     private void setAdapter() {
-        ArrayList<PriceSurveyModel.Result> publishResultArrayList=new ArrayList<>();
+        ArrayList<PriceSurveyModel.Result> publishResultArrayList = new ArrayList<>();
 
-        for(int i=0;i<resultArrayList.size();i++){
-            if(resultArrayList.get(i).getPublish()==1){
+        for (int i = 0; i < resultArrayList.size(); i++) {
+            if (resultArrayList.get(i).getPublish() == 1) {
                 publishResultArrayList.add(resultArrayList.get(i));
             }
         }
 
-        PriceSurveyAdapter priceSurveyAdapter = new PriceSurveyAdapter(getActivity(), publishResultArrayList, initialDateSend, finalDateSend);
+        priceSurveyAdapter = new PriceSurveyAdapter(getActivity(), publishResultArrayList, initialDateSend, finalDateSend);
         recyclerView.setAdapter(priceSurveyAdapter);
     }
 

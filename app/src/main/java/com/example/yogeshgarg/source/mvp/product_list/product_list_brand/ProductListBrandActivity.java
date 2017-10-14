@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -73,6 +74,15 @@ public class ProductListBrandActivity extends AppCompatActivity implements Produ
         ButterKnife.bind(this);
 
         imgViewSearch.setVisibility(View.VISIBLE);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+
+        ImageView searchViewIcon =(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        searchViewIcon.setVisibility(View.GONE);
+        ViewGroup linearLayoutSearchView=(ViewGroup)searchViewIcon.getParent();
+        linearLayoutSearchView.removeView(searchViewIcon);
+
+
 
         productListBrandPresenterImpl = new ProductListBrandPresenterImpl(this, this);
         Intent intent = getIntent();
@@ -90,6 +100,20 @@ public class ProductListBrandActivity extends AppCompatActivity implements Produ
         if (resultArrayList.size() > 0) {
             relLayout.setVisibility(View.VISIBLE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    productListBrandAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
+
         }
     }
 
@@ -181,12 +205,12 @@ public class ProductListBrandActivity extends AppCompatActivity implements Produ
     @OnClick(R.id.imgViewSearch)
     public void searchViewClick() {
         relLaySearch.setVisibility(View.VISIBLE);
-        searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search Brand Name");
     }
 
     @OnClick(R.id.imgViewCloseSV)
     public void imgViewCloseSVClick() {
+        searchView.setQuery("",true);
         relLaySearch.setVisibility(View.GONE);
     }
 

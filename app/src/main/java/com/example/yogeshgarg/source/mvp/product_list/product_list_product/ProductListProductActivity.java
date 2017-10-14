@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,6 +49,12 @@ public class ProductListProductActivity extends AppCompatActivity implements Pro
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
+    @BindView(R.id.relLaySearch)
+    RelativeLayout relLaySearch;
+
     String brandId;
     int publish, position;
     String productId;
@@ -59,7 +67,22 @@ public class ProductListProductActivity extends AppCompatActivity implements Pro
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list_product);
         ButterKnife.bind(this);
+
+        imgViewSearch.setVisibility(View.VISIBLE);
+
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+
+        ImageView searchViewIcon =(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        searchViewIcon.setVisibility(View.GONE);
+        ViewGroup linearLayoutSearchView=(ViewGroup)searchViewIcon.getParent();
+        linearLayoutSearchView.removeView(searchViewIcon);
+
+
+
+
         productListProductPresenterImpl = new ProductListProductPresenterImpl(this, this);
+
         Intent intent = getIntent();
         if (intent != null) {
             brandId = intent.getStringExtra(ConstIntent.KEy_BRAND_ID);
@@ -74,6 +97,20 @@ public class ProductListProductActivity extends AppCompatActivity implements Pro
         if (resultArrayList.size() > 0) {
             relLayout.setVisibility(View.VISIBLE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    productListProductAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
+
         }
     }
 
@@ -147,9 +184,21 @@ public class ProductListProductActivity extends AppCompatActivity implements Pro
         onBackPressed();
     }
 
+    @OnClick(R.id.imgViewSearch)
+    public void searchViewClick() {
+        relLaySearch.setVisibility(View.VISIBLE);
+        searchView.setQueryHint("Search Product Name");
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @OnClick(R.id.imgViewCloseSV)
+    public void imgViewCloseSVClick() {
+        searchView.setQuery("",true);
+        relLaySearch.setVisibility(View.GONE);
     }
 
     public void publishApi(int publish, int position, String productId) {

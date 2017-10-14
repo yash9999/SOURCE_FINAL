@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,9 +72,9 @@ public class NavigationActivity extends AppCompatActivity
     @BindView(R.id.txtViewPageName)
     TextView txtViewPageName;
 
+
     @BindView(R.id.imgViewSearch)
     ImageView imgViewSearch;
-
 
     @BindView(R.id.relLaySearch)
     RelativeLayout relLaySearch;
@@ -207,6 +209,20 @@ public class NavigationActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
 
+        // SearchView coding for showing the text and hiding the searchView Icon
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+        ImageView searchViewIcon = (ImageView) searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        searchViewIcon.setVisibility(View.GONE);
+        EditText searchViewText=(EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        searchViewText.setTextColor(ContextCompat.getColor(this,R.color.color_black));
+        searchViewText.setHintTextColor(ContextCompat.getColor(this,R.color.color_gray));
+        ImageView imgClose=(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        imgClose.setImageResource(R.mipmap.ic_sv_close);
+        ViewGroup linearLayoutSearchView = (ViewGroup) searchViewIcon.getParent();
+        linearLayoutSearchView.removeView(searchViewIcon);
+
+
         fragmentManager = getSupportFragmentManager();
         Picasso.with(this).load(R.mipmap.ic_profile_dp).transform(new CircleTransform()).into(imgViewProfileDp);
         setFont();
@@ -333,6 +349,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayDashboardClick() {
         DashboardFragment dashboardFragment = new DashboardFragment();
         txtViewPageName.setText(R.string.dashboard);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(dashboardFragment, getString(R.string.label_dashboard));
     }
 
@@ -340,6 +357,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayProfileClick() {
         ProfileFragment profileFragment = new ProfileFragment();
         txtViewPageName.setText(R.string.profile);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(profileFragment, getString(R.string.label_profile));
     }
 
@@ -347,6 +365,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayMyTeamClick() {
         MyTeamFragment myTeamFragment = new MyTeamFragment();
         txtViewPageName.setText(R.string.my_team);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(myTeamFragment, getString(R.string.label_my_team));
     }
 
@@ -354,6 +373,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayInboxClick() {
         InboxFragment inboxFragment = new InboxFragment();
         txtViewPageName.setText(R.string.inbox);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(inboxFragment, getString(R.string.label_inbox));
     }
 
@@ -361,6 +381,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayNotificationsClick() {
         NotificationFragment notificationFragment = new NotificationFragment();
         txtViewPageName.setText(R.string.notifications);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(notificationFragment, getString(R.string.label_notification));
     }
 
@@ -369,6 +390,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayPriceAnalysisClick() {
         PriceAnalysisFragment priceAnalysisFragment = new PriceAnalysisFragment();
         txtViewPageName.setText(R.string.price_analysis);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(priceAnalysisFragment, getString(R.string.label_price_analysis));
     }
 
@@ -376,6 +398,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayPriceSurveyClick() {
         PriceSurveyFragment priceSurveyFragment = new PriceSurveyFragment();
         txtViewPageName.setText(R.string.price_survey);
+        imgViewSearch.setVisibility(View.VISIBLE);
         replaceFragment(priceSurveyFragment, getString(R.string.label_price_survey));
     }
 
@@ -383,6 +406,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayProductListClick() {
         ProductListCategoryFragment productListCategoryFragment = new ProductListCategoryFragment();
         txtViewPageName.setText(R.string.product_list);
+        imgViewSearch.setVisibility(View.VISIBLE);
         replaceFragment(productListCategoryFragment, getString(R.string.label_product_list));
     }
 
@@ -390,6 +414,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayNewProductClick() {
         NewProductFragment newProductFragment = new NewProductFragment();
         txtViewPageName.setText(R.string.new_product);
+        imgViewSearch.setVisibility(View.VISIBLE);
         replaceFragment(newProductFragment, getString(R.string.label_new_product));
     }
 
@@ -398,6 +423,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayExpiryProductClick() {
         ExpiringProductFragment expiringProductFragment = new ExpiringProductFragment();
         txtViewPageName.setText(R.string.expiring_product);
+        imgViewSearch.setVisibility(View.VISIBLE);
         replaceFragment(expiringProductFragment, getString(R.string.label_expiring_product));
     }
 
@@ -405,6 +431,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayInStoreProduct() {
         InStoreSamplingFragment inStoreSamplingFragment = new InStoreSamplingFragment();
         txtViewPageName.setText(R.string.in_store_sampling);
+        imgViewSearch.setVisibility(View.VISIBLE);
         replaceFragment(inStoreSamplingFragment, getString(R.string.label_in_stroe_product));
     }
 
@@ -413,6 +440,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLaySettingClick() {
         SettingFragment settingFragment = new SettingFragment();
         txtViewPageName.setText(R.string.settings);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(settingFragment, getString(R.string.label_setting));
     }
 
@@ -420,6 +448,7 @@ public class NavigationActivity extends AppCompatActivity
     public void linLayVacationClick() {
         VacationHomeFragment vacationHomeFragment = new VacationHomeFragment();
         txtViewPageName.setText(R.string.vacation);
+        imgViewSearch.setVisibility(View.GONE);
         replaceFragment(vacationHomeFragment, getString(R.string.label_vacation));
     }
 
@@ -437,28 +466,16 @@ public class NavigationActivity extends AppCompatActivity
     }
 
 
+    @OnClick(R.id.imgViewCloseSV)
+    public void imgViewCloseSVClick() {
+        relLaySearch.setVisibility(View.GONE);
+        searchView.setQuery("", true);
+    }
+
     @OnClick(R.id.imgViewSearch)
     public void imgViewSearchClick(){
         relLaySearch.setVisibility(View.VISIBLE);
-        searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
     }
-
-    @OnClick(R.id.imgViewCloseSV)
-    public void imgViewCloseSVClick(){
-        relLaySearch.setVisibility(View.GONE);
-    }
-
 
 }

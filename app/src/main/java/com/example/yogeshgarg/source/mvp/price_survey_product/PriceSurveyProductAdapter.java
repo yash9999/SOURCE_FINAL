@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.ProductUpdate.ProductUpdateActivity;
 import com.example.yogeshgarg.source.mvp.ProductUpdate.ProductUpdateModel;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyAdapter;
+import com.example.yogeshgarg.source.mvp.price_survey_brand.PriceSurveyBrandModel;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -33,14 +36,17 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 21/07/17.
  */
 
-public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyProductAdapter.Holder> {
+public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyProductAdapter.Holder>
+        implements Filterable {
 
     Activity activity;
-    ArrayList<PriceSurveyProductModel.Result> resultArrayList;
+    ArrayList<PriceSurveyProductModel.Result> originalArrayList;
+    ArrayList<PriceSurveyProductModel.Result> filterResultArrayList;
 
     PriceSurveyProductAdapter(Activity activity, ArrayList<PriceSurveyProductModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        filterResultArrayList=originalArrayList;
     }
 
     @Override
@@ -51,7 +57,7 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
 
     @Override
     public void onBindViewHolder(Holder holder, final int position) {
-        final PriceSurveyProductModel.Result result = resultArrayList.get(position);
+        final PriceSurveyProductModel.Result result = filterResultArrayList.get(position);
 
         String productName = result.getProductName();
         String brandName = result.getBrandName();
@@ -92,7 +98,7 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, ProductUpdateActivity.class);
-                intent.putExtra(ConstIntent.KEY_PRODUCT_UPDATE_INSTANCE, resultArrayList.get(position));
+                intent.putExtra(ConstIntent.KEY_PRODUCT_UPDATE_INSTANCE, filterResultArrayList.get(position));
                 activity.startActivity(intent);
             }
         });
@@ -100,7 +106,40 @@ public class PriceSurveyProductAdapter extends RecyclerView.Adapter<PriceSurveyP
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<PriceSurveyProductModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (PriceSurveyProductModel.Result result : originalArrayList) {
+                        if (result.getProductName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<PriceSurveyProductModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

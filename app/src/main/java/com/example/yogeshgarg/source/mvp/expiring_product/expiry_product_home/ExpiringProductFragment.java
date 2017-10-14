@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,9 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
     TextView txtViewNoProductAdded;
 
 
+    SearchView searchView;
+    ExpiryProductHomeScreenAdapter expiryProductHomeScreenAdapter;
+
     EPHomePresenterImpl epHomePresenterImpl = null;
     ArrayList<ExpiryProductHomeModel.Result> resultArrayList = null;
 
@@ -67,6 +71,7 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_expiring_product, container, false);
         ButterKnife.bind(this, view);
+        searchView = getActivity().findViewById(R.id.searchView);
         setFont();
         return view;
     }
@@ -94,7 +99,7 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
     }
 
     private void setAdapter() {
-        ExpiryProductHomeScreenAdapter expiryProductHomeScreenAdapter = new ExpiryProductHomeScreenAdapter(getActivity(), resultArrayList);
+        expiryProductHomeScreenAdapter = new ExpiryProductHomeScreenAdapter(getActivity(), resultArrayList);
         recyclerView.setAdapter(expiryProductHomeScreenAdapter);
     }
 
@@ -110,6 +115,19 @@ public class ExpiringProductFragment extends Fragment implements EPHomeView {
             relLayNoProductAdded.setVisibility(View.GONE);
             relLayUpper.setVisibility(View.VISIBLE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    expiryProductHomeScreenAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         }
 
 

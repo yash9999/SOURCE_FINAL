@@ -1,85 +1,80 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/relLayRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_white"
     tools:context="com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InStoreSamplingFragment">
 
+
     <RelativeLayout
+        android:id="@+id/relLay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_white">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/grey"
+        android:visibility="gone"
+        >
 
-
-        <RelativeLayout
-            android:id="@+id/relLay"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@color/grey"
-            android:elevation="3dp"
-            android:visibility="gone">
+            android:layout_margin="1dp"
+            android:background="@color/color_white">
 
-            <RelativeLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:background="@color/color_white">
+                android:layout_height="wrap_content">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </RelativeLayout>
 
-                </android.support.v7.widget.RecyclerView>
-
-            </RelativeLayout>
-        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relLayNoProductAdded"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@color/grey"
+        android:visibility="gone">
 
         <RelativeLayout
-            android:id="@+id/relLayNoProductAdded"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:visibility="gone"
-            android:background="@color/grey">
+            android:layout_margin="1dp"
+            android:background="@color/color_white">
 
-            <RelativeLayout
+
+            <TextView
+                android:id="@+id/txtViewNoProductAdded"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="1dp"
-                android:background="@color/color_white">
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="@string/no_product_added"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/txt_18_sp" />
 
-
-                <TextView
-                    android:id="@+id/txtViewNoProductAdded"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="50dp"
-                    android:gravity="center"
-                    android:text="@string/no_product_added"
-                    android:textColor="@color/color_black"
-                    android:textSize="@dimen/txt_18_sp" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="40dp"
-                    android:src="@mipmap/ic_cart" />
-            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/ic_cart" />
         </RelativeLayout>
-
-
-        <ImageView
-            android:id="@+id/imgViewPlus"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/ic_plus" />
     </RelativeLayout>
-</FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/imgViewPlus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:src="@mipmap/ic_plus" />
+
+</RelativeLayout>

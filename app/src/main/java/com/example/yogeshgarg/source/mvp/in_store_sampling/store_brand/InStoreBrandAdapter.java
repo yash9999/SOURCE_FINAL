@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_brand.ExpiryProductBrandAdapter;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_category.StoreCategoryModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_product.StoreProductActivity;
 import com.squareup.picasso.Picasso;
 
@@ -30,14 +33,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 03/10/17.
  */
 
-public class InStoreBrandAdapter extends RecyclerView.Adapter<InStoreBrandAdapter.Holder> {
+public class InStoreBrandAdapter extends RecyclerView.Adapter<InStoreBrandAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<InStoreBrandModel.Result> resultArrayList;
+    ArrayList<InStoreBrandModel.Result> originalArrayList;
+    ArrayList<InStoreBrandModel.Result> filterResultArrayList;
 
     public InStoreBrandAdapter(Activity activity, ArrayList<InStoreBrandModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        filterResultArrayList=resultArrayList;
     }
 
     @Override
@@ -48,7 +53,7 @@ public class InStoreBrandAdapter extends RecyclerView.Adapter<InStoreBrandAdapte
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        InStoreBrandModel.Result result = resultArrayList.get(position);
+        InStoreBrandModel.Result result = filterResultArrayList.get(position);
         String productQuantity = result.getProducts();
         String brandName = result.getName();
 
@@ -86,7 +91,40 @@ public class InStoreBrandAdapter extends RecyclerView.Adapter<InStoreBrandAdapte
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<InStoreBrandModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (InStoreBrandModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<InStoreBrandModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

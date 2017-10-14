@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,9 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
     @BindView(R.id.txtViewNoProductAdded)
     TextView txtViewNoProductAdded;
 
+    SearchView searchView;
+    NewProductHomeAdapter newProductHomeAdapter;
+
     ArrayList<NewProductHomeModel.Result> resultArrayList;
 
 
@@ -65,6 +69,7 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_new_product, container, false);
         ButterKnife.bind(this, view);
+        searchView = getActivity().findViewById(R.id.searchView);
         return view;
     }
 
@@ -92,6 +97,19 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
             relLay.setVisibility(View.VISIBLE);
             relLayNoProductAdded.setVisibility(View.GONE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    newProductHomeAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         }
     }
 
@@ -125,7 +143,7 @@ public class NewProductFragment extends Fragment implements NewProductHomeView {
     private void setAdapter() {
 
 
-        NewProductHomeAdapter newProductHomeAdapter = new NewProductHomeAdapter(getActivity(), resultArrayList);
+          newProductHomeAdapter = new NewProductHomeAdapter(getActivity(), resultArrayList);
         recyclerView.setAdapter(newProductHomeAdapter);
     }
 

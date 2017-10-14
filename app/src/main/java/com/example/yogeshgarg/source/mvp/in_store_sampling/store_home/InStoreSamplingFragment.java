@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,14 +43,16 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    @BindView(R.id.frameLayout)
-    FrameLayout frameLayout;
+    @BindView(R.id.relLayRoot)
+    RelativeLayout relLayRoot;
 
     @BindView(R.id.relLayNoProductAdded)
     RelativeLayout relLayNoProductAdded;
 
     @BindView(R.id.txtViewNoProductAdded)
     TextView txtViewNoProductAdded;
+    SearchView searchView;
+    InstoreHomeAdapter instoreHomeAdapter;
 
 
     InstoreHomePresenterImpl instoreHomePresenterImpl = null;
@@ -67,6 +70,7 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_in_store_sampling, container, false);
         ButterKnife.bind(this, view);
+        searchView=getActivity().findViewById(R.id.searchView);
         return view;
     }
 
@@ -90,18 +94,31 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
             relLayNoProductAdded.setVisibility(View.GONE);
             relLay.setVisibility(View.VISIBLE);
             setLayoutManager();
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    instoreHomeAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         }
 
     }
 
     @Override
     public void onUnsuccess(String message) {
-        SnackNotify.showMessage(message, frameLayout);
+        SnackNotify.showMessage(message, relLayRoot);
     }
 
     @Override
     public void onInternetError() {
-        SnackNotify.checkConnection(onRetryInStoreApi, frameLayout);
+        SnackNotify.checkConnection(onRetryInStoreApi, relLayRoot);
     }
 
     OnClickInterface onRetryInStoreApi = new OnClickInterface() {
@@ -123,7 +140,7 @@ public class InStoreSamplingFragment extends Fragment implements InstoreHomeView
     }
 
     private void setAdapter() {
-        InstoreHomeAdapter instoreHomeAdapter = new InstoreHomeAdapter(getActivity(), resultArrayList);
+          instoreHomeAdapter = new InstoreHomeAdapter(getActivity(), resultArrayList);
         recyclerView.setAdapter(instoreHomeAdapter);
     }
 

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,6 +40,20 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
     @BindView(R.id.relLay)
     RelativeLayout relLay;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
+    @BindView(R.id.relLaySearch)
+    RelativeLayout relLaySearch;
+
+    @BindView(R.id.imgViewCloseSV)
+    ImageView imgViewCloseSV;
+
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
+    ExpiryProductBrandAdapter expiryProductBrandAdapter;
+
     String categoryId;
     ArrayList<ExpiryProductBrandModel.Result> resultArrayList;
 
@@ -45,6 +62,16 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expiry_product_brand);
         ButterKnife.bind(this);
+
+        imgViewSearch.setVisibility(View.VISIBLE);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+
+        ImageView searchViewIcon =(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        searchViewIcon.setVisibility(View.GONE);
+        ViewGroup linearLayoutSearchView=(ViewGroup)searchViewIcon.getParent();
+        linearLayoutSearchView.removeView(searchViewIcon);
+
         setFont();
         if (getIntent() != null) {
             categoryId = getIntent().getStringExtra(ConstIntent.KEY_CATEGORY_ID);
@@ -72,7 +99,7 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
                         publishResultArrayList.add(resultArrayList.get(i));
             }
         }
-        ExpiryProductBrandAdapter expiryProductBrandAdapter = new ExpiryProductBrandAdapter(this, publishResultArrayList);
+          expiryProductBrandAdapter = new ExpiryProductBrandAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(expiryProductBrandAdapter);
     }
 
@@ -87,7 +114,7 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
     }
 
     private void setFont() {
-        txtViewTitle.setText(getString(R.string.brand));
+        txtViewTitle.setText(getString(R.string.expiring_product));
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 
@@ -102,6 +129,18 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
         this.resultArrayList = resultArrayList;
         if (resultArrayList.size() > 0) {
             setLayoutManager();
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    expiryProductBrandAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         }
     }
 
@@ -121,4 +160,16 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
             callingBrandApi();
         }
     };
+
+    @OnClick(R.id.imgViewSearch)
+    public void searchViewClick() {
+        relLaySearch.setVisibility(View.VISIBLE);
+        searchView.setQueryHint("Search Brand Name");
+    }
+
+    @OnClick(R.id.imgViewCloseSV)
+    public void imgViewCloseSVClick() {
+        searchView.setQuery("", true);
+        relLaySearch.setVisibility(View.GONE);
+    }
 }

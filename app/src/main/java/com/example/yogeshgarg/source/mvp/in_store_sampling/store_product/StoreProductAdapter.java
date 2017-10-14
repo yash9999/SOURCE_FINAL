@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product.ExpiryProduct_ProductAdapter;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_calendar.InStoreCalendarActivity;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_category.StoreCategoryActivity;
+import com.example.yogeshgarg.source.mvp.in_store_sampling.store_category.StoreCategoryModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,14 +32,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 15/08/17.
  */
 
-public class StoreProductAdapter extends RecyclerView.Adapter<StoreProductAdapter.Holder> {
+public class StoreProductAdapter extends RecyclerView.Adapter<StoreProductAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<StoreProductModel.Result> resultArrayList = null;
+    ArrayList<StoreProductModel.Result> originalArrayList;
+    ArrayList<StoreProductModel.Result> filterResultArrayList;
 
     public StoreProductAdapter(Activity activity, ArrayList<StoreProductModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        this.filterResultArrayList=resultArrayList;
     }
 
     @Override
@@ -48,7 +53,7 @@ public class StoreProductAdapter extends RecyclerView.Adapter<StoreProductAdapte
     @Override
     public void onBindViewHolder(Holder holder, int position) {
 
-        StoreProductModel.Result result = resultArrayList.get(position);
+        StoreProductModel.Result result = filterResultArrayList.get(position);
         final String link = result.getImage();
 
         final String brandName = result.getBrandName();//brandName
@@ -76,7 +81,40 @@ public class StoreProductAdapter extends RecyclerView.Adapter<StoreProductAdapte
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<StoreProductModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (StoreProductModel.Result result : originalArrayList) {
+                        if (result.getProductName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<StoreProductModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
 

@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -16,6 +18,7 @@ import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
 import com.example.yogeshgarg.source.mvp.price_survey_product.PriceSurveyProductActivity;
 import com.squareup.picasso.Picasso;
 
@@ -30,17 +33,21 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 03/10/17.
  */
 
-public class PriceSurveyBrandAdapter  extends RecyclerView.Adapter<PriceSurveyBrandAdapter.Holder>{
+public class PriceSurveyBrandAdapter  extends RecyclerView.Adapter<PriceSurveyBrandAdapter.Holder>
+        implements Filterable{
 
     Activity activity;
-    ArrayList<PriceSurveyBrandModel.Result> resultArrayList;
+    ArrayList<PriceSurveyBrandModel.Result> originalArrayList;
+    ArrayList<PriceSurveyBrandModel.Result> filterResultArrayList;
+
     String strPriceUpdateBy;
     String strPriceUpdateBetween;
 
     public PriceSurveyBrandAdapter(Activity activity,ArrayList<PriceSurveyBrandModel.Result> resultArrayList,
                                    String strPriceUpdateBy,String strPriceUpdateBetween){
         this.activity=activity;
-        this.resultArrayList=resultArrayList;
+        this.originalArrayList=resultArrayList;
+        filterResultArrayList=originalArrayList;
         this.strPriceUpdateBy=strPriceUpdateBy;
         this.strPriceUpdateBetween=strPriceUpdateBetween;
     }
@@ -53,7 +60,7 @@ public class PriceSurveyBrandAdapter  extends RecyclerView.Adapter<PriceSurveyBr
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        final PriceSurveyBrandModel.Result result=resultArrayList.get(position);
+        final PriceSurveyBrandModel.Result result=filterResultArrayList.get(position);
 
         String completed = String.valueOf(result.getCompleted());
         String productQuantity = result.getProducts();
@@ -106,7 +113,40 @@ public class PriceSurveyBrandAdapter  extends RecyclerView.Adapter<PriceSurveyBr
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<PriceSurveyBrandModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (PriceSurveyBrandModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<PriceSurveyBrandModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

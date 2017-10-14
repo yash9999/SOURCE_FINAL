@@ -73,6 +73,9 @@ public class NewProductUpdateActivity extends AppCompatActivity implements NewPr
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
     @BindView(R.id.imgViewDots)
     ImageView imgViewDots;
 
@@ -297,8 +300,9 @@ public class NewProductUpdateActivity extends AppCompatActivity implements NewPr
 
     private void setFont() {
 
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
         txtViewTitle.setText("New Product Add");
+        imgViewSearch.setVisibility(View.GONE);
 
 
         FontHelper.setFontFace(txtViewTitleDiscount, FontHelper.FontType.FONT_Normal, this);

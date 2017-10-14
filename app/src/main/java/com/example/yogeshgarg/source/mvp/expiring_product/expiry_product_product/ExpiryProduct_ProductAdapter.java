@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_brand.ExpiryProductBrandModel;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_calendar.ExpiryProductCalendarActivity;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_category.ExpiryProductCategoryActivity;
 import com.squareup.picasso.Picasso;
@@ -29,14 +32,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 13/08/17.
  */
 
-public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryProduct_ProductAdapter.Holder> {
+public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryProduct_ProductAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<ExpiryProduct_ProductModel.Result> resultArrayList;
+    ArrayList<ExpiryProduct_ProductModel.Result> originalArrayList;
+    ArrayList<ExpiryProduct_ProductModel.Result> filterResultArrayList;
 
     public ExpiryProduct_ProductAdapter(Activity activity, ArrayList<ExpiryProduct_ProductModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        this.filterResultArrayList=originalArrayList;
     }
 
     @Override
@@ -47,7 +52,7 @@ public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryPro
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        final ExpiryProduct_ProductModel.Result result = resultArrayList.get(position);
+        final ExpiryProduct_ProductModel.Result result = filterResultArrayList.get(position);
         String link = result.getImage();
 
 
@@ -83,7 +88,40 @@ public class ExpiryProduct_ProductAdapter extends RecyclerView.Adapter<ExpiryPro
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<ExpiryProduct_ProductModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (ExpiryProduct_ProductModel.Result result : originalArrayList) {
+                        if (result.getProductName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<ExpiryProduct_ProductModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

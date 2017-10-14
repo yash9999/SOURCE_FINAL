@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.mvp.price_analysis.PriceAnalysisModel;
 import com.example.yogeshgarg.source.mvp.product_list.product_list_category.ProductListCategoryAdapter;
 import com.example.yogeshgarg.source.mvp.product_list.product_list_product.ProductListProductActivity;
 import com.squareup.picasso.Picasso;
@@ -28,14 +31,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 29/09/17.
  */
 
-public class  ProductListBrandAdapter extends RecyclerView.Adapter<ProductListBrandAdapter.Holder> {
+public class  ProductListBrandAdapter extends RecyclerView.Adapter<ProductListBrandAdapter.Holder> implements Filterable {
 
     Activity activity;
-    ArrayList<ProductListBrandModel.Result> resultArrayList;
+    ArrayList<ProductListBrandModel.Result> originalArrayList;
+    ArrayList<ProductListBrandModel.Result> filterResultArrayList;
 
     public ProductListBrandAdapter(Activity activity, ArrayList<ProductListBrandModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        filterResultArrayList=resultArrayList;
     }
 
     @Override
@@ -46,7 +51,7 @@ public class  ProductListBrandAdapter extends RecyclerView.Adapter<ProductListBr
 
     @Override
     public void onBindViewHolder(Holder holder, final int position) {
-        final ProductListBrandModel.Result result = resultArrayList.get(position);
+        final ProductListBrandModel.Result result = filterResultArrayList.get(position);
         String brandName = result.getName();
         String product = result.getProducts();
         String link = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
@@ -88,12 +93,45 @@ public class  ProductListBrandAdapter extends RecyclerView.Adapter<ProductListBr
     }
 
     public void changeToggled(int publish,int position){
-        resultArrayList.get(position).setPublish(publish);
+        filterResultArrayList.get(position).setPublish(publish);
         notifyDataSetChanged();
     }
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+         return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<ProductListBrandModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (ProductListBrandModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<ProductListBrandModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

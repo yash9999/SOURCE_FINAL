@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,6 +41,19 @@ public class InStoreBrandActivity extends AppCompatActivity implements InStoreBr
     @BindView(R.id.relLay)
     RelativeLayout relLay;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
+    @BindView(R.id.relLaySearch)
+    RelativeLayout relLaySearch;
+
+    @BindView(R.id.imgViewCloseSV)
+    ImageView imgViewCloseSV;
+
+    @BindView(R.id.searchView)
+    SearchView searchView;
+
+    InStoreBrandAdapter inStoreBrandAdapter;
     String categoryId;
     ArrayList<InStoreBrandModel.Result> resultArrayList;
 
@@ -47,6 +62,16 @@ public class InStoreBrandActivity extends AppCompatActivity implements InStoreBr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_store_brand);
         ButterKnife.bind(this);
+
+        imgViewSearch.setVisibility(View.VISIBLE);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint("Search");
+
+        ImageView searchViewIcon =(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        searchViewIcon.setVisibility(View.GONE);
+        ViewGroup linearLayoutSearchView=(ViewGroup)searchViewIcon.getParent();
+        linearLayoutSearchView.removeView(searchViewIcon);
+
         setFont();
         if (getIntent() != null) {
             categoryId = getIntent().getStringExtra(ConstIntent.KEY_CATEGORY_ID);
@@ -71,7 +96,7 @@ public class InStoreBrandActivity extends AppCompatActivity implements InStoreBr
                 publishResultArrayList.add(resultArrayList.get(i));
             }
         }
-        InStoreBrandAdapter inStoreBrandAdapter = new InStoreBrandAdapter(this, publishResultArrayList);
+          inStoreBrandAdapter = new InStoreBrandAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(inStoreBrandAdapter);
     }
 
@@ -86,7 +111,7 @@ public class InStoreBrandActivity extends AppCompatActivity implements InStoreBr
     }
 
     private void setFont() {
-        txtViewTitle.setText(getString(R.string.brand));
+        txtViewTitle.setText(getString(R.string.in_store_sampling));
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, this);
     }
 
@@ -97,6 +122,18 @@ public class InStoreBrandActivity extends AppCompatActivity implements InStoreBr
         if (resultArrayList.size() > 0) {
             relLayout.setVisibility(View.VISIBLE);
             setLayoutManager();
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    inStoreBrandAdapter.getFilter().filter(newText);
+                    return true;
+                }
+            });
         } else {
             relLayout.setVisibility(View.GONE);
         }
@@ -123,4 +160,18 @@ public class InStoreBrandActivity extends AppCompatActivity implements InStoreBr
         InStoreBrandPresenterImpl inStoreBrandPresenterImpl = new InStoreBrandPresenterImpl(this, this);
         inStoreBrandPresenterImpl.callingSSBrandApi(categoryId);
     }
+
+
+    @OnClick(R.id.imgViewSearch)
+    public void searchViewClick() {
+        relLaySearch.setVisibility(View.VISIBLE);
+        searchView.setQueryHint("Search Brand Name");
+    }
+
+    @OnClick(R.id.imgViewCloseSV)
+    public void imgViewCloseSVClick() {
+        searchView.setQuery("", true);
+        relLaySearch.setVisibility(View.GONE);
+    }
+
 }

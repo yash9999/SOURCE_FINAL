@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InstoreHomeAdapter;
+import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -30,14 +33,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 20/08/17.
  */
 
-public class NewProductHomeAdapter extends RecyclerView.Adapter<NewProductHomeAdapter.Holder> {
+public class NewProductHomeAdapter extends RecyclerView.Adapter<NewProductHomeAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<NewProductHomeModel.Result> resultArrayList;
+    ArrayList<NewProductHomeModel.Result> originalArrayList;
+    ArrayList<NewProductHomeModel.Result> filterResultArrayList;
 
     public NewProductHomeAdapter(Activity activity, ArrayList<NewProductHomeModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        filterResultArrayList=originalArrayList;
     }
 
     @Override
@@ -48,7 +53,7 @@ public class NewProductHomeAdapter extends RecyclerView.Adapter<NewProductHomeAd
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        NewProductHomeModel.Result result = resultArrayList.get(position);
+        NewProductHomeModel.Result result = filterResultArrayList.get(position);
         String productName = result.getProductName();
         String brandName = result.getBrandName();
         String price = result.getCost();
@@ -87,7 +92,40 @@ public class NewProductHomeAdapter extends RecyclerView.Adapter<NewProductHomeAd
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<NewProductHomeModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (NewProductHomeModel.Result result : originalArrayList) {
+                        if (result.getProductName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<NewProductHomeModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {

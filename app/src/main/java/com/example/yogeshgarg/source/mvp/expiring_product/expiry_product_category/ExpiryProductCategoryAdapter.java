@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_brand.ExpiryProductBrandActivity;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product.ExpiryProduct_ProductActivity;
+import com.example.yogeshgarg.source.mvp.price_survey_brand.PriceSurveyBrandModel;
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
@@ -30,14 +33,16 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 13/08/17.
  */
 
-public class ExpiryProductCategoryAdapter extends RecyclerView.Adapter<ExpiryProductCategoryAdapter.Holder> {
+public class ExpiryProductCategoryAdapter extends RecyclerView.Adapter<ExpiryProductCategoryAdapter.Holder> implements Filterable{
 
     Activity activity;
-    ArrayList<ExpiryProductCategoryModel.Result> resultArrayList;
+    ArrayList<ExpiryProductCategoryModel.Result> originalArrayList;
+    ArrayList<ExpiryProductCategoryModel.Result> filterResultArrayList;
 
     public ExpiryProductCategoryAdapter(Activity activity, ArrayList<ExpiryProductCategoryModel.Result> resultArrayList) {
         this.activity = activity;
-        this.resultArrayList = resultArrayList;
+        this.originalArrayList = resultArrayList;
+        this.filterResultArrayList = resultArrayList;
     }
 
     @Override
@@ -48,7 +53,7 @@ public class ExpiryProductCategoryAdapter extends RecyclerView.Adapter<ExpiryPro
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        ExpiryProductCategoryModel.Result result = resultArrayList.get(position);
+        ExpiryProductCategoryModel.Result result = filterResultArrayList.get(position);
 
         String productQuantity = result.getProducts();
         String brandQuantity = result.getBrands();
@@ -98,7 +103,40 @@ public class ExpiryProductCategoryAdapter extends RecyclerView.Adapter<ExpiryPro
 
     @Override
     public int getItemCount() {
-        return resultArrayList.size();
+        return filterResultArrayList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strCharSequence = charSequence.toString();
+                if (strCharSequence.isEmpty()) {
+                    filterResultArrayList = originalArrayList;
+                } else {
+                    ArrayList<ExpiryProductCategoryModel.Result> filteringInnerArrayList = new ArrayList<>();
+
+                    for (ExpiryProductCategoryModel.Result result : originalArrayList) {
+                        if (result.getName().toLowerCase().contains(strCharSequence)) {
+                            filteringInnerArrayList.add(result);
+                        }
+                    }
+
+                    filterResultArrayList = filteringInnerArrayList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterResultArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filterResultArrayList = (ArrayList<ExpiryProductCategoryModel.Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class Holder extends RecyclerView.ViewHolder {
