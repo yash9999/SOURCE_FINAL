@@ -86,6 +86,7 @@ public class ChatActivity extends BaseActivity {
     @BindView(R.id.touch_outside)
     View touch_outside;
 
+    UserSession userSession;
 
     private BottomSheetBehavior mBottomSheetBehavior;
 
@@ -116,7 +117,7 @@ public class ChatActivity extends BaseActivity {
     public ArrayList<HashMap<String, String>> userImages = new ArrayList<>();
     RecyclerChatAdapter chatAdapter;
 
-    UserSession userSession;
+
 
     private static final int REQ_CODE_PICK_IMAGE = 101;
     private static final int CAMERA_PIC_REQUEST = 102;
@@ -162,7 +163,8 @@ public class ChatActivity extends BaseActivity {
         manageRecyclerView();
 
         dialogId = "59d921dca28f9a0ab0ce1407";
-        opponentId = getIntent().getIntExtra(Const.KEY_OPPONENT_ID, 0);
+        String strOpponentId = getIntent().getStringExtra(Const.KEY_OPPONENT_ID);
+        opponentId = Integer.parseInt(strOpponentId);
         opponentName = getIntent().getStringExtra(Const.KEY_NAME);
 
         //txtToolbarTitle.setText(opponentName);
@@ -455,9 +457,10 @@ public class ChatActivity extends BaseActivity {
             chatServiceConfigurationBuilder.setUseTls(true); //Sets the TLS security mode used when making the connection. By default TLS is disabled.
             QBChatService.setConfigurationBuilder(chatServiceConfigurationBuilder);
 
-            chatService = QBChatService.getInstance();
 
-            user = new QBUser("Garg", Const.AC_PWD);
+            String username=userSession.getUserName();
+            chatService = QBChatService.getInstance();
+            user = new QBUser(username, Const.AC_PWD);
             QBAuth.createSession(user, new QBEntityCallback<QBSession>() {
                 @Override
                 public void onSuccess(QBSession session, Bundle params) {
@@ -585,7 +588,7 @@ public class ChatActivity extends BaseActivity {
             public void onSuccess(ArrayList<QBChatMessage> messages, Bundle args) {
                 Progress.stop();
 
-                Log.d("getDialogMessages", "onSuccess"+messages.size());
+                Log.d("getDialogMessages", "onSuccess" + messages.size());
                 chatMessages = messages;
                 if (!isRefresh) {
 
@@ -652,8 +655,10 @@ public class ChatActivity extends BaseActivity {
                 QBPrivateChat privateChat = privateChatManager.getChat(opponentId);
                 if (privateChat == null) {
                     privateChat = privateChatManager.createChat(opponentId, privateChatMessageListener);
+                }else{
+                    privateChat.sendMessage(chatMessage);
                 }
-                privateChat.sendMessage(chatMessage);
+
 
             } catch (NullPointerException e) {
 

@@ -168,7 +168,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     private void  loginUserOnQuikBlox(final String username, final String password) {
         Progress.start(activity);
 
-        final QBUser user = new QBUser(username, password);
+        final QBUser user = new QBUser(username, Const.AC_PWD);
 
         QBUsers.signIn(user, new QBEntityCallback<QBUser>() {
             @Override
@@ -198,7 +198,7 @@ public class LoginPresenterImpl implements LoginPresenter {
             @Override
             public void onError(QBResponseException errors) {
                 errors.printStackTrace();
-                registerUserOnQuikBlox(username+"@gmail.com",username,username+"1234");
+                registerUserOnQuikBlox(username+"@gmail.com",username,username);
                 Progress.stop();
             }
         });
@@ -212,7 +212,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
         Progress.start(activity);
 
-        final QBUser user = new QBUser(userName, "Braintech1234");
+        final QBUser user = new QBUser(userName, Const.AC_PWD);
         user.setFullName(name);
         user.setEmail(email);
 

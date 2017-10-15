@@ -26,7 +26,10 @@ public class UserSession {
     public static final String KEY_PERMISSION_DIALOG = "perm_dialog";
     public static final String KEY_QUIKBLOX_ID = "quikblox_id";
 
+    public static final String KEY_USER_TYPE="usertype";
+    public static final String KEY_USERNAME="username";
     public  static  final String KEY_USERIMAGE="";
+
 
 
 
@@ -58,11 +61,13 @@ public class UserSession {
     /**
      * Create login session
      */
-    public void createUserSession(String id, String token) {
+    public void createUserSession(String id, String token,String username,String usertype) {
 
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_USER_ID, id);
         editor.putString(KEY_TOKEN, token);
+        editor.putString(KEY_USERNAME,username);
+        editor.putString(KEY_USER_TYPE,usertype);
 
         editor.commit();
     }
@@ -107,17 +112,17 @@ public class UserSession {
         return pref.getString(STORE_ADDRESS, "");
     }
 
+    public String getUserName(){
+        return pref.getString(KEY_USERNAME,"");
+    }
+
+    public String getUserType(){
+        return pref.getString(KEY_USER_TYPE,"");
+    }
+
     public String getLocationId() {
         return pref.getString(LOCATION_ID, "");
     }
-
-
-
-
-
-
-
-
 
 
 

@@ -60,8 +60,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     QBMessageListener<QBPrivateChat> privateChatMessageListener;
     QBChatService chatService;
 
-    int opponentId=34547169;
-
+    int opponentId = 34547169;
 
 
     @Override
@@ -108,11 +107,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void onLoginSuccess(LoginModel.Result result) {
         String id = result.getId();
         String token = result.getToken();
+        String username=result.getName();
+        String usertype=result.getUsertype();
 
         UserSession userSession = new UserSession(this);
-        userSession.createUserSession(id, token);
+        userSession.createUserSession(id, token,username,usertype);
 
-       callingNotificationApi();
+        callingNotificationApi();
 
 
     }

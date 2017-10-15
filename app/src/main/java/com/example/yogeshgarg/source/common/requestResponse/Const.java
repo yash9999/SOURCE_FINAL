@@ -92,14 +92,14 @@ public class Const {
 
     public static String KEY_QUICK_BLOCK_ID = "quickblock_id";
 
-    public static final String APP_ID = "58667";
-    public static final String AUTH_KEY = "8qDytSryBDr3T7M";
-    public static final String AUTH_SECRET = "wEycq4BpsdQOBSU";
-    public static final String ACCOUNT_KEY = "2i9Gt25-xsDGXp3GDzdR";
+    public static final String APP_ID = "62229";
+    public static final String AUTH_KEY = "Ufgg7y6gvYHHTkt";
+    public static final String AUTH_SECRET = "nOumKRZ2b73BfJd";
+    public static final String ACCOUNT_KEY = "jD3aKfcAsG4JyoaqH6vY";
 
     public static final String KEY_DIALOG_ID = "dialog_id";
     public static final String KEY_OPPONENT_ID = "opponentId";
-    public static final String AC_PWD = "Braintech1234";
+    public static final String AC_PWD = "au@16st45T";
 
 
 }

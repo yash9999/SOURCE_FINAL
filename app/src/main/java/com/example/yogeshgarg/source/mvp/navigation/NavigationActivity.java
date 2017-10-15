@@ -27,6 +27,7 @@ import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.common.session.UserSession;
 import com.example.yogeshgarg.source.mvp.notification.NotificationFragment;
 import com.example.yogeshgarg.source.mvp.price_analysis.PriceAnalysisFragment;
 import com.example.yogeshgarg.source.mvp.dashboard.DashboardFragment;
@@ -283,6 +284,15 @@ public class NavigationActivity extends AppCompatActivity
         FontHelper.setFontFace(txtViewName, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewLocation, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewDesignation, FontHelper.FontType.FONT_Normal, this);
+
+        UserSession userSession = new UserSession(this);
+        String username = userSession.getUserName();
+        String usertype = userSession.getUserType();
+        String storeAddress = userSession.getStoreAddress();
+
+        txtViewName.setText(username);
+        txtViewLocation.setText(storeAddress);
+        txtViewDesignation.setText(usertype);
 
         FontHelper.setFontFace(txtViewDashboard, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewProfile, FontHelper.FontType.FONT_Normal, this);
