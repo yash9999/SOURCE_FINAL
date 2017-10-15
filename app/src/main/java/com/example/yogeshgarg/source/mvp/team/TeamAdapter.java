@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
+import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyTeamModel.Result product=products.get(position);
 
-        Picasso.with(context).load("https://www.augmentedui.com/source/v1/image/"+product.getImagelink()).transform(new CircleTransform()).into(holder.imgViewProfile);
+        Picasso.with(context).load(ConstIntent.PREFIX_URL_OF_IMAGE + product.getImagelink()).transform(new CircleTransform()).into(holder.imgViewProfile);
         holder.txtViewName.setText(product.getFirstname()+" "+product.getLastname());
         holder.txtViewNumber.setText(product.getPhone());
 

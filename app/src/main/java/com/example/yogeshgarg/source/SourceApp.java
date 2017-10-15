@@ -3,6 +3,8 @@ package com.example.yogeshgarg.source;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.yogeshgarg.source.common.quickblox.QuickbloxSession;
+
 /**
  * Created by himanshu on 29/07/17.
  */
@@ -18,6 +20,8 @@ public class SourceApp extends Application {
 
         instance = this;
 
+        QuickbloxSession quickbloxSession=new QuickbloxSession();
+        quickbloxSession.startSession(getApplicationContext());
     }
 
 

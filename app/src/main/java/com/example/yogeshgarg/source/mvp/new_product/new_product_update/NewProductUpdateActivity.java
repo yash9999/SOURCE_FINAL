@@ -200,7 +200,7 @@ public class NewProductUpdateActivity extends AppCompatActivity implements NewPr
     String finalPrice;
 
     boolean flag = false;
-    int discountType;
+    int discountType=-1;
     int taxType = 1;
 
     File file = null;
@@ -729,6 +729,8 @@ public class NewProductUpdateActivity extends AppCompatActivity implements NewPr
         if (discountType == 1) {
             if (Double.parseDouble(price) < Double.parseDouble(discount)) {
                 onUnsuccessPictureApi("Price value can not be less than discount.");
+            }else{
+                newProductUpdatePresenterImpl.callingPictureApi(file, productName, brandName, uom, upc, stockMeasure, stockUnit, comment, price, String.valueOf(discountType), discount, String.valueOf(taxType));
             }
         } else {
             newProductUpdatePresenterImpl.callingPictureApi(file, productName, brandName, uom, upc, stockMeasure, stockUnit, comment, price, String.valueOf(discountType), discount, String.valueOf(taxType));

@@ -21,6 +21,7 @@ import com.example.yogeshgarg.source.mvp.in_store_sampling.store_calendar.InStor
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_category.StoreCategoryModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_home.InStoreHomeModel;
 import com.example.yogeshgarg.source.mvp.in_store_sampling.store_product.StoreProductModel;
+import com.example.yogeshgarg.source.mvp.inbox.InboxModel;
 import com.example.yogeshgarg.source.mvp.login.LoginModel;
 import com.example.yogeshgarg.source.mvp.new_product.new_product_home.NewProductHomeModel;
 import com.example.yogeshgarg.source.mvp.notification.MarkReadModel;
@@ -138,6 +139,12 @@ public interface APIService {
 
     @POST("users")
     Call<MyTeamModel> gettingUsers(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+    @POST("users")
+    Call<InboxModel> gettingInboxList(
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);

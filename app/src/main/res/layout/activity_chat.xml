@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chat_back"
+    tools:context="com.example.yogeshgarg.source.mvp.ChatActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rlyBottom" />
+
+        <RelativeLayout
+            android:id="@+id/rlyBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/imgCamera"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_camera_black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imgCamera">
+
+                <!-- <ImageView
+                     android:id="@+id/imgSmiley"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentLeft="true"
+                     android:layout_centerVertical="true"
+                     android:padding="10dp"
+                     android:src="@mipmap/smiley" />-->
+
+                <EditText
+                    android:id="@+id/edtChatMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/imgArrow"
+                    android:background="@drawable/chat_text_bg"
+                    android:hint="Type your message"
+                    android:inputType="textMultiLine|textShortMessage"
+                    android:maxLines="3"
+                    android:textSize="13dp"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    />
+
+
+                <ImageView
+                    android:id="@+id/imgArrow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="10dp"
+                    android:src="@mipmap/send" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <!-- Bottom view-->
+    <include layout="@layout/layout_bottomsheet" />
+</android.support.design.widget.CoordinatorLayout>

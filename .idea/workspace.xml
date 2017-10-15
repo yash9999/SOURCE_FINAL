@@ -17,61 +17,83 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e108096e-387b-463f-ad35-f0964b6098a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_sv_close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_thum_profile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_sv_close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_thum_profile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_sv_close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_thum_profile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_sv_close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_thum_profile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_sv_close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_thum_profile.png" />
+    <list default="true" id="e108096e-387b-463f-ad35-f0964b6098a1" name="Default" comment="QuickBlox chat implemented">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/chat_back.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jxmpp_core_0_4_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jxmpp_util_cache_0_4_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/minidns_0_1_7.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/quickblox_android_sdk_chat_2_6_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/quickblox_android_sdk_content_2_6_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/quickblox_android_sdk_core_2_6_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/ChatHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/Consts.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QbEntityCallbackTwoTypeWrapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QbEntityCallbackWrapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QuickbloxSession.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/SharedPreferencesUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/SharedPrefsHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/TimeUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/chat/BaseChatImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/chat/Chat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/chat/GroupChatImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/chat/PrivateChatImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/chat/QBChatMessageListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/PaginationHistoryListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbAuthUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbDialogHolder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbDialogUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbSessionStateCallback.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbUsersHolder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/VerboseQbChatConnectionListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/utils/AlertDialogManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/utils/ImageHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/utils/Utility.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/BaseActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/ChatActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/RecyclerChatAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxPresenter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxPresenterImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/chat_bubble_receiver.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/chat_bubble_sender.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/chat_text_bg.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alert_show_image.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_inbox.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_chat_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-26.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-26.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiringProductFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiringProductFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiryProductHomeScreenAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiryProductHomeScreenAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_calendar/InStoreCalendarActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_calendar/InStoreCalendarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InstoreHomeAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InstoreHomeAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/SourceApp.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/SourceApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/helper/CircleTransform.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/helper/CircleTransform.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/APIService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/APIService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/Const.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/Const.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ConstIntent.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ConstIntent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/session/UserSession.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/session/UserSession.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginPresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginPresenterImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductHomeAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductHomeAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewproductHomePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewproductHomePresenterImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfileFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_navigation.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_navigation.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/dummu_toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dummu_toolbar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_expiring_product.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_expiring_product.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_in_store_sampling.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_in_store_sampling.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdatePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdatePresenterImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/TeamAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/TeamAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inbox.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_inbox.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="Source.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -114,14 +136,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
-        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="$USER_HOME$/KeyStore.jks" />
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../KeyStore.jks" />
     <option name="KEY_ALIAS" value="key0" />
     <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
@@ -357,6 +379,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="javaPreCompileDebugUnitTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.quickblox:quickblox-android-sdk-content:2.6.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComQuickbloxQuickbloxAndroidSdkContent261Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -676,6 +703,11 @@
                 <option name="name" value="prepareDebugUnitTestDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.quickblox:quickblox-android-sdk-core:2.6.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComQuickbloxQuickbloxAndroidSdkCore261Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="generateReleaseResources" />
               </ExternalTaskPojo>
@@ -915,6 +947,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileDebugAndroidTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.quickblox:quickblox-android-sdk-chat:2.6.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComQuickbloxQuickbloxAndroidSdkChat261Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1420,6 +1457,11 @@
                 <option name="name" value="javaPreCompileDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.quickblox:quickblox-android-sdk-content:2.6.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComQuickbloxQuickbloxAndroidSdkContent261Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="mergeReleaseJniLibFolders" />
               </ExternalTaskPojo>
@@ -1737,6 +1779,11 @@
                 <option name="name" value="prepareDebugUnitTestDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.quickblox:quickblox-android-sdk-core:2.6.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComQuickbloxQuickbloxAndroidSdkCore261Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="generateReleaseResources" />
               </ExternalTaskPojo>
@@ -1971,6 +2018,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="compileDebugAndroidTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.quickblox:quickblox-android-sdk-chat:2.6.1" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComQuickbloxQuickbloxAndroidSdkChat261Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2287,7 +2339,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4514853877000" />
+        <entry key="$PROJECT_DIR$" value="4515272729000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2641,47 +2693,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_product_list_brand.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_product_list_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_store_category.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_in_store_brand.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_store_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_navigation.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/dummu_toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductHomeAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiringProductFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiryProductHomeScreenAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InstoreHomeAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_in_store_sampling.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_expiring_product.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_calendar/InStoreCalendarActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryActivity.java" />
@@ -2692,12 +2704,52 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfileFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfilePresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/helper/CircleTransform.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_product_update.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdatePresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewproductHomePresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/chat/Chat.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/utils/AlertDialogManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/ChatHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QuickbloxSession.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/Const.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/SharedPrefsHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/session/UserSession.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/RecyclerChatAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/BaseActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbDialogUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/VerboseQbChatConnectionListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/APIService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_inbox.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_inbox.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ConstIntent.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/ChatActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/TeamAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/SourceApp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/chat_text_bg.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1366" />
+    <option name="width" value="1280" />
     <option name="height" value="725" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -2725,7 +2777,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2744,222 +2795,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SOURCE_FINAL" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mvp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane />
       </pane>
@@ -2972,7 +2812,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="device.picker.selection" value="S8_API_25" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CaseTrack" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../KeyStore.jks" />
     <property name="ExportApk.ApkPath" value="$USER_HOME$/Downloads" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
@@ -2980,7 +2820,11 @@
     <property name="ExportApk.SignV2" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi" />
     </key>
     <key name="android.template.packageName">
@@ -2994,15 +2838,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.yogeshgarg.source.common" />
       <recent name="com.example.yogeshgarg.source.mvp" />
+      <recent name="com.example.yogeshgarg.source.common" />
       <recent name="com.example.yogeshgarg.source.mvp.expiring_product" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi" />
     </key>
   </component>
@@ -3398,28 +3238,35 @@
       <option name="project" value="LOCAL" />
       <updated>1507750702824</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="SearchView Implemented">
+      <created>1507983954127</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1507983954127</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1366" height="725" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="725" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31527093" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.49353796" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3323263" sideWeight="0.5059347" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9436202" sideWeight="0.5415408" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9436202" sideWeight="0.45845923" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25377643" sideWeight="0.49406528" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66721046" sideWeight="0.5444265" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6666667" sideWeight="0.4555735" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28836834" sideWeight="0.49406528" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80131364" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80131364" sideWeight="0.4765751" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.02794562" sideWeight="0.49406528" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25282714" sideWeight="0.49406528" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21283785" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23489426" sideWeight="0.5059347" order="3" side_tool="true" content_ui="tabs" />
@@ -3496,452 +3343,504 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="product list" />
-    <option name="LAST_COMMIT_MESSAGE" value="product list" />
+    <MESSAGE value="SearchView Implemented" />
+    <MESSAGE value="QuickBlox chat implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="QuickBlox chat implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="66" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_analysis/PriceAnalysisFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QbEntityCallbackTwoTypeWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-555">
-          <caret line="193" column="51" selection-start-line="193" selection-start-column="51" selection-end-line="193" selection-end-column="51" />
+        <state relative-caret-position="60">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_analysis/adapter/PACategoryAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QbEntityCallbackWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="30" column="77" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="77" />
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/QuickbloxSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="133" column="10" selection-start-line="105" selection-start-column="8" selection-end-line="133" selection-end-column="10" />
+        <state relative-caret-position="269">
+          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
           <folding>
-            <element signature="e#3980#3981#0" expanded="false" />
-            <element signature="e#4031#4032#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/SharedPreferencesUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+        <state relative-caret-position="-248">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_product/ProductListProductAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/TimeUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="121" column="10" selection-start-line="93" selection-start-column="7" selection-end-line="121" selection-end-column="10" />
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/8.5.1/16724f486072e3ab970fc47ccff6f9013061fa6/butterknife-8.5.1-sources.jar!/butterknife/ButterKnife.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/session/UserSession.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
+        <state relative-caret-position="-2048">
+          <caret line="23" column="76" selection-start-line="23" selection-start-column="76" selection-end-line="23" selection-end-column="76" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_navigation.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/SharedPrefsHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_base.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/RecyclerChatAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3584">
+          <caret line="263" column="18" selection-start-line="263" selection-start-column="18" selection-end-line="263" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.android/build-cache/9c95001d531b91d81d593fe5104ab3c5a0210919/output/jars/classes.jar!/com/quickblox/chat/QBPrivateChatManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="188" column="29" selection-start-line="188" selection-start-column="29" selection-end-line="188" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="167" column="18" selection-start-line="167" selection-start-column="18" selection-end-line="167" selection-end-column="18" />
+          <folding>
+            <element signature="method#callingPushNotificationApi#0;class#LoginPresenterImpl#0" expanded="false" />
+            <element signature="method#sendingToken#0;class#LoginPresenterImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/chat_bubble_receiver.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_camera_black.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_bottom_sheet.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/VerboseQbChatConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="30" column="5" selection-start-line="28" selection-start-column="80" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/quickblox/qb/QbDialogUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1764">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/login/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1305">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_bottomsheet.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_navigation.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_team.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="689" column="64" selection-start-line="689" selection-start-column="51" selection-end-line="689" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/appcompat-v7/26.0.0-alpha1/appcompat-v7-26.0.0-alpha1-sources.jar!/android/support/v7/widget/SearchView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4452">
-          <caret line="922" column="25" selection-start-line="922" selection-start-column="8" selection-end-line="922" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_close.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/navigation/NavigationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="220" column="56" selection-start-line="220" selection-start-column="56" selection-end-line="220" selection-end-column="56" />
+        <state relative-caret-position="441">
+          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding>
-            <element signature="method#setFont#0;class#NavigationActivity#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#517#518#0" expanded="false" />
+            <element signature="e#547#548#0" expanded="false" />
+            <element signature="e#593#594#0" expanded="false" />
+            <element signature="e#631#632#0" expanded="false" />
+            <element signature="e#669#670#0" expanded="false" />
+            <element signature="e#702#703#0" expanded="false" />
+            <element signature="e#755#756#0" expanded="false" />
+            <element signature="e#799#800#0" expanded="false" />
+            <element signature="e#843#844#0" expanded="false" />
+            <element signature="e#872#873#0" expanded="false" />
+            <element signature="e#927#928#0" expanded="false" />
+            <element signature="e#963#964#0" expanded="false" />
+            <element signature="e#1782#1783#0" expanded="false" />
+            <element signature="e#1822#1823#0" expanded="false" />
+            <element signature="e#1876#1877#0" expanded="false" />
+            <element signature="e#1926#1927#0" expanded="false" />
+            <element signature="e#1965#1966#0" expanded="false" />
+            <element signature="e#2004#2005#0" expanded="false" />
+            <element signature="e#2056#2057#0" expanded="false" />
+            <element signature="e#2104#2105#0" expanded="false" />
+            <element signature="e#2140#2141#0" expanded="false" />
+            <element signature="e#2176#2177#0" expanded="false" />
+            <element signature="e#2222#2223#0" expanded="false" />
+            <element signature="e#2264#2265#0" expanded="false" />
+            <element signature="e#2301#2302#0" expanded="false" />
+            <element signature="e#2338#2339#0" expanded="false" />
+            <element signature="e#2386#2387#0" expanded="false" />
+            <element signature="e#2430#2431#0" expanded="false" />
+            <element signature="e#2470#2471#0" expanded="false" />
+            <element signature="e#2510#2511#0" expanded="false" />
+            <element signature="e#2564#2565#0" expanded="false" />
+            <element signature="e#2614#2615#0" expanded="false" />
+            <element signature="e#2651#2652#0" expanded="false" />
+            <element signature="e#2688#2689#0" expanded="false" />
+            <element signature="e#2736#2737#0" expanded="false" />
+            <element signature="e#2780#2781#0" expanded="false" />
+            <element signature="e#2816#2817#0" expanded="false" />
+            <element signature="e#2852#2853#0" expanded="false" />
+            <element signature="e#2898#2899#0" expanded="false" />
+            <element signature="e#2940#2941#0" expanded="false" />
+            <element signature="e#2976#2977#0" expanded="false" />
+            <element signature="e#3012#3013#0" expanded="false" />
+            <element signature="e#3058#3059#0" expanded="false" />
+            <element signature="e#3100#3101#0" expanded="false" />
+            <element signature="e#3142#3143#0" expanded="false" />
+            <element signature="e#3184#3185#0" expanded="false" />
+            <element signature="e#3242#3243#0" expanded="false" />
+            <element signature="e#3296#3297#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamContractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/forgot_password/ForgotPasswordPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="87" column="11" selection-start-line="49" selection-start-column="7" selection-end-line="87" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="33" column="90" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="90" />
+          <folding>
+            <element signature="e#622#623#0" expanded="false" />
+            <element signature="e#656#657#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/APIService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_inbox.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+        <state relative-caret-position="90">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding>
-            <element signature="method#setAdapter#0;class#ProductListCategoryFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_category/ProductListCategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="148" column="10" selection-start-line="120" selection-start-column="8" selection-end-line="148" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="123" column="51" selection-start-line="123" selection-start-column="51" selection-end-line="123" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="157" column="10" selection-start-line="129" selection-start-column="8" selection-end-line="157" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey/PriceSurveyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="143" column="42" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
-          <folding>
-            <element signature="method#setDate#0;class#PriceSurveyFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiryProductHomeScreenAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="100" column="73" selection-start-line="100" selection-start-column="73" selection-end-line="100" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductHomeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="117" column="66" selection-start-line="117" selection-start-column="66" selection-end-line="117" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="148" column="10" selection-start-line="120" selection-start-column="8" selection-end-line="148" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="102" column="56" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/MyTeamFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="108" column="5" selection-start-line="96" selection-start-column="4" selection-end-line="108" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="138" column="10" selection-start-line="110" selection-start-column="7" selection-end-line="138" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InstoreHomeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="106" column="10" selection-start-line="78" selection-start-column="8" selection-end-line="106" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="123" column="68" selection-start-line="123" selection-start-column="68" selection-end-line="123" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="143" column="10" selection-start-line="115" selection-start-column="8" selection-end-line="143" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_home/NewProductFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_product.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        <state relative-caret-position="621">
+          <caret line="91" column="87" selection-start-line="91" selection-start-column="87" selection-end-line="91" selection-end-column="87" />
           <folding>
-            <element signature="e#2244#2270#0" expanded="true" />
+            <element signature="e#2306#2307#0" expanded="true" />
+            <element signature="e#2367#2368#0" expanded="true" />
+            <element signature="e#2418#2419#0" expanded="true" />
+            <element signature="e#2483#2484#0" expanded="true" />
+            <element signature="e#2517#2637#0" expanded="true" />
+            <element signature="e#2636#2637#0" expanded="true" />
+            <element signature="e#2674#2675#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_home/InStoreSamplingFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/product_list/product_list_brand/ProductListBrandAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="115" column="51" selection-start-line="115" selection-start-column="51" selection-end-line="115" selection-end-column="51" />
+        <state relative-caret-position="225">
+          <caret line="48" column="32" selection-start-line="47" selection-start-column="7" selection-end-line="48" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/ConstIntent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_in_store_sampling.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inbox.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state relative-caret-position="135">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_team_item.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/team/TeamAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/inbox/InboxAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
-            <element signature="e#1182#2475#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_home/ExpiringProductFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-795">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_expiring_product.xml">
-      <provider editor-type-id="android-designer2">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-          <folding>
-            <element signature="e#1197#2490#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_product/PriceSurveyProductActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="176" column="60" selection-start-line="176" selection-start-column="60" selection-end-line="176" selection-end-column="60" />
+        <state relative-caret-position="472">
+          <caret line="169" column="53" selection-start-line="169" selection-start-column="53" selection-end-line="169" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/price_survey_brand/PriceSurveyBrandActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/SourceApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="146" column="55" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
+        <state relative-caret-position="300">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dummu_toolbar.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="42" />
+        <state relative-caret-position="58">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/new_product/new_product_update/NewProductUpdateActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="304" column="45" selection-start-line="304" selection-start-column="45" selection-end-line="304" selection-end-column="45" />
+        <state relative-caret-position="915">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_calendar/InStoreCalendarActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/edit_white.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_calendar/ExpiryProductCalendarActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_disable.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="186" column="45" selection-start-line="186" selection-start-column="45" selection-end-line="186" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_category/ExpiryProductCategoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="153" column="60" selection-start-line="153" selection-start-column="60" selection-end-line="153" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_brand/ExpiryProductBrandActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="116" column="64" selection-start-line="116" selection-start-column="64" selection-end-line="116" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/expiring_product/expiry_product_product/ExpiryProduct_ProductActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="158" column="64" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_category/StoreCategoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="135" column="60" selection-start-line="135" selection-start-column="60" selection-end-line="135" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_brand/InStoreBrandActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="113" column="65" selection-start-line="113" selection-start-column="65" selection-end-line="113" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/in_store_sampling/store_product/StoreProductActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="121" column="65" selection-start-line="121" selection-start-column="65" selection-end-line="121" selection-end-column="65" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="36" />
+        <state relative-caret-position="165">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="51" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="51" />
+        <state relative-caret-position="127">
+          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/mvp/profile/ProfileFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/chat_text_bg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="345" column="8" selection-start-line="345" selection-start-column="8" selection-end-line="345" selection-end-column="8" />
+        <state relative-caret-position="75">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/edt_blank_grey.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yogeshgarg/source/common/requestResponse/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="100" column="46" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="46" />
           <folding />
         </state>
       </provider>

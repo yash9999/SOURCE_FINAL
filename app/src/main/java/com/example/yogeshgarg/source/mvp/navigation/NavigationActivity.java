@@ -214,10 +214,10 @@ public class NavigationActivity extends AppCompatActivity
         searchView.setQueryHint("Search");
         ImageView searchViewIcon = (ImageView) searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
         searchViewIcon.setVisibility(View.GONE);
-        EditText searchViewText=(EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-        searchViewText.setTextColor(ContextCompat.getColor(this,R.color.color_black));
-        searchViewText.setHintTextColor(ContextCompat.getColor(this,R.color.color_gray));
-        ImageView imgClose=(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        EditText searchViewText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        searchViewText.setTextColor(ContextCompat.getColor(this, R.color.color_black));
+        searchViewText.setHintTextColor(ContextCompat.getColor(this, R.color.color_gray));
+        ImageView imgClose = (ImageView) searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
         imgClose.setImageResource(R.mipmap.ic_sv_close);
         ViewGroup linearLayoutSearchView = (ViewGroup) searchViewIcon.getParent();
         linearLayoutSearchView.removeView(searchViewIcon);
@@ -238,23 +238,22 @@ public class NavigationActivity extends AppCompatActivity
             if (openNotification) {
                 NotificationFragment notificationFragment = new NotificationFragment();
                 replaceFragment(notificationFragment, getString(R.string.label_notification));
-            }
+            } else {
+                String fragmentType = getIntent().getStringExtra(ConstIntent.FRAGMENT_TYPE);
 
-            String fragmentType = getIntent().getStringExtra(ConstIntent.FRAGMENT_TYPE);
-
-
-            if (fragmentType.equals("openExpiryProductCalendar")) {
-                ExpiringProductFragment expiringProductFragment = new ExpiringProductFragment();
-                txtViewPageName.setText(R.string.expiring_product);
-                addFragment(expiringProductFragment, getString(R.string.label_expiring_product));
-            } else if (fragmentType.equals("inStoreSamplingScreenOpen")) {
-                InStoreSamplingFragment inStoreSamplingFragment = new InStoreSamplingFragment();
-                txtViewPageName.setText(R.string.in_store_sampling);
-                addFragment(inStoreSamplingFragment, getString(R.string.label_in_stroe_product));
-            } else if (fragmentType.equals("vacationScreenOpen")) {
-                VacationHomeFragment vacationHomeFragment = new VacationHomeFragment();
-                txtViewPageName.setText(R.string.vacation);
-                addFragment(vacationHomeFragment, getString(R.string.label_vacation));
+                if (fragmentType.equals("openExpiryProductCalendar")) {
+                    ExpiringProductFragment expiringProductFragment = new ExpiringProductFragment();
+                    txtViewPageName.setText(R.string.expiring_product);
+                    addFragment(expiringProductFragment, getString(R.string.label_expiring_product));
+                } else if (fragmentType.equals("inStoreSamplingScreenOpen")) {
+                    InStoreSamplingFragment inStoreSamplingFragment = new InStoreSamplingFragment();
+                    txtViewPageName.setText(R.string.in_store_sampling);
+                    addFragment(inStoreSamplingFragment, getString(R.string.label_in_stroe_product));
+                } else if (fragmentType.equals("vacationScreenOpen")) {
+                    VacationHomeFragment vacationHomeFragment = new VacationHomeFragment();
+                    txtViewPageName.setText(R.string.vacation);
+                    addFragment(vacationHomeFragment, getString(R.string.label_vacation));
+                }
             }
         } else {
             DashboardFragment dashboardFragment = new DashboardFragment();
@@ -473,7 +472,7 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     @OnClick(R.id.imgViewSearch)
-    public void imgViewSearchClick(){
+    public void imgViewSearchClick() {
         relLaySearch.setVisibility(View.VISIBLE);
         searchView.setQueryHint("Search");
     }

@@ -23,10 +23,11 @@ public class CircleTransform implements Transformation {
         if (squaredBitmap != source) {
             source.recycle();
         }
+        Bitmap bitmap = null;
 
-        Bitmap bitmap = Bitmap.createBitmap(size, size, source.getConfig());
-
+        bitmap = Bitmap.createBitmap(size, size, source.getConfig());
         Canvas canvas = new Canvas(bitmap);
+
         Paint paint = new Paint();
         BitmapShader shader = new BitmapShader(squaredBitmap,
                 BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP);
@@ -37,6 +38,8 @@ public class CircleTransform implements Transformation {
         canvas.drawCircle(r, r, r, paint);
 
         squaredBitmap.recycle();
+
+
         return bitmap;
     }
 

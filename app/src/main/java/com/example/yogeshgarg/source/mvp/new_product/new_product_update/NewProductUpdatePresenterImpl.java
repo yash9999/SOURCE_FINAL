@@ -98,7 +98,7 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
         }
 
 
-        AsyncHttpClient client = new AsyncHttpClient();
+        AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
         client.addHeader(Const.KEY_X_API, Const.APP_X_API);
         client.addHeader(Const.KEY_USER_TOKEN, userToken);
 
@@ -137,7 +137,8 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers,
+                                  byte[] responseBody, Throwable error) {
                 error.printStackTrace();
                 Progress.stop();
                 Log.e("status", "" + statusCode);
@@ -164,9 +165,10 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
                                String comment, String price, String discountType,
                                String discount, String taxType) {
 
+
         if (filePath == null) {
-            newProductUpdateView.onUnsuccessPictureApi("Please select Image.");
-            return false;
+                newProductUpdateView.onUnsuccessPictureApi("Please select Image.");
+                return false;
         } else if (Utils.isEmptyOrNull(productName)) {
             newProductUpdateView.onUnsuccessPictureApi("Please enter product name.");
             return false;

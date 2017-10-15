@@ -6,6 +6,7 @@ package com.example.yogeshgarg.source.common.requestResponse;
 
 public class ConstIntent {
 
+    public static final String KEY_OPPONENTID="opponentId";
     public static String KEY_CATEGORY_ID = "categoryId";
     public static final String PREFIX_URL_OF_IMAGE = "https://www.augmentedui.com/source/";
     public static final String KEY_INITIAL_DATE_TO_SEND = "initialDateToSend";

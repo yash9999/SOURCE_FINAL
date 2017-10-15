@@ -44,9 +44,11 @@ public class NewproductHomePresenterImpl implements NewProductHomePresenter {
 
     private void gettingResultOfNewProductApi() {
         Progress.start(activity);
-
+    UserSession userSession=new UserSession(activity);
+        String locationId=userSession.getLocationId();
         try {
             jsonObject = new JSONObject();
+            jsonObject.put(Const.KEY_LOCATION_ID,locationId);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

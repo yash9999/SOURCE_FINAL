@@ -1,9 +1,11 @@
 package com.example.yogeshgarg.source.mvp.login;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -13,12 +15,22 @@ import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
+import com.example.yogeshgarg.source.common.helper.Progress;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.session.UserSession;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.forgot_password.ForgotPasswordActivity;
 import com.example.yogeshgarg.source.mvp.navigation.NavigationActivity;
 import com.example.yogeshgarg.source.mvp.stores.StoresActivity;
+import com.quickblox.chat.QBChatService;
+import com.quickblox.chat.QBPrivateChat;
+import com.quickblox.chat.QBPrivateChatManager;
+import com.quickblox.chat.exception.QBChatException;
+import com.quickblox.chat.listeners.QBMessageListener;
+import com.quickblox.chat.model.QBChatMessage;
+import com.quickblox.chat.model.QBDialog;
+import com.quickblox.core.QBEntityCallback;
+import com.quickblox.core.exception.QBResponseException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +56,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     TextView txtViewForgotPassword;
     LoginPresenterImpl loginPresenterImpl;
 
+    QBPrivateChatManager privateChatManager;
+    QBMessageListener<QBPrivateChat> privateChatMessageListener;
+    QBChatService chatService;
+
+    int opponentId=34547169;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +71,36 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         ButterKnife.bind(this);
         setFont();
         loginPresenterImpl = new LoginPresenterImpl(this, this);
+
+
+        chatService = QBChatService.getInstance();
+        registerQbChatListeners();
+
+        privateChatMessageListener = new QBMessageListener<QBPrivateChat>() {
+            @Override
+            public void processMessage(QBPrivateChat privateChat, final QBChatMessage chatMessage) {
+                //Log.e("Chat Message", "" + chatMessage.getBody());
+                //chatAdapter.updateList(chatMessage);
+
+                // chatMessage.getBody();
+
+
+               /* requestBuilder.setSkip(skipRecords = 0);
+                if (isActivityForeground) {
+                    loadDialogsFromQbInUiThread(true);
+                }*/
+            }
+
+
+            @Override
+            public void processError(QBPrivateChat privateChat, QBChatException error, QBChatMessage originMessage) {
+                error.printStackTrace();
+                Progress.stop();
+            }
+        };
+
+        //registerQbChatListeners();
+
 
     }
 
@@ -146,4 +196,54 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private void callingNotificationApi() {
         loginPresenterImpl.callingPushNotificationApi();
     }
+
+
+    private void registerQbChatListeners() {
+        privateChatManager = chatService.getPrivateChatManager();
+        //QBGroupChatManager groupChatManager = QBChatService.getInstance().getGroupChatManager();
+        if (privateChatManager != null) {
+            //privateChatManager.addPrivateChatManagerListener(privateChatManagerListener);
+
+
+            new CreateDialog().execute(privateChatManager);
+
+        }
+    }
+
+    private class CreateDialog extends AsyncTask<QBPrivateChatManager, String, QBPrivateChatManager> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected QBPrivateChatManager doInBackground(QBPrivateChatManager... qbPrivateChatManagers) {
+
+
+            return qbPrivateChatManagers[0];
+        }
+
+        @Override
+        protected void onPostExecute(final QBPrivateChatManager s) {
+            super.onPostExecute(s);
+
+            s.createDialog(opponentId, new QBEntityCallback<QBDialog>() {
+                @Override
+                public void onSuccess(QBDialog dialog, Bundle args) {
+                    Log.d("CreateDialog", "onSuccess");
+                    // dialogId = dialog.getDialogId();
+                    //chatInPrivateChat(s, false);
+                }
+
+                @Override
+                public void onError(QBResponseException errors) {
+                    Log.d("CreateDialog", "onError " + errors.getMessage());
+                    //Progress.stop();
+                    // AlertDialogManager.sAlertFinish(ChatActivity.this, getString(R.string.chat_not_availble));
+                    errors.printStackTrace();
+                }
+            });
+        }
+    }
+
 }

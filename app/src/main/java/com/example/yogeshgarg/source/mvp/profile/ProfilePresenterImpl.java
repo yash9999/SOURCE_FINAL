@@ -138,7 +138,7 @@ public class ProfilePresenterImpl implements ProfilePresenter {
         UserSession userSession = new UserSession(activity);
         String userToken = userSession.getUserToken();
 
-        AsyncHttpClient client = new AsyncHttpClient();
+        AsyncHttpClient client = new AsyncHttpClient(true,80,443);
         client.addHeader(Const.KEY_X_API, Const.APP_X_API);
         client.addHeader(Const.KEY_USER_TOKEN, userToken);
 

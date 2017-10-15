@@ -14,6 +14,7 @@
     <string name="price_analysis">Price Analysis</string>
     <string name="price_survey">Price Survey</string>
 
+    <string name="internet_connectivity_message">no internet</string>
     <string name="product_list">Product List</string>
     <string name="new_product">New Product</string>
     <string name="discounted_product">Discounted Product</string>
@@ -29,7 +30,7 @@
     <string name="sync">Sync</string>
     <string name="vacation">Vacation</string>
     <string name="logout">Logout</string>
-
+<string name="chat_not_availble">Chat not available.</string>
 
     <string name="user_is_not_authentic">User is not authentic</string>
 

@@ -9,7 +9,10 @@
 
     <color name="color_bg_alpha">#600F9D58</color>
     <color name="color_white">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="color_black">#000000</color>
+    <color name="black">#000000</color>
+    <color name="green">#8017AA1C</color>
     <color name="alpha_black">#60000000</color>
 
 
