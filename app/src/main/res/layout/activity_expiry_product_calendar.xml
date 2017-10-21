@@ -253,7 +253,7 @@
                     android:gravity="start"
                     android:hint="Write a comment"
                     android:imeOptions="actionDone"
-                    android:inputType="text"
+                    android:inputType="text|textMultiLine"
                     android:padding="5dp"
                     android:textColor="@color/color_black"
                     android:textSize="12dp" />

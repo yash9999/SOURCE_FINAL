@@ -18,16 +18,16 @@
 
             <RelativeLayout
                 android:id="@+id/relLayImages"
-                android:layout_width="140dp"
-                android:layout_height="110dp"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="20dp">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgViewProfile"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/round_image" />
 
@@ -58,7 +58,7 @@
                 android:layout_below="@+id/relLayImages"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="17dp">
 
                 <TextView
                     android:id="@+id/txtViewTitleName"
@@ -255,6 +255,7 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="5dp"
+                    android:maxLines="1"
                     android:textColor="@color/color_gray"
                     android:textSize="@dimen/txt_14_sp" />
 
@@ -296,6 +297,7 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="5dp"
+                    android:maxLines="1"
                     android:textColor="@color/color_gray"
                     android:textSize="@dimen/txt_14_sp" />
 
@@ -335,6 +337,7 @@
                     android:background="@drawable/edttext_white"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
+                    android:maxLines="1"
                     android:paddingTop="5dp"
                     android:textColor="@color/color_gray"
                     android:textSize="@dimen/txt_14_sp" />
@@ -364,7 +367,6 @@
 
 
         </RelativeLayout>
-
 
     </ScrollView>
 

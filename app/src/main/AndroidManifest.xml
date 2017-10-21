@@ -43,7 +43,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.yogeshgarg.source.provider"
+            android:authorities="com.augmentedui.yogeshgarg.source.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -136,7 +136,7 @@
             android:name=".mvp.vacation.vacation_calendar.VacationCalendarActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".mvp.new_product.new_product_update.NewProductUpdateActivity"
             android:screenOrientation="portrait"

@@ -116,7 +116,7 @@ public class ProfilePresenterImpl implements ProfilePresenter {
 
 
     //multipart image upload api
-    private void gettingResultOfUploadingImage(File filePath) {
+    private void gettingResultOfUploadingImage(final File filePath) {
 
         String uploadImageUrl = "image/user";
 
@@ -135,10 +135,10 @@ public class ProfilePresenterImpl implements ProfilePresenter {
             Log.e("exception", ex.getMessage());
         }
 
-        UserSession userSession = new UserSession(activity);
+        final UserSession userSession = new UserSession(activity);
         String userToken = userSession.getUserToken();
 
-        AsyncHttpClient client = new AsyncHttpClient(true,80,443);
+        AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
         client.addHeader(Const.KEY_X_API, Const.APP_X_API);
         client.addHeader(Const.KEY_USER_TOKEN, userToken);
 
@@ -167,6 +167,7 @@ public class ProfilePresenterImpl implements ProfilePresenter {
 
                     //call your method after successapi here
                     profileView.onSuccessProfilePic("Photo uploaded successfully");
+                    callingProfileApi();
                 } else {
                     profileView.onUnsuccessProfilePic("Not able to upload image this time, Please try again later.");
                 }

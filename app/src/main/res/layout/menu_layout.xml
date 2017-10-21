@@ -44,7 +44,7 @@
                     android:layout_toRightOf="@+id/imgViewProfileDp"
                     android:text="Jane Smith"
                     android:textColor="@color/color_white"
-                    android:textSize="@dimen/txt_12_sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/txtViewLocation"
@@ -56,7 +56,7 @@
                     android:layout_toRightOf="@+id/imgViewProfileDp"
                     android:text="Hi-Lo Pavillion"
                     android:textColor="@color/color_white"
-                    android:textSize="@dimen/txt_12_sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/txtViewDesignation"
@@ -68,7 +68,7 @@
                     android:layout_toRightOf="@+id/imgViewProfileDp"
                     android:text="Merchendiser"
                     android:textColor="@color/color_white"
-                    android:textSize="@dimen/txt_12_sp" />
+                    android:textSize="12dp" />
 
             </RelativeLayout>
 

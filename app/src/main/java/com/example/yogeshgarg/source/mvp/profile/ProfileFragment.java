@@ -273,7 +273,7 @@ public class ProfileFragment extends Fragment implements ProfileView {
         UserSession userSession = new UserSession(getActivity());
         String store = userSession.getStoreAddress();
         String company = result.getCompany();
-        userSession.setUserImage(result.getImage());
+        userSession.setUserImage((ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()));
 
         edtTextName.setText(Utils.camelCasing(firstName) + " " + Utils.camelCasing(lastName));
         edtTextEmail.setText(emailId);
@@ -282,7 +282,8 @@ public class ProfileFragment extends Fragment implements ProfileView {
         txtViewStore.setText(Utils.camelCasing(store));
         txtViewCompany.setText(Utils.camelCasing(company));
 
-        Picasso.with(getActivity()).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).transform(new CircleTransform()).into(imgViewProfile);
+        String image=(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage());
+        Picasso.with(getActivity()).load(image).into(imgViewProfile);
 
     }
 

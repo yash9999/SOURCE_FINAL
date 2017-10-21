@@ -226,8 +226,6 @@ public class NavigationActivity extends AppCompatActivity
 
 
         fragmentManager = getSupportFragmentManager();
-        setFont();
-
 
         Bundle bundle = getIntent().getExtras();
 
@@ -263,6 +261,11 @@ public class NavigationActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setFont();
+    }
 
     @Override
     public void onBackPressed() {
@@ -277,7 +280,25 @@ public class NavigationActivity extends AppCompatActivity
 
     //-------------------------- custom methods----------------------------
 
+    private void setMenuData() {
+        UserSession userSession = new UserSession(this);
+        String username = userSession.getUserName();
+        String usertype = userSession.getUserType();
+        String storeAddress = userSession.getStoreAddress();
+        String userImage = userSession.getUserimage();
+
+        if (TextUtils.isEmpty(userImage)) {
+            Picasso.with(this).load(R.mipmap.ic_profile_dp).transform(new CircleTransform()).into(imgViewProfileDp);
+        } else
+            Picasso.with(this).load(userImage).transform(new CircleTransform()).into(imgViewProfileDp);
+
+        txtViewName.setText(username);
+        txtViewLocation.setText(storeAddress);
+        txtViewDesignation.setText(usertype);
+    }
+
     private void setFont() {
+        setMenuData();
 
         FontHelper.setFontFace(txtViewPageName, FontHelper.FontType.FONT_Semi_Bold, this);
 
@@ -285,21 +306,6 @@ public class NavigationActivity extends AppCompatActivity
         FontHelper.setFontFace(txtViewLocation, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewDesignation, FontHelper.FontType.FONT_Normal, this);
 
-        UserSession userSession = new UserSession(this);
-        String username = userSession.getUserName();
-        String usertype = userSession.getUserType();
-        String storeAddress = userSession.getStoreAddress();
-        String userImage = userSession.getUserimage();
-
-        if(TextUtils.isEmpty(userImage)){
-            Picasso.with(this).load(R.mipmap.ic_profile_dp).transform(new CircleTransform()).into(imgViewProfileDp);
-        }else{
-            Picasso.with(this).load(ConstIntent.PREFIX_URL_OF_IMAGE + userImage).transform(new CircleTransform()).into(imgViewProfileDp);
-        }
-
-        txtViewName.setText(username);
-        txtViewLocation.setText(storeAddress);
-        txtViewDesignation.setText(usertype);
 
         FontHelper.setFontFace(txtViewDashboard, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewProfile, FontHelper.FontType.FONT_Normal, this);
@@ -335,6 +341,7 @@ public class NavigationActivity extends AppCompatActivity
 
     @OnClick(R.id.imgViewMenu)
     public void setImgViewMenuClick() {
+        setMenuData();
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
