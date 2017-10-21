@@ -1,27 +1,30 @@
 {
   "project_info": {
-    "project_number": "1054790289324",
-    "firebase_url": "https://source-c86c5.firebaseio.com",
-    "project_id": "source-c86c5",
-    "storage_bucket": "source-c86c5.appspot.com"
+    "project_number": "365038360687",
+    "firebase_url": "https://source-final.firebaseio.com",
+    "project_id": "source-final",
+    "storage_bucket": "source-final.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1054790289324:android:d184c6738f4fc651",
+        "mobilesdk_app_id": "1:365038360687:android:649aaae28985044c",
         "android_client_info": {
-          "package_name": "com.example.yogeshgarg.source"
+          "package_name": "com.augmentedui.yogeshgarg.source"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1054790289324-f9g4bd3navdi988rr4vlp2iev9mp74gn.apps.googleusercontent.com",
+          "client_id": "365038360687-7p549807k3r28rk4pkvoeif6rhcrna26.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBTD1QaePs1LszQE7hFQiuFAyBA188egi0"
+          "current_key": "AIzaSyAtn6nV9BZ-sSmzMug06saUNExwRlCeLxQ"
+        },
+        {
+          "current_key": "AIzaSyC9zqorGDU43YBVipYqLCQSxnuO29V76qQ"
         }
       ],
       "services": {

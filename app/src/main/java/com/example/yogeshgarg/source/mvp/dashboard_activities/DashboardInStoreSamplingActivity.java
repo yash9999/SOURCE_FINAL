@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -27,6 +29,8 @@ public class DashboardInStoreSamplingActivity extends AppCompatActivity {
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -70,8 +74,9 @@ public class DashboardInStoreSamplingActivity extends AppCompatActivity {
         recyclerView.setAdapter(dashboardActivityInStoreProductAdapter);
     }
 
-    private void setData(){
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal,this);
+    private void setData() {
+        imgViewSearch.setVisibility(View.GONE);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
         txtViewTitle.setText("Instore Sampling");
     }
 }

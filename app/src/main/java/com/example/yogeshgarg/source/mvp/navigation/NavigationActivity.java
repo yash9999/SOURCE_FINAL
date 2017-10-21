@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -225,7 +226,6 @@ public class NavigationActivity extends AppCompatActivity
 
 
         fragmentManager = getSupportFragmentManager();
-        Picasso.with(this).load(R.mipmap.ic_profile_dp).transform(new CircleTransform()).into(imgViewProfileDp);
         setFont();
 
 
@@ -289,6 +289,13 @@ public class NavigationActivity extends AppCompatActivity
         String username = userSession.getUserName();
         String usertype = userSession.getUserType();
         String storeAddress = userSession.getStoreAddress();
+        String userImage = userSession.getUserimage();
+
+        if(TextUtils.isEmpty(userImage)){
+            Picasso.with(this).load(R.mipmap.ic_profile_dp).transform(new CircleTransform()).into(imgViewProfileDp);
+        }else{
+            Picasso.with(this).load(ConstIntent.PREFIX_URL_OF_IMAGE + userImage).transform(new CircleTransform()).into(imgViewProfileDp);
+        }
 
         txtViewName.setText(username);
         txtViewLocation.setText(storeAddress);

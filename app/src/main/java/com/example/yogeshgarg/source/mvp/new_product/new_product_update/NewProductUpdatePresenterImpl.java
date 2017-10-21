@@ -165,10 +165,12 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
                                String comment, String price, String discountType,
                                String discount, String taxType) {
 
-
         if (filePath == null) {
-                newProductUpdateView.onUnsuccessPictureApi("Please select Image.");
-                return false;
+            newProductUpdateView.onUnsuccessPictureApi("Please select Image.");
+            return false;
+        } else if (!filePath.exists()) {
+            newProductUpdateView.onUnsuccessPictureApi("Please select Image.");
+            return false;
         } else if (Utils.isEmptyOrNull(productName)) {
             newProductUpdateView.onUnsuccessPictureApi("Please enter product name.");
             return false;

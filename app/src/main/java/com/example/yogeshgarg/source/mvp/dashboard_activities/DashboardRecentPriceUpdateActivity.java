@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,8 +30,8 @@ public class DashboardRecentPriceUpdateActivity extends AppCompatActivity {
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
-    @BindView(R.id.imgViewBack)
-    ImageView imgViewBack;
+    @BindView(R.id.imgViewSearch)
+    ImageView  imgViewSearch;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -74,7 +75,9 @@ public class DashboardRecentPriceUpdateActivity extends AppCompatActivity {
         DashboardActivityRecentProductAdapter dashboardActivityRecentProductAdapter = new DashboardActivityRecentProductAdapter(this, resultArrayList);
         recyclerView.setAdapter(dashboardActivityRecentProductAdapter);
     }
+
     private void setData(){
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal,this);
         txtViewTitle.setText("Recent Price Changes");
     }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -27,6 +29,9 @@ public class PlanogramActivity extends AppCompatActivity {
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -40,7 +45,7 @@ public class PlanogramActivity extends AppCompatActivity {
         setData();
         Intent intent = getIntent();
         if (intent != null) {
-         resultArrayListPlanogram = (ArrayList<DashboardPlanogramModel.Result>) intent.getSerializableExtra(ConstIntent.KEY_DB_PLANOGRAM);
+            resultArrayListPlanogram = (ArrayList<DashboardPlanogramModel.Result>) intent.getSerializableExtra(ConstIntent.KEY_DB_PLANOGRAM);
             setLayoutManager();
         }
     }
@@ -52,8 +57,9 @@ public class PlanogramActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         setAdapter();
     }
+
     private void setAdapter() {
-        DashboardActivityPlanogramAdapter dashboardActivityPlanogramAdapter = new DashboardActivityPlanogramAdapter(this,resultArrayListPlanogram);
+        DashboardActivityPlanogramAdapter dashboardActivityPlanogramAdapter = new DashboardActivityPlanogramAdapter(this, resultArrayListPlanogram);
         recyclerView.setAdapter(dashboardActivityPlanogramAdapter);
     }
 
@@ -68,8 +74,9 @@ public class PlanogramActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    private void setData(){
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal,this);
+    private void setData() {
+        imgViewSearch.setVisibility(View.GONE);
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
         txtViewTitle.setText("Planogram Updates");
     }
 }

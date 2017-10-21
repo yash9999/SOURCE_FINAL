@@ -95,7 +95,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
                     if (loginModel.getSuccessful()) {
                         loginView.onLoginSuccess(loginModel.getResult());
-                        loginUserOnQuikBlox(username,password);
+                        //loginUserOnQuikBlox(username,password);
                     } else {
                         loginView.onLoginUnsuccess(loginModel.getMessage());
                     }

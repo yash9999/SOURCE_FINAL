@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -27,6 +29,9 @@ public class DashboardNewProductActivity extends AppCompatActivity {
 
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
 
     @BindView(R.id.recyclerView)
@@ -73,6 +78,7 @@ public class DashboardNewProductActivity extends AppCompatActivity {
     }
 
     private void setData(){
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal,this);
         txtViewTitle.setText("New Product Updates");
     }

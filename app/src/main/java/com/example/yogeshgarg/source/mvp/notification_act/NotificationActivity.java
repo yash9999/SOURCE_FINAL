@@ -23,6 +23,9 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     @BindView(R.id.relLayout)
     RelativeLayout relLayout;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
@@ -107,6 +110,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     private void setFont() {
         txtViewTitle.setVisibility(View.VISIBLE);
         txtViewTitle.setText("Notification's Settings");
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Semi_Bold);
         FontHelper.setFontFace(txtViewInbox, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewPriceSurvey, FontHelper.FontType.FONT_Normal, this);

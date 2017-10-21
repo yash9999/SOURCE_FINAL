@@ -13,7 +13,6 @@
         android:required="false" />
 
     <application
-        android:largeHeap="true"
         android:name=".SourceApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -154,22 +153,64 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
-        <activity android:name=".mvp.notification_act.NotificationActivity" />
-        <activity android:name=".mvp.dashboard_activities.PlanogramActivity" />
-        <activity android:name=".mvp.product_list.product_list_brand.ProductListBrandActivity" />
-        <activity android:name=".mvp.product_list.product_list_product.ProductListProductActivity" />
-        <activity android:name=".mvp.expiring_product.expiry_product_brand.ExpiryProductBrandActivity" />
-        <activity android:name=".mvp.price_survey_brand.PriceSurveyBrandActivity" />
-        <activity android:name=".mvp.in_store_sampling.store_brand.InStoreBrandActivity" />
-        <activity android:name=".mvp.about.AboutActivity" />
-        <activity android:name=".mvp.faq.FaqActivity"></activity>
-
-        <activity android:name=".mvp.ChatActivity"
+        <activity
+            android:name=".mvp.notification_act.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".mvp.dashboard_activities.PlanogramActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
 
-        </activity>
+        <activity
+            android:name=".mvp.product_list.product_list_brand.ProductListBrandActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.product_list.product_list_product.ProductListProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.expiring_product.expiry_product_brand.ExpiryProductBrandActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.price_survey_brand.PriceSurveyBrandActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.in_store_sampling.store_brand.InStoreBrandActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.about.AboutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.faq.FaqActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity
+            android:name=".mvp.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
     </application>
 
 </manifest>

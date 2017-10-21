@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -46,6 +47,9 @@ public class VacationCalendarActivity extends AppCompatActivity implements Vacat
 
     @BindView(R.id.imgViewBack)
     ImageView imgViewBack;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
@@ -137,6 +141,7 @@ public class VacationCalendarActivity extends AppCompatActivity implements Vacat
 
         FontHelper.applyFont(this, txtViewTitle, FontHelper.FontType.FONT_Normal);
         txtViewTitle.setText("Vacation");
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.applyFont(this, txtViewTitleFromDate, FontHelper.FontType.FONT_Normal);
         FontHelper.applyFont(this, txtViewFromDate, FontHelper.FontType.FONT_Normal);
         FontHelper.applyFont(this, txtViewTitleToDate, FontHelper.FontType.FONT_Normal);

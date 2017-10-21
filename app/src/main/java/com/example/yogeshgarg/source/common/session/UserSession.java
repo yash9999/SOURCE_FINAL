@@ -16,9 +16,7 @@ public class UserSession {
     int PRIVATE_MODE = 0;
 
 
-
-
-
+    public static final String KEY_USER_IMG = "userImage";
 
     public static final String KEY_USER_TOKEN = "user_token";
     public static final String KEY_OPPONENT_ID_CURRENT_USER = "opponent_id";
@@ -26,11 +24,8 @@ public class UserSession {
     public static final String KEY_PERMISSION_DIALOG = "perm_dialog";
     public static final String KEY_QUIKBLOX_ID = "quikblox_id";
 
-    public static final String KEY_USER_TYPE="usertype";
-    public static final String KEY_USERNAME="username";
-    public  static  final String KEY_USERIMAGE="";
-
-
+    public static final String KEY_USER_TYPE = "usertype";
+    public static final String KEY_USERNAME = "username";
 
 
 
@@ -61,13 +56,13 @@ public class UserSession {
     /**
      * Create login session
      */
-    public void createUserSession(String id, String token,String username,String usertype) {
+    public void createUserSession(String id, String token, String username, String usertype) {
 
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_USER_ID, id);
         editor.putString(KEY_TOKEN, token);
-        editor.putString(KEY_USERNAME,username);
-        editor.putString(KEY_USER_TYPE,usertype);
+        editor.putString(KEY_USERNAME, username);
+        editor.putString(KEY_USER_TYPE, usertype);
 
         editor.commit();
     }
@@ -108,16 +103,26 @@ public class UserSession {
         editor.commit();
     }
 
+
+    public void setUserImage(String userimage) {
+        editor.putString(KEY_USER_IMG, userimage);
+        editor.commit();
+    }
+
+    public String getUserimage() {
+        return pref.getString(KEY_USER_IMG, "");
+    }
+
     public String getStoreAddress() {
         return pref.getString(STORE_ADDRESS, "");
     }
 
-    public String getUserName(){
-        return pref.getString(KEY_USERNAME,"");
+    public String getUserName() {
+        return pref.getString(KEY_USERNAME, "");
     }
 
-    public String getUserType(){
-        return pref.getString(KEY_USER_TYPE,"");
+    public String getUserType() {
+        return pref.getString(KEY_USER_TYPE, "");
     }
 
     public String getLocationId() {
@@ -125,38 +130,19 @@ public class UserSession {
     }
 
 
-
     /**
      * Create login session
      */
-    public void createUserSession(String user_token) {
 
-        // Log.d("user_token",user_token);
-        editor.putString(KEY_USER_TOKEN, user_token);
-        editor.putBoolean(IS_LOGIN, true);
 
-        // commit changes
-        editor.commit();
-    }
 
-    public void createFCMToken(String fcmToken) {
-        editor.putString(KEY_FCM_TOKEN, fcmToken);
-        editor.commit();
-    }
 
     public void setQuikBloxID(String userID) {
         editor.putString(KEY_QUIKBLOX_ID, userID);
         editor.commit();
     }
 
-    public void setUserImage(String userimage){
-        editor.putString(KEY_USERIMAGE, userimage);
-        editor.commit();
-    }
 
-    public String getUserimage(){
-        return pref.getString(KEY_USERIMAGE,"");
-    }
 
     public String getQuikbloxId() {
         return pref.getString(KEY_QUIKBLOX_ID, "0");
@@ -194,17 +180,7 @@ public class UserSession {
         return pref.getBoolean(KEY_PERMISSION_DIALOG, false);
     }
 
-    /**
-     * Clear session details
-     */
 
-
-
-    public void logout() { // Clearing all data from Shared
-
-        editor.remove(IS_LOGIN);
-        editor.commit();
-    }
 
 
 

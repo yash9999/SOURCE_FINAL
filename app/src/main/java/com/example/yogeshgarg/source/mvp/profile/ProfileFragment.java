@@ -269,9 +269,11 @@ public class ProfileFragment extends Fragment implements ProfileView {
         String emailId = result.getEmail();
         String phoneNumber = result.getPhone();
         String user = result.getUser();
+
         UserSession userSession = new UserSession(getActivity());
         String store = userSession.getStoreAddress();
         String company = result.getCompany();
+        userSession.setUserImage(result.getImage());
 
         edtTextName.setText(Utils.camelCasing(firstName) + " " + Utils.camelCasing(lastName));
         edtTextEmail.setText(emailId);
