@@ -42,7 +42,7 @@ public class BaseActivity extends AppCompatActivity {
 
         chatService = QBChatService.getInstance();
 
-        final QBUser user = new QBUser(userSession.getUserId(), Const.AC_PWD);
+        final QBUser user = new QBUser(userSession.getUserName(), Const.AC_PWD);
         QBAuth.createSession(user, new QBEntityCallback<QBSession>() {
             @Override
             public void onSuccess(QBSession session, Bundle params) {

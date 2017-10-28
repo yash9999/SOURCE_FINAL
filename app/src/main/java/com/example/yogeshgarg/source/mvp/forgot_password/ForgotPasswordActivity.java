@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +33,9 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ForgotP
 
     @BindView(R.id.relLay)
     RelativeLayout relLay;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.txtViewForgotPasswordMsg)
     TextView txtViewForgotPasswordMsg;
@@ -98,7 +102,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ForgotP
 
     //---------------------------------------------------------------------------------
     private void setFont() {
-
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
         txtViewTitle.setText(getString(R.string.forgot_password_));
         FontHelper.setFontFace(txtViewForgotPasswordMsg, FontHelper.FontType.FONT_Normal, this);

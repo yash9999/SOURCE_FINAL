@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,9 @@ public class ForgotPasswordOtpActivity extends AppCompatActivity implements Forg
 
     @BindView(R.id.relLayRoot)
     RelativeLayout relLayRoot;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.txtViewSixDigit)
     TextView txtViewSixDigit;
@@ -114,6 +118,7 @@ public class ForgotPasswordOtpActivity extends AppCompatActivity implements Forg
 
     private void setFont() {
 
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.setFontFace(txtViewSixDigit, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
         txtViewTitle.setText(getString(R.string.reset_password));

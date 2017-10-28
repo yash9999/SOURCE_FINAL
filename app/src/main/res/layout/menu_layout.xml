@@ -170,7 +170,6 @@
                     android:layout_below="@+id/linLayMyTeam"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
-                    android:visibility="gone"
                     android:padding="5dp">
 
                     <ImageView

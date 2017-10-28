@@ -14,7 +14,6 @@ import java.util.List;
 public class LoginModel {
 
 
-
         @SerializedName("message")
         @Expose
         private String message;

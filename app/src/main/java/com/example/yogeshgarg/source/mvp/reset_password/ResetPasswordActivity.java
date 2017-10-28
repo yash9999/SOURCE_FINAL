@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,10 @@ public class ResetPasswordActivity extends AppCompatActivity implements ResetPas
 
     @BindView(R.id.relLayRoot)
     RelativeLayout relLayRoot;
+
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.txtViewForgotPasswordMsg)
     TextView txtViewForgotPasswordMsg;
@@ -62,6 +67,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements ResetPas
         setContentView(R.layout.activity_reset_password);
         ButterKnife.bind(this);
         txtViewTitle.setText(R.string.reset_password);
+        imgViewSearch.setVisibility(View.GONE);
         setFont();
     }
 
