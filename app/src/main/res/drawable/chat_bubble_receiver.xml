@@ -9,9 +9,8 @@
 
 
     <corners
-        android:bottomLeftRadius="18dp"
-        android:bottomRightRadius="18dp"
-        android:topLeftRadius="18dp"
-        android:topRightRadius="18dp"></corners>
-
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:topLeftRadius="0dp"
+        android:topRightRadius="10dp"></corners>
 </shape>

@@ -15,7 +15,7 @@ public interface ChattingView {
     public void onUnsuccessSendMessage(String message);
     public void onInternetErrorSendMessage();
 
-    public void onSuccessReceivedMessage();
+    public void onSuccessReceivedMessage(ArrayList<ReceivedModel.Result> result);
     public void onUnsuccessReceivedMessage(String message);
     public void onInternetErrorReceivedMessage();
 }

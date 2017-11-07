@@ -44,7 +44,6 @@ public class ChattingPresenterImpl implements ChattingPresenter {
 
 
     private void getResultOfConversation(String userId) {
-        Progress.start(activity);
 
         try {
             jsonObject = new JSONObject();
@@ -61,7 +60,6 @@ public class ChattingPresenterImpl implements ChattingPresenter {
             @Override
             public void onResponse(Call<ChattingModel> call, Response<ChattingModel> response) {
 
-                Progress.stop();
                 try {
                     ChattingModel chattingModel = response.body();
                     String message = chattingModel.getMessage();
@@ -77,7 +75,7 @@ public class ChattingPresenterImpl implements ChattingPresenter {
 
             @Override
             public void onFailure(Call<ChattingModel> call, Throwable t) {
-                Progress.stop();
+
                 t.printStackTrace();
                 chattingView.onUnsuccessConversation(activity.getString(R.string.server_error));
             }
@@ -156,31 +154,29 @@ public class ChattingPresenterImpl implements ChattingPresenter {
 
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (jsonObject.toString()));
 
-        Call<ResponseBody> conversation = ApiAdapter.getApiService().receivedMessage("application/json", "no-cache", body);
+        Call<ReceivedModel> conversation = ApiAdapter.getApiService().receivedMessage("application/json", "no-cache", body);
 
-        conversation.enqueue(new Callback<ResponseBody>() {
+        conversation.enqueue(new Callback<ReceivedModel>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ReceivedModel> call, Response<ReceivedModel> response) {
 
-
-               /* try {
-                    ForgotPasswordOtpModel forgotPasswordOtpModel = response.body();
-                    String message = forgotPasswordOtpModel.getMessage();
-                    if (forgotPasswordOtpModel.getSuccessful()) {
-                        chattingView.onSuccessForgotPasswordOtp(message);
+                try {
+                    ReceivedModel receivedModel = response.body();
+                    String message = receivedModel.getMessage();
+                    if (receivedModel.getSuccessful()) {
+                        chattingView.onSuccessReceivedMessage(receivedModel.getResult());
                     } else {
-                        chattingView.onUnsuccessConversation(message);
+                        chattingView.onUnsuccessReceivedMessage(message);
                     }
                 } catch (NullPointerException exp) {
-                    chattingView.onUnsuccessConversation(activity.getString(R.string.server_error));
-                }*/
+                    chattingView.onUnsuccessReceivedMessage(activity.getString(R.string.server_error));
+                }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+            public void onFailure(Call<ReceivedModel> call, Throwable t) {
                 t.printStackTrace();
-                chattingView.onUnsuccessConversation(activity.getString(R.string.server_error));
+                chattingView.onUnsuccessReceivedMessage(activity.getString(R.string.server_error));
             }
         });
     }

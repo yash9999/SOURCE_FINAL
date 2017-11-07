@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.DateMethods;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.ProductListBrandAdapter;
 
@@ -44,6 +45,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Holder> {
     public void onBindViewHolder(Holder holder, int position) {
         ChattingModel.Result result = resultArrayList.get(position);
         String message = result.getMessage();
+        result.getDateadded();
+
 
         if (result.getOwner()) {
             holder.rel_receiver.setVisibility(View.GONE);
@@ -51,7 +54,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Holder> {
                 holder.rel_Sender.setVisibility(View.GONE);
             } else {
                 holder.rel_Sender.setVisibility(View.VISIBLE);
-                holder.txtMessageSender.setText(message);
+                holder.txtMessageSender.setText(message.trim());
+                holder.txtTimeSender.setText(DateMethods.onlyTime(result.getDateadded()));
             }
 
         } else {
@@ -60,7 +64,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Holder> {
                 holder.rel_receiver.setVisibility(View.GONE);
             } else {
                 holder.rel_receiver.setVisibility(View.VISIBLE);
-                holder.txtMessageReceiver.setText(message);
+                holder.txtMessageReceiver.setText(message.trim());
+                holder.txtTimeReceiver.setText(DateMethods.onlyTime(result.getDateadded()));
             }
 
         }
@@ -74,11 +79,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Holder> {
 
     public class Holder extends RecyclerView.ViewHolder {
 
+
         @BindView(R.id.rel_receiver)
         RelativeLayout rel_receiver;
 
         @BindView(R.id.rel_Sender)
         RelativeLayout rel_Sender;
+
+        @BindView(R.id.txtTimeReceiver)
+        TextView txtTimeReceiver;
 
         @BindView(R.id.txtMessageReceiver)
         TextView txtMessageReceiver;
@@ -86,11 +95,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.Holder> {
         @BindView(R.id.txtMessageSender)
         TextView txtMessageSender;
 
+        @BindView(R.id.txtTimeSender)
+        TextView txtTimeSender;
+
+
         public Holder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             FontHelper.applyFont(activity, txtMessageReceiver, FontHelper.FontType.FONT_Normal);
             FontHelper.applyFont(activity, txtMessageSender, FontHelper.FontType.FONT_Normal);
+            FontHelper.applyFont(activity, txtTimeReceiver, FontHelper.FontType.FONT_Normal);
+            FontHelper.applyFont(activity, txtTimeSender, FontHelper.FontType.FONT_Normal);
         }
     }
 }

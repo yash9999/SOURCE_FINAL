@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 02/08/17.
  */
 
-public class DashboardActivityRecentProductAdapter extends RecyclerView.Adapter<DashboardActivityRecentProductAdapter.ViewHolder>{
+public class DashboardActivityRecentProductAdapter extends RecyclerView.Adapter<DashboardActivityRecentProductAdapter.ViewHolder> {
 
     Activity activity;
     ArrayList<DashboardRecentUpdateModel.Result> resultArrayList;
@@ -53,24 +53,7 @@ public class DashboardActivityRecentProductAdapter extends RecyclerView.Adapter<
         DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
 
 
-
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
-
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-
-                /*byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
-
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
         String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
 
@@ -106,12 +89,11 @@ public class DashboardActivityRecentProductAdapter extends RecyclerView.Adapter<
             ex.printStackTrace();
         }
 
-        holder.txtViewProductQuantity.setText("UOM: " + result.getWeight()+result.getItemUnitMeasure());
+        holder.txtViewProductQuantity.setText("UOM: " + result.getWeight() + result.getItemUnitMeasure());
         holder.txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
         holder.txtViewProductDate.setText(setDate(result.getDateadded()));
 
     }
-
 
 
     @Override

@@ -52,22 +52,9 @@ public class DashboardActivityNewProductAdapter  extends  RecyclerView.Adapter<D
         NewProductModel.Result result = resultArrayList.get(position);
 
 
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(holder.imgViewProduct);
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
 
-            }
-
-            @Override
-            public void onError() {
-
-               /* byte[] image=result.getLinkByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
 
         String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);

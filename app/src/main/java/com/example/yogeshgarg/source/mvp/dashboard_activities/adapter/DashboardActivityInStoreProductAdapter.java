@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
  * Created by yogeshgarg on 02/08/17.
  */
 
-public class DashboardActivityInStoreProductAdapter extends RecyclerView.Adapter<DashboardActivityInStoreProductAdapter.Holder>{
+public class DashboardActivityInStoreProductAdapter extends RecyclerView.Adapter<DashboardActivityInStoreProductAdapter.Holder> {
 
     Activity activity;
     ArrayList<DashboardInStoreModel.Result> resultArrayList;
@@ -49,22 +49,8 @@ public class DashboardActivityInStoreProductAdapter extends RecyclerView.Adapter
     public void onBindViewHolder(Holder holder, int position) {
         DashboardInStoreModel.Result result = resultArrayList.get(position);
 
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-
-              /*  byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
 
         String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
@@ -76,7 +62,6 @@ public class DashboardActivityInStoreProductAdapter extends RecyclerView.Adapter
 
         holder.txtViewProductDate.setText(setDate(result.getDateadded()));
     }
-
 
 
     @Override

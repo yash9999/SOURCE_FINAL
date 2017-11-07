@@ -4,6 +4,7 @@ package com.example.yogeshgarg.source.common.requestResponse;
 import com.example.yogeshgarg.source.mvp.ProductUpdate.ProductUpdateModel;
 import com.example.yogeshgarg.source.mvp.about.AboutModel;
 import com.example.yogeshgarg.source.mvp.chatting.ChattingModel;
+import com.example.yogeshgarg.source.mvp.chatting.ReceivedModel;
 import com.example.yogeshgarg.source.mvp.chatting.SendingModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
@@ -424,7 +425,7 @@ public interface APIService {
 
     //send message
     @POST("messenger/messages")
-    Call<ResponseBody> receivedMessage(
+    Call<ReceivedModel> receivedMessage(
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);

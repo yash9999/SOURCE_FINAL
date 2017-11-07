@@ -60,24 +60,8 @@ public class DashboardInStoreUpdateAdapter extends RecyclerView.Adapter<Dashboar
     public void onBindViewHolder(final Holder holder, int position) {
         final DashboardInStoreModel.Result result = resultArrayList.get(position);
 
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
-
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-
-              /*  byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
-
-
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage())
+                .error(R.mipmap.ic_browser).into(holder.imgViewProduct);
         final String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
 
@@ -117,22 +101,8 @@ public class DashboardInStoreUpdateAdapter extends RecyclerView.Adapter<Dashboar
                 FontHelper.applyFont(activity, txtViewStoreNameAndCity, FontHelper.FontType.FONT_Normal);
                 FontHelper.applyFont(activity, txtViewProductDate, FontHelper.FontType.FONT_Normal);
 
-                //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct);
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(imgViewProduct);
 
-                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct, new Callback(){
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError() {
-
-              /*  byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-                    }
-                });
 
                 txtViewProductCategoryName.setText(categoryName);
                 txtViewProductName.setText(productName);

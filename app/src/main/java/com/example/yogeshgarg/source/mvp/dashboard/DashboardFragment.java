@@ -181,7 +181,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onInternetErrorOfRecentPriceUpdate() {
         dashboardPresenterImpl.getRecentUpdateTable();
-        //SnackNotify.checkConnection(onRetryRecentProductUpdate, relLayout);
+        SnackNotify.checkConnection(onRetryRecentProductUpdate, relLayout);
     }
 
     OnClickInterface onRetryRecentProductUpdate = new OnClickInterface() {
@@ -236,7 +236,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onInternetErrorOfNewProductUpdate() {
         dashboardPresenterImpl.getNewProductTable();
-        //SnackNotify.checkConnection(onRetryNewProductUpdate, relLayout);
+        SnackNotify.checkConnection(onRetryNewProductUpdate, relLayout);
     }
 
     OnClickInterface onRetryNewProductUpdate = new OnClickInterface() {
@@ -288,7 +288,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onInternetErrorPlanogram() {
         dashboardPresenterImpl.getPlanogramTable();
-        //SnackNotify.checkConnection(onRetryPlanogram, relLayout);
+        SnackNotify.checkConnection(onRetryPlanogram, relLayout);
     }
 
     OnClickInterface onRetryPlanogram = new OnClickInterface() {
@@ -347,7 +347,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     public void onInternetErrorOfExpiryProduct() {
 
         dashboardPresenterImpl.getExpiryTable();
-        //SnackNotify.checkConnection(onRetryExpiryProduct, relLayout);
+        SnackNotify.checkConnection(onRetryExpiryProduct, relLayout);
     }
 
     OnClickInterface onRetryExpiryProduct = new OnClickInterface() {
@@ -397,7 +397,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
     @Override
     public void onInternetErrorOfInstoreSampling() {
         dashboardPresenterImpl.getInStoreTable();
-        //SnackNotify.checkConnection(onRetryInstoreSamplingApi, relLayout);
+        SnackNotify.checkConnection(onRetryInstoreSamplingApi, relLayout);
     }
 
     OnClickInterface onRetryInstoreSamplingApi = new OnClickInterface() {

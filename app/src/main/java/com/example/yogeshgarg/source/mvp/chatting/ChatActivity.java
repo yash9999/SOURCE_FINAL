@@ -1,5 +1,6 @@
 package com.example.yogeshgarg.source.mvp.chatting;
 
+import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.Product
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +61,9 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
     ChattingPresenterImpl chattingPresenterImpl;
     ArrayList<ChattingModel.Result> results;
 
+    private int mInterval = 5000; // 5 seconds by default, can be changed later
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +88,35 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
             }
         }
 
+        mHandler = new Handler();
+        startRepeatingTask();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                chattingPresenterImpl.callingConversationApi(userId);
+            } finally {
+                // 100% guarantee that this always happens, even if
+                // your update method throws an exception
+                mHandler.postDelayed(mStatusChecker, mInterval);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
     }
 
     private void setFont() {
@@ -111,6 +146,7 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
     private void setLayoutManager() {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.scrollToPosition(results.size()-1);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
@@ -135,8 +171,8 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
 
     @Override
     public void onSuccessSendMessage(SendingModel.Result result) {
+        chattingPresenterImpl.callingConversationApi(userId);
         edtChatMessage.setText("");
-        chattingPresenterImpl.receivedMessage(userId);
     }
 
     @Override
@@ -150,7 +186,7 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
     }
 
     @Override
-    public void onSuccessReceivedMessage() {
+    public void onSuccessReceivedMessage(ArrayList<ReceivedModel.Result> results) {
 
     }
 

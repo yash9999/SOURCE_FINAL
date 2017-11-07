@@ -60,23 +60,7 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final NewProductModel.Result result = resultArrayList.get(position);
 
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(holder.imgViewProduct);
-
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-
-               /* byte[] image=result.getLinkByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
-
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
         final String brandName = Utils.camelCasing(result.getBrandName());
         holder.txtViewProductCategoryName.setText(brandName);//category name is changed into brand name
 
@@ -147,23 +131,7 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
                 FontHelper.applyFont(activity, txtViewStoreNameAndCity, FontHelper.FontType.FONT_Normal);
                 FontHelper.applyFont(activity, txtViewProductDate, FontHelper.FontType.FONT_Normal);
 
-                //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(imgViewProduct);
-
-                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(imgViewProduct, new Callback(){
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError() {
-
-               /* byte[] image=result.getLinkByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-                    }
-                });
-
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).error(R.mipmap.ic_browser).into(imgViewProduct);
                 txtViewProductCategoryName.setText(brandName);
                 txtViewProductName.setText(productName);
 

@@ -7,8 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +20,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.database.DatabaseHelper;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.common.utils.ImageHelper;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,6 +48,8 @@ public class DashboardExpiryProductUpdateAdapter extends RecyclerView.Adapter<Da
 
     Activity activity;
     ArrayList<DashboardExpiryProductModel.Result> resultArrayList;
+    DatabaseHelper databaseHelper;
+    ;
 
     public DashboardExpiryProductUpdateAdapter(Activity activity, ArrayList<DashboardExpiryProductModel.Result> resultArrayList) {
         this.activity = activity;
@@ -59,23 +66,9 @@ public class DashboardExpiryProductUpdateAdapter extends RecyclerView.Adapter<Da
     public void onBindViewHolder(final Holder holder, int position) {
 
         final DashboardExpiryProductModel.Result result = resultArrayList.get(position);
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+        String url = ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage();
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-
-             /*   byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
-
+        Picasso.with(activity).load(url).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
 
         final String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
@@ -117,31 +110,12 @@ public class DashboardExpiryProductUpdateAdapter extends RecyclerView.Adapter<Da
                 FontHelper.applyFont(activity, txtViewStoreNameAndCity, FontHelper.FontType.FONT_Normal);
                 FontHelper.applyFont(activity, txtViewProductDate, FontHelper.FontType.FONT_Normal);
 
-                //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct);
-
-                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct, new Callback(){
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError() {
-
-             /*   byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-                    }
-                });
-
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(imgViewProduct);
                 txtViewProductCategoryName.setText(categoryName);
                 txtViewProductName.setText(productName);
-
-
                 txtViewStock.setText(result.getStock() + " " + result.getStockUnitMeasure());
                 txtViewProductQuantity.setText("UOM: " + result.getWeight() + result.getItemUnitMeasure());
                 txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
-
                 txtViewProductDate.setText(setDate(result.getDateadded()));
 
                 imgViewClose.setOnClickListener(new View.OnClickListener() {

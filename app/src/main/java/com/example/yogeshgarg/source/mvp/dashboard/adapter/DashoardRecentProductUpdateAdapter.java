@@ -65,22 +65,9 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
 
         final DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
 
-        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
-            @Override
-            public void onSuccess() {
 
-            }
-
-            @Override
-            public void onError() {
-
-                /*byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-            }
-        });
 
         final String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
@@ -151,23 +138,7 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
                 FontHelper.applyFont(activity, txtViewStoreNameAndCity, FontHelper.FontType.FONT_Normal);
                 FontHelper.applyFont(activity, txtViewProductDate, FontHelper.FontType.FONT_Normal);
 
-                //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct);
-
-                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct, new Callback(){
-                    @Override
-                    public void onSuccess() {
-
-                    }
-
-                    @Override
-                    public void onError() {
-
-                /*byte[] image=result.getImageByte();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-                holder.imgViewProduct.setImageBitmap(bitmap);*/
-                    }
-                });
-
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(imgViewProduct);
                 txtViewProductCategoryName.setText(brandName);
                 txtViewProductName.setText(productName);
 

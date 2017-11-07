@@ -68,4 +68,26 @@ public class DateMethods {
         return dateToShow;
     }
 
+
+    public static String onlyTime(String rawDate){
+        String dateToShow = null;
+
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date dateInitial = null;
+            try {
+                dateInitial = simpleDateFormat.parse(rawDate);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            SimpleDateFormat newFormatDate = new SimpleDateFormat("HH:mm");
+            dateToShow = newFormatDate.format(dateInitial);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return dateToShow;
+    }
+
 }
