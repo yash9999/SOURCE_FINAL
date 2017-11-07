@@ -3,6 +3,8 @@ package com.example.yogeshgarg.source.mvp.dashboard.adapter;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
@@ -23,6 +25,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -58,11 +61,26 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
 
         final DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+                /*byte[] image=result.getImageByte();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                holder.imgViewProduct.setImageBitmap(bitmap);*/
+            }
+        });
 
         final String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
@@ -133,7 +151,23 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
                 FontHelper.applyFont(activity, txtViewStoreNameAndCity, FontHelper.FontType.FONT_Normal);
                 FontHelper.applyFont(activity, txtViewProductDate, FontHelper.FontType.FONT_Normal);
 
-                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct);
+                //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct);
+
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(imgViewProduct, new Callback(){
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError() {
+
+                /*byte[] image=result.getImageByte();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                holder.imgViewProduct.setImageBitmap(bitmap);*/
+                    }
+                });
+
                 txtViewProductCategoryName.setText(brandName);
                 txtViewProductName.setText(productName);
 

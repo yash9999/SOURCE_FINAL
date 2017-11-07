@@ -14,6 +14,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardInStoreUpdateAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -48,7 +49,23 @@ public class DashboardActivityInStoreProductAdapter extends RecyclerView.Adapter
     public void onBindViewHolder(Holder holder, int position) {
         DashboardInStoreModel.Result result = resultArrayList.get(position);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+              /*  byte[] image=result.getImageByte();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                holder.imgViewProduct.setImageBitmap(bitmap);*/
+            }
+        });
+
         String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
         String categoryName = Utils.camelCasing(result.getCategoryName());

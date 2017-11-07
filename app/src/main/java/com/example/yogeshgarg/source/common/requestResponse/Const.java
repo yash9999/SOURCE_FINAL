@@ -100,6 +100,10 @@ public class Const {
     public static final String KEY_DIALOG_ID = "dialog_id";
     public static final String KEY_OPPONENT_ID = "opponentId";
     public static final String AC_PWD = "au@16st45T";
+    public static final String KEY_USERID="user_id";
+
+    public static final String KEY_MESSAGE="message";
+    public static final String KEY_TO="to";
 
 
 }

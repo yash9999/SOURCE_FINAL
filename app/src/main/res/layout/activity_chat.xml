@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/chat_back"
-    tools:context="com.example.yogeshgarg.source.mvp.ChatActivity">
+    tools:context="com.example.yogeshgarg.source.mvp.chatting.ChatActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,11 +15,50 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
+        <RelativeLayout
+            android:id="@+id/relLayTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_bg"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/imgViewBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="2dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_back" />
+
+            <ImageView
+                android:id="@+id/imgViewProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_user"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/imgViewBack" />
+
+            <TextView
+                android:id="@+id/txtViewOpponentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imgViewProfile"
+                android:text="UserName"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/rlyBottom" />
+            android:layout_above="@+id/rlyBottom"
+            android:padding="10dp"
+            android:layout_below="@+id/relLayTop" />
 
         <RelativeLayout
             android:id="@+id/rlyBottom"
@@ -28,53 +67,30 @@
             android:layout_alignParentBottom="true"
             android:background="@color/white">
 
-            <ImageView
-                android:id="@+id/imgCamera"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="10dp"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/ic_camera_black" />
 
-            <RelativeLayout
+            <EditText
+                android:id="@+id/edtChatMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/imgCamera">
-
-                <!-- <ImageView
-                     android:id="@+id/imgSmiley"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_alignParentLeft="true"
-                     android:layout_centerVertical="true"
-                     android:padding="10dp"
-                     android:src="@mipmap/smiley" />-->
-
-                <EditText
-                    android:id="@+id/edtChatMessage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/imgArrow"
-                    android:background="@drawable/chat_text_bg"
-                    android:hint="Type your message"
-                    android:inputType="textMultiLine|textShortMessage"
-                    android:maxLines="3"
-                    android:textSize="13dp"
-                    android:layout_centerVertical="true"
-                    android:padding="5dp"
-                    />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/imgArrow"
+                android:background="@drawable/chat_text_bg"
+                android:hint="Type your message"
+                android:inputType="textMultiLine|textShortMessage"
+                android:maxLines="3"
+                android:padding="5dp"
+                android:textSize="13dp" />
 
 
-                <ImageView
-                    android:id="@+id/imgArrow"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:padding="10dp"
-                    android:src="@mipmap/send" />
-            </RelativeLayout>
-
+            <ImageView
+                android:id="@+id/imgArrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@mipmap/send" />
 
         </RelativeLayout>
 
@@ -82,5 +98,5 @@
     </RelativeLayout>
 
     <!-- Bottom view-->
-    <include layout="@layout/layout_bottomsheet" />
+
 </android.support.design.widget.CoordinatorLayout>

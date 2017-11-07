@@ -14,6 +14,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashboardExpiryProductUpdateAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -50,7 +51,24 @@ public class DashboardActivityExpiryProductAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         DashboardExpiryProductModel.Result result = resultArrayList.get(position);
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+
+       // Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+             /*   byte[] image=result.getImageByte();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                holder.imgViewProduct.setImageBitmap(bitmap);*/
+            }
+        });
+
         String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);
         String categoryName = Utils.camelCasing(result.getCategoryName());
@@ -58,9 +76,6 @@ public class DashboardActivityExpiryProductAdapter extends RecyclerView.Adapter<
         holder.txtViewStock.setText(result.getStock() + " " + result.getStockUnitMeasure());
         holder.txtViewProductQuantity.setText("UOM: " + result.getWeight() + result.getItemUnitMeasure());
         holder.txtViewStoreNameAndCity.setText(Utils.camelCasing(result.getStoreName() + "-" + Utils.camelCasing(result.getCity())));
-
-
-
 
         String dateadded = result.getDateadded();
 

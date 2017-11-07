@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.CircleTransform;
+import com.example.yogeshgarg.source.common.helper.DateMethods;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
-import com.example.yogeshgarg.source.mvp.ChatActivity;
-import com.example.yogeshgarg.source.mvp.navigation.NavigationActivity;
-import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.ProductListBrandAdapter;
+import com.example.yogeshgarg.source.mvp.chatting.ChatActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,19 +50,23 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.Holder> {
         final InboxModel.Result result = resultArrayList.get(position);
         String firstName = result.getFirstname();
         String lastName = result.getLastname();
-
-
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImagelink()).transform(new CircleTransform()).into(holder.imgViewProfile);
         final String name = firstName + " " + lastName;
+
         holder.txtViewName.setText(Utils.camelCasing(name));
         holder.txtViewStore.setText(result.getStore());
+        holder.txtViewLastMsg.setText(result.getMessage());
+        holder.txtViewUnreadMsg.setText(result.getTotalunread().toString());
+        holder.txtViewDate.setText(DateMethods.setDateNotYear(result.getDate()));
+
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImagelink()).transform(new CircleTransform()).into(holder.imgViewProfile);
 
         holder.relLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, ChatActivity.class);
-                intent.putExtra(Const.KEY_OPPONENT_ID, result.getQuickbloxId());
-                intent.putExtra(Const.KEY_NAME,name);
+                Intent intent=new Intent(activity, ChatActivity.class);
+                intent.putExtra("UserName",name);
+                intent.putExtra("OpponentProfile",result.getImagelink());
+                intent.putExtra("UserId",result.getUserId());
                 activity.startActivity(intent);
             }
         });
@@ -88,6 +91,15 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.Holder> {
         @BindView(R.id.txtViewStore)
         TextView txtViewStore;
 
+        @BindView(R.id.txtViewLastMsg)
+        TextView txtViewLastMsg;
+
+        @BindView(R.id.txtViewDate)
+        TextView txtViewDate;
+
+        @BindView(R.id.txtViewUnreadMsg)
+        TextView txtViewUnreadMsg;
+
         public Holder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -97,6 +109,9 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.Holder> {
         private void setFont() {
             FontHelper.setFontFace(txtViewName, FontHelper.FontType.FONT_Semi_Bold, activity);
             FontHelper.setFontFace(txtViewStore, FontHelper.FontType.FONT_Normal, activity);
+            FontHelper.setFontFace(txtViewLastMsg, FontHelper.FontType.FONT_Normal, activity);
+            FontHelper.setFontFace(txtViewDate, FontHelper.FontType.FONT_Normal, activity);
+            FontHelper.setFontFace(txtViewUnreadMsg, FontHelper.FontType.FONT_Normal, activity);
         }
     }
 }

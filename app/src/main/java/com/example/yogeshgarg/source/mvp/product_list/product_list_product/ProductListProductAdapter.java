@@ -145,7 +145,7 @@ public class ProductListProductAdapter extends RecyclerView.Adapter<ProductListP
         }
 
         private void setFont() {
-            FontHelper.setFontFace(txtViewCategoryName, FontHelper.FontType.FONT_Normal, activity);
+            FontHelper.setFontFace(txtViewCategoryName, FontHelper.FontType.FONT_Semi_Bold, activity);
             FontHelper.setFontFace(txtViewBrandAndProduct, FontHelper.FontType.FONT_Normal, activity);
         }
     }

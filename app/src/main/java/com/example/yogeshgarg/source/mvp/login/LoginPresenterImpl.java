@@ -14,10 +14,7 @@ import com.example.yogeshgarg.source.common.requestResponse.ApiAdapter;
 import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.session.FcmSession;
 import com.example.yogeshgarg.source.common.session.UserSession;
-import com.quickblox.core.QBEntityCallback;
-import com.quickblox.core.exception.QBResponseException;
-import com.quickblox.users.QBUsers;
-import com.quickblox.users.model.QBUser;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +92,6 @@ public class LoginPresenterImpl implements LoginPresenter {
 
                     if (loginModel.getSuccessful()) {
                         loginView.onLoginSuccess(loginModel.getResult());
-                        loginUserOnQuikBlox(username,password);
                     } else {
                         loginView.onLoginUnsuccess(loginModel.getMessage());
                     }
@@ -164,74 +160,9 @@ public class LoginPresenterImpl implements LoginPresenter {
 
 
 
-    // login to quickblox
-    private void  loginUserOnQuikBlox(final String username, final String password) {
-        Progress.start(activity);
-
-        final QBUser user = new QBUser(username, Const.AC_PWD);
-
-        QBUsers.signIn(user, new QBEntityCallback<QBUser>() {
-            @Override
-            public void onSuccess(QBUser user, Bundle params) {
-                Log.e("signIn", "onSuccess");
-                Progress.stop();
-
-                UserSession userSession = new UserSession(activity);
-                userSession.setUserID(user.getLogin());
-                userSession.setQuikBloxID(user.getId().toString());
-
-                //QBPrivateChat privateChat = privateChatManager.getChat(opponentId);
-               /* if (privateChat == null) {
-                    privateChat = privateChatManager.createChat(opponentId, privateChatMessageListener);
-                }
-
-                Log.e("Dialog id is -----", "" + privateChat.getDialogId());
-*/
-               // redirect the page
-               /* Intent intent = new Intent(MainActivity.this, ChatActivity.class);
-                intent.putExtra(Const.KEY_OPPONENT_ID, Integer.parseInt(edtTextOpponentId.getText().toString()));
-                intent.putExtra(Const.KEY_NAME, "Bb");
-                intent.putExtra(Const.KEY_DIALOG_ID, "59d921dca28f9a0ab0ce1407");
-                startActivity(intent);*/
-            }
-
-            @Override
-            public void onError(QBResponseException errors) {
-                errors.printStackTrace();
-                registerUserOnQuikBlox(username+"@gmail.com",username,username);
-                Progress.stop();
-            }
-        });
 
 
-    }
 
 
-    //Sign Up Quik Blox
-    private void registerUserOnQuikBlox(String email, String name, String userName) {
-
-        Progress.start(activity);
-
-        final QBUser user = new QBUser(userName, Const.AC_PWD);
-        user.setFullName(name);
-        user.setEmail(email);
-
-
-        QBUsers.signUp(user, new QBEntityCallback<QBUser>() {
-            @Override
-            public void onSuccess(QBUser user, Bundle args) {
-                Log.e("Inside", "signUp onSuccess " + user.getId());
-
-                Progress.stop();
-            }
-
-            @Override
-            public void onError(QBResponseException errors) {
-                Log.e("Inside", "signUp onError");
-                errors.printStackTrace();
-                Progress.stop();
-            }
-        });
-    }
 
 }

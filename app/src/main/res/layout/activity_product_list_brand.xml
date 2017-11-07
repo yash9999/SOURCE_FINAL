@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relLay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/relLay"
     tools:context="com.example.yogeshgarg.source.mvp.product_list.product_list_brand.ProductListBrandActivity">
 
     <include
@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/cardview_background"
-            android:elevation="3dp"
             android:padding="5dp">
 
             <ImageView
@@ -52,14 +51,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relLayTop"
             android:layout_marginTop="10dp"
-            android:visibility="gone"
-            android:background="@color/grey">
+            android:background="@color/line_color"
+            android:visibility="gone">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
                 android:background="@color/color_white">
 
                 <android.support.v7.widget.RecyclerView
@@ -76,7 +77,6 @@
 
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>

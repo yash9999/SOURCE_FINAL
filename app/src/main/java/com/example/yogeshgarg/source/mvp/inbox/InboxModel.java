@@ -12,39 +12,41 @@ import java.util.ArrayList;
 public class InboxModel {
 
 
-    @SerializedName("message")
-    @Expose
-    private String message;
-    @SerializedName("successful")
-    @Expose
-    private Boolean successful;
-    @SerializedName("Result")
-    @Expose
-    private ArrayList<Result> result = null;
+        @SerializedName("message")
+        @Expose
+        private String message;
+        @SerializedName("successful")
+        @Expose
+        private Boolean successful;
+        @SerializedName("Result")
+        @Expose
+        private ArrayList<Result> result = null;
 
-    public String getMessage() {
-        return message;
-    }
+        public String getMessage() {
+            return message;
+        }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+        public void setMessage(String message) {
+            this.message = message;
+        }
 
-    public Boolean getSuccessful() {
-        return successful;
-    }
+        public Boolean getSuccessful() {
+            return successful;
+        }
 
-    public void setSuccessful(Boolean successful) {
-        this.successful = successful;
-    }
+        public void setSuccessful(Boolean successful) {
+            this.successful = successful;
+        }
 
-    public ArrayList<Result> getResult() {
-        return result;
-    }
+        public ArrayList<Result> getResult() {
+            return result;
+        }
 
-    public void setResult(ArrayList<Result> result) {
-        this.result = result;
-    }
+        public void setResult(ArrayList<Result> result) {
+            this.result = result;
+        }
+
+
 
     public class Result {
 
@@ -66,15 +68,18 @@ public class InboxModel {
         @SerializedName("logged")
         @Expose
         private String logged;
-        @SerializedName("phone")
-        @Expose
-        private String phone;
         @SerializedName("email")
         @Expose
         private String email;
-        @SerializedName("quickblox_id")
+        @SerializedName("message")
         @Expose
-        private String quickbloxId;
+        private String message;
+        @SerializedName("totalunread")
+        @Expose
+        private Integer totalunread;
+        @SerializedName("date")
+        @Expose
+        private String date;
 
         public String getFirstname() {
             return firstname;
@@ -124,14 +129,6 @@ public class InboxModel {
             this.logged = logged;
         }
 
-        public String getPhone() {
-            return phone;
-        }
-
-        public void setPhone(String phone) {
-            this.phone = phone;
-        }
-
         public String getEmail() {
             return email;
         }
@@ -140,15 +137,29 @@ public class InboxModel {
             this.email = email;
         }
 
-        public String getQuickbloxId() {
-            return quickbloxId;
+        public String getMessage() {
+            return message;
         }
 
-        public void setQuickbloxId(String quickbloxId) {
-            this.quickbloxId = quickbloxId;
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public Integer getTotalunread() {
+            return totalunread;
+        }
+
+        public void setTotalunread(Integer totalunread) {
+            this.totalunread = totalunread;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
         }
 
     }
-
-
 }

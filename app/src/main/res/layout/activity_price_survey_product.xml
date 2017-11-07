@@ -26,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/cardview_background"
-            android:elevation="3dp"
             android:padding="5dp">
 
             <ImageView
@@ -68,20 +67,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relLayTop"
             android:layout_marginTop="@dimen/txt_10_dp"
-            android:visibility="gone"
-            android:background="@color/grey">
+            android:background="@color/line_color"
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
                 android:background="@color/color_white">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
             </RelativeLayout>

@@ -69,6 +69,15 @@ public class DashboardPlanogramModel implements Serializable{
         @Expose
         private String dateadded;
 
+        byte[] linkByte;
+
+        public byte[] getLinkByte() {
+            return linkByte;
+        }
+
+        public void setLinkByte(byte[] linkByte) {
+            this.linkByte = linkByte;
+        }
 
         public String getTitle() {
             return title;

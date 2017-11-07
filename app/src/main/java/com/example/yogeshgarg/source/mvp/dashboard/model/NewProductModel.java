@@ -110,6 +110,16 @@ public class NewProductModel implements Serializable{
         @Expose
         private String link;
 
+        public byte[] getLinkByte() {
+            return linkByte;
+        }
+
+        public void setLinkByte(byte[] linkByte) {
+            this.linkByte = linkByte;
+        }
+
+        byte[] linkByte;
+
         public String getStoreName() {
             return storeName;
         }

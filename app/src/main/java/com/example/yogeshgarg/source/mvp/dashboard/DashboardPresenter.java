@@ -17,4 +17,10 @@ public interface DashboardPresenter {
     public void expiryProductApi(String timeOneMonthAgo);
 
     public void planogramApi();
+
+    public void getNewProductTable();
+    public void getExpiryTable();
+    public void getInStoreTable();
+    public void getRecentUpdateTable();
+    public void getPlanogramTable();
 }

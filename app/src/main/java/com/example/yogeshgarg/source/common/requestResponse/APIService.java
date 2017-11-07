@@ -3,6 +3,8 @@ package com.example.yogeshgarg.source.common.requestResponse;
 
 import com.example.yogeshgarg.source.mvp.ProductUpdate.ProductUpdateModel;
 import com.example.yogeshgarg.source.mvp.about.AboutModel;
+import com.example.yogeshgarg.source.mvp.chatting.ChattingModel;
+import com.example.yogeshgarg.source.mvp.chatting.SendingModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardExpiryProductModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardInStoreModel;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
@@ -143,7 +145,7 @@ public interface APIService {
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
 
-    @POST("users")
+    @POST("messenger/users")
     Call<InboxModel> gettingInboxList(
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
@@ -401,6 +403,32 @@ public interface APIService {
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);
+
+
+    //first api for conversation
+    @POST("messenger/conversation")
+    Call<ChattingModel> conversation(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+
+    //send message
+    @POST("messenger/send")
+    Call<SendingModel> sendMessage(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    //send message
+    @POST("messenger/messages")
+    Call<ResponseBody> receivedMessage(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
 
 }
 

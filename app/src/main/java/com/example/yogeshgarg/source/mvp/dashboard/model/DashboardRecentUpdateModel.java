@@ -204,6 +204,8 @@ public class DashboardRecentUpdateModel implements Serializable{
         @Expose
         private String type;
 
+        private byte[] imageByte;
+
 
         public String getStoreName() {
             return storeName;
@@ -347,6 +349,10 @@ public class DashboardRecentUpdateModel implements Serializable{
 
         public void setImage(String image) {
             this.image = image;
+        }
+
+        public void setImageByte(byte[] imageByte) {
+            this.imageByte = imageByte;
         }
 
         public String getUpc() {
@@ -509,6 +515,9 @@ public class DashboardRecentUpdateModel implements Serializable{
             this.type = type;
         }
 
+        public byte[] getImageByte() {
+            return imageByte;
+        }
     }
 
 

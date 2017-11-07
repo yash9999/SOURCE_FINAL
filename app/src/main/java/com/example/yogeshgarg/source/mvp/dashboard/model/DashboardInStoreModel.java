@@ -147,6 +147,16 @@ public class DashboardInStoreModel implements Serializable{
         @Expose
         private String itemUnitMeasure;
 
+        private byte[] imageByte;
+
+        public byte[] getImageByte() {
+            return imageByte;
+        }
+
+        public void setImageByte(byte[] imageByte) {
+            this.imageByte = imageByte;
+        }
+
         public String getStoreName() {
             return storeName;
         }

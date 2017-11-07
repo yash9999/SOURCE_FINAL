@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/txt_15_dp" />
+                android:textSize="@dimen/txt_13_dp" />
 
             <TextView
                 android:id="@+id/txtViewDateAdded"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:textColor="@color/color_bg"
-                android:textSize="@dimen/txt_15_dp" />
+                android:textSize="@dimen/txt_13_dp" />
 
             <TextView
                 android:id="@+id/txtViewUnit"
@@ -77,6 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/relLay"
-        android:background="@color/grey"></View>
+        android:background="@color/line_color"></View>
 
 </RelativeLayout>

@@ -56,6 +56,9 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
     @BindView(R.id.txtViewTitle)
     TextView txtViewTitle;
 
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
+
     @BindView(R.id.imgViewDots)
     ImageView imgViewDots;
 
@@ -206,6 +209,7 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
 
         setFont();
         imgViewDots.setVisibility(View.VISIBLE);
+        imgViewSearch.setVisibility(View.GONE);
         txtViewTitle.setText("Product Update");
         Intent intent = getIntent();
 

@@ -47,4 +47,25 @@ public class DateMethods {
         return dateToShow;
     }
 
+    public  static  String setDateNotYear(String rawDate) {
+        String dateToShow = null;
+
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date dateInitial = null;
+            try {
+                dateInitial = simpleDateFormat.parse(rawDate);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            SimpleDateFormat newFormatDate = new SimpleDateFormat("MMM dd");
+            dateToShow = newFormatDate.format(dateInitial);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return dateToShow;
+    }
+
 }

@@ -2,6 +2,8 @@ package com.example.yogeshgarg.source.mvp.dashboard.adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
@@ -20,6 +22,7 @@ import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -59,7 +62,24 @@ public class DashboardPlanogramAdapter extends RecyclerView.Adapter<DashboardPla
 
         holder.txtViewPlanogramTitle.setText(Utils.camelCasing(title));
         holder.txtViewPlanogramMessage.setText(message);
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + link).into(holder.imgViewProduct);
+
+        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + link).into(holder.imgViewProduct);
+
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(holder.imgViewProduct, new Callback(){
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+                      /*  byte[] image=result.getLinkByte();
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                        imgViewProduct.setImageBitmap(bitmap);*/
+            }
+        });
+
         holder.txtViewProductDate.setText(setDate(date));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +93,7 @@ public class DashboardPlanogramAdapter extends RecyclerView.Adapter<DashboardPla
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.alpha(Color.BLACK)));
 
 
-                ImageView imgViewProduct = (ImageView) dialog.findViewById(R.id.imgViewProduct);
+                final ImageView imgViewProduct = (ImageView) dialog.findViewById(R.id.imgViewProduct);
 
                 TextView txtViewPlanogramTitle = (TextView) dialog.findViewById(R.id.txtViewPlanogramTitle);
                 TextView txtViewPlanogramMessage = (TextView) dialog.findViewById(R.id.txtViewPlanogramMessage);
@@ -86,7 +106,23 @@ public class DashboardPlanogramAdapter extends RecyclerView.Adapter<DashboardPla
 
                 txtViewPlanogramTitle.setText(Utils.camelCasing(result.getTitle()));
                 txtViewPlanogramMessage.setText(result.getMessage());
-                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(imgViewProduct);
+                //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(imgViewProduct);
+
+                Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink()).into(imgViewProduct, new Callback(){
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError() {
+
+                      /*  byte[] image=result.getLinkByte();
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                        imgViewProduct.setImageBitmap(bitmap);*/
+                    }
+                });
+
 
                 txtViewProductDate.setText(setDate(result.getDateadded()));
                 dialog.show();

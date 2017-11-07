@@ -132,7 +132,7 @@ public class DashboardExpiryProductModel implements Serializable{
 
         @SerializedName("sampling_date")
         @Expose
-        private Object samplingDate;
+        private String samplingDate;
         @SerializedName("tax_value")
         @Expose
         private String taxValue;
@@ -175,6 +175,16 @@ public class DashboardExpiryProductModel implements Serializable{
         @SerializedName("end")
         @Expose
         private String end;
+
+        byte[] imageByte;
+
+        public byte[] getImageByte() {
+            return imageByte;
+        }
+
+        public void setImageByte(byte[] imageByte) {
+            this.imageByte = imageByte;
+        }
 
         public String getStoreName() {
             return storeName;
@@ -336,11 +346,11 @@ public class DashboardExpiryProductModel implements Serializable{
             this.weight = weight;
         }
 
-        public Object getSamplingDate() {
+        public String getSamplingDate() {
             return samplingDate;
         }
 
-        public void setSamplingDate(Object samplingDate) {
+        public void setSamplingDate(String samplingDate) {
             this.samplingDate = samplingDate;
         }
 

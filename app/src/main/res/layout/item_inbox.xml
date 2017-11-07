@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/relLay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp">
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/imgViewProfile"
@@ -23,14 +22,14 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/txt_10_dp"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/relLayStatus"
+            android:layout_toLeftOf="@+id/relRight"
             android:layout_toRightOf="@id/imgViewProfile">
 
             <TextView
                 android:id="@+id/txtViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/green"
+                android:textColor="@color/black"
                 android:textSize="@dimen/txt_12_dp" />
 
             <TextView
@@ -39,10 +38,46 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtViewName"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/txt_12_dp" />
+                android:textSize="@dimen/txt_10_dp" />
 
+            <TextView
+                android:id="@+id/txtViewLastMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtViewStore"
+                android:maxLines="1"
+                android:textColor="@color/color_alpha_black"
+                android:textSize="@dimen/txt_10_dp" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/relRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp">
+
+            <TextView
+                android:id="@+id/txtViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_bg"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/txtViewUnreadMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtViewDate"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/round_bg_color"
+                android:gravity="center"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="10dp" />
+
+        </RelativeLayout>
 
 
     </RelativeLayout>
@@ -51,6 +86,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/relLay"
-        android:background="@color/grey"></View>
+        android:background="@color/line_color"></View>
 
 </RelativeLayout>

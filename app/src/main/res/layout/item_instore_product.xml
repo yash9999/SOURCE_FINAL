@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtViewCategoryName"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:textColor="@color/color_gray"
                 android:textSize="@dimen/txt_12_dp" />
         </RelativeLayout>
@@ -49,5 +49,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/relLay"
-        android:background="@color/grey"></View>
+        android:background="@color/line_color"></View>
 </RelativeLayout>

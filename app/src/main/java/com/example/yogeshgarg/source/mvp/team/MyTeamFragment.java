@@ -91,7 +91,6 @@ public class MyTeamFragment extends Fragment implements MyTeamContractor.View{
 
     @Override
     public void getTeamInternetError() {
-
     }
 
     private void setLayoutManager() {

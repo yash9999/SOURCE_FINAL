@@ -34,14 +34,14 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ForgotP
     @BindView(R.id.relLay)
     RelativeLayout relLay;
 
-    @BindView(R.id.imgViewSearch)
-    ImageView imgViewSearch;
-
     @BindView(R.id.txtViewForgotPasswordMsg)
     TextView txtViewForgotPasswordMsg;
 
     @BindView(R.id.edtTextEmailId)
     EditText edtTextEmailId;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.btnSubmit)
     Button btnSubmit;

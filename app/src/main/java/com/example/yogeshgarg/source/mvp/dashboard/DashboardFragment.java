@@ -133,10 +133,14 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
         calculatingTimeOneMonthAgo();//calculating the time
 
-        callingRecentPriceUpdateApi();//Hitting first api
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        callingRecentPriceUpdateApi();//Hitting first api
+    }
 
     //first section recent price
     @Override
@@ -176,7 +180,8 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     @Override
     public void onInternetErrorOfRecentPriceUpdate() {
-        SnackNotify.checkConnection(onRetryRecentProductUpdate, relLayout);
+        dashboardPresenterImpl.getRecentUpdateTable();
+        //SnackNotify.checkConnection(onRetryRecentProductUpdate, relLayout);
     }
 
     OnClickInterface onRetryRecentProductUpdate = new OnClickInterface() {
@@ -230,7 +235,8 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     @Override
     public void onInternetErrorOfNewProductUpdate() {
-        SnackNotify.checkConnection(onRetryNewProductUpdate, relLayout);
+        dashboardPresenterImpl.getNewProductTable();
+        //SnackNotify.checkConnection(onRetryNewProductUpdate, relLayout);
     }
 
     OnClickInterface onRetryNewProductUpdate = new OnClickInterface() {
@@ -281,7 +287,8 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     @Override
     public void onInternetErrorPlanogram() {
-        SnackNotify.checkConnection(onRetryPlanogram, relLayout);
+        dashboardPresenterImpl.getPlanogramTable();
+        //SnackNotify.checkConnection(onRetryPlanogram, relLayout);
     }
 
     OnClickInterface onRetryPlanogram = new OnClickInterface() {
@@ -338,7 +345,9 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     @Override
     public void onInternetErrorOfExpiryProduct() {
-        SnackNotify.checkConnection(onRetryExpiryProduct, relLayout);
+
+        dashboardPresenterImpl.getExpiryTable();
+        //SnackNotify.checkConnection(onRetryExpiryProduct, relLayout);
     }
 
     OnClickInterface onRetryExpiryProduct = new OnClickInterface() {
@@ -387,7 +396,8 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     @Override
     public void onInternetErrorOfInstoreSampling() {
-        SnackNotify.checkConnection(onRetryInstoreSamplingApi, relLayout);
+        dashboardPresenterImpl.getInStoreTable();
+        //SnackNotify.checkConnection(onRetryInstoreSamplingApi, relLayout);
     }
 
     OnClickInterface onRetryInstoreSamplingApi = new OnClickInterface() {

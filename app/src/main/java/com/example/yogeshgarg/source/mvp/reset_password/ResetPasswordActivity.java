@@ -33,10 +33,6 @@ public class ResetPasswordActivity extends AppCompatActivity implements ResetPas
     @BindView(R.id.relLayRoot)
     RelativeLayout relLayRoot;
 
-
-    @BindView(R.id.imgViewSearch)
-    ImageView imgViewSearch;
-
     @BindView(R.id.txtViewForgotPasswordMsg)
     TextView txtViewForgotPasswordMsg;
 
@@ -45,6 +41,9 @@ public class ResetPasswordActivity extends AppCompatActivity implements ResetPas
 
     @BindView(R.id.edtTextPassword)
     EditText edtTextPassword;
+
+    @BindView(R.id.imgViewSearch)
+    ImageView imgViewSearch;
 
     @BindView(R.id.edtTextConfirmPassword)
     EditText edtTextConfirmPassword;
@@ -67,7 +66,6 @@ public class ResetPasswordActivity extends AppCompatActivity implements ResetPas
         setContentView(R.layout.activity_reset_password);
         ButterKnife.bind(this);
         txtViewTitle.setText(R.string.reset_password);
-        imgViewSearch.setVisibility(View.GONE);
         setFont();
     }
 
@@ -112,7 +110,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements ResetPas
     };
 
     private void setFont() {
-
+        imgViewSearch.setVisibility(View.GONE);
         FontHelper.setFontFace(txtViewForgotPasswordMsg, FontHelper.FontType.FONT_Normal, this);
         FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Normal, this);
 

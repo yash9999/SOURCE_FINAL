@@ -7,8 +7,8 @@ android {
         applicationId "com.augmentedui.yogeshgarg.source"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 2
-        versionName "1.2"
+        versionCode 4
+        versionName "1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -23,11 +23,6 @@ android {
 
 allprojects {
     repositories {
-        jcenter()
-
-        maven {
-            url "https://github.com/QuickBlox/quickblox-android-sdk-releases/raw/master/"
-        }
     }
 }
 
@@ -36,6 +31,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+
+
 
 
 
@@ -62,16 +60,12 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.2.0'
     compile 'com.google.android.gms:play-services:10.2.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
-
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
-
-    compile 'com.quickblox:quickblox-android-sdk-chat:2.6.1'
-    compile 'com.quickblox:quickblox-android-sdk-content:2.6.1'
-
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 

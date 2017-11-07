@@ -80,6 +80,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/relLay"
-        android:background="@color/grey"></View>
+        android:background="@color/line_color"></View>
 
 </RelativeLayout>

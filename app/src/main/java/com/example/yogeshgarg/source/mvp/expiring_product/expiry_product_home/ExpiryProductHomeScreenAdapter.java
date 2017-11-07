@@ -132,7 +132,7 @@ public class ExpiryProductHomeScreenAdapter extends RecyclerView.Adapter<ExpiryP
 
         private void setFont() {
 
-            FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Normal, activity);
+            FontHelper.setFontFace(txtViewProductName, FontHelper.FontType.FONT_Semi_Bold, activity);
             FontHelper.setFontFace(txtViewDateAdded, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewProductQuantity, FontHelper.FontType.FONT_Normal, activity);
             FontHelper.setFontFace(txtViewUnit, FontHelper.FontType.FONT_Normal, activity);

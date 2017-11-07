@@ -15,6 +15,7 @@ import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.mvp.dashboard.adapter.DashoardRecentProductUpdateAdapter;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -51,7 +52,24 @@ public class DashboardActivityRecentProductAdapter extends RecyclerView.Adapter<
 
         DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+
+
+        //Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct);
+
+        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).into(holder.imgViewProduct, new Callback(){
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+                /*byte[] image=result.getImageByte();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                holder.imgViewProduct.setImageBitmap(bitmap);*/
+            }
+        });
 
         String productName = Utils.camelCasing(result.getProductName());
         holder.txtViewProductName.setText(productName);

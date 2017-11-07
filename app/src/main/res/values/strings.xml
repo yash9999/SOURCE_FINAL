@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Source</string>
+    <string name="app_name">AU Source</string>
     <string name="title_activity_login">LoginActivity</string>
 
 
@@ -30,7 +30,7 @@
     <string name="sync">Sync</string>
     <string name="vacation">Vacation</string>
     <string name="logout">Logout</string>
-<string name="chat_not_availble">Chat not available.</string>
+    <string name="chat_not_availble">Chat not available.</string>
 
     <string name="user_is_not_authentic">User is not authentic</string>
 
