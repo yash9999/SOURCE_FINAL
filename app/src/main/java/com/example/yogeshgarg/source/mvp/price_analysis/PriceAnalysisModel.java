@@ -49,11 +49,12 @@ public class PriceAnalysisModel {
         this.result = result;
     }
 
+
     public class Result {
 
         @SerializedName("data")
         @Expose
-        private ArrayList<ArrayList<ArrayList<Integer>>> data = null;
+        private ArrayList<ArrayList<ArrayList<Float>>> data = null;
 
         @SerializedName("title")
         @Expose
@@ -61,15 +62,21 @@ public class PriceAnalysisModel {
 
         @SerializedName("original")
         @Expose
-        private ArrayList<Original> original = null;
+        private Original original;
 
-        public ArrayList<ArrayList<ArrayList<Integer>>> getData() {
+        @SerializedName("creator")
+        @Expose
+        private ArrayList<Creator> creator = null;
+
+
+        public ArrayList<ArrayList<ArrayList<Float>>> getData() {
             return data;
         }
 
-        public void setData(ArrayList<ArrayList<ArrayList<Integer>>> data) {
+        public void setData(ArrayList<ArrayList<ArrayList<Float>>> data) {
             this.data = data;
         }
+
 
         public ArrayList<String> getTitle() {
             return title;
@@ -79,111 +86,39 @@ public class PriceAnalysisModel {
             this.title = title;
         }
 
-        public ArrayList<Original> getOriginal() {
+
+        public Original getOriginal() {
             return original;
         }
 
-        public void setOriginal(ArrayList<Original> original) {
+        public void setOriginal(Original original) {
             this.original = original;
         }
 
-        public class Original {
+        public ArrayList<Creator> getCreator() {
+            return creator;
+        }
 
+        public void setCreator(ArrayList<Creator> creator) {
+            this.creator = creator;
+        }
+
+        public class Creator {
+
+            @SerializedName("image")
+            @Expose
+            private String image;
             @SerializedName("name")
             @Expose
             private String name;
 
-
-            @SerializedName("location_id")
-            @Expose
-            private String locationId;
-
-            @SerializedName("dateadded")
-            @Expose
-            private String dateadded;
-
-
-            @SerializedName("brand_id")
-            @Expose
-            private String brandId;
-
-            @SerializedName("brand_name")
-            @Expose
-            private String brandName;
-
-            @SerializedName("brand_name_tick")
-            @Expose
-            private boolean brand_name_tick;
-
-
-            public boolean getBrandTick(){
-                return brand_name_tick;
-            }
-            public void setBrandTick(boolean value){
-                this.brand_name_tick=value;
+            public String getImage() {
+                return image;
             }
 
-            @SerializedName("category_id")
-            @Expose
-            private String categoryId;
-
-            @SerializedName("category_name")
-            @Expose
-            private String categoryName;
-
-            @SerializedName("category_name_tick")
-            @Expose
-            private boolean category_name_tick;
-
-            public boolean getCategoryTick(){
-                return category_name_tick;
+            public void setImage(String image) {
+                this.image = image;
             }
-            public void setCategoryTick(boolean value){
-                this.category_name_tick=value;
-            }
-
-
-            @SerializedName("store_id")
-            @Expose
-            private String storeId;
-
-            @SerializedName("store_name")
-            @Expose
-            private String storeName;
-
-            @SerializedName("store_name_tick")
-            @Expose
-            private boolean store_name_tick;
-
-            public boolean getStoreTick(){
-                return store_name_tick;
-            }
-            public void setStoreTick(boolean value){
-                this.store_name_tick=value;
-            }
-
-
-            @SerializedName("product_name")
-            @Expose
-            private String productName;
-
-            @SerializedName("product_id")
-            @Expose
-            private String productId;
-
-
-
-            @SerializedName("product_name_tick")
-            @Expose
-            private boolean product_name_tick;
-
-            public boolean getProductTick(){
-                return product_name_tick;
-            }
-            public void setProductTick(boolean value){
-                this.product_name_tick=value;
-            }
-
 
             public String getName() {
                 return name;
@@ -193,103 +128,267 @@ public class PriceAnalysisModel {
                 this.name = name;
             }
 
+        }
 
+        public class Original {
 
-            public String getProductId() {
-                return productId;
+            @SerializedName("brands")
+            @Expose
+            private ArrayList<Brand> brands = null;
+
+            @SerializedName("stores")
+            @Expose
+            private ArrayList<Store> stores = null;
+
+            @SerializedName("categories")
+            @Expose
+            private ArrayList<Category> categories = null;
+
+            @SerializedName("products")
+            @Expose
+            private ArrayList<Product> products = null;
+
+            public ArrayList<Brand> getBrands() {
+                return brands;
             }
 
-            public void setProductId(String productId) {
-                this.productId = productId;
+            public void setBrands(ArrayList<Brand> brands) {
+                this.brands = brands;
             }
 
-
-
-            public String getLocationId() {
-                return locationId;
+            public ArrayList<Store> getStores() {
+                return stores;
             }
 
-            public void setLocationId(String locationId) {
-                this.locationId = locationId;
+            public void setStores(ArrayList<Store> stores) {
+                this.stores = stores;
             }
 
-
-
-            public String getDateadded() {
-                return dateadded;
+            public ArrayList<Category> getCategories() {
+                return categories;
             }
 
-            public void setDateadded(String dateadded) {
-                this.dateadded = dateadded;
+            public void setCategories(ArrayList<Category> categories) {
+                this.categories = categories;
             }
 
-
-
-            public String getBrandId() {
-                return brandId;
+            public ArrayList<Product> getProducts() {
+                return products;
             }
 
-            public void setBrandId(String brandId) {
-                this.brandId = brandId;
+            public void setProducts(ArrayList<Product> products) {
+                this.products = products;
             }
 
+            public class Product {
 
 
-            public String getBrandName() {
-                return brandName;
+                @SerializedName("product_id")
+                @Expose
+                private String productId;
+
+                @SerializedName("brand_id")
+                @Expose
+                private String brandId;
+
+                @SerializedName("category_id")
+                @Expose
+                private String category_id;
+
+                @SerializedName("text")
+                @Expose
+                private String text;
+
+                @SerializedName("tick")
+                @Expose
+                private boolean tick;
+
+
+                public String getProductId() {
+                    return productId;
+                }
+
+                public void setProductId(String productId) {
+                    this.productId = productId;
+                }
+
+                public String getBrandId() {
+                    return brandId;
+                }
+
+                public void setBrandId(String brandId) {
+                    this.brandId = brandId;
+                }
+
+                public String getCategory_id(){
+                    return category_id;
+                }
+
+                public void setCategory_id(String category_id){
+                    this.category_id=category_id;
+                }
+
+                public String getText() {
+                    return text;
+                }
+
+                public void setText(String text) {
+                    this.text = text;
+                }
+
+                public boolean getProductTick(){
+                    return tick;
+                }
+
+                public  void setProductTick(boolean tick){
+                    this.tick=tick;
+                }
+
+
             }
 
-            public void setBrandName(String brandName) {
-                this.brandName = brandName;
+            public class Store {
+
+                @SerializedName("store_id")
+                @Expose
+                private String storeId;
+                @SerializedName("text")
+                @Expose
+                private String text;
+                @SerializedName("location_id")
+                @Expose
+                private String locationId;
+                @SerializedName("tick")
+                @Expose
+                private boolean tick;
+
+                public String getStoreId() {
+                    return storeId;
+                }
+
+                public void setStoreId(String storeId) {
+                    this.storeId = storeId;
+                }
+
+                public String getText() {
+                    return text;
+                }
+
+                public void setText(String text) {
+                    this.text = text;
+                }
+
+                public String getLocationId() {
+                    return locationId;
+                }
+
+                public void setLocationId(String locationId) {
+                    this.locationId = locationId;
+                }
+
+                public boolean getStoreTick(){
+                    return tick;
+                }
+
+                public void setStoreTick(boolean tick){
+                    this.tick=tick;
+                }
+
             }
 
+            public class Brand {
 
-            public String getCategoryId() {
-                return categoryId;
+                @SerializedName("category_id")
+                @Expose
+                private String categoryId;
+                @SerializedName("brand_id")
+                @Expose
+                private String brandId;
+                @SerializedName("text")
+                @Expose
+                private String text;
+                @SerializedName("tick")
+                @Expose
+                private boolean tick;
+
+
+                public String getCategoryId() {
+                    return categoryId;
+                }
+
+                public void setCategoryId(String categoryId) {
+                    this.categoryId = categoryId;
+                }
+
+                public String getBrandId() {
+                    return brandId;
+                }
+
+                public void setBrandId(String brandId) {
+                    this.brandId = brandId;
+                }
+
+                public String getText() {
+                    return text;
+                }
+
+                public void setText(String text) {
+                    this.text = text;
+                }
+
+                public boolean getBrandTick(){
+                    return tick;
+                }
+                public void setBrandTick(boolean tick){
+                    this.tick=tick;
+                }
+
             }
 
-            public void setCategoryId(String categoryId) {
-                this.categoryId = categoryId;
-            }
+            public class Category {
+
+                @SerializedName("category_id")
+                @Expose
+                private String categoryId;
+
+                @SerializedName("text")
+                @Expose
+                private String text;
+
+                @SerializedName("tick")
+                @Expose
+                private boolean tick;
 
 
-            public String getCategoryName() {
-                return categoryName;
-            }
+                public String getCategoryId() {
+                    return categoryId;
+                }
 
-            public void setCategoryName(String categoryName) {
-                this.categoryName = categoryName;
-            }
+                public void setCategoryId(String categoryId) {
+                    this.categoryId = categoryId;
+                }
 
+                public String getText() {
+                    return text;
+                }
 
-            public String getStoreId() {
-                return storeId;
-            }
+                public void setText(String text) {
+                    this.text = text;
+                }
 
-            public void setStoreId(String storeId) {
-                this.storeId = storeId;
-            }
+                public boolean getCategoryTick(){
+                    return tick;
+                }
+                public void setCategoryTick(boolean tick){
+                    this.tick=tick;
+                }
 
-
-            public String getStoreName() {
-                return storeName;
-            }
-
-            public void setStoreName(String storeName) {
-                this.storeName = storeName;
-            }
-
-
-            public String getProductName() {
-                return productName;
-            }
-
-            public void setProductName(String productName) {
-                this.productName = productName;
             }
 
         }
-
     }
+
+
+
 
 }

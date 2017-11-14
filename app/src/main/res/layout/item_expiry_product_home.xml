@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_black"
-                android:textSize="@dimen/txt_13_dp" />
+                android:textSize="@dimen/txt_12_dp" />
 
             <TextView
                 android:id="@+id/txtViewDateAdded"

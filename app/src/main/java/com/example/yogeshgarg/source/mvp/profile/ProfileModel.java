@@ -54,9 +54,11 @@ public class ProfileModel {
         @SerializedName("email")
         @Expose
         private String email;
+
         @SerializedName("image")
         @Expose
         private String image;
+
         @SerializedName("phone")
         @Expose
         private String phone;

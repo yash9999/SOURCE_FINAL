@@ -134,6 +134,12 @@ public class Utils {
 
         try {
             String[] words = categoryName.split(" ");
+            if (words.length > 0) {
+                //do nothing
+            } else {
+                words[0] = categoryName;
+            }
+
             StringBuilder sb = new StringBuilder();
             if (words[0].length() > 0) {
                 sb.append(Character.toUpperCase(words[0].charAt(0)) + words[0].subSequence(1, words[0].length()).toString().toLowerCase());
@@ -145,10 +151,8 @@ public class Utils {
             return sb.toString();
         } catch (ArrayIndexOutOfBoundsException ex) {
             ex.printStackTrace();
-        } finally {
-            return categoryName;
         }
-
+        return categoryName;
     }
 
     public static boolean matchString(String password) {

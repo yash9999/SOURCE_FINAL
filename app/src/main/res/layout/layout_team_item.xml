@@ -33,10 +33,18 @@
                 android:textSize="@dimen/txt_12_dp" />
 
             <TextView
+                android:id="@+id/txtViewRole"
+                android:layout_below="@+id/txtViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/txt_12_dp" />
+
+            <TextView
                 android:id="@+id/txtViewStore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtViewName"
+                android:layout_below="@+id/txtViewRole"
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/txt_12_dp" />
 
@@ -53,7 +61,7 @@
             android:id="@+id/relLayStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
             android:layout_alignParentRight="true">
 
             <TextView
@@ -64,16 +72,6 @@
                 android:textColor="@color/color_bg"
                 android:textSize="12dp" />
 
-            <ImageView
-                android:id="@+id/imgViewMessage"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:padding="3dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtViewStatus"
-                />
-
-
         </RelativeLayout>
 
     </RelativeLayout>
@@ -82,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/relLay"
-        android:background="@color/grey"></View>
+        android:background="@color/line_color"></View>
 
 
 </RelativeLayout>

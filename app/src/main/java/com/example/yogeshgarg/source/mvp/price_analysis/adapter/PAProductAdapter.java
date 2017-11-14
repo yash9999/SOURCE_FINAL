@@ -1,6 +1,10 @@
 package com.example.yogeshgarg.source.mvp.price_analysis.adapter;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -27,10 +32,11 @@ import butterknife.ButterKnife;
 public class PAProductAdapter extends RecyclerView.Adapter<PAProductAdapter.Holder> implements Filterable {
 
     Activity activity;
-    ArrayList<PriceAnalysisModel.Result.Original> originalArrayList;
-    ArrayList<PriceAnalysisModel.Result.Original> filteringOriginalArrayList;
+    ArrayList<PriceAnalysisModel.Result.Original.Product> originalArrayList;
+    ArrayList<PriceAnalysisModel.Result.Original.Product> filteringOriginalArrayList;
+    int count=0;
 
-    public PAProductAdapter(Activity activity, ArrayList<PriceAnalysisModel.Result.Original> originalArrayList) {
+    public PAProductAdapter(Activity activity, ArrayList<PriceAnalysisModel.Result.Original.Product> originalArrayList) {
         this.activity = activity;
         this.originalArrayList = originalArrayList;
         filteringOriginalArrayList = originalArrayList;
@@ -45,8 +51,8 @@ public class PAProductAdapter extends RecyclerView.Adapter<PAProductAdapter.Hold
     @Override
     public void onBindViewHolder(final Holder holder, int position) {
 
-        final PriceAnalysisModel.Result.Original item = filteringOriginalArrayList.get(position);
-        holder.txtViewName.setText(item.getProductName());
+        final PriceAnalysisModel.Result.Original.Product item = filteringOriginalArrayList.get(position);
+        holder.txtViewName.setText(item.getText());
         Log.e("Product Id", item.getProductId());
 
         if (item.getProductTick()) {
@@ -56,16 +62,36 @@ public class PAProductAdapter extends RecyclerView.Adapter<PAProductAdapter.Hold
             holder.imgViewSelect.setVisibility(View.INVISIBLE);
         }
 
-        holder.txtViewName.setOnClickListener(new View.OnClickListener() {
+        holder.relLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (item.getProductTick()) {
                     item.setProductTick(false);
                     holder.imgViewSelect.setVisibility(View.INVISIBLE);
+                    count--;
                 } else {
-                    item.setProductTick(true);
-                    holder.imgViewSelect.setVisibility(View.VISIBLE);
-                    holder.imgViewSelect.setImageResource(R.mipmap.ic_tick);
+                    if(count<4){
+                        count=0;
+                        for (int i = 0; i < filteringOriginalArrayList.size(); i++) {
+                            if(filteringOriginalArrayList.get(i).getProductTick()){
+                                count++;
+                            }
+                        }
+                        item.setProductTick(true);
+                        holder.imgViewSelect.setVisibility(View.VISIBLE);
+                        holder.imgViewSelect.setImageResource(R.mipmap.ic_tick);
+                    }else{
+                        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(activity);
+                        alertDialog.setMessage("You can select maximum five products.");
+                        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        alertDialog.show();
+                    }
+
                 }
             }
         });
@@ -85,10 +111,10 @@ public class PAProductAdapter extends RecyclerView.Adapter<PAProductAdapter.Hold
                 if (strCharSequence.isEmpty()) {
                     filteringOriginalArrayList = originalArrayList;
                 } else {
-                    ArrayList<PriceAnalysisModel.Result.Original> filteringInnerArrayList = new ArrayList<>();
+                    ArrayList<PriceAnalysisModel.Result.Original.Product> filteringInnerArrayList = new ArrayList<>();
 
-                    for (PriceAnalysisModel.Result.Original original : originalArrayList) {
-                        if (original.getProductName().toLowerCase().contains(strCharSequence)) {
+                    for (PriceAnalysisModel.Result.Original.Product original : originalArrayList) {
+                        if (original.getText().toLowerCase().contains(strCharSequence)) {
                             filteringInnerArrayList.add(original);
                         }
                     }
@@ -103,7 +129,7 @@ public class PAProductAdapter extends RecyclerView.Adapter<PAProductAdapter.Hold
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filteringOriginalArrayList = (ArrayList<PriceAnalysisModel.Result.Original>) filterResults.values;
+                filteringOriginalArrayList = (ArrayList<PriceAnalysisModel.Result.Original.Product>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
@@ -116,6 +142,10 @@ public class PAProductAdapter extends RecyclerView.Adapter<PAProductAdapter.Hold
 
         @BindView(R.id.imgViewSelect)
         ImageView imgViewSelect;
+
+        @BindView(R.id.relLay)
+        RelativeLayout relLay;
+
 
 
         public Holder(View itemView) {

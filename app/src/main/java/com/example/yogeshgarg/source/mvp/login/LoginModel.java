@@ -56,21 +56,27 @@ public class LoginModel {
             @SerializedName("id")
             @Expose
             private String id;
+
             @SerializedName("Token")
             @Expose
             private String token;
+
             @SerializedName("quickblox_id")
             @Expose
             private String quickbloxId;
+
             @SerializedName("name")
             @Expose
             private String name;
+
             @SerializedName("usertype")
             @Expose
             private String usertype;
+
             @SerializedName("quickblox_token")
             @Expose
             private String quickbloxToken;
+
 
             public String getId() {
                 return id;

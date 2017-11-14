@@ -1,10 +1,14 @@
 package com.example.yogeshgarg.source.mvp.price_analysis;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,19 +50,30 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 import static com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM;
 
 
-public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisView {
+public class PriceAnalysisFragment extends Fragment implements PriceAnalysisView {
 
 
     LineChart chart;
+    String filterBrandId = null;
+    String filterCategoryId = null;
+    ArrayList<PriceAnalysisModel.Result.Original.Brand> arrayList = new ArrayList<>();
+    ArrayList<PriceAnalysisModel.Result.Original.Product> productArrayList = new ArrayList<>();
 
     ArrayList<Entry> arrayList1;
     ArrayList<Entry> arrayList2;
 
+
+    @BindView(R.id.relLatCheckBox)
+    RelativeLayout relLatCheckBox;
+
+    @BindView(R.id.checkboxSelectAll)
+    CheckBox checkboxSelectAll;
 
     @BindView(R.id.relLayout)
     RelativeLayout relLayout;
@@ -101,6 +118,7 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
     PAProductAdapter paProductAdapter;
     PAStoreAdapter paStoreAdapter;
 
+    boolean isBtnSubmitPressed = false;
 
     int colorArray[] = {R.color.color_red, R.color.color_bg, R.color.color_blue, R.color.color_orange, R.color.color_pink};
 
@@ -119,7 +137,15 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
         chart.setClickable(false);
 
         ButterKnife.bind(this, view);
-        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold,getActivity());
+        FontHelper.setFontFace(txtViewTitle, FontHelper.FontType.FONT_Semi_Bold, getActivity());
+
+
+        checkboxSelectAll.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                paStoreAdapter.setCheckBox(b);
+            }
+        });
         return view;
     }
 
@@ -140,8 +166,25 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
     public void onSuccess(PriceAnalysisModel.Result result) {
         this.result = result;
         setLayoutManager();
-        //setData();
-        settingGraphData();
+        if (isBtnSubmitPressed) {
+            if (result.getData().size() > 0) {
+                settingGraphData();
+            } else {
+                setData();
+                android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(getActivity());
+                alertDialog.setMessage("No data found to populate the chart.");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+            }
+
+        } else {
+            //not populate the graph
+        }
     }
 
     @Override
@@ -175,21 +218,36 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
 
-        for (int i = 0; i < result.getOriginal().size(); i++) {
-            result.getOriginal().get(i).setBrandTick(false);
-            result.getOriginal().get(i).setProductTick(false);
-            result.getOriginal().get(i).setStoreTick(false);
-            result.getOriginal().get(i).setCategoryTick(false);
+        for (int i = 0; i < result.getOriginal().getCategories().size(); i++) {
+            result.getOriginal().getCategories().get(i).setCategoryTick(false);
         }
-        paCategoryAdapter = new PACategoryAdapter(getActivity(), result.getOriginal());
-        paBrandAdapter = new PABrandAdapter(getActivity(), result.getOriginal());
-        paProductAdapter = new PAProductAdapter(getActivity(), result.getOriginal());
-        paStoreAdapter = new PAStoreAdapter(getActivity(), result.getOriginal());
+
+        for (int i = 0; i < result.getOriginal().getBrands().size(); i++) {
+            result.getOriginal().getBrands().get(i).setBrandTick(false);
+        }
+
+        for (int i = 0; i < result.getOriginal().getProducts().size(); i++) {
+            result.getOriginal().getProducts().get(i).setProductTick(false);
+        }
+
+
+        for (int i = 0; i < result.getOriginal().getStores().size(); i++) {
+            result.getOriginal().getStores().get(i).setStoreTick(false);
+        }
+
+
+        paCategoryAdapter = new PACategoryAdapter(getActivity(), result.getOriginal().getCategories());
+        paBrandAdapter = new PABrandAdapter(getActivity(), result.getOriginal().getBrands());
+        paProductAdapter = new PAProductAdapter(getActivity(), result.getOriginal().getProducts());
+        paStoreAdapter = new PAStoreAdapter(getActivity(), result.getOriginal().getStores(),this);
         setAdapter();
     }
 
     private void setAdapter() {
         txtViewTitleCategory.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edittext_green_rect));
+        txtViewTitleBrand.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
+        txtViewTitleProduct.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
+        txtViewTitleStore.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
 
         recyclerView.setAdapter(paCategoryAdapter);
         searchView.setQueryHint("Enter category name");
@@ -211,6 +269,7 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
 
     @OnClick(R.id.txtViewTitleCategory)
     public void txtViewTitleCategoryClick() {
+        relLatCheckBox.setVisibility(View.GONE);
         txtViewTitleCategory.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edittext_green_rect));
         txtViewTitleBrand.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleProduct.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
@@ -221,14 +280,38 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
 
     @OnClick(R.id.txtViewTitleBrand)
     public void txtViewTitleBrandClick() {
+        relLatCheckBox.setVisibility(View.GONE);
         txtViewTitleCategory.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleBrand.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edittext_green_rect));
         txtViewTitleProduct.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleStore.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
 
+        filterCategoryId=null;
+        arrayList=new ArrayList<>();
+
+        for (int i = 0; i < result.getOriginal().getCategories().size(); i++) {
+            if (result.getOriginal().getCategories().get(i).getCategoryTick()) {
+                filterCategoryId = result.getOriginal().getCategories().get(i).getCategoryId();
+                break;
+            }
+        }
+
+        if (filterCategoryId == null) {
+            for (int i = 0; i < result.getOriginal().getBrands().size(); i++) {
+                result.getOriginal().getBrands().get(i).setBrandTick(false);
+            }
+            paBrandAdapter = new PABrandAdapter(getActivity(), result.getOriginal().getBrands());
+        } else {
+            for (int i = 0; i < result.getOriginal().getBrands().size(); i++) {
+                if (result.getOriginal().getBrands().get(i).getCategoryId().equals(filterCategoryId)) {
+                    arrayList.add(result.getOriginal().getBrands().get(i));
+                }
+            }
+            paBrandAdapter = new PABrandAdapter(getActivity(), arrayList);
+        }
+
 
         recyclerView.setAdapter(paBrandAdapter);
-
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Enter brand name");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -247,14 +330,68 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
 
     @OnClick(R.id.txtViewTitleProduct)
     public void setTxtViewTitleProductClick() {
+        relLatCheckBox.setVisibility(View.GONE);
         txtViewTitleCategory.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleBrand.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleProduct.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.edittext_green_rect));
         txtViewTitleStore.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
 
+        filterBrandId=null;
+        filterCategoryId=null;
+        productArrayList = new ArrayList<>();
+
+
+        for (int i = 0; i < result.getOriginal().getCategories().size(); i++) {
+            if (result.getOriginal().getCategories().get(i).getCategoryTick()) {
+                filterCategoryId = result.getOriginal().getCategories().get(i).getCategoryId();
+                break;
+            }
+        }
+
+        for (int i = 0; i < result.getOriginal().getBrands().size(); i++) {
+            if (result.getOriginal().getBrands().get(i).getBrandTick()) {
+                filterBrandId = result.getOriginal().getBrands().get(i).getBrandId();
+                break;
+            }
+        }
+
+
+        if (filterCategoryId != null) {
+            if (filterBrandId == null) {
+                for (int i = 0; i < result.getOriginal().getProducts().size(); i++) {
+                    if (result.getOriginal().getProducts().get(i).getCategory_id().equals(filterCategoryId)) {
+                        productArrayList.add(result.getOriginal().getProducts().get(i));
+                    }
+                }
+                paProductAdapter = new PAProductAdapter(getActivity(), productArrayList);
+            } else {
+                for (int i = 0; i < result.getOriginal().getProducts().size(); i++) {
+                    if (result.getOriginal().getProducts().get(i).getBrandId().equals(filterBrandId)
+                            && (result.getOriginal().getProducts().get(i).getCategory_id().equals(filterCategoryId))) {
+                        productArrayList.add(result.getOriginal().getProducts().get(i));
+                    }
+                }
+                paProductAdapter = new PAProductAdapter(getActivity(), productArrayList);
+            }
+
+        } else {
+            if (filterBrandId == null) {
+                for (int i = 0; i < result.getOriginal().getProducts().size(); i++) {
+                    result.getOriginal().getProducts().get(i).setProductTick(false);
+                }
+                paProductAdapter = new PAProductAdapter(getActivity(), result.getOriginal().getProducts());
+            } else {
+                for (int i = 0; i < result.getOriginal().getProducts().size(); i++) {
+                    if (result.getOriginal().getProducts().get(i).getBrandId().equals(filterBrandId)) {
+                        productArrayList.add(result.getOriginal().getProducts().get(i));
+                    }
+                }
+                paProductAdapter = new PAProductAdapter(getActivity(), productArrayList);
+            }
+        }
+
 
         recyclerView.setAdapter(paProductAdapter);
-
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Enter product name");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -274,6 +411,7 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
 
     @OnClick(R.id.txtViewTitleStore)
     public void setTxtViewTitleStoreClick() {
+        relLatCheckBox.setVisibility(View.VISIBLE);
         txtViewTitleCategory.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleBrand.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
         txtViewTitleProduct.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.color_white));
@@ -300,122 +438,15 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
 
     }
 
-
-    private void setData() {
-
-        arrayList1=new ArrayList<>();
-        arrayList2=new ArrayList<>();
-
-        Entry entry0 = new Entry(0, 40);
-        Entry entry1 = new Entry(1, 40);
-        Entry entry2 = new Entry(2, 60);
-        Entry entry3 = new Entry(3, 80);
-        Entry entry4 = new Entry(4, 40);
-        Entry entry5 = new Entry(5, 140);
-        Entry entry6 = new Entry(6, 100);
-        Entry entry7 = new Entry(7, 120);
-        Entry entry8 = new Entry(8, 100);
-        Entry entry9 = new Entry(9, 80);
-        Entry entry10 = new Entry(10, 140);
-        Entry entry11 = new Entry(11, 160);
-        arrayList1.add(entry0);
-        arrayList1.add(entry1);
-        arrayList1.add(entry2);
-        arrayList1.add(entry3);
-        arrayList1.add(entry4);
-        arrayList1.add(entry5);
-        arrayList1.add(entry6);
-        arrayList1.add(entry6);
-        arrayList1.add(entry7);
-        arrayList1.add(entry8);
-        arrayList1.add(entry9);
-        arrayList1.add(entry10);
-        arrayList1.add(entry11);
-
-        Entry e0 = new Entry(1, 140);
-        Entry e1 = new Entry(2, 80);
-        Entry e2 = new Entry(3, 20);
-        Entry e3 = new Entry(4, 10);
-        Entry e4 = new Entry(5, 80);
-        Entry e5 = new Entry(6, 180);
-        Entry e6 = new Entry(7, 70);
-        Entry e7 = new Entry(8, 50);
-        Entry e8 = new Entry(9, 20);
-        Entry e9 = new Entry(10, 60);
-        Entry e10 = new Entry(11, 110);
-        Entry e11 = new Entry(11, 25);
-        arrayList2.add(e0);
-        arrayList2.add(e1);
-        arrayList2.add(e2);
-        arrayList2.add(e3);
-        arrayList2.add(e4);
-        arrayList2.add(e5);
-        arrayList2.add(e6);
-        arrayList2.add(e6);
-        arrayList2.add(e7);
-        arrayList2.add(e8);
-        arrayList2.add(e9);
-        arrayList2.add(e10);
-        arrayList2.add(e11);
-
-        LineDataSet firstSet = new LineDataSet(arrayList1, "First Line");
-        firstSet.setColor(ContextCompat.getColor(getActivity(), R.color.color_red));
-        firstSet.setCircleColor(ContextCompat.getColor(getActivity(), R.color.color_red));
-        firstSet.setCircleColorHole(ContextCompat.getColor(getActivity(), R.color.color_red));
-        firstSet.setHighlightLineWidth(4f);
-        firstSet.setCircleHoleRadius(10);
-
-        LineDataSet secondSet = new LineDataSet(arrayList2, "second line");
-        secondSet.setColor(ContextCompat.getColor(getActivity(), R.color.color_bg));
-        secondSet.setCircleColor(ContextCompat.getColor(getActivity(), R.color.color_bg));
-        secondSet.setCircleColorHole(ContextCompat.getColor(getActivity(), R.color.color_bg));
-        secondSet.setHighlightLineWidth(4f);
-        secondSet.setCircleHoleRadius(10);
-
-
-        ArrayList<ILineDataSet> datasets = new ArrayList<>();
-        datasets.add(firstSet);
-        datasets.add(secondSet);
-
-        // String[] values = new String[] { ... };
-
-
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setValueFormatter(new XaxisValueFormatter());
-        xAxis.setPosition(BOTTOM);
-        xAxis.setTextColor(R.color.color_white);
-        xAxis.setGranularityEnabled(true);
-        xAxis.setGranularity(1f);
-        xAxis.setAxisMinimum(0);
-        xAxis.setLabelCount(12, true);
-        xAxis.setAxisLineColor(R.color.color_bg);
-
-
-        YAxis yAxis = chart.getAxisRight();
-        yAxis.setDrawLabels(false); // no axis labels
-        yAxis.setDrawAxisLine(false); // no axis line
-        yAxis.setDrawGridLines(false); // no grid lines
-        yAxis.setDrawZeroLine(true); // draw a zero line
-        yAxis.setAxisLineColor(R.color.color_black);
-        yAxis.setAxisLineWidth(2);
-        yAxis.disableAxisLineDashedLine();
-
-        YAxis yAxisLeft = chart.getAxisLeft();
-        yAxisLeft.setDrawAxisLine(false); // no axis line
-        yAxisLeft.setDrawGridLines(false); // no grid lines
-
-
-        LineData data = new LineData(datasets);
-        chart.setGridBackgroundColor(R.color.color_white);
-        chart.setData(data);
-
-
+    public void changeSelectAllIcon(){
+        checkboxSelectAll.setChecked(false);
     }
+
 
     @OnClick(R.id.btnSubmit)
     public void btnSubmitClick() {
-
-        ArrayList<PriceAnalysisModel.Result.Original> original = result.getOriginal();
+        isBtnSubmitPressed = true;
+        PriceAnalysisModel.Result.Original original = result.getOriginal();
 
 
         arrayListCategory = new ArrayList<>();
@@ -423,24 +454,32 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
         arrayListBrand = new ArrayList<>();
         arrayListStore = new ArrayList<>();
 
-        for (int i = 0; i < original.size(); i++) {
+        for (int i = 0; i < original.getCategories().size(); i++) {
 
-            if (original.get(i).getCategoryTick()) {
-                arrayListCategory.add(original.get(i).getCategoryId());
-            }
-
-            if (original.get(i).getBrandTick()) {
-                arrayListBrand.add(original.get(i).getBrandId());
-            }
-
-            if (original.get(i).getProductTick()) {
-                arrayListProduct.add(original.get(i).getProductId());
-            }
-
-            if (original.get(i).getStoreTick()) {
-                arrayListStore.add(original.get(i).getStoreId());
+            if (original.getCategories().get(i).getCategoryTick()) {
+                arrayListCategory.add(original.getCategories().get(i).getCategoryId());
             }
         }
+
+        for (int i = 0; i < original.getBrands().size(); i++) {
+            if (original.getBrands().get(i).getBrandTick()) {
+                arrayListBrand.add(original.getBrands().get(i).getBrandId());
+            }
+        }
+
+        for (int i = 0; i < original.getProducts().size(); i++) {
+            if (original.getProducts().get(i).getProductTick()) {
+                arrayListProduct.add(original.getProducts().get(i).getProductId());
+            }
+        }
+
+
+        for (int i = 0; i < original.getStores().size(); i++) {
+            if (original.getStores().get(i).getStoreTick()) {
+                arrayListStore.add(original.getStores().get(i).getStoreId());
+            }
+        }
+
 
         callingPriceAnalysisApi();
     }
@@ -454,8 +493,8 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
             for (int i = 0; i < result.getData().size(); i++) {
                 arrayList1 = new ArrayList<>();
                 for (int j = 0; j < result.getData().get(i).size(); j++) {
-                    int x = result.getData().get(i).get(j).get(0);
-                    int y = result.getData().get(i).get(j).get(1);
+                    float x = result.getData().get(i).get(j).get(0);
+                    float y = result.getData().get(i).get(j).get(1);
                     Entry entry = new Entry(x, y);
                     arrayList1.add(entry);
                 }
@@ -500,5 +539,73 @@ public class  PriceAnalysisFragment extends Fragment implements PriceAnalysisVie
             chart.invalidate();
 
         }
+    }
+
+    private void setData() {
+
+        arrayList1 = new ArrayList<>();
+        arrayList2 = new ArrayList<>();
+
+        Entry entry0 = new Entry(0, 0);
+        arrayList1.add(entry0);
+
+        Entry e0 = new Entry(0, 0);
+        arrayList2.add(e0);
+
+
+        LineDataSet firstSet = new LineDataSet(arrayList1, "");
+        firstSet.setColor(ContextCompat.getColor(getActivity(), R.color.color_red));
+        firstSet.setCircleColor(ContextCompat.getColor(getActivity(), R.color.color_red));
+        firstSet.setCircleColorHole(ContextCompat.getColor(getActivity(), R.color.color_red));
+        firstSet.setHighlightLineWidth(4f);
+        firstSet.setCircleHoleRadius(10);
+
+       /* LineDataSet secondSet = new LineDataSet(arrayList2, "");
+        secondSet.setColor(ContextCompat.getColor(getActivity(), R.color.color_bg));
+        secondSet.setCircleColor(ContextCompat.getColor(getActivity(), R.color.color_bg));
+        secondSet.setCircleColorHole(ContextCompat.getColor(getActivity(), R.color.color_bg));
+        secondSet.setHighlightLineWidth(4f);
+        secondSet.setCircleHoleRadius(10);*/
+
+
+        ArrayList<ILineDataSet> datasets = new ArrayList<>();
+        datasets.add(firstSet);
+        //datasets.add(secondSet);
+
+        // String[] values = new String[] { ... };
+
+
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setValueFormatter(new XaxisValueFormatter());
+        xAxis.setPosition(BOTTOM);
+        //xAxis.setTextColor(R.color.color_white);
+        xAxis.setGranularityEnabled(true);
+        xAxis.setGranularity(1f);
+        /*xAxis.setAxisMinimum(0);
+        xAxis.setLabelCount(12, true);*/
+        xAxis.setAxisLineColor(R.color.color_bg);
+
+
+        YAxis yAxis = chart.getAxisRight();
+        yAxis.setDrawLabels(false); // no axis labels
+        yAxis.setDrawAxisLine(false); // no axis line
+        yAxis.setDrawGridLines(false); // no grid lines
+        yAxis.setDrawZeroLine(true); // draw a zero line
+        yAxis.setAxisLineColor(R.color.color_black);
+        /*yAxis.setAxisLineWidth(2);
+        yAxis.disableAxisLineDashedLine();*/
+
+        YAxis yAxisLeft = chart.getAxisLeft();
+        yAxisLeft.setDrawAxisLine(false); // no axis line
+        yAxisLeft.setDrawGridLines(false); // no grid lines
+
+
+        LineData data = new LineData(datasets);
+        chart.setGridBackgroundColor(R.color.color_white);
+        chart.setData(data);
+        chart.notifyDataSetChanged();
+        chart.invalidate();
+
+
     }
 }

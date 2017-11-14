@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.DateMethods;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.mvp.login.LoginActivity;
 import com.example.yogeshgarg.source.mvp.navigation.NavigationActivity;
@@ -87,38 +88,14 @@ public class VacationHomeAdapter extends RecyclerView.Adapter<VacationHomeAdapte
         }
 
         holder.txtViewDate.setText(initialDateToShow + " to " + finalDateToShow);
-
-
-        String strLastUpdated = result.getDateadded();
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date currentDate = new Date();
-        String daysToShow = null;
-        try {
-            String strCurrentDate = simpleDateFormat.format(currentDate);
-            Date lastUpdatedDay = simpleDateFormat.parse(strLastUpdated);
-            Date currentUpdateDay = simpleDateFormat.parse(strCurrentDate);
-            long diff = currentUpdateDay.getTime() - lastUpdatedDay.getTime();
-            daysToShow = String.valueOf(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        if ((Integer.parseInt(daysToShow) == 1) || (Integer.parseInt(daysToShow) == 0)) {
-            holder.txtViewAdded.setText("Added - " + daysToShow + " Day ago");
-        } else {
-            holder.txtViewAdded.setText("Added - " + daysToShow + " Days ago");
-        }
+        holder.txtViewAdded.setText("Added on: "+ DateMethods.setDate(result.getDateadded()));
 
         holder.swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
         holder.swipeLayout.addDrag(SwipeLayout.DragEdge.Right, holder.swipeLayout.findViewById(R.id.relLayDelete));
-
-
         holder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
             @Override
             public void onStartOpen(SwipeLayout layout) {
-
+                notifyDataSetChanged();
             }
 
             @Override
@@ -146,14 +123,12 @@ public class VacationHomeAdapter extends RecyclerView.Adapter<VacationHomeAdapte
 
             }
         });
-
         holder.relLayDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 removeItem(position);
             }
         });
-
     }
 
     @Override

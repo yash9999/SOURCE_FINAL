@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -28,11 +29,11 @@ import butterknife.ButterKnife;
 public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> implements Filterable {
 
     Activity activity;
-    ArrayList<PriceAnalysisModel.Result.Original> originalArrayList;
-    ArrayList<PriceAnalysisModel.Result.Original> filteringOriginalArrayList;
+    ArrayList<PriceAnalysisModel.Result.Original.Brand> originalArrayList;
+    ArrayList<PriceAnalysisModel.Result.Original.Brand> filteringOriginalArrayList;
     ArrayList<String> arrayListBrandId;
 
-    public PABrandAdapter(Activity activity, ArrayList<PriceAnalysisModel.Result.Original> originalArrayList) {
+    public PABrandAdapter(Activity activity, ArrayList<PriceAnalysisModel.Result.Original.Brand> originalArrayList) {
         this.activity = activity;
         this.originalArrayList = originalArrayList;
         filteringOriginalArrayList = originalArrayList;
@@ -47,9 +48,9 @@ public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> 
 
     @Override
     public void onBindViewHolder(final Holder holder, int position) {
-        final PriceAnalysisModel.Result.Original item = filteringOriginalArrayList.get(position);
+        final PriceAnalysisModel.Result.Original.Brand item = filteringOriginalArrayList.get(position);
 
-        holder.txtViewName.setText(item.getBrandName());
+        holder.txtViewName.setText(item.getText());
         Log.e("brandId", item.getBrandId());
 
         if (item.getBrandTick()) {
@@ -59,7 +60,7 @@ public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> 
             holder.imgViewSelect.setVisibility(View.INVISIBLE);
         }
 
-        holder.txtViewName.setOnClickListener(new View.OnClickListener() {
+        holder.relLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -67,6 +68,10 @@ public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> 
                     item.setBrandTick(false);
                     holder.imgViewSelect.setVisibility(View.INVISIBLE);
                 }else{
+                    for (int i = 0; i < filteringOriginalArrayList.size(); i++) {
+                        filteringOriginalArrayList.get(i).setBrandTick(false);
+                        notifyDataSetChanged();
+                    }
                     item.setBrandTick(true);
                     holder.imgViewSelect.setVisibility(View.VISIBLE);
                     holder.imgViewSelect.setImageResource(R.mipmap.ic_tick);
@@ -90,10 +95,10 @@ public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> 
                 if (strCharSequence.isEmpty()) {
                     filteringOriginalArrayList = originalArrayList;
                 } else {
-                    ArrayList<PriceAnalysisModel.Result.Original> filteringInnerArrayList = new ArrayList<>();
+                    ArrayList<PriceAnalysisModel.Result.Original.Brand> filteringInnerArrayList = new ArrayList<>();
 
-                    for (PriceAnalysisModel.Result.Original original : originalArrayList) {
-                        if (original.getBrandName().toLowerCase().contains(strCharSequence)) {
+                    for (PriceAnalysisModel.Result.Original.Brand original : originalArrayList) {
+                        if (original.getText().toLowerCase().contains(strCharSequence)) {
                             filteringInnerArrayList.add(original);
                         }
                     }
@@ -108,7 +113,7 @@ public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> 
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filteringOriginalArrayList = (ArrayList<PriceAnalysisModel.Result.Original>) filterResults.values;
+                filteringOriginalArrayList = (ArrayList<PriceAnalysisModel.Result.Original.Brand>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
@@ -121,6 +126,9 @@ public class PABrandAdapter extends RecyclerView.Adapter<PABrandAdapter.Holder> 
 
         @BindView(R.id.imgViewSelect)
         ImageView imgViewSelect;
+
+        @BindView(R.id.relLay)
+        RelativeLayout relLay;
 
         public Holder(View itemView) {
             super(itemView);

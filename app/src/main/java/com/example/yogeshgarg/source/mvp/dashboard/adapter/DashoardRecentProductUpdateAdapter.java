@@ -76,7 +76,7 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
         holder.txtViewProductCategoryName.setText(brandName);// category Name is changed int brandName
 
 
-        if (result.getDiscount() == null) {
+        if (result.getDiscount() == null||Double.parseDouble(result.getDiscount())==0) {
             holder.txtViewDiscount.setVisibility(View.GONE);
         } else {
             String discount = result.getDiscount();
@@ -143,7 +143,7 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
                 txtViewProductName.setText(productName);
 
 
-                if (result.getDiscount() == null) {
+                if (result.getDiscount() == null||Double.parseDouble(result.getDiscount())==0) {
                     txtViewDiscount.setVisibility(View.GONE);
                 } else {
                     String discount = result.getDiscount();

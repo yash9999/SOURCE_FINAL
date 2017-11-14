@@ -68,7 +68,7 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
         holder.txtViewProductName.setText(productName);
 
 
-        if (result.getDiscount() == null) {
+        if (result.getDiscount() == null||Double.parseDouble(result.getDiscount())==0) {
             holder.txtViewDiscount.setVisibility(View.GONE);
         } else {
             String discount = result.getDiscount();
@@ -136,7 +136,7 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
                 txtViewProductName.setText(productName);
 
 
-                if (result.getDiscount() == null) {
+                if (result.getDiscount() == null||Double.parseDouble(result.getDiscount())==0) {
                     txtViewDiscount.setVisibility(View.GONE);
                 } else {
                     String discount = result.getDiscount();

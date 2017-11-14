@@ -22,7 +22,7 @@
         <RelativeLayout
             android:id="@+id/relLayDelete"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/color_red"
             >
 
@@ -30,6 +30,8 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:src="@mipmap/ic_delete_white"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
                 android:visibility="visible" />
         </RelativeLayout>
 
@@ -105,7 +107,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/grey"
+        android:background="@color/line_color"
         android:layout_below="@+id/relLayTop">
 
     </View>

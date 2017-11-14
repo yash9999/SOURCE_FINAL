@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
@@ -27,10 +28,10 @@ import butterknife.ButterKnife;
 public class PACategoryAdapter extends RecyclerView.Adapter<PACategoryAdapter.Holder> implements Filterable {
 
     Activity activity;
-    ArrayList<PriceAnalysisModel.Result.Original> originalArrayList;
-    ArrayList<PriceAnalysisModel.Result.Original> filteringOriginalArrayList;
+    ArrayList<PriceAnalysisModel.Result.Original.Category> originalArrayList;
+    ArrayList<PriceAnalysisModel.Result.Original.Category> filteringOriginalArrayList;
 
-    public PACategoryAdapter(Activity activity, ArrayList<PriceAnalysisModel.Result.Original> originalArrayList) {
+    public PACategoryAdapter(Activity activity, ArrayList<PriceAnalysisModel.Result.Original.Category> originalArrayList) {
         this.activity = activity;
         this.originalArrayList = originalArrayList;
         filteringOriginalArrayList = originalArrayList;
@@ -44,8 +45,8 @@ public class PACategoryAdapter extends RecyclerView.Adapter<PACategoryAdapter.Ho
 
     @Override
     public void onBindViewHolder(final Holder holder, int position) {
-        final PriceAnalysisModel.Result.Original item = filteringOriginalArrayList.get(position);
-        holder.txtViewName.setText(item.getCategoryName());
+        final PriceAnalysisModel.Result.Original.Category item = filteringOriginalArrayList.get(position);
+        holder.txtViewName.setText(item.getText());
         Log.e("categoryId", item.getCategoryId());
 
         if (item.getCategoryTick()) {
@@ -55,13 +56,18 @@ public class PACategoryAdapter extends RecyclerView.Adapter<PACategoryAdapter.Ho
             holder.imgViewSelect.setVisibility(View.INVISIBLE);
         }
 
-        holder.txtViewName.setOnClickListener(new View.OnClickListener() {
+        holder.relLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (item.getCategoryTick()) {
                     item.setCategoryTick(false);
                     holder.imgViewSelect.setVisibility(View.INVISIBLE);
                 } else {
+                    for (int i = 0; i < filteringOriginalArrayList.size(); i++) {
+                        filteringOriginalArrayList.get(i).setCategoryTick(false);
+                        notifyDataSetChanged();
+                    }
                     item.setCategoryTick(true);
                     holder.imgViewSelect.setVisibility(View.VISIBLE);
                     holder.imgViewSelect.setImageResource(R.mipmap.ic_tick);
@@ -85,10 +91,10 @@ public class PACategoryAdapter extends RecyclerView.Adapter<PACategoryAdapter.Ho
                 if (strCharSequence.isEmpty()) {
                     filteringOriginalArrayList = originalArrayList;
                 } else {
-                    ArrayList<PriceAnalysisModel.Result.Original> filteringInnerArrayList = new ArrayList<>();
+                    ArrayList<PriceAnalysisModel.Result.Original.Category> filteringInnerArrayList = new ArrayList<>();
 
-                    for (PriceAnalysisModel.Result.Original original : originalArrayList) {
-                        if (original.getCategoryName().toLowerCase().contains(strCharSequence)) {
+                    for (PriceAnalysisModel.Result.Original.Category original : originalArrayList) {
+                        if (original.getText().toLowerCase().contains(strCharSequence)) {
                             filteringInnerArrayList.add(original);
                         }
                     }
@@ -103,7 +109,7 @@ public class PACategoryAdapter extends RecyclerView.Adapter<PACategoryAdapter.Ho
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filteringOriginalArrayList = (ArrayList<PriceAnalysisModel.Result.Original>) filterResults.values;
+                filteringOriginalArrayList = (ArrayList<PriceAnalysisModel.Result.Original.Category>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
@@ -116,6 +122,10 @@ public class PACategoryAdapter extends RecyclerView.Adapter<PACategoryAdapter.Ho
 
         @BindView(R.id.imgViewSelect)
         ImageView imgViewSelect;
+
+        @BindView(R.id.relLay)
+        RelativeLayout relLay;
+
 
 
         public Holder(View itemView) {

@@ -62,7 +62,7 @@ public class DashboardActivityNewProductAdapter  extends  RecyclerView.Adapter<D
         String brandName = Utils.camelCasing(result.getBrandName());
         holder.txtViewProductCategoryName.setText(brandName);
 
-        if (result.getDiscount() == null) {
+        if (result.getDiscount() == null||Double.parseDouble(result.getDiscount())==0) {
             holder.txtViewDiscount.setVisibility(View.GONE);
         } else {
             String discount = result.getDiscount();

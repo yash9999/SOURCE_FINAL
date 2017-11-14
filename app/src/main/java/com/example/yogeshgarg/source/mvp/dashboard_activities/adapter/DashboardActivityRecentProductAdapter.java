@@ -61,7 +61,7 @@ public class DashboardActivityRecentProductAdapter extends RecyclerView.Adapter<
         holder.txtViewProductCategoryName.setText(categoryName);
 
 
-        if (result.getDiscount() == null) {
+        if (result.getDiscount() == null||Double.parseDouble(result.getDiscount())==0) {
             holder.txtViewDiscount.setVisibility(View.GONE);
         } else {
             String discount = result.getDiscount();

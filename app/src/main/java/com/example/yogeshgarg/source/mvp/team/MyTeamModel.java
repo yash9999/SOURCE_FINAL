@@ -6,6 +6,7 @@ package com.example.yogeshgarg.source.mvp.team;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -47,6 +48,7 @@ public class MyTeamModel {
         this.result = result;
     }
 
+
     public class Result {
 
         @SerializedName("firstname")
@@ -73,6 +75,15 @@ public class MyTeamModel {
         @SerializedName("email")
         @Expose
         private String email;
+        @SerializedName("quickblox_id")
+        @Expose
+        private String quickbloxId;
+        @SerializedName("role_name")
+        @Expose
+        private String roleName;
+        @SerializedName("status")
+        @Expose
+        private String status;
 
         public String getFirstname() {
             return firstname;
@@ -138,8 +149,29 @@ public class MyTeamModel {
             this.email = email;
         }
 
+        public String getQuickbloxId() {
+            return quickbloxId;
+        }
+
+        public void setQuickbloxId(String quickbloxId) {
+            this.quickbloxId = quickbloxId;
+        }
+
+        public String getRoleName() {
+            return roleName;
+        }
+
+        public void setRoleName(String roleName) {
+            this.roleName = roleName;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
     }
-
-
-
 }

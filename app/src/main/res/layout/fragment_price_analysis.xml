@@ -19,22 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/txtViewTitle"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".35"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
-            >
+            android:layout_weight=".35">
 
             <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-             />
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -125,15 +122,39 @@
                     android:layout_below="@+id/linLayNames"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
+                    android:layout_toLeftOf="@+id/relLatCheckBox"
                     android:background="@drawable/rect_edittext">
 
                 </android.support.v7.widget.SearchView>
+
+
+                <RelativeLayout
+                    android:id="@+id/relLatCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:visibility="gone"
+                    android:layout_below="@+id/linLayNames">
+
+                    <CheckBox
+                        android:id="@+id/checkboxSelectAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:text="Select All" />
+
+
+                </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/searchView">
+                    android:layout_above="@+id/btnSubmit"
+                    android:layout_below="@+id/searchView"
+                    android:paddingBottom="1dp">
 
                 </android.support.v7.widget.RecyclerView>
 
