@@ -38,5 +38,13 @@
 
 
 
+    <!--Shades of blue-->
+    <color name="colorGradBlueDark">#3AC7F1</color>
+    <color name="colorLightBlue">#5ADAE7</color>
+    <color name="colorSkyBlue">#27AFEB</color>
+    <color name="colorGradBlueLight">#0C7ED4</color>
+
+    <color name="colorBlue">#1682CE</color>
+    <color name="colorBlueText">#62cff3</color>
 <color name="chat_sender">#D5FDD5</color>
 </resources>

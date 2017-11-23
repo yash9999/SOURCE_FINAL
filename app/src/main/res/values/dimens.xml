@@ -53,7 +53,8 @@
 
 
 
-
+    <dimen name="viewfinder_border_width">5dp</dimen>
+    <dimen name="viewfinder_border_length">40dp</dimen>
 
     <dimen name="margin_50sp">50sp</dimen>
     <dimen name="margin_40sp">40sp</dimen>
@@ -61,6 +62,7 @@
     <dimen name="margin_20sp">20sp</dimen>
     <dimen name="margin_15sp">15sp</dimen>
     <dimen name="margin_10sp">10sp</dimen>
+
 
 
 

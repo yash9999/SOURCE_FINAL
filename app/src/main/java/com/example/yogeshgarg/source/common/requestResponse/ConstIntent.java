@@ -43,6 +43,7 @@ public class ConstIntent {
     public static final String EXPIRY_PRODUCT_IMAGE="expiry_product_images";
     public static final String INSTORE_SAMPLING_IMAGE="instore_sampling_images";
 
+    public static final String BAR_READER_VALUE="barReaderValue";
 }
 
 

@@ -111,6 +111,17 @@ public class DashboardPlanogramModel implements Serializable{
             this.link = link;
         }
 
+
+        byte[] imageByte;
+
+        public byte[] getImageByte() {
+            return imageByte;
+        }
+
+        public void setImageByte(byte[] imageByte) {
+            this.imageByte = imageByte;
+        }
+
         public String getDateadded() {
             return dateadded;
         }

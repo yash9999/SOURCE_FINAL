@@ -2,6 +2,7 @@ package com.example.yogeshgarg.source.mvp.profile;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
@@ -26,6 +27,8 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -116,14 +119,12 @@ public class ProfilePresenterImpl implements ProfilePresenter {
 
 
     //multipart image upload api
-    private void gettingResultOfUploadingImage(final File filePath) {
+    private void gettingResultOfUploadingImage(File filePath) {
 
         String uploadImageUrl = "image/user";
 
 
         String requestURL = Const.Base_URL + uploadImageUrl;
-
-
         RequestParams params = null;
 
         params = new RequestParams();
@@ -164,10 +165,26 @@ public class ProfilePresenterImpl implements ProfilePresenter {
                     for (int i = 0; i < headers.length; i++)
                         Log.e("header", "" + headers[i]);
                     Log.e("success finish", "finish");
-
-                    //call your method after successapi here
-                    profileView.onSuccessProfilePic("Photo uploaded successfully");
-                    callingProfileApi();
+                    try {
+                        String str = new String(responseBody, "UTF-8");
+                        Log.e("responseBody", "" + str);
+                        try {
+                            JSONObject jsonObject = new JSONObject(str);
+                            String message = jsonObject.get("message").toString();
+                            String success = jsonObject.get("successful").toString();
+                            Boolean bit= Boolean.valueOf(success);
+                            if (bit) {
+                                profileView.onSuccessProfilePic("Product added successfully.");
+                                callingProfileApi();
+                            } else {
+                                profileView.onUnsuccessProfilePic(message);
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 } else {
                     profileView.onUnsuccessProfilePic("Not able to upload image this time, Please try again later.");
                 }
@@ -268,5 +285,48 @@ public class ProfilePresenterImpl implements ProfilePresenter {
             return false;
         }
         return true;
+    }
+
+    public File saveBitmapToFile(File file) {
+        try {
+
+            // BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 6;
+            // factor of downsizing the image
+
+            FileInputStream inputStream = new FileInputStream(file);
+            //Bitmap selectedBitmap = null;
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE = 75;
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+            inputStream.close();
+
+            // here i override the original image file
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+
+            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
+
+            return file;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.yogeshgarg.source.mvp.new_product.new_product_update;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.yogeshgarg.source.common.helper.Progress;
@@ -13,7 +15,11 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 /**
  * Created by yogeshgarg on 24/08/17.
@@ -54,6 +60,7 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
         if (Utils.isEmptyOrNull(discountType)) {
             discountType = "0";
         }
+
 
         String requestURL = Const.Base_URL + uploadImageUrl;
 
@@ -119,17 +126,31 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 Progress.stop();
                 Log.e("status", "" + statusCode);
-
-                Log.e("status", "" + statusCode);
                 Log.e("response", "" + responseBody.toString());
-                Log.e("locationId", "" + locationId);
                 if (headers != null) {
                     for (int i = 0; i < headers.length; i++)
                         Log.e("header", "" + headers[i]);
                     Log.e("success finish", "finish");
 
-                    //call your method after successapi here
-                    newProductUpdateView.onSuccessPictureApi("Product added successfully.");
+                    try {
+                        String str = new String(responseBody, "UTF-8");
+                        Log.e("responseBody", "" + str);
+                        try {
+                            JSONObject jsonObject = new JSONObject(str);
+                            String message = jsonObject.get("message").toString();
+                            String success = jsonObject.get("successful").toString();
+                            Boolean bit= Boolean.valueOf(success);
+                            if (bit) {
+                                newProductUpdateView.onSuccessPictureApi("Product added successfully.");
+                            } else {
+                                newProductUpdateView.onUnsuccessPictureApi(message);
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 } else {
                     newProductUpdateView.onUnsuccessPictureApi("Not able to upload image this time, Please try again later.");
                 }
@@ -189,6 +210,7 @@ public class NewProductUpdatePresenterImpl implements NewProductUpdatePresenter 
         }
         return true;
     }
+
 
 }
 

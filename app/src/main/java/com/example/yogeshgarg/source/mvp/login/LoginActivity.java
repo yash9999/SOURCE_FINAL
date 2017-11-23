@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Progress;
+import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.session.UserSession;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
@@ -129,6 +130,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @OnClick(R.id.btnLogin)
     public void btnSigninClick() {
+        Utils.hideKeyboardIfOpen(this);
         callingLoginApi();
     }
 

@@ -23,6 +23,7 @@ import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyAdapter;
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyModel;
+import com.example.yogeshgarg.source.mvp.scan.QrScannerActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,6 +49,10 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
 
     @BindView(R.id.imgViewSearch)
     ImageView imgViewSearch;
+
+    @BindView(R.id.imgViewBarReader)
+    ImageView imgViewBarReader;
+
 
     @BindView(R.id.relLaySearch)
     RelativeLayout relLaySearch;
@@ -80,6 +85,7 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
         setContentView(R.layout.activity_price_survey_product);
         ButterKnife.bind(this);
 
+        imgViewBarReader.setVisibility(View.VISIBLE);
         imgViewSearch.setVisibility(View.VISIBLE);
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search");
@@ -206,5 +212,12 @@ public class PriceSurveyProductActivity extends AppCompatActivity implements Pri
     public void imgViewCloseSVClick() {
         searchView.setQuery("",true);
         relLaySearch.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.imgViewBarReader)
+    public void imgViewBarReaderClick(){
+        Intent intent=new Intent(this, QrScannerActivity.class);
+        intent.putExtra(ConstIntent.BAR_READER_VALUE,true);
+        startActivity(intent);
     }
 }

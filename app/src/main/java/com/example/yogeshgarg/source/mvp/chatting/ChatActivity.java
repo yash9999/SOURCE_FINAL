@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.CircleTransform;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
+import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.product_list.product_list_brand.ProductListBrandAdapter;
@@ -137,7 +138,7 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
 
     @Override
     public void onSuccessConversation(ArrayList<ChattingModel.Result> results) {
-        this.results=results;
+        this.results = results;
         if (results.size() > 0) {
             setLayoutManager();
         }
@@ -146,7 +147,7 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
     private void setLayoutManager() {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.scrollToPosition(results.size()-1);
+        linearLayoutManager.scrollToPosition(results.size() - 1);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
@@ -155,7 +156,7 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
     }
 
     private void setAdapter() {
-        ChatAdapter chatAdapter= new ChatAdapter(this,results);
+        ChatAdapter chatAdapter = new ChatAdapter(this, results);
         recyclerView.setAdapter(chatAdapter);
     }
 
@@ -166,8 +167,15 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
 
     @Override
     public void onInternetError() {
-
+        SnackNotify.checkConnection(onRetry, coordinateLayout);
     }
+
+    OnClickInterface onRetry = new OnClickInterface() {
+        @Override
+        public void onClick() {
+            chattingPresenterImpl.callingConversationApi(userId);
+        }
+    };
 
     @Override
     public void onSuccessSendMessage(SendingModel.Result result) {
@@ -177,13 +185,21 @@ public class ChatActivity extends AppCompatActivity implements ChattingView {
 
     @Override
     public void onUnsuccessSendMessage(String message) {
-
+        SnackNotify.showMessage(message, coordinateLayout);
     }
 
     @Override
     public void onInternetErrorSendMessage() {
-
+        SnackNotify.checkConnection(onRetrySendMessage, coordinateLayout);
     }
+
+    OnClickInterface onRetrySendMessage = new OnClickInterface() {
+        @Override
+        public void onClick() {
+            chattingPresenterImpl.sendMessage(message, userId);
+        }
+    };
+
 
     @Override
     public void onSuccessReceivedMessage(ArrayList<ReceivedModel.Result> results) {

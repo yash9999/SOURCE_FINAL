@@ -1,5 +1,6 @@
 package com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_product;
 
+import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
+import com.example.yogeshgarg.source.mvp.scan.QrScannerActivity;
 
 import java.util.ArrayList;
 
@@ -42,6 +44,9 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
     @BindView(R.id.imgViewSearch)
     ImageView imgViewSearch;
 
+    @BindView(R.id.imgViewBarReader)
+    ImageView imgViewBarReader;
+
     @BindView(R.id.relLaySearch)
     RelativeLayout relLaySearch;
 
@@ -62,13 +67,14 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_expiry_product);
         ButterKnife.bind(this);
 
+        imgViewBarReader.setVisibility(View.VISIBLE);
         imgViewSearch.setVisibility(View.VISIBLE);
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search");
 
-        ImageView searchViewIcon =(ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        ImageView searchViewIcon = (ImageView) searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
         searchViewIcon.setVisibility(View.GONE);
-        ViewGroup linearLayoutSearchView=(ViewGroup)searchViewIcon.getParent();
+        ViewGroup linearLayoutSearchView = (ViewGroup) searchViewIcon.getParent();
         linearLayoutSearchView.removeView(searchViewIcon);
 
         setFont();
@@ -82,7 +88,7 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
     @Override
     public void onSuccess(ArrayList<ExpiryProduct_ProductModel.Result> resultArrayList) {
         this.resultArrayList = resultArrayList;
-        if(resultArrayList.size()>0){
+        if (resultArrayList.size() > 0) {
             setLayoutManager();
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
@@ -141,7 +147,7 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
                 publishResultArrayList.add(resultArrayList.get(i));
             }
         }
-          expiryProduct_productAdapter = new ExpiryProduct_ProductAdapter(this, publishResultArrayList);
+        expiryProduct_productAdapter = new ExpiryProduct_ProductAdapter(this, publishResultArrayList);
         recyclerView.setAdapter(expiryProduct_productAdapter);
     }
 
@@ -171,5 +177,12 @@ public class ExpiryProduct_ProductActivity extends AppCompatActivity implements 
     public void imgViewCloseSVClick() {
         searchView.setQuery("", true);
         relLaySearch.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.imgViewBarReader)
+    public void imgViewBarReaderClick() {
+        Intent intent = new Intent(this, QrScannerActivity.class);
+        intent.putExtra(ConstIntent.BAR_READER_VALUE, false);
+        startActivity(intent);
     }
 }

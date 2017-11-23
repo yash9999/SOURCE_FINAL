@@ -163,13 +163,13 @@ public class ImageHelper {
 
 //      this options allow android to claim the bitmap memory if it runs low on memory
 
-       try {
-           options.inPurgeable = true;
-           options.inInputShareable = true;
-       }catch (NullPointerException e){
+        try {
+            options.inPurgeable = true;
+            options.inInputShareable = true;
+        } catch (NullPointerException e) {
 
-       }
-           options.inTempStorage = new byte[16 * 1024];
+        }
+        options.inTempStorage = new byte[16 * 1024];
 
         try {
 //          load the bitmap from its path
@@ -246,4 +246,13 @@ public class ImageHelper {
         String uriSting = (file.getAbsolutePath() + "/" + System.currentTimeMillis() + ".jpg");
         return uriSting;
     }
+
+    public static byte[] getByteFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
+
+
 }

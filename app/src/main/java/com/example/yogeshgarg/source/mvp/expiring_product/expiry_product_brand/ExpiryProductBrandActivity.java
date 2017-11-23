@@ -1,5 +1,6 @@
 package com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_brand;
 
+import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.expiring_product.expiry_product_category.ExpiryProductCategoryAdapter;
+import com.example.yogeshgarg.source.mvp.scan.QrScannerActivity;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,10 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
     @BindView(R.id.imgViewSearch)
     ImageView imgViewSearch;
 
+    @BindView(R.id.imgViewBarReader)
+    ImageView imgViewBarReader;
+
+
     @BindView(R.id.relLaySearch)
     RelativeLayout relLaySearch;
 
@@ -63,6 +69,7 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
         setContentView(R.layout.activity_expiry_product_brand);
         ButterKnife.bind(this);
 
+        imgViewBarReader.setVisibility(View.VISIBLE);
         imgViewSearch.setVisibility(View.VISIBLE);
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search");
@@ -171,5 +178,12 @@ public class ExpiryProductBrandActivity extends AppCompatActivity implements Exp
     public void imgViewCloseSVClick() {
         searchView.setQuery("", true);
         relLaySearch.setVisibility(View.GONE);
+    }
+
+    @OnClick(R.id.imgViewBarReader)
+    public void imgViewBarReaderClick(){
+        Intent intent=new Intent(this, QrScannerActivity.class);
+        intent.putExtra(ConstIntent.BAR_READER_VALUE,false);
+        startActivity(intent);
     }
 }

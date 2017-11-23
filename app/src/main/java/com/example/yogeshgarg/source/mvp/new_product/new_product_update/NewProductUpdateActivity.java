@@ -612,7 +612,6 @@ public class NewProductUpdateActivity extends AppCompatActivity implements NewPr
         String path = Utils.getRealPathFromURI(photo.getPath().toString(), this);
         file = new File(path);
 
-
         float rotate = 0;
         Bitmap bitmapResult = null;
         ContentResolver cr = this.getContentResolver();

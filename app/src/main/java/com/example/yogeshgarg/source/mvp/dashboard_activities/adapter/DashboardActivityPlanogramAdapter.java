@@ -50,11 +50,11 @@ public class DashboardActivityPlanogramAdapter extends RecyclerView.Adapter<Dash
         String link = result.getLink();
         String title = result.getTitle();
         String date = result.getDateadded();
-
+        String url=ConstIntent.PREFIX_URL_OF_IMAGE + link;
         holder.txtViewPlanogramTitle.setText(Utils.camelCasing(title));
         holder.txtViewPlanogramMessage.setText(message);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + link).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
+        Picasso.with(activity).load(url).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
         holder.txtViewProductDate.setText(setDate(date));
     }
 

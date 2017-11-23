@@ -164,6 +164,8 @@ public class PriceAnalysisFragment extends Fragment implements PriceAnalysisView
     //-------------------------------------------------------------------------------------------
     @Override
     public void onSuccess(PriceAnalysisModel.Result result) {
+        relLatCheckBox.setVisibility(View.GONE);
+        checkboxSelectAll.setChecked(false);
         this.result = result;
         setLayoutManager();
         if (isBtnSubmitPressed) {

@@ -31,25 +31,41 @@
             android:textSize="@dimen/txt_18_sp" />
 
 
-        <ImageView
-            android:id="@+id/imgViewSearch"
-            android:layout_width="40dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:src="@mipmap/ic_search" />
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imgViewDots"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/txt_10_dp"
-            android:padding="5dp"
-            android:src="@mipmap/ic_dot_menu"
-            android:visibility="gone" />
+            <ImageView
+                android:id="@+id/imgViewBarReader"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:src="@mipmap/ic_reader" />
+
+            <ImageView
+                android:id="@+id/imgViewSearch"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:src="@mipmap/ic_search" />
+
+
+            <ImageView
+                android:id="@+id/imgViewDots"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/txt_10_dp"
+                android:padding="5dp"
+                android:src="@mipmap/ic_dot_menu"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
 
 
     </RelativeLayout>

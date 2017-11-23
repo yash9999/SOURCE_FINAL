@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.augmentedui.yogeshgarg.source"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 10
-        versionName "2.0"
+        versionCode 24
+        versionName "2.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -23,6 +23,9 @@ android {
 
 allprojects {
     repositories {
+        maven {
+            url 'https://maven.google.com'
+        }
     }
 }
 
@@ -34,19 +37,15 @@ dependencies {
 
 
 
-
-
-
-
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:multidex:1.0.0'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:support-vector-drawable:26.0.0-alpha1'
     compile 'com.android.support:support-v4:26.0.0-alpha1'
-    compile 'com.google.android.gms:play-services-maps:10.2.0'
-    compile 'com.google.android.gms:play-services-location:10.2.0'
-    compile 'com.google.android.gms:play-services-places:10.2.0'
+    compile 'com.google.android.gms:play-services-maps:10.2.1'
+    compile 'com.google.android.gms:play-services-location:10.2.1'
+    compile 'com.google.android.gms:play-services-places:10.2.1'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.android.support:support-annotations:25.2.0'
@@ -56,11 +55,12 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.android.support:cardview-v7:26.0.0-alpha1'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.google.firebase:firebase-core:10.2.0'
-    compile 'com.google.firebase:firebase-messaging:10.2.0'
-    compile 'com.google.android.gms:play-services:10.2.0'
+    compile 'com.google.firebase:firebase-core:10.2.1'
+    compile 'com.google.firebase:firebase-messaging:10.2.1'
+    compile 'com.google.android.gms:play-services:10.2.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

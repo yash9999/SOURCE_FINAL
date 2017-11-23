@@ -44,6 +44,7 @@ import com.example.yogeshgarg.source.mvp.product_list.product_list_product.Produ
 import com.example.yogeshgarg.source.mvp.profile.ProfileInfoUpdateModel;
 import com.example.yogeshgarg.source.mvp.profile.ProfileModel;
 import com.example.yogeshgarg.source.mvp.reset_password.ResetPasswordModel;
+import com.example.yogeshgarg.source.mvp.setting.LogoutModel;
 import com.example.yogeshgarg.source.mvp.stores.StoresModel;
 import com.example.yogeshgarg.source.mvp.team.MyTeamModel;
 import com.example.yogeshgarg.source.mvp.vacation.vacation_calendar.VacationCalendarModel;
@@ -64,8 +65,15 @@ public interface APIService {
 
 
     //Api for login
-    @POST("user/login ")
+    @POST("user/login")
     Call<LoginModel> userLogin(
+            @Header("Content-Type") String contentType,
+            @Header("Cache-Control") String cache,
+            @Body RequestBody params);
+
+
+    @POST("user/logout")
+    Call<LogoutModel> userLogout(
             @Header("Content-Type") String contentType,
             @Header("Cache-Control") String cache,
             @Body RequestBody params);

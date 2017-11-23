@@ -1,5 +1,7 @@
 package com.example.yogeshgarg.source.mvp.setting;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,13 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.helper.AlertDialogManager;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
+import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
+import com.example.yogeshgarg.source.common.session.UserSession;
+import com.example.yogeshgarg.source.common.utility.SnackNotify;
 import com.example.yogeshgarg.source.mvp.about.AboutActivity;
 import com.example.yogeshgarg.source.mvp.faq.FaqActivity;
+import com.example.yogeshgarg.source.mvp.login.LoginActivity;
 import com.example.yogeshgarg.source.mvp.notification_act.NotificationActivity;
 
 import butterknife.BindView;
@@ -21,7 +28,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class SettingFragment extends Fragment {
+public class SettingFragment extends Fragment implements LogoutView {
+
+    @BindView(R.id.relLay)
+    RelativeLayout relLay;
 
 
     @BindView(R.id.linLayNotifications)
@@ -47,6 +57,7 @@ public class SettingFragment extends Fragment {
 
     @BindView(R.id.txtViewLogout)
     TextView txtViewLogout;
+    LogoutPresenterImpl logoutPresenterImpl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,8 +102,53 @@ public class SettingFragment extends Fragment {
 
     @OnClick(R.id.linLayLogout)
     public void linLayLogoutClick() {
-        AlertDialogManager.showAlertLogout(getActivity());
+        final android.support.v7.app.AlertDialog.Builder alertDialog = new android.support.v7.app.AlertDialog.Builder(getActivity());
+        alertDialog.setCancelable(true);
+        alertDialog.setTitle("Logout!");
+        alertDialog.setMessage("Are you sure you want to Logout?");
+        logoutPresenterImpl = new LogoutPresenterImpl(getActivity(), this);
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                logoutPresenterImpl.getResultOfLogout();
+                dialog.dismiss();
+            }
+        });
+
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 
 
+    @Override
+    public void onSuccess(String message) {
+        UserSession userSession = new UserSession(getActivity());
+        userSession.clearUserSession();
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        getActivity().startActivity(intent);
+        ((Activity) getActivity()).finishAffinity();
+    }
+
+    @Override
+    public void onUnsucess(String message) {
+        SnackNotify.showMessage(message, relLay);
+    }
+
+    @Override
+    public void onInternetError() {
+        SnackNotify.checkConnection(onRetry, relLay);
+    }
+
+    OnClickInterface onRetry = new OnClickInterface() {
+        @Override
+        public void onClick() {
+            logoutPresenterImpl.getResultOfLogout();
+        }
+    };
 }

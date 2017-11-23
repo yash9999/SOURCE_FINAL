@@ -2,6 +2,7 @@ package com.example.yogeshgarg.source.mvp.dashboard;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.yogeshgarg.source.R;
 import com.example.yogeshgarg.source.common.database.DatabaseHelper;
@@ -15,9 +16,15 @@ import com.example.yogeshgarg.source.mvp.dashboard.model.NewProductModel;
 
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
+import cz.msebera.android.httpclient.util.ByteArrayBuffer;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -66,7 +73,8 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject().toString()));
 
-        Call<NewProductModel> getRegisterMessage = ApiAdapter.getApiService().gettingResultOfNewProductUpdate("application/json", "no-cache", body);
+        Call<NewProductModel> getRegisterMessage = ApiAdapter.getApiService().
+                gettingResultOfNewProductUpdate("application/json", "no-cache", body);
 
         getRegisterMessage.enqueue(new Callback<NewProductModel>() {
             @Override
@@ -825,7 +833,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         ArrayList<DashboardExpiryProductModel.Result> arrayListExpiry = new ArrayList<>();
         DashboardExpiryProductModel.Result resultExpiry = new DashboardExpiryProductModel().new Result();
 
-            Cursor cursorExpiry = databaseHelper.getDataFromTable(DatabaseHelper.TABLE_EXPIRY_PRODUCT);
+        Cursor cursorExpiry = databaseHelper.getDataFromTable(DatabaseHelper.TABLE_EXPIRY_PRODUCT);
 
         if(cursorExpiry!=null)
         {
@@ -1154,8 +1162,8 @@ public class DashboardPresenterImpl implements DashboardPresenter {
                 resultPlanogram.setMessage(message);
 
                 int linkIndex = cursorPlanogram.getColumnIndex(DatabaseHelper.LINK);
-                String link = cursorPlanogram.getString(linkIndex);
-                resultPlanogram.setLink(link);
+                byte[] link = cursorPlanogram.getBlob(linkIndex);
+                resultPlanogram.setImageByte(link);
 
                 int dateAddedIndex = cursorPlanogram.getColumnIndex(DatabaseHelper.DATE_ADDED);
                 String dateAdded = cursorPlanogram.getString(dateAddedIndex);

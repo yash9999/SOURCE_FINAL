@@ -349,10 +349,22 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
             edtTextStockUnit.setText(stockUnit);
         }
 
-        edtTextPrice.setText(price);
+        if (price.equals("0.00")) {
+            edtTextPrice.setText("");
+            edtTextPrice.setHint("0.00");
+        } else {
+            edtTextPrice.setText(price);
+        }
+
+        /*
+        if(discount.equals("0.00")){
+            edtTextDiscount.setText("");
+            edtTextDiscount.setHint("0.00");
+        }else{
+
+        }*/
 
         edtTextDiscount.setText(discount);
-
         discountType = Integer.parseInt(priceSurveyProductModelResult.getType());
         // 0 for percenatge and 1 for cost
         //if cost is passed tax must be passed,0 for no 1 for yes
@@ -484,7 +496,6 @@ public class ProductUpdateActivity extends AppCompatActivity implements ProductU
             }
         }, SPLASH_TIME_OUT);
     }
-
 
     @OnClick(R.id.relLayShowStockLevel)
     public void relLayShowStockLevelClick() {

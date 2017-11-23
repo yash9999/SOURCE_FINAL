@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.helper.AlertDialogManager;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.interfaces.OnClickInterface;
 import com.example.yogeshgarg.source.common.utility.SnackNotify;
@@ -132,7 +133,7 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     //---------------------------------------------------------------------------------------------------
     @Override
     public void onSuccessNotificationUpdate() {
-
+        AlertDialogManager.showMessage("Notification's setting are updated.",this);
     }
 
     @Override

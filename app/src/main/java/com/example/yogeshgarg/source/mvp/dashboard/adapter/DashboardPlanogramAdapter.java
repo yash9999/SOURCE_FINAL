@@ -7,8 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +20,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.database.DatabaseHelper;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.common.utils.ImageHelper;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardPlanogramModel;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,10 +45,12 @@ public class DashboardPlanogramAdapter extends RecyclerView.Adapter<DashboardPla
 
     Activity activity;
     ArrayList<DashboardPlanogramModel.Result> resultArrayListPlanogram;
+    DatabaseHelper databaseHelper;
 
     public DashboardPlanogramAdapter(Activity activity, ArrayList<DashboardPlanogramModel.Result> resultArrayListPlanogram) {
         this.activity = activity;
         this.resultArrayListPlanogram = resultArrayListPlanogram;
+        databaseHelper = new DatabaseHelper(activity);
     }
 
     @Override
@@ -53,18 +60,45 @@ public class DashboardPlanogramAdapter extends RecyclerView.Adapter<DashboardPla
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
+    public void onBindViewHolder(final Holder holder, int position) {
         final DashboardPlanogramModel.Result result = resultArrayListPlanogram.get(position);
         String message = result.getMessage();
-        String link = result.getLink();
+        String url = ConstIntent.PREFIX_URL_OF_IMAGE + result.getLink();
         String title = result.getTitle();
         String date = result.getDateadded();
 
         holder.txtViewPlanogramTitle.setText(Utils.camelCasing(title));
         holder.txtViewPlanogramMessage.setText(message);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + link).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
+        Picasso.with(activity).load(url).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
 
+       /* Picasso.with(activity).load(url).into(new Target() {
+            @Override
+            public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
+                byte[] byteImage = ImageHelper.getByteFromBitmap(bitmap);
+                databaseHelper.updateImagePlanogram(result.getPlanogramId(), byteImage, DatabaseHelper.TABLE_PLANOGRAM);
+               // Log.e("Planogram Byte",byteImage.toString());
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+
+                byte[] image = result.getLinkByte();
+               // Log.e("Planogram Image", "" + image);
+
+                if (image != null) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                    holder.imgViewProduct.setImageBitmap(bitmap);
+                }
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
+*/
         holder.txtViewProductDate.setText(setDate(date));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

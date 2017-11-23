@@ -4,12 +4,15 @@ import android.content.Context;
 
 
 import com.example.yogeshgarg.source.BuildConfig;
+import com.example.yogeshgarg.source.SourceApp;
 import com.example.yogeshgarg.source.common.helper.NetworkUtil;
 import com.example.yogeshgarg.source.common.session.UserSession;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -32,8 +35,6 @@ public class ApiAdapter {
 
     public ApiAdapter(Context context) {
         sContext = context;
-
-
     }
 
     public static APIService getInstance(Context context) throws NoInternetException {
@@ -62,7 +63,6 @@ public class ApiAdapter {
             synchronized (ApiAdapter.class) {
                 if (sInstance == null) {
 
-
                     sInstance = new Retrofit.Builder()
                             .baseUrl(Const.Base_URL)
                             .client(getOkHttpClient()).addConverterFactory(GsonConverterFactory.create()).build()
@@ -74,9 +74,12 @@ public class ApiAdapter {
     }
 
     private static OkHttpClient getOkHttpClient() {
+        File httpCacheDirectory = new File(SourceApp.getInstance().getCacheDir(), "responses");
+        int cacheSize = 10*1024*1024;
+        Cache cache = new Cache(httpCacheDirectory, cacheSize);
 
-        OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .retryOnConnectionFailure(true);
+        OkHttpClient.Builder builder = new OkHttpClient.Builder().retryOnConnectionFailure(true).cache(cache);
+
 
         Interceptor interceptor = new Interceptor() {
             @Override
@@ -89,12 +92,10 @@ public class ApiAdapter {
                     if (userSession.isUserLoggedIn()) {
                         requestBuilder.header(Const.KEY_X_API, Const.APP_X_API);
                         requestBuilder.header(Const.KEY_USER_TOKEN, userToken);
-
                     } else if(!userSession.isUserLoggedIn()) {
                         requestBuilder.header(Const.KEY_X_API, Const.APP_X_API);
                     }
                 }
-
 
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
@@ -105,14 +106,11 @@ public class ApiAdapter {
 
 
         if (BuildConfig.DEBUG)
-
         {
             //Print Log
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(httpLoggingInterceptor);
-
-
         }
         return builder.readTimeout(65000, TimeUnit.SECONDS)
                 .

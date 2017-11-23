@@ -8,8 +8,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +22,16 @@ import android.widget.TextView;
 
 
 import com.example.yogeshgarg.source.R;
+import com.example.yogeshgarg.source.common.database.DatabaseHelper;
 import com.example.yogeshgarg.source.common.helper.FontHelper;
 import com.example.yogeshgarg.source.common.helper.Utils;
 import com.example.yogeshgarg.source.common.requestResponse.Const;
 import com.example.yogeshgarg.source.common.requestResponse.ConstIntent;
+import com.example.yogeshgarg.source.common.utils.ImageHelper;
 import com.example.yogeshgarg.source.mvp.dashboard.model.DashboardRecentUpdateModel;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.w3c.dom.Text;
 
@@ -47,11 +52,13 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
 
     Activity activity;
     ArrayList<DashboardRecentUpdateModel.Result> resultArrayList;
+    DatabaseHelper databaseHelper;
 
 
     public DashoardRecentProductUpdateAdapter(Activity activity, ArrayList<DashboardRecentUpdateModel.Result> resultArrayList) {
         this.activity = activity;
         this.resultArrayList = resultArrayList;
+        databaseHelper=new DatabaseHelper(activity);
     }
 
     @Override
@@ -65,8 +72,34 @@ public class DashoardRecentProductUpdateAdapter extends RecyclerView.Adapter<Das
 
         final DashboardRecentUpdateModel.Result result = resultArrayList.get(position);
 
-        Picasso.with(activity).load(ConstIntent.PREFIX_URL_OF_IMAGE + result.getImage()).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
+        String url=ConstIntent.PREFIX_URL_OF_IMAGE+result.getImage();
+       Picasso.with(activity).load(url).error(R.mipmap.ic_browser).into(holder.imgViewProduct);
 
+       /* Picasso.with(activity).load(url).into(new Target() {
+            @Override
+            public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
+                byte[] byteImage = ImageHelper.getByteFromBitmap(bitmap);
+                databaseHelper.updateImage(result.getProductId(), byteImage, DatabaseHelper.TABLE_RECENT_UPDATE);
+              //  Log.e("recent Byte",byteImage.toString());
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+                byte[] image = result.getImageByte();
+                //Log.e("Recent Image", "" + image);
+
+                if (image != null) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+                    holder.imgViewProduct.setImageBitmap(bitmap);
+                }
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });*/
 
 
         final String productName = Utils.camelCasing(result.getProductName());

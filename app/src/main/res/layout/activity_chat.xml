@@ -77,7 +77,6 @@
                 android:layout_toLeftOf="@+id/imgArrow"
                 android:background="@drawable/chat_text_bg"
                 android:hint="Type your message"
-                android:focusable="true"
                 android:inputType="textMultiLine|textShortMessage"
                 android:maxLines="3"
                 android:padding="5dp"

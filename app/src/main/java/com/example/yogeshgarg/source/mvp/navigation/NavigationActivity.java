@@ -39,6 +39,7 @@ import com.example.yogeshgarg.source.mvp.new_product.new_product_home.NewProduct
 import com.example.yogeshgarg.source.mvp.price_survey.PriceSurveyFragment;
 import com.example.yogeshgarg.source.mvp.product_list.product_list_category.ProductListCategoryFragment;
 import com.example.yogeshgarg.source.mvp.profile.ProfileFragment;
+import com.example.yogeshgarg.source.mvp.scan.QrScannerActivity;
 import com.example.yogeshgarg.source.mvp.setting.SettingFragment;
 import com.example.yogeshgarg.source.mvp.stores.StoresActivity;
 import com.example.yogeshgarg.source.mvp.team.MyTeamFragment;
@@ -77,6 +78,10 @@ public class NavigationActivity extends AppCompatActivity
 
     @BindView(R.id.imgViewSearch)
     ImageView imgViewSearch;
+
+    @BindView(R.id.imgViewBarReader)
+    ImageView imgViewBarReader;
+
 
     @BindView(R.id.relLaySearch)
     RelativeLayout relLaySearch;
@@ -373,6 +378,7 @@ public class NavigationActivity extends AppCompatActivity
         DashboardFragment dashboardFragment = new DashboardFragment();
         txtViewPageName.setText(R.string.dashboard);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(dashboardFragment, getString(R.string.label_dashboard));
     }
 
@@ -381,6 +387,7 @@ public class NavigationActivity extends AppCompatActivity
         ProfileFragment profileFragment = new ProfileFragment();
         txtViewPageName.setText(R.string.profile);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(profileFragment, getString(R.string.label_profile));
     }
 
@@ -389,6 +396,7 @@ public class NavigationActivity extends AppCompatActivity
         MyTeamFragment myTeamFragment = new MyTeamFragment();
         txtViewPageName.setText(R.string.my_team);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(myTeamFragment, getString(R.string.label_my_team));
     }
 
@@ -397,6 +405,7 @@ public class NavigationActivity extends AppCompatActivity
         InboxFragment inboxFragment = new InboxFragment();
         txtViewPageName.setText(R.string.inbox);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(inboxFragment, getString(R.string.label_inbox));
     }
 
@@ -405,6 +414,7 @@ public class NavigationActivity extends AppCompatActivity
         NotificationFragment notificationFragment = new NotificationFragment();
         txtViewPageName.setText(R.string.notifications);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(notificationFragment, getString(R.string.label_notification));
     }
 
@@ -414,6 +424,7 @@ public class NavigationActivity extends AppCompatActivity
         PriceAnalysisFragment priceAnalysisFragment = new PriceAnalysisFragment();
         txtViewPageName.setText(R.string.price_analysis);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(priceAnalysisFragment, getString(R.string.label_price_analysis));
     }
 
@@ -422,6 +433,7 @@ public class NavigationActivity extends AppCompatActivity
         PriceSurveyFragment priceSurveyFragment = new PriceSurveyFragment();
         txtViewPageName.setText(R.string.price_survey);
         imgViewSearch.setVisibility(View.VISIBLE);
+        imgViewBarReader.setVisibility(View.VISIBLE);
         replaceFragment(priceSurveyFragment, getString(R.string.label_price_survey));
     }
 
@@ -430,6 +442,7 @@ public class NavigationActivity extends AppCompatActivity
         ProductListCategoryFragment productListCategoryFragment = new ProductListCategoryFragment();
         txtViewPageName.setText(R.string.product_list);
         imgViewSearch.setVisibility(View.VISIBLE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(productListCategoryFragment, getString(R.string.label_product_list));
     }
 
@@ -438,6 +451,7 @@ public class NavigationActivity extends AppCompatActivity
         NewProductFragment newProductFragment = new NewProductFragment();
         txtViewPageName.setText(R.string.new_product);
         imgViewSearch.setVisibility(View.VISIBLE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(newProductFragment, getString(R.string.label_new_product));
     }
 
@@ -447,6 +461,7 @@ public class NavigationActivity extends AppCompatActivity
         ExpiringProductFragment expiringProductFragment = new ExpiringProductFragment();
         txtViewPageName.setText(R.string.expiring_product);
         imgViewSearch.setVisibility(View.VISIBLE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(expiringProductFragment, getString(R.string.label_expiring_product));
     }
 
@@ -455,6 +470,7 @@ public class NavigationActivity extends AppCompatActivity
         InStoreSamplingFragment inStoreSamplingFragment = new InStoreSamplingFragment();
         txtViewPageName.setText(R.string.in_store_sampling);
         imgViewSearch.setVisibility(View.VISIBLE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(inStoreSamplingFragment, getString(R.string.label_in_stroe_product));
     }
 
@@ -464,6 +480,7 @@ public class NavigationActivity extends AppCompatActivity
         SettingFragment settingFragment = new SettingFragment();
         txtViewPageName.setText(R.string.settings);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(settingFragment, getString(R.string.label_setting));
     }
 
@@ -472,6 +489,7 @@ public class NavigationActivity extends AppCompatActivity
         VacationHomeFragment vacationHomeFragment = new VacationHomeFragment();
         txtViewPageName.setText(R.string.vacation);
         imgViewSearch.setVisibility(View.GONE);
+        imgViewBarReader.setVisibility(View.GONE);
         replaceFragment(vacationHomeFragment, getString(R.string.label_vacation));
     }
 
@@ -499,6 +517,13 @@ public class NavigationActivity extends AppCompatActivity
     public void imgViewSearchClick() {
         relLaySearch.setVisibility(View.VISIBLE);
         searchView.setQueryHint("Search");
+    }
+
+    @OnClick(R.id.imgViewBarReader)
+    public void imgViewBarReaderClick(){
+    Intent intent=new Intent(this, QrScannerActivity.class);
+    intent.putExtra(ConstIntent.BAR_READER_VALUE,true);
+    startActivity(intent);
     }
 
 }
